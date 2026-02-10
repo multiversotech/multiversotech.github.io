@@ -100,4 +100,4 @@ Sua contribuição é muito bem-vinda!
 <div align="center">
   <span>Feito com 💜 para a comunidade tech brasileira</span><br>
   <span>&copy; 2026 Multiverso Tech. Open source sob licença MIT.</span>
-</div>
+</div> 
