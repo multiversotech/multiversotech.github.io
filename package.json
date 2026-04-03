@@ -1,0 +1,59 @@
+{
+  "name": "multiversotech.github.io",
+  "version": "1.0.0",
+  "description": "Plataforma open-source de conhecimento tech para a comunidade brasileira",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/multiversotech/multiversotech.github.io.git"
+  },
+  "keywords": [
+    "technology",
+    "programming",
+    "glossary",
+    "english",
+    "portuguese",
+    "education",
+    "tech",
+    "brazilian",
+    "open-source"
+  ],
+  "author": "Multiverso Tech Community",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/multiversotech/multiversotech.github.io/issues"
+  },
+  "homepage": "https://github.com/multiversotech/multiversotech.github.io",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stylelint": "stylelint **/*.css --fix",
+    "sass:watch": "sass --watch src/scss:dist/css/",
+    "sass:build": "sass src/scss/mvt-main.scss dist/css/mvt-main.min.css --style=compressed",
+    "sass:compile": "sass src/scss/mvt-main.scss dist/css/mvt-main.css",
+    "p:write": "npx prettier --write .",
+    "p:check": "npx prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "dev": "npm run sass:watch"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "fs-extra": "^11.3.3",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.0.0",
+    "@eslint/markdown": "^7.5.1",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "prettier": "3.8.1",
+    "sass": "^1.97.3",
+    "stylelint": "^17.1.1",
+    "stylelint-config-standard": "^40.0.0"
+  },
+  "overrides": {
+    "ajv": ">=8.18.0"
+  }
+}
