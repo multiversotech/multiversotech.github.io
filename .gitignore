@@ -1,1 +1,75 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# minhas anotações
 my-notes.md
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# dependencies
+node_modules
+package-lock.json
+bower_components
+jspm_packages
+
+# Pasta do site gerado
+site/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# misc
+/.sass-cache
+/connect.lock
+testem.log
+/typings
+
+# Arquivos de log e sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.history/*
+.vscode/snipsnap.code-snippets
+.vscode/settings.json
+.vscode/snipsnap.code-snippets
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.local
+
+# Build/cache
+__pycache__/
