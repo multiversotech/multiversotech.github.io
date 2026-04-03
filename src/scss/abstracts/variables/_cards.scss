@@ -1,0 +1,34 @@
+@use "sass:math";
+@use "./spacing" as *;
+@use "./default" as *;
+@use "./grid" as *;
+@use "./typography" as *;
+@use "./components" as *;
+@use "../functions/var" as *;
+@use "../functions/colors" as *;
+@use "../functions/calc" as *;
+
+// Placeholders
+$placeholder-opacity-max: 0.5;
+$placeholder-opacity-min: 0.2;
+
+// Cards
+$card-spacer-y: $spacing;
+$card-spacer-x: $spacing;
+$card-title-spacer-y: $spacing * 0.5;
+$card-title-color: null;
+$card-subtitle-color: null;
+$card-border-width: var(--#{$prefix}border-width);
+$card-border-color: var(--#{$prefix}border-color-translucent);
+$card-border-radius: var(--#{$prefix}border-radius);
+$card-box-shadow: null;
+$card-inner-border-radius: subtract($card-border-radius, $card-border-width);
+$card-cap-padding-y: $card-spacer-y * 0.5;
+$card-cap-padding-x: $card-spacer-x;
+$card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), 0.03);
+$card-cap-color: null;
+$card-height: null;
+$card-color: null;
+$card-bg: var(--#{$prefix}body-bg);
+$card-img-overlay-padding: $spacing;
+$card-group-margin: $grid-gutter-width * 0.5;

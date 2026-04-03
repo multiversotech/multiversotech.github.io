@@ -1,0 +1,12 @@
+@use "./default" as *;
+@use "./typography" as *;
+@use "./spacing" as *;
+@use "../functions/var" as *;
+
+$alert-padding-y: $spacing;
+$alert-padding-x: $spacing;
+$alert-margin-bottom: 1rem;
+$alert-border-radius: var(--#{$prefix}border-radius);
+$alert-link-font-weight: $font-weight-bold;
+$alert-border-width: var(--#{$prefix}border-width);
+$alert-dismissible-padding-r: $alert-padding-x * 3;

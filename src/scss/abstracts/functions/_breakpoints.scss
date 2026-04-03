@@ -1,0 +1,77 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:string";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+
+// BREAKPOINTS
+//
+// Retorna o próximo breakpoint na sequência
+// @param {String} $breakpoint - Breakpoint atual (xs, sm, md, lg, xl, xxl)
+// @return {String|Null} - Próximo breakpoint ou null se for o último
+// @example scss - Uso prático
+//   $next: next-breakpoint(md); // retorna "lg" //
+//   $last: next-breakpoint(xxl); // retorna null //
+//
+
+@function breakpoint-next(
+  $name,
+  $breakpoints: $grid-breakpoints,
+  $breakpoint-names: map.keys($breakpoints)
+) {
+  $n: index($breakpoint-names, $name);
+  @if not $n {
+    @error "breakpoint `#{$name}` não foi encontrado em `#{$breakpoints}`";
+  }
+  @if $n < length($breakpoint-names) {
+    @return nth($breakpoint-names, $n + 1);
+  } @else {
+    @return null;
+  }
+}
+
+// Largura mínima do breakpoint. Null para o menor (primeiro) breakpoint.
+//
+//  >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    576px
+//
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map.get($breakpoints, $name);
+  @if $min != 0 {
+    @return $min;
+  } @else {
+    @return null;
+  }
+}
+
+// Largura máxima do breakpoint.
+// O valor máximo é reduzido em 0,02px para contornar as limitações dos prefixos `min-` e `max-` e das janelas de visualização com larguras fracionárias.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Usar 0.02px em vez de 0.01px para contornar um bug de arredondamento atual no Safari..
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map.get($breakpoints, $name);
+  @if $max and $max > 0 {
+    @return $max - 0.02;
+  } @else {
+    @return null;
+  }
+}
+
+// Retorna uma string vazia se o breakpoint for o menor possível; caso contrário, retorna o nome com um hífen na frente
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @if breakpoint-min($name, $breakpoints) == null {
+    @return "";
+  } @else {
+    @return "-#{$name}";
+  }
+}

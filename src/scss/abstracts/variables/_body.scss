@@ -1,0 +1,13 @@
+@use "./colors" as *;
+
+$body-text-align: null;
+$body-color: $gray-9;
+$body-bg: $color-primary-2;
+
+$body-secondary-color: rgba($body-color, 0.75);
+$body-secondary-bg: $color-primary-10;
+
+$body-tertiary-color: rgba($body-color, 0.5);
+$body-tertiary-bg: $color-primary-6;
+
+$body-emphasis-color: $black;

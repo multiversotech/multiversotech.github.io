@@ -1,0 +1,16 @@
+@use "./default" as *;
+@use "./spacing" as *;
+@use "./typography" as *;
+
+// Tooltips
+$tooltip-font-size: $font-size-sm;
+$tooltip-max-width: 200px;
+$tooltip-color: var(--#{$prefix}body-bg);
+$tooltip-bg: var(--#{$prefix}emphasis-color);
+$tooltip-border-radius: var(--#{$prefix}border-radius);
+$tooltip-opacity: 0.9;
+$tooltip-padding-y: $spacing * 0.25;
+$tooltip-padding-x: $spacing * 0.5;
+$tooltip-arrow-width: 0.8rem;
+$tooltip-arrow-height: 0.4rem;
+

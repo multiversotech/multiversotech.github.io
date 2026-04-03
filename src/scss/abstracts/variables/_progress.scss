@@ -1,0 +1,28 @@
+@use "./colors" as *;
+@use "./default" as *;
+@use "./typography" as *;
+@use "./components" as *;
+@use "../functions/var" as *;
+@use "../functions/colors" as *;
+
+// Progress bars
+$progress-height: 1rem;
+$progress-font-size: $font-size-base * 0.75;
+$progress-bg: var(--#{$prefix}secondary-bg);
+$progress-border-radius: var(--#{$prefix}border-radius);
+$progress-box-shadow: var(--#{$prefix}box-shadow-inset);
+$progress-bar-color: $white;
+$progress-bar-bg: $primary;
+$progress-bar-animation-timing: 1s linear infinite;
+$progress-bar-transition: width 0.6s ease;
+
+// Spinners
+$spinner-width: 2rem;
+$spinner-height: $spinner-width;
+$spinner-vertical-align: -0.125em;
+$spinner-border-width: 0.25em;
+$spinner-animation-speed: 0.75s;
+
+$spinner-width-sm: 1rem;
+$spinner-height-sm: $spinner-width-sm;
+$spinner-border-width-sm: 0.2em;

@@ -1,0 +1,34 @@
+// Escala de tempo
+$duration-instant: 0ms;
+$duration-very-fast: 100ms;
+$duration-fast: 200ms;
+$duration-base: 300ms;
+$duration-moderate: 500ms;
+$duration-epic: 800ms;
+$duration-very-slow: 1s;
+
+/// Mapa de durações de animação
+$durations: (
+  "instant": $duration-instant,
+  "very-fast": $duration-very-fast,
+  "fast": $duration-fast,
+  "base": $duration-base,
+  "moderate": $duration-moderate,
+  "epic": $duration-epic,
+  "very-slow": $duration-very-slow,
+);
+
+/// --- EASING ---
+/// Curvas de easing para criar animações naturais e fluidas
+$ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+$ease-exit: cubic-bezier(0.4, 0, 1, 1);
+$ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+/// Mapa de curvas de easing
+$easings: (
+  "standard": $ease-standard,
+  "in": $ease-entrance,
+  "out": $ease-exit,
+  "elastic": $ease-elastic,
+);
