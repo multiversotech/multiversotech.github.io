@@ -35,6 +35,7 @@
     "p:check": "npx prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "changelog": "node src/scripts/update-changelog.mjs",
     "dev": "npm run sass:watch"
   },
   "dependencies": {
