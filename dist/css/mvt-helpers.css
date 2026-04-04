@@ -1,0 +1,157 @@
+.clearfix .clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.text-bg-primaria-1 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-1-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-2 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-2-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-3 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-3-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-4 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-4-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-5 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-5-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-6 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-primaria-6-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-7 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-primaria-7-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-8 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-primaria-8-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-9 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-primaria-9-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-primaria-10 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-primaria-10-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-1 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-1-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-2 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-2-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-3 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-3-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-4 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-4-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-5 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-5-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-6 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-secundaria-6-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-7 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-secundaria-7-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-8 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-secundaria-8-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-9 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-secundaria-9-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-secundaria-10 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-secundaria-10-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-1 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-1-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-2 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-2-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-3 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-3-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-4 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-4-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-5 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-5-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-6 {
+  color: #000000 !important;
+  background-color: RGBA(var(--mvt-terciaria-6-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-7 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-terciaria-7-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-8 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-terciaria-8-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-9 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-terciaria-9-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+.text-bg-terciaria-10 {
+  color: #ffffff !important;
+  background-color: RGBA(var(--mvt-terciaria-10-rgb), var(--mvt-bg-opacity, 1)) !important;
+}
+
+/*# sourceMappingURL=mvt-helpers.css.map */
