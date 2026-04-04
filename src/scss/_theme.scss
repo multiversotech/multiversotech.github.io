@@ -1,0 +1,134 @@
+@use "sass:color";
+@use "../functions/colors" as *;
+@use "../functions/color-constrast" as *;
+@use "./colors" as *;
+@use "./default" as *;
+
+$primary: #cdbdff;
+$secondary: #ffb0cc;
+$tertiary: #bdf4ff;
+$primary-container: #10003a;
+$secondary-container: #240010;
+$tertiary-container: #00e3fd;
+
+/* BACKGROUNDS */
+$background-light: #f1e2ff;
+$background-dark: #1a0c2c;
+$background-gradient-dark: linear-gradient(145deg, #1a1a3e 0%, #0c0032 100%);
+
+$surface-variant: #3d2e50; // → glass, overlays
+$surface-tint: #ffb0cc;
+$surface-shape: radial-gradient(
+  circle,
+  rgba(12, 0, 92, 0.2),
+  rgb(19, 0, 143, 0.2)
+);
+$surface-badge: rgba(39, 5, 69, 0.75);
+$surface-page:
+  radial-gradient(
+    circle at 20% 50%,
+    rgba(255, 255, 205, 0.1) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 80% 80%,
+    rgba(124, 58, 237, 0.15) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 40% 20%,
+    rgba(124, 58, 237, 0.25) 0%,
+    transparent 50%
+  );
+
+// SUPERFÍCIES - “camadas” da UI
+$surface: #1a0c2c; // → fundo base
+$surface-container-lowest: #150627; // mais fundo ainda
+$surface-container-low: #231435; // seção
+$surface-container: #271839; // cards
+$surface-container-high: #322344; // elementos ativos
+$surface-container-highest: #3d2e50; // modal, popup
+$surface-bright: #423255; // destaque claro
+$surface-dim: #1a0c2c; // versão mais escura
+
+// TEXTOS
+$text-surface: #eedbff;
+$text-light: #eedbff;
+$text-dark: $neutra-11;
+$text-primary: #370096;
+$text-primary-container: #855bff;
+$text-secondary: #640037;
+$text-secondary-container: #dc3788;
+$text-tertiary: #00363d;
+$text-tertiary-container: #00616d;
+$text-surface-variant: #cac4d0;
+
+// FIXED (cores travadas) - cores que NÃO mudam entre light/dark
+$primary-fixed: $cor-primaria-2;
+$primary-fixed-dim: $cor-primaria-3;
+$secondary-fixed: $cor-secundaria-2;
+$secondary-fixed-dim: $cor-secundaria-3;
+$tertiary-fixed: $cor-terciaria-2;
+$tertiary-fixed-dim: $cor-terciaria-3;
+
+$text-primary-fixed: $cor-primaria-10;
+$text-primary-fixed-variant: $cor-primaria-8;
+$text-secondary-fixed: $cor-secundaria-10;
+$text-secondary-fixed-variant: $cor-secundaria-8;
+$text-tertiary-fixed: $cor-terciaria-10;
+$text-tertiary-fixed-variant: $cor-terciaria-8;
+
+$primary-text-dark: tint-color($cor-primaria-3, 40%);
+$secondary-text-dark: tint-color($tertiary-base, 40%);
+$success-text-dark: tint-color($success, 40%);
+$info-text-dark: tint-color($info, 40%);
+$warning-text-dark: tint-color($warning, 40%);
+$danger-text-dark: tint-color($danger, 40%);
+
+// INVERSE (modo invertido) - inverte fundo/texto (ex: dark dentro de light)
+$inverse-surface-light: #eedbff;
+$inverse-surface-dark: $neutra-10;
+$inverse-primary: #b50f6a;
+$inverse-text-surface: #39294b;
+
+// OUTLINES (bordas)
+$outline: #948f9a; // → borda padrão
+$outline-variant: #49454f; // → borda mais suave
+
+// ERROS (feedback) - validação, alertas, mensagens críticas
+$error: #ffb4ab; // → vermelho de erro
+$text-error: #690005;
+$error-container: #93000a; // → fundo de erro
+$text-error-container: #ffdad6;
+
+/* BORDAS */
+$border-default: #7b7b92;
+$border-light: rgb(26, 26, 62);
+$border-dark: #0c0032;
+$border-input: #2a2a4a;
+$border-input-focus: #6366f1;
+
+$border-primary: rgb(36, 32, 61);
+$border-secondary: rgb(155, 105, 239, 0.15);
+$border-tertiary: rgba(214, 148, 255, 0.15);
+$border-accent-principal: rgb(255, 230, 40);
+$border-accent-secondary: rgb(240, 30, 240);
+$border-accent-tertiary: rgb(90, 105, 240);
+$border-accent-quaternary: rgb(120, 30, 200);
+
+$border-iniciante: #22c55e;
+$border-intermediario: #ffeb3b;
+$border-avancado: #ef4444;
+$border-info: #6366f1;
+
+$text-accent-principal: rgb(255, 214, 10);
+$text-accent-secondary: rgb(239, 26, 172);
+$text-accent-tertiary: rgb(153, 50, 221);
+
+$text-muted: #3b3b41;
+$text-disabled: #94a3b8;
+$text-inverse: #f5f5f5;
+
+$text-link: #ef1aac;
+$text-link-hover: #fe56a2;
+$text-link-visited: #6d28d9;
