@@ -125,10 +125,17 @@ Padrão Conventional Commits:
 | `feat:` | nova funcionalidade |
 | `fix:` | correção de bug |
 | `docs:` | documentação |
-| `style:` | formatação |
+| `style:` | formatação, lint, espaçamento (sem lógica) |
 | `refactor:` | refatoração sem mudança de comportamento |
 | `content:` | adição ou edição de conteúdo (termos do glossário) |
 | `build:` | scripts de build, dependências |
+| `test:` | criação ou alteração de testes |
+| `perf:` | melhorias de performance |
+| `chore:` | configuração, pacotes, tarefas de manutenção |
+| `ci:` | integração contínua e workflows |
+| `raw:` | arquivos de configuração, dados, parâmetros |
+| `cleanup:` | remoção de código comentado ou desnecessário |
+| `remove:` | exclusão de arquivos, diretórios ou funcionalidades |
 
 ---
 
