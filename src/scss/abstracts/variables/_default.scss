@@ -1,107 +1,100 @@
-// =========================================================
-//   MVT Core – Configuration Layer
-//   ---------------------------------------------------------
-//   Responsabilidade:
+// ─────────────────────────────────────────────────────────────────────────────
+// MVT CORE — Camada de Configuração
+// ─────────────────────────────────────────────────────────────────────────────
+// Responsabilidade:
 //   - Definir comportamento global do Design System
 //   - Controlar features via flags
 //   - Centralizar convenções de prefixo e sufixo
-//   ---------------------------------------------------------
-//   Observação:
+//
+// Observação:
 //   Este arquivo NÃO define estilos. Apenas controla como o sistema se comporta.
-//========================================================= */
+//   Todas as variáveis usam !default para permitir override sem editar este arquivo.
+// ─────────────────────────────────────────────────────────────────────────────
 
-// ======================================================
-// PREFIX SYSTEM
-// ------------------------------------------------------
-// Define convenções de nomes para evitar colisão global
-// ======================================================
 
-// Prefixo base aplicado a componentes
-$prefix: "mvt-";
+// ── Prefixos ──────────────────────────────────────────────────────────────────
+// Aplicados a variáveis CSS e atributos para evitar colisão com outros sistemas.
 
-// Prefixo alternativo para build simplificado
-$prefix-lite: "mvt-lite-";
+$prefix:      "mvt-"      !default;
+$prefix-lite: "mvt-lite-" !default;
 
-// ======================================================
-// SUFFIX SYSTEM
-// ------------------------------------------------------
-// Sufixos controlam variações de build ou tema.
-// Mantidos separados para facilitar versionamento futuro.
-// ======================================================
 
-// Sufixo para versão lite
-$suffix-lite: "-lite";
-$enable-lite: false;
+// ── Build Lite ────────────────────────────────────────────────────────────────
+// Versão simplificada do sistema, com prefixo e sufixo próprios.
 
-// Sufixos de tema
-$suffix-theme-dark: "-dark";
-$suffix-theme-light: "-light";
+$enable-lite: false   !default;
+$suffix-lite: "-lite" !default;
 
-// ======================================================
-// FEATURE FLAGS – STRUCTURE
-// ------------------------------------------------------
-// Controlam geração de estruturas fundamentais.
-// Desativar aqui remove camadas inteiras do sistema.
-// ======================================================
 
-// Ativa grid utilitário padrão
-$enable-grid-classes: true;
+// ── Sufixos de tema ───────────────────────────────────────────────────────────
 
-// Ativa containers responsivos
-$enable-container-classes: true;
+$suffix-theme-dark:  "-dark"  !default;
+$suffix-theme-light: "-light" !default;
 
-// Habilita CSS Grid nativo (alternativa ao sistema Flexbox)
-// Desativado por padrão para manter compatibilidade com o grid utilitário
-$enable-cssgrid: false;
 
-// ======================================================
-// FEATURE FLAGS – VISUAL SYSTEM
-// ------------------------------------------------------
-// Controlam aparência base dos componentes.
-// Não devem afetar lógica estrutural.
-// ======================================================
+// ── Tema escuro ───────────────────────────────────────────────────────────────
+// $enable-dark-mode:
+//   true  → gera o bloco de tema escuro na compilação
+//   false → ignora completamente
+//
+// $color-mode-type:
+//   "media-query" → ativa via prefers-color-scheme (preferência do SO)
+//   qualquer outro valor → ativa via atributo [data-#{$prefix}theme="dark"]
+
+$enable-dark-mode:  true   !default;
+$color-mode-type:   "data" !default;
+
+
+// ── Estrutura ─────────────────────────────────────────────────────────────────
+
+// Grid utilitário baseado em Flexbox
+$enable-grid-classes: true !default;
+
+// Containers responsivos
+$enable-container-classes: true !default;
+
+// CSS Grid nativo (alternativa ao grid Flexbox)
+// Desativado por padrão para manter compatibilidade
+$enable-cssgrid: false !default;
+
+
+// ── Sistema visual ────────────────────────────────────────────────────────────
 
 // Arredondamento padrão de componentes
-$enable-rounded: true;
+$enable-rounded: true !default;
 
-// Sistema de elevação (sombras)
-$enable-shadows: false;
+// Sistema de elevação via sombras
+$enable-shadows: false !default;
 
 // Gradientes globais
-$enable-gradients: false;
+$enable-gradients: false !default;
 
-// ======================================================
-// FEATURE FLAGS – INTERACTION
-// ------------------------------------------------------
-// Controlam comportamento e experiência do usuário.
-// ======================================================
 
-// Transições globais
-$enable-transitions: true;
+// ── Interação ─────────────────────────────────────────────────────────────────
 
-// Respeita prefers-reduced-motion
-$enable-reduced-motion: true;
+// Transições globais em componentes
+$enable-transitions: true !default;
+
+// Respeita prefers-reduced-motion do sistema
+$enable-reduced-motion: true !default;
 
 // Scroll suave padrão
-$enable-smooth-scroll: true;
+$enable-smooth-scroll: true !default;
 
 // Cursor pointer automático em elementos interativos
-$enable-button-pointers: true;
+$enable-button-pointers: true !default;
 
-// ======================================================
-// FEATURE FLAGS – UTILITIES
-// ------------------------------------------------------
-// Controlam helpers opcionais.
-// ======================================================
 
-// Margens negativas utilitárias
-$enable-negative-margins: false;
+// ── Utilitários ───────────────────────────────────────────────────────────────
 
-// Utilities com !important
-$enable-important-utilities: true;
+// Margens negativas utilitárias (ex: -mt-1, -mx-2)
+$enable-negative-margins: false !default;
 
-// Ícones de validação automática
-$enable-validation-icons: true;
+// Adiciona !important nas classes utilitárias
+$enable-important-utilities: true !default;
 
-// Exibe avisos de depreciação durante desenvolvimento
-$enable-deprecation-messages: true;
+// Ícones de validação em inputs
+$enable-validation-icons: true !default;
+
+// Avisos de depreciação no console durante desenvolvimento
+$enable-deprecation-messages: true !default;

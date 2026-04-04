@@ -1,10 +1,10 @@
+@use "../variables/default" as *;
+
 @mixin color-mode($mode: light, $root: false) {
   @if $color-mode-type == "media-query" {
     @if $root == true {
       @media (prefers-color-scheme: $mode) {
-        :root {
-          @content;
-        }
+        :root { @content; }
       }
     } @else {
       @media (prefers-color-scheme: $mode) {
@@ -12,8 +12,15 @@
       }
     }
   } @else {
-    [data-mvt-theme="#{$mode}"] {
-      @content;
+    @if $root == true {
+      // Atributo no :root garante especificidade máxima
+      :root[data-#{$prefix}theme="#{$mode}"] {
+        @content;
+      }
+    } @else {
+      [data-#{$prefix}theme="#{$mode}"] {
+        @content;
+      }
     }
   }
 }
