@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); echo \"$input\" | grep -q '\\.js' && npm run lint || true"
+          },
+          {
+            "type": "command",
+            "command": "input=$(cat); echo \"$input\" | grep -q '\\.scss' && npm run sass:compile || true"
+          }
+        ]
+      }
+    ]
+  }
+}
