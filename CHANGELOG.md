@@ -44,7 +44,7 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ## Estatísticas do Projeto
 
-- **Total de commits:** 12
+- **Total de commits:** 16
 - **Período:** 2026-02-07 - 2026-04-03
 - **Contribuidores:** 1
 
