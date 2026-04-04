@@ -1,7 +1,7 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { execSync } from "child_process";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -140,7 +140,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
-## [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+## [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0//)
 feat: - indica que seu trecho de código está incluindo um novo recurso (se relaciona com o MINOR do versionamento semântico).
 fix: - trecho de código commitado está solucionando um problema (bug fix), (se relaciona com o PATCH do versionamento semântico).
 docs: -  mudanças na documentação (Não inclui alterações em código).
