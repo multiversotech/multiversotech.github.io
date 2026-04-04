@@ -164,11 +164,10 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
     }
   }
 
-  $var-name: if(
-    $variant != null,
-    "#{$color}-#{$variant}-#{$shade}",
-    "#{$color}-#{$shade}"
-  );
+  $var-name: "#{$color}-#{$shade}";
+  @if $variant != null {
+    $var-name: "#{$color}-#{$variant}-#{$shade}";
+  }
 
   @return var(--#{$var-name});
 }

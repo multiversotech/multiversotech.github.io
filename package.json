@@ -36,7 +36,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "changelog": "node src/scripts/update-changelog.mjs",
-    "dev": "npm run sass:watch"
+    "dev": "npm run sass:watch",
+    "build:site": "node scripts/build.mjs",
+    "build": "npm run build:lib && npm run build:site"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",

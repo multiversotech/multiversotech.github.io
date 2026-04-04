@@ -1,9 +1,12 @@
+@use "sass:list";
+@use "../variables/default" as *;
+
 @mixin transition($transition...) {
-  @if length($transition) == 0 {
+  @if list.length($transition) == 0 {
     $transition: $transition-base;
   }
 
-  @if length($transition) > 1 {
+  @if list.length($transition) > 1 {
     @each $value in $transition {
       @if $value == null or $value == none {
         @warn "A palavra-chave 'none' ou 'null' deve ser usada como um único argumento.";
@@ -12,14 +15,14 @@
   }
 
   @if $enable-transitions {
-    @if nth($transition, 1) != null {
+    @if list.nth($transition, 1) != null {
       transition: $transition;
     }
 
     @if $enable-reduced-motion and
-      nth($transition, 1) !=
+      list.nth($transition, 1) !=
       null and
-      nth($transition, 1) !=
+      list.nth($transition, 1) !=
       none
     {
       @media (prefers-reduced-motion: reduce) {
