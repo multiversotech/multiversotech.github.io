@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "./default" as *;
 @use "../functions/colors" as *;
 
 //--------------------------------------//
@@ -129,7 +130,7 @@ $warning-10: tint-color($warning, 80%); // mais claro
 $warning-20: tint-color($warning, 60%);
 $warning-30: tint-color($warning, 40%);
 $warning-40: tint-color($warning, 20%);
-$warning-50: $warning;                   // base
+$warning-50: $warning; // base
 $warning-60: shade-color($warning, 20%);
 $warning-70: shade-color($warning, 40%);
 $warning-80: shade-color($warning, 60%);
@@ -465,6 +466,17 @@ $danger-text-emphasis: shade-color($danger, 60%);
 $light-text-emphasis: $gray-7;
 $dark-text-emphasis: $gray-7;
 
+$theme-colors-text: (
+  "primary-text": $primary-text-emphasis,
+  "secondary-text": $secondary-text-emphasis,
+  "success-text": $success-text-emphasis,
+  "info-text": $info-text-emphasis,
+  "warning-text": $warning-text-emphasis,
+  "danger-text": $danger-text-emphasis,
+  "light-text": $light-text-emphasis,
+  "dark-text": $dark-text-emphasis,
+);
+
 //--------------------------------------//
 //    VARIÁVEIS DE BG DO TEMA        //
 //--------------------------------------//
@@ -477,6 +489,17 @@ $danger-bg-subtle: tint-color($danger, 80%);
 $light-bg-subtle: color.mix($gray-1, $white);
 $dark-bg-subtle: $gray-4;
 
+$theme-colors-bg-subtle: (
+  "primary-bg-subtle": $primary-bg-subtle,
+  "secondary-bg-subtle": $secondary-bg-subtle,
+  "success-bg-subtle": $success-bg-subtle,
+  "info-bg-subtle": $info-bg-subtle,
+  "warning-bg-subtle": $warning-bg-subtle,
+  "danger-bg-subtle": $danger-bg-subtle,
+  "light-bg-subtle": $light-bg-subtle,
+  "dark-bg-subtle": $dark-bg-subtle,
+);
+
 //--------------------------------------//
 //    VARIÁVEIS DE BORDA DO TEMA        //
 //--------------------------------------//
@@ -488,3 +511,14 @@ $warning-border-subtle: tint-color($warning, 60%);
 $danger-border-subtle: tint-color($danger, 60%);
 $light-border-subtle: $gray-2;
 $dark-border-subtle: $gray-5;
+
+$theme-colors-border-subtle: (
+  "primary-border-subtle": $primary-border-subtle,
+  "secondary-border-subtle": $secondary-border-subtle,
+  "success-border-subtle": $success-border-subtle,
+  "info-border-subtle": $info-border-subtle,
+  "warning-border-subtle": $warning-border-subtle,
+  "danger-border-subtle": $danger-border-subtle,
+  "light-border-subtle": $light-border-subtle,
+  "dark-border-subtle": $dark-border-subtle,
+);
