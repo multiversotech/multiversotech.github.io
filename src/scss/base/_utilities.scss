@@ -7,7 +7,6 @@
 @use "../abstracts/variables/spacing" as *;
 @use "../abstracts/variables/zindex" as *;
 
-// Mapas de cores para utilities
 $utilities-text-colors: map.merge(
   $base-colors,
   (

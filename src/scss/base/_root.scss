@@ -1,12 +1,23 @@
+@use "sass:meta";
+@use "../abstracts/variables/colors" as *;
+@use "../abstracts/variables/typography" as *;
+@use "../abstracts/variables/components" as *;
+@use "../abstracts/variables/default" as *;
+@use "../abstracts/variables/body" as *;
+@use "../abstracts/variables/link" as *;
+@use "../themes/dark-variables" as *;
+@use "../abstracts/functions/colors" as *;
+@use "../abstracts/mixins/color-mode" as *;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ROOT — Variáveis CSS globais do design system
+// Definidas em :root (tema claro padrão) e sobrescritas em [data-theme="dark"].
+// ─────────────────────────────────────────────────────────────────────────────
+
 :root,
-[data-bs-theme="light"] {
-  // Note: Custom variable values only support SassScript inside `#{}`.
-
-  // Colors
-  //
-  // Generate palettes for full colors, grays, and theme colors.
-
-  @each $color, $value in $colors {
+[data-theme="light"] {
+  // ── Paleta base ─────────────────────────────────────────────────────────────
+  @each $color, $value in $base-colors {
     --#{$prefix}#{$color}: #{$value};
   }
 
@@ -16,10 +27,7 @@
 
   @each $color, $value in $theme-colors {
     --#{$prefix}#{$color}: #{$value};
-  }
-
-  @each $color, $value in $theme-colors-rgb {
-    --#{$prefix}#{$color}-rgb: #{$value};
+    --#{$prefix}#{$color}-rgb: #{to-rgb($value)};
   }
 
   @each $color, $value in $theme-colors-text {
@@ -28,6 +36,7 @@
 
   @each $color, $value in $theme-colors-bg-subtle {
     --#{$prefix}#{$color}-bg-subtle: #{$value};
+    --#{$prefix}#{$color}-rgb: #{to-rgb($value)};
   }
 
   @each $color, $value in $theme-colors-border-subtle {
@@ -37,26 +46,30 @@
   --#{$prefix}white-rgb: #{to-rgb($white)};
   --#{$prefix}black-rgb: #{to-rgb($black)};
 
-  // Fonts
+  // ── Tipografia ──────────────────────────────────────────────────────────────
+  // inspect() preserva aspas em listas de famílias de fontes.
+  // Ver: https://github.com/sass/sass/issues/2383#issuecomment-336349172
 
-  // Note: Use `inspect` for lists so that quoted items keep the quotes.
-  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$prefix}gradient: #{$gradient};
+  --#{$prefix}font-body: #{meta.inspect($font-family-body)};
+  --#{$prefix}font-heading: #{meta.inspect($font-family-heading)};
+  --#{$prefix}font-ui: #{meta.inspect($font-family-ui)};
+  --#{$prefix}font-code: #{meta.inspect($font-family-code)};
+  --#{$prefix}font-display: #{meta.inspect($font-family-hero)};
 
-  // Root and body
-  // scss-docs-start root-body-variables
   @if $font-size-root != null {
     --#{$prefix}root-font-size: #{$font-size-root};
   }
-  --#{$prefix}body-font-family: #{inspect($font-family-base)};
-  @include rfs($font-size-base, --#{$prefix}body-font-size);
-  --#{$prefix}body-font-weight: #{$font-weight-base};
-  --#{$prefix}body-line-height: #{$line-height-base};
+
+  --#{$prefix}body-font-family: #{meta.inspect($font-family-body)};
+  --#{$prefix}body-font-size: #{$font-size-base};
+  --#{$prefix}body-font-weight: #{$font-weight-normal};
+  --#{$prefix}body-line-height: #{$line-height-body};
+
   @if $body-text-align != null {
     --#{$prefix}body-text-align: #{$body-text-align};
   }
+
+  // ── Cores do body ────────────────────────────────────────────────────────────
 
   --#{$prefix}body-color: #{$body-color};
   --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
@@ -75,14 +88,14 @@
   --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
-  // scss-docs-end root-body-variables
+
+  // ── Headings, links e código ─────────────────────────────────────────────────
 
   --#{$prefix}heading-color: #{$headings-color};
 
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
   --#{$prefix}link-decoration: #{$link-decoration};
-
   --#{$prefix}link-hover-color: #{$link-hover-color};
   --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
 
@@ -90,50 +103,48 @@
     --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
   }
 
-  --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}code-color: #{$pink};
   --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
 
-  // scss-docs-start root-border-var
+  // ── Bordas ───────────────────────────────────────────────────────────────────
+
   --#{$prefix}border-width: #{$border-width};
   --#{$prefix}border-style: #{$border-style};
   --#{$prefix}border-color: #{$border-color};
   --#{$prefix}border-color-translucent: #{$border-color-translucent};
 
-  --#{$prefix}border-radius: #{$border-radius};
+  --#{$prefix}border-radius: #{$border-radius-md};
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
   --#{$prefix}border-radius-lg: #{$border-radius-lg};
   --#{$prefix}border-radius-xl: #{$border-radius-xl};
-  --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
-  --#{$prefix}border-radius-2xl: var(--#{$prefix}border-radius-xxl); // Deprecated in v5.3.0 for consistency
+  --#{$prefix}border-radius-2xl: #{$border-radius-xxl};
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
-  // scss-docs-end root-border-var
+
+  // ── Sombras ──────────────────────────────────────────────────────────────────
 
   --#{$prefix}box-shadow: #{$box-shadow};
   --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
   --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
 
-  // Focus styles
-  // scss-docs-start root-focus-variables
+  // ── Foco ────────────────────────────────────────────────────────────────────
+
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
-  // scss-docs-end root-focus-variables
-
-  // scss-docs-start root-form-validation-variables
-  --#{$prefix}form-valid-color: #{$form-valid-color};
-  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
-  --#{$prefix}form-invalid-color: #{$form-invalid-color};
-  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
-  // scss-docs-end root-form-validation-variables
 }
+
+// ── Tema escuro ───────────────────────────────────────────────────────────────
+// Ativado via atributo [data-theme="dark"] ou pela preferência do sistema
+// quando $enable-dark-mode: true.
 
 @if $enable-dark-mode {
   @include color-mode(dark, true) {
     color-scheme: dark;
 
-    // scss-docs-start root-dark-mode-vars
+    // Cores do body
+
     --#{$prefix}body-color: #{$body-color-dark};
     --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
     --#{$prefix}body-bg: #{$body-bg-dark};
@@ -152,6 +163,8 @@
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
+    // Paleta de tema no modo escuro
+
     @each $color, $value in $theme-colors-text-dark {
       --#{$prefix}#{$color}-text-emphasis: #{$value};
     }
@@ -164,24 +177,29 @@
       --#{$prefix}#{$color}-border-subtle: #{$value};
     }
 
+    // Headings, links e código
+
     --#{$prefix}heading-color: #{$headings-color-dark};
 
     --#{$prefix}link-color: #{$link-color-dark};
-    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
     --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     --#{$prefix}code-color: #{$code-color-dark};
     --#{$prefix}highlight-color: #{$mark-color-dark};
     --#{$prefix}highlight-bg: #{$mark-bg-dark};
 
+    // Bordas
+
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+
+    // Validação de formulários
 
     --#{$prefix}form-valid-color: #{$form-valid-color-dark};
     --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
     --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
     --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
-    // scss-docs-end root-dark-mode-vars
   }
 }
