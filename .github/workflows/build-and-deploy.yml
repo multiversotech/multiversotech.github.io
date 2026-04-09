@@ -39,21 +39,25 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 4. Executa script de build para gerar a pasta 'site'
+      # 4. Compila o SCSS para gerar o CSS
+      - name: Compile SCSS
+        run: npm run sass:build
+
+      # 5. Executa script de build para gerar a pasta 'site'
       - name: Build the site
-        run: node build/build-pages.js
+        run: node scripts/build.mjs
       
-      # 5. Configura o ambiente para o deploy no GitHub Pages
+      # 6. Configura o ambiente para o deploy no GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 6. Faz o upload da pasta 'site' como um artefato
+      # 7. Faz o upload da pasta 'site' como um artefato
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './site'
 
-      # 7. Faz o deploy do artefato para o GitHub Pages
+      # 8. Faz o deploy do artefato para o GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

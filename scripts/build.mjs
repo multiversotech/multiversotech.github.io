@@ -33,9 +33,10 @@ function generateSlug(termo) {
 // CAMINHOS DO PROJETO
 // ========================================================
 
-const templatesPath = path.resolve(__dirname, '..', 'templates');
+const templatesPath = path.resolve(__dirname, '..', 'src', 'templates');
 const sitePath = path.resolve(__dirname, '..', 'site');
-const assetsPath = path.resolve(__dirname, '..', 'assets');
+const assetsPath = path.resolve(__dirname, '..', 'src', 'assets');
+const distCssPath = path.resolve(__dirname, '..', 'dist', 'css');
 
 // ==================================================================
 // FUNÇÃO PRINCIPAL DO BUILD
@@ -44,10 +45,11 @@ async function build() {
     try {
         console.log('🚀 Iniciando o build...');
 
-        // 1. Limpa a pasta 'site' e copia os 'assets' e 'styles'
+        // 1. Limpa a pasta 'site' e copia os 'assets' e o CSS compilado
         await fs.emptyDir(sitePath);
         await fs.copy(assetsPath, path.join(sitePath, 'assets'));
-        console.log('🎨 Assets copiados.');
+        await fs.copy(distCssPath, path.join(sitePath, 'dist', 'css'));
+        console.log('🎨 Assets e CSS copiados.');
 
         // 2. Copia favicon.ico para a raiz do site
         const faviconSource = path.join(assetsPath, 'icons', 'favicon-32x32.png');
