@@ -21,20 +21,24 @@ src/
 │   └── main.js          # Entry point — instancia e re-exporta componentes
 └── scss/                # Design system em SASS
     ├── abstracts/
-    │   ├── _variables.scss   # Índice: @forward de todos os sub-módulos
-    │   ├── _functions.scss   # Índice: @forward de todas as funções
-    │   ├── _mixins.scss      # Índice: @forward de todos os mixins
-    │   ├── variables/        # Um arquivo por categoria (colors, spacing, typography…)
-    │   ├── functions/        # breakpoints, calc, color-contrast, colors, map, var
-    │   └── mixins/           # breakpoints, grid, utilities, etc.
-    ├── base/                 # reboot, root, type, container, grid, utilities
+    │   ├── _variables.scss   # Tokens primitivos (tipografia, espaçamento, sombras, etc.)
+    │   ├── _colors.scss      # Paleta de cores e tokens semânticos
+    │   ├── _functions.scss   # Funções SCSS (tint, shade, contraste)
+    │   ├── _mixins.scss      # Mixins reutilizáveis
+    │   ├── _breakpoints.scss # Variáveis e mapa de breakpoints
+    │   └── _maps.scss        # Mapas SCSS auxiliares
+    ├── base/                 # reboot, root, tipografia, helpers
     ├── components/           # alert, badge, button, card, dropdown, modal, nav…
-    ├── _theme.scss           # Tokens de tema (superfícies, textos, bordas, light/dark)
-    ├── _base.scss            # Índice de base
-    ├── _components.scss      # Índice de componentes
-    ├── mvt-main.scss         # Entry point SCSS principal
-    ├── mvt-grid.scss         # Entry point do grid
-    └── mvt-variables.scss    # Entry point de variáveis
+    ├── layout/               # header, navigation, grid, sidebar
+    ├── pages/                # estilos por página (home, etc.)
+    ├── themes/               # _dark-theme.scss, _light-theme.scss
+    ├── _abstracts.scss       # Índice: @forward de abstracts/
+    ├── _base.scss            # Índice: @forward de base/
+    ├── _components.scss      # Índice: @forward de components/
+    ├── _layout.scss          # Índice: @forward de layout/
+    ├── _pages.scss           # Índice: @forward de pages/
+    ├── _themes.scss          # Índice: @forward de themes/
+    └── core-main.scss        # Entry point SCSS principal
 
 dist/css/                # CSS compilado (gerado — não editar manualmente)
 scripts/                 # Scripts de build e automação (ES Modules .mjs)
@@ -87,7 +91,10 @@ npm run stylelint
 npm run changelog
 
 # Build do site (gera pasta site/)
-node scripts/build.mjs
+npm run build:site
+
+# Build completo (lib + site)
+npm run build
 ```
 
 O deploy é feito automaticamente pelo GitHub Actions a cada push na branch `main` (`.github/workflows/build-and-deploy.yml`).
@@ -100,9 +107,10 @@ O deploy é feito automaticamente pelo GitHub Actions a cada push na branch `mai
 
 - Variáveis em kebab-case com `$` prefixo. Nomes em português para o design system próprio: `$cor-primaria-1`, `$background-dark`, `$surface-container`
 - Sempre usar `@use` e `@forward` — nunca `@import` (Dart Sass módulos)
-- Adicionar novas variáveis nos arquivos específicos em `src/scss/abstracts/variables/` e registrar o `@forward` no índice `src/scss/abstracts/_variables.scss`
-- Cores definidas exclusivamente em `src/scss/abstracts/variables/_colors.scss`
-- Tokens de tema (superfícies, textos do modo dark/light) em `src/scss/abstracts/variables/_theme.scss`
+- Adicionar novas variáveis em `src/scss/abstracts/_variables.scss`; cores vão em `src/scss/abstracts/_colors.scss`
+- Cores definidas exclusivamente em `src/scss/abstracts/_colors.scss`
+- Variáveis de tema escuro (dark mode) em `src/scss/themes/_dark-theme.scss`
+- Flags de comportamento global (prefixo, dark mode, transitions, etc.) em `src/scss/abstracts/_variables.scss` — todas com `!default`
 
 ### JavaScript
 
@@ -144,7 +152,7 @@ Padrão Conventional Commits:
 - **Nunca editar arquivos em `dist/css/`** — são gerados pelo Sass; toda mudança vai em `src/scss/`
 - **Nunca usar `@import` no SCSS** — o projeto usa Dart Sass com `@use` / `@forward`
 - **Nunca usar `sharp` ou `fs-extra` em código que roda no browser** — são dependências de build only
-- **Nunca hardcodar cores fora de `src/scss/abstracts/variables/_colors.scss`** e `_theme.scss`
+- **Nunca hardcodar cores fora de `src/scss/abstracts/_colors.scss`** e `src/scss/themes/_dark-theme.scss`
 - **Nunca criar arquivos JS fora da estrutura `src/js/`** (components/, pages/)
 - **Nunca commitar `node_modules/`**, `package-lock.json` ou arquivos `.env` (listados no `.gitignore`)
 
@@ -154,12 +162,11 @@ Padrão Conventional Commits:
 
 Leia estes arquivos antes de começar qualquer tarefa:
 
-- [package.json](package.json) — scripts disponíveis e dependências
 - [ARCHITECTURE.md](ARCHITECTURE.md) — decisões arquiteturais e plano de evolução
-- [src/scss/mvt-main.scss](src/scss/mvt-main.scss) — entry point do SCSS
-- [src/scss/abstracts/_variables.scss](src/scss/abstracts/_variables.scss) — índice de variáveis
-- [src/scss/abstracts/variables/_colors.scss](src/scss/abstracts/variables/_colors.scss) — sistema de cores completo
-- [src/scss/_theme.scss](src/scss/_theme.scss) — tokens de tema (superfícies, textos, bordas)
+- [src/scss/core-main.scss](src/scss/core-main.scss) — entry point SCSS principal
+- [src/scss/abstracts/_variables.scss](src/scss/abstracts/_variables.scss) — tokens primitivos (tipografia, espaçamento, sombras, flags de comportamento)
+- [src/scss/abstracts/_colors.scss](src/scss/abstracts/_colors.scss) — sistema de cores completo
+- [src/scss/themes/_dark-theme.scss](src/scss/themes/_dark-theme.scss) — overrides de tema escuro
 - [src/js/main.js](src/js/main.js) — entry point do JavaScript
 - [scripts/build.mjs](scripts/build.mjs) — lógica de build e geração do site
 - [.github/workflows/build-and-deploy.yml](.github/workflows/build-and-deploy.yml) — pipeline de CI/CD

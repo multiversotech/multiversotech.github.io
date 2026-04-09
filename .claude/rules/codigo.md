@@ -3,12 +3,13 @@
 ## SCSS
 
 - **Sempre usar `@use` e `@forward`** — nunca `@import`. O projeto usa Dart Sass com módulos.
-- **Novas variáveis** vão em `src/scss/abstracts/variables/` no arquivo da categoria correta, seguidas de registro no índice `src/scss/abstracts/_variables.scss` via `@forward`
-- **Cores** são definidas exclusivamente em `src/scss/abstracts/variables/_colors.scss`. Nenhuma cor hardcoded fora desse arquivo.
-- **Tokens de tema** (superfícies, textos, bordas do modo dark/light) ficam em `src/scss/abstracts/variables/_theme.scss`
+- **Novas variáveis** vão em `src/scss/abstracts/_variables.scss`; cores vão em `src/scss/abstracts/_colors.scss`
+- **Cores** são definidas exclusivamente em `src/scss/abstracts/_colors.scss`. Nenhuma cor hardcoded fora desse arquivo.
+- **Tokens de tema escuro** (dark mode) ficam em `src/scss/themes/_dark-theme.scss`
+- **Flags de configuração global** (`$enable-dark-mode`, `$color-mode-type`, `$prefix`, transitions, etc.) ficam em `src/scss/abstracts/_variables.scss` — sempre com `!default`
 - **Nunca editar `dist/css/`** — é output gerado pelo Sass. Toda mudança vai em `src/scss/`
 - Nomenclatura de variáveis em português com kebab-case: `$cor-primaria-1`, `$superficie-container`, `$espacamento-base`
-- Mixins de breakpoint disponíveis: `media-breakpoint-up`, `media-breakpoint-down`, `media-breakpoint-between`, `media-breakpoint-only` (em `src/scss/abstracts/mixins/_breakpoints.scss`)
+- Mixins de breakpoint disponíveis: `media-breakpoint-up`, `media-breakpoint-down`, `media-breakpoint-between`, `media-breakpoint-only` (em `src/scss/abstracts/_mixins.scss`, breakpoints em `_breakpoints.scss`)
 
 ## JavaScript
 
@@ -33,5 +34,6 @@
 - `npm run dev` — watch SCSS (desenvolvimento)
 - `npm run sass:compile` — compila SCSS para `dist/css/` (sem minificação)
 - `npm run sass:build` — compila + minifica (produção)
-- `node scripts/build.mjs` — gera a pasta `site/` com os templates processados
+- `npm run build:site` — gera a pasta `site/` com os templates processados
+- `npm run build` — build completo (lib + site)
 - `sharp` e `fs-extra` são dependências de build only — importar apenas em scripts Node.js

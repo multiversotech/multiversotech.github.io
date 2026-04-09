@@ -14,6 +14,19 @@ Seções que podem precisar de atualização:
 - **Context Files**: arquivos importantes identificados na sessão
 
 Se as mudanças forem relevantes para as regras em `.claude/rules/`, atualize o arquivo correspondente também:
-- `.claude/rules/codigo.md` — padrões de SCSS, JS ou HTML
-- `.claude/rules/testes.md` — validação, testes manuais ou automáticos
+- `.claude/rules/codigo.md` — padrões de SCSS 7-1, JS ES Modules ou HTML includes
+- `.claude/rules/testes.md` — validação, lint (ESLint/Stylelint), testes manuais ou automáticos
 - `.claude/rules/seguranca.md` — dependências, dados sensíveis, browser vs. Node
+
+Ao finalizar, apresente um resumo no formato:
+
+---
+
+## 🔴 Sessão finalizada — Multiverso Tech
+
+**O que foi feito:** [lista curta das principais mudanças]
+**CLAUDE.md atualizado:** [sim / não — seções alteradas]
+**Rules atualizadas:** [sim / não — arquivos alterados]
+**Sugestão para próxima sessão:** [próximo passo lógico]
+
+---
