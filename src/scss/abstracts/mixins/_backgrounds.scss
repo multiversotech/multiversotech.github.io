@@ -1,8 +1,0 @@
-@use "../variables/default" as *;
-@use "../variables/colors" as *;
-
-@each $color, $value in $tema-cores {
-  .background-#{$color} {
-    background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1));
-  }
-}

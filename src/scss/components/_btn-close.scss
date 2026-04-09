@@ -1,0 +1,74 @@
+$btn-close-width: 1em;
+$btn-close-height: $btn-close-width;
+$btn-close-padding-x: 0.25em;
+$btn-close-padding-y: $btn-close-padding-x;
+$btn-close-color: $black;
+$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>");
+$btn-close-focus-shadow: $focus-ring-box-shadow;
+$btn-close-opacity: 0.5;
+$btn-close-hover-opacity: 0.75;
+$btn-close-focus-opacity: 1;
+$btn-close-disabled-opacity: 0.25;
+$btn-close-filter: null;
+$btn-close-white-filter: invert(1) grayscale(100%) brightness(200%);
+
+.btn-close {
+  --#{$prefix}btn-close-color: #{$btn-close-color};
+  --#{$prefix}btn-close-bg: #{escape-svg($btn-close-bg)};
+  --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
+  --#{$prefix}btn-close-hover-opacity: #{$btn-close-hover-opacity};
+  --#{$prefix}btn-close-focus-shadow: #{$btn-close-focus-shadow};
+  --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
+  --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
+
+  box-sizing: content-box;
+  width: $btn-close-width;
+  height: $btn-close-height;
+  padding: $btn-close-padding-y $btn-close-padding-x;
+  color: var(--#{$prefix}btn-close-color);
+  background: transparent var(--#{$prefix}btn-close-bg) center /
+    $btn-close-width auto no-repeat;
+  filter: var(--#{$prefix}btn-close-filter);
+  border: 0; // for button elements
+  @include border-radius();
+  opacity: var(--#{$prefix}btn-close-opacity);
+
+  &:hover {
+    color: var(--#{$prefix}btn-close-color);
+    text-decoration: none;
+    opacity: var(--#{$prefix}btn-close-hover-opacity);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: var(--#{$prefix}btn-close-focus-shadow);
+    opacity: var(--#{$prefix}btn-close-focus-opacity);
+  }
+
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: var(--#{$prefix}btn-close-disabled-opacity);
+  }
+}
+
+@mixin btn-close-white() {
+  $btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%);
+  --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
+}
+
+.btn-close-white {
+  @include btn-close-white();
+}
+
+:root,
+[data-bs-theme="light"] {
+  --#{$prefix}btn-close-filter: #{$btn-close-filter};
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark, true) {
+    @include btn-close-white();
+  }
+}

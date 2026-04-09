@@ -1,0 +1,188 @@
+.clearfix {
+  @include clearfix();
+}
+
+@each $color, $value in $theme-colors {
+  .text-bg-#{$color} {
+    @if $enable-important-utilities {
+      color: color-contrast($value) !important;
+      background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1)) !important;
+    } @else {
+      color: color-contrast($value);
+      background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1));
+    }
+  }
+}
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  @include visually-hidden();
+}
+
+.stretched-link {
+  &::#{$stretched-link-pseudo-element} {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $stretched-link-z-index;
+    content: "";
+  }
+}
+
+.ratio {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    display: block;
+    padding-top: var(--#{$prefix}aspect-ratio);
+    content: "";
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@each $key, $ratio in $aspect-ratios {
+  .ratio-#{$key} {
+    --#{$prefix}aspect-ratio: #{$ratio};
+  }
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-index-fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index-fixed;
+}
+
+@each $breakpoint in map.keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .sticky#{$infix}-top {
+      position: sticky;
+      top: 0;
+      z-index: $z-index-sticky;
+    }
+
+    .sticky#{$infix}-bottom {
+      position: sticky;
+      bottom: 0;
+      z-index: $z-index-sticky;
+    }
+  }
+}
+
+.icon-link {
+  display: inline-flex;
+  gap: $icon-link-gap;
+  align-items: center;
+  text-decoration-color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, .5));
+  text-underline-offset: $icon-link-underline-offset;
+  backface-visibility: hidden;
+
+  >.bi {
+    flex-shrink: 0;
+    width: $icon-link-icon-size;
+    height: $icon-link-icon-size;
+    fill: currentcolor;
+    @include transition($icon-link-icon-transition);
+  }
+}
+
+.icon-link-hover {
+
+  &:hover,
+  &:focus-visible {
+    >.bi {
+      transform: var(--#{$prefix}icon-link-transform, $icon-link-icon-transform);
+    }
+  }
+}
+
+.focus-ring:focus {
+  outline: 0;
+  box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0)
+    var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width)
+    var(--#{$prefix}focus-ring-color);
+}
+
+.vr {
+  display: inline-block;
+  align-self: stretch;
+  width: var(--#{$prefix}border-width);
+  min-height: 1em;
+  background-color: currentcolor;
+  opacity: 0.25;
+}
+
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    @if $enable-important-utilities {
+      color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1)) !important;
+      text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1)) !important;
+    } @else {
+      color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1));
+      text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1));
+    }
+
+    @if $link-shade-percentage != 0 {
+      &:hover,
+      &:focus {
+        $hover-color: shade-color($value, $link-shade-percentage);
+        @if color-contrast($value) != $color-contrast-light {
+          $hover-color: tint-color($value, $link-shade-percentage);
+        }
+
+        @if $enable-important-utilities {
+          color: RGBA(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1)) !important;
+          text-decoration-color: RGBA(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1)) !important;
+        } @else {
+          color: RGBA(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1));
+          text-decoration-color: RGBA(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1));
+        }
+      }
+    }
+  }
+}
+
+// One-off special link helper as a bridge until v6
+.link-body-emphasis {
+  @if $enable-important-utilities {
+    color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1)) !important;
+    text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1)) !important;
+  } @else {
+    color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1));
+    text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1));
+  }
+
+  @if $link-shade-percentage != 0 {
+    &:hover,
+    &:focus {
+      @if $enable-important-utilities {
+        color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 0.75)) !important;
+        text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 0.75)) !important;
+      } @else {
+        color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 0.75));
+        text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 0.75));
+      }
+    }
+  }
+}

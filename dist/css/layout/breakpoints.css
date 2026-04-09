@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* =============================================
+   BREAKPOINTS
+   Sistema de breakpoints via custom properties
+   e media queries pré-calculadas
+   ============================================= */
+/* Valores dos breakpoints */
+:root {
+  --mvt-breakpoint-xs: 0px;
+  --mvt-breakpoint-sm: 576px;
+  --mvt-breakpoint-md: 768px;
+  --mvt-breakpoint-lg: 992px;
+  --mvt-breakpoint-xl: 1200px;
+  --mvt-breakpoint-xxl: 1400px;
+}
+
+/* ── breakpoint-min() ──────────────────────────
+   Equivale a breakpoint-min($name): retorna a
+   largura mínima do breakpoint (xs = null/0).
+   ─────────────────────────────────────────── */
+/* xs → null (sem min-width, é o padrão mobile-first) */
+/* sm → 576px  */
+@media (min-width: 576px) { /* ... */ }
+/* md → 768px  */
+@media (min-width: 768px) { /* ... */ }
+/* lg → 992px  */
+@media (min-width: 992px) { /* ... */ }
+/* xl → 1200px */
+@media (min-width: 1200px) { /* ... */ }
+/* xxl→ 1400px */
+@media (min-width: 1400px) { /* ... */ }
+/* ── breakpoint-max() ──────────────────────────
+   Equivale a breakpoint-max($name): valor do
+   próximo breakpoint - 0.02px (evita overlap).
+   ─────────────────────────────────────────── */
+/* xs → 575.98px  */
+@media (max-width: 575.98px) { /* ... */ }
+/* sm → 767.98px  */
+@media (max-width: 767.98px) { /* ... */ }
+/* md → 991.98px  */
+@media (max-width: 991.98px) { /* ... */ }
+/* lg → 1199.98px */
+@media (max-width: 1199.98px) { /* ... */ }
+/* xl → 1399.98px */
+@media (max-width: 1399.98px) { /* ... */ }
+/* xxl → null (sem max-width, é o maior breakpoint) */
+/* ── breakpoint-next() / breakpoint-infix() ───
+   Ordem da sequência (equivale ao index do mapa):
+     xs → sm → md → lg → xl → xxl → null
+   O "infix" é o sufixo usado em classes utilitárias:
+     xs  → ""     (sem sufixo)
+     sm  → "-sm"
+     md  → "-md"
+     lg  → "-lg"
+     xl  → "-xl"
+     xxl → "-xxl"
+   ─────────────────────────────────────────── */
+
+/*# sourceMappingURL=breakpoints.css.map */

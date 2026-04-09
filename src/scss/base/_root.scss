@@ -1,21 +1,40 @@
 @use "sass:meta";
+@use "sass:map";
 @use "../abstracts/variables/colors" as *;
 @use "../abstracts/variables/typography" as *;
 @use "../abstracts/variables/components" as *;
 @use "../abstracts/variables/default" as *;
-@use "../abstracts/variables/body" as *;
 @use "../abstracts/variables/link" as *;
-@use "../themes/dark-variables" as *;
 @use "../abstracts/functions/colors" as *;
 @use "../abstracts/mixins/color-mode" as *;
+@use "../base/utilities" as *;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ROOT — Variáveis CSS globais do design system
-// Definidas em :root (tema claro padrão) e sobrescritas em [data-theme="dark"].
-// ─────────────────────────────────────────────────────────────────────────────
+ ─────────────────────────────────────────────────────────────────────────────
 
-:root,
-[data-theme="light"] {
+:root {
+  @each $key, $utility in $utilities {
+    $prop-class: $key;
+    @if map.has-key($utility, "class") {
+      $prop-class: map.get($utility, "class");
+    }
+    $values: map.get($utility, "values");
+    
+    @if meta.type-of($values) == "list" {
+      /* -------------------------------------- */
+      @each $value in $values {
+        --#{$prop-class}-#{$value}: #{$value};
+      }
+      
+    } @else if meta.type-of($values) == "map" {
+      /* -------------------------------------- */
+      @each $name, $value in $values {
+        --#{$prop-class}-#{$name + ""}: #{$value};
+      }
+    }
+  }
+
   // ── Paleta base ─────────────────────────────────────────────────────────────
   @each $color, $value in $base-colors {
     --#{$prefix}#{$color}: #{$value};
@@ -47,14 +66,12 @@
   --#{$prefix}black-rgb: #{to-rgb($black)};
 
   // ── Tipografia ──────────────────────────────────────────────────────────────
-  // inspect() preserva aspas em listas de famílias de fontes.
-  // Ver: https://github.com/sass/sass/issues/2383#issuecomment-336349172
-
   --#{$prefix}font-body: #{meta.inspect($font-family-body)};
   --#{$prefix}font-heading: #{meta.inspect($font-family-heading)};
   --#{$prefix}font-ui: #{meta.inspect($font-family-ui)};
   --#{$prefix}font-code: #{meta.inspect($font-family-code)};
   --#{$prefix}font-display: #{meta.inspect($font-family-hero)};
+  --#{$prefix}font-logo: #{meta.inspect($font-family-logo-mvt)};
 
   @if $font-size-root != null {
     --#{$prefix}root-font-size: #{$font-size-root};
@@ -64,10 +81,6 @@
   --#{$prefix}body-font-size: #{$font-size-base};
   --#{$prefix}body-font-weight: #{$font-weight-normal};
   --#{$prefix}body-line-height: #{$line-height-body};
-
-  @if $body-text-align != null {
-    --#{$prefix}body-text-align: #{$body-text-align};
-  }
 
   // ── Cores do body ────────────────────────────────────────────────────────────
 
@@ -89,10 +102,8 @@
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
 
-  // ── Headings, links e código ─────────────────────────────────────────────────
-
+  // ── Headings, links e código ────────────────────────────────────────────────
   --#{$prefix}heading-color: #{$headings-color};
-
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
   --#{$prefix}link-decoration: #{$link-decoration};
@@ -162,22 +173,6 @@
     --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
-
-    // Paleta de tema no modo escuro
-
-    @each $color, $value in $theme-colors-text-dark {
-      --#{$prefix}#{$color}-text-emphasis: #{$value};
-    }
-
-    @each $color, $value in $theme-colors-bg-subtle-dark {
-      --#{$prefix}#{$color}-bg-subtle: #{$value};
-    }
-
-    @each $color, $value in $theme-colors-border-subtle-dark {
-      --#{$prefix}#{$color}-border-subtle: #{$value};
-    }
-
-    // Headings, links e código
 
     --#{$prefix}heading-color: #{$headings-color-dark};
 

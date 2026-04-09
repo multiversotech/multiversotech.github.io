@@ -1,0 +1,289 @@
+/*
+Funções de paleta (tint, shade)
+Mapa $theme-colors
+Paleta expandida gerada (primary-100...900)
+Cores de contraste calculadas
+*/
+
+// Cor primária
+$color-primary-1: #f5eeff;
+$color-primary-2: #e8deff;
+$color-primary-3: #cdbdff;
+$color-primary-4: #b39cff;
+$color-primary-5: #9a7bff;
+$color-primary-6: #8155ff;
+$color-primary-7: #6833ea;
+$color-primary-8: #4f00d0;
+$color-primary-9: #370096;
+$color-primary-10: #20005f;
+
+// Cor de destaque/ação
+$color-secondary-1: #ffecf0;
+$color-secondary-2: #ffd9e4;
+$color-secondary-3: #ffb0cc;
+$color-secondary-4: #ff83b5;
+$color-secondary-5: #f94f9e;
+$color-secondary-6: #d73384;
+$color-secondary-7: #b50f6a;
+$color-secondary-8: #8d0050;
+$color-secondary-9: #640037;
+$color-secondary-10: #3e0020;
+
+$color-tertiary-1: #d2f7ff;
+$color-tertiary-2: #9cf0ff;
+$color-tertiary-3: #00daf3;
+$color-tertiary-4: #00bcd2;
+$color-tertiary-5: #009fb2;
+$color-tertiary-6: #008393;
+$color-tertiary-7: #006875;
+$color-tertiary-8: #004f58;
+$color-tertiary-9: #00363d;
+$color-tertiary-10: #001f24;
+
+$warning-10: tint-color($warning, 80%); // mais claro
+$warning-20: tint-color($warning, 60%);
+$warning-30: tint-color($warning, 40%);
+$warning-40: tint-color($warning, 20%);
+$warning-50: $warning; // base
+$warning-60: shade-color($warning, 20%);
+$warning-70: shade-color($warning, 40%);
+$warning-80: shade-color($warning, 60%);
+$warning-90: shade-color($warning, 80%); // mais escuro
+
+$success-10: tint-color($success, 80%);
+$success-20: tint-color($success, 60%);
+$success-30: tint-color($success, 40%);
+$success-40: tint-color($success, 20%);
+$success-50: $success;
+$success-60: shade-color($success, 20%);
+$success-70: shade-color($success, 40%);
+$success-80: shade-color($success, 60%);
+$success-90: shade-color($success, 80%);
+
+$danger-10: tint-color($danger, 80%);
+$danger-20: tint-color($danger, 60%);
+$danger-30: tint-color($danger, 40%);
+$danger-40: tint-color($danger, 20%);
+$danger-50: $danger;
+$danger-60: shade-color($danger, 20%);
+$danger-70: shade-color($danger, 40%);
+$danger-80: shade-color($danger, 60%);
+$danger-90: shade-color($danger, 80%);
+
+$info-10: tint-color($info, 80%);
+$info-20: tint-color($info, 60%);
+$info-30: tint-color($info, 40%);
+$info-40: tint-color($info, 20%);
+$info-50: $info;
+$info-60: shade-color($info, 20%);
+$info-70: shade-color($info, 40%);
+$info-80: shade-color($info, 60%);
+$info-90: shade-color($info, 80%);
+
+$states-color: (
+  "warning-10": $warning-10,
+  "warning-20": $warning-20,
+  "warning-30": $warning-30,
+  "warning-40": $warning-40,
+  "warning-50": $warning-50,
+  "warning-60": $warning-60,
+  "warning-70": $warning-70,
+  "warning-80": $warning-80,
+  "warning-90": $warning-90,
+
+  "success-10": $success-10,
+  "success-20": $success-20,
+  "success-30": $success-30,
+  "success-40": $success-40,
+  "success-50": $success-50,
+  "success-60": $success-60,
+  "success-70": $success-70,
+  "success-80": $success-80,
+  "success-90": $success-90,
+
+  "danger-10": $danger-10,
+  "danger-20": $danger-20,
+  "danger-30": $danger-30,
+  "danger-40": $danger-40,
+  "danger-50": $danger-50,
+  "danger-60": $danger-60,
+  "danger-70": $danger-70,
+  "danger-80": $danger-80,
+  "danger-90": $danger-90,
+
+  "info-10": $info-10,
+  "info-20": $info-20,
+  "info-30": $info-30,
+  "info-40": $info-40,
+  "info-50": $info-50,
+  "info-60": $info-60,
+  "info-70": $info-70,
+  "info-80": $info-80,
+  "info-90": $info-90,
+);
+
+// Variação da cor azul
+$blue-10: tint-color($blue, 80%);
+$blue-20: tint-color($blue, 60%);
+$blue-30: tint-color($blue, 40%);
+$blue-40: tint-color($blue, 20%);
+$blue-50: $blue;
+$blue-60: shade-color($blue, 20%);
+$blue-70: shade-color($blue, 40%);
+$blue-80: shade-color($blue, 60%);
+$blue-90: shade-color($blue, 80%);
+// Variação da cor indigo
+$indigo-10: tint-color($indigo, 80%);
+$indigo-20: tint-color($indigo, 60%);
+$indigo-30: tint-color($indigo, 40%);
+$indigo-40: tint-color($indigo, 20%);
+$indigo-50: $indigo;
+$indigo-60: shade-color($indigo, 20%);
+$indigo-70: shade-color($indigo, 40%);
+$indigo-80: shade-color($indigo, 60%);
+$indigo-90: shade-color($indigo, 80%);
+// Variação da cor roxa
+$purple-10: tint-color($purple, 80%);
+$purple-20: tint-color($purple, 60%);
+$purple-30: tint-color($purple, 40%);
+$purple-40: tint-color($purple, 20%);
+$purple-50: $purple;
+$purple-60: shade-color($purple, 20%);
+$purple-70: shade-color($purple, 40%);
+$purple-80: shade-color($purple, 60%);
+$purple-90: shade-color($purple, 80%);
+// Variação da cor rosa
+$pink-10: tint-color($pink, 80%);
+$pink-20: tint-color($pink, 60%);
+$pink-30: tint-color($pink, 40%);
+$pink-40: tint-color($pink, 20%);
+$pink-50: $pink;
+$pink-60: shade-color($pink, 20%);
+$pink-70: shade-color($pink, 40%);
+$pink-80: shade-color($pink, 60%);
+$pink-90: shade-color($pink, 80%);
+// Variação da cor vermelho
+$red-10: tint-color($red, 80%);
+$red-20: tint-color($red, 60%);
+$red-30: tint-color($red, 40%);
+$red-40: tint-color($red, 20%);
+$red-50: $red;
+$red-60: shade-color($red, 20%);
+$red-70: shade-color($red, 40%);
+$red-80: shade-color($red, 60%);
+$red-90: shade-color($red, 80%);
+// Variação da cor laranja
+$orange-10: tint-color($orange, 80%);
+$orange-20: tint-color($orange, 60%);
+$orange-30: tint-color($orange, 40%);
+$orange-40: tint-color($orange, 20%);
+$orange-50: $orange;
+$orange-60: shade-color($orange, 20%);
+$orange-70: shade-color($orange, 40%);
+$orange-80: shade-color($orange, 60%);
+$orange-90: shade-color($orange, 80%);
+// Variação da cor dourado
+$gold-10: tint-color($gold, 80%);
+$gold-20: tint-color($gold, 60%);
+$gold-30: tint-color($gold, 40%);
+$gold-40: tint-color($gold, 20%);
+$gold-50: $gold;
+$gold-60: shade-color($gold, 20%);
+$gold-70: shade-color($gold, 40%);
+$gold-80: shade-color($gold, 60%);
+$gold-90: shade-color($gold, 80%);
+// Variação da cor amarelo
+$yellow-10: tint-color($yellow, 80%);
+$yellow-20: tint-color($yellow, 60%);
+$yellow-30: tint-color($yellow, 40%);
+$yellow-40: tint-color($yellow, 20%);
+$yellow-50: $yellow;
+$yellow-60: shade-color($yellow, 20%);
+$yellow-70: shade-color($yellow, 40%);
+$yellow-80: shade-color($yellow, 60%);
+$yellow-90: shade-color($yellow, 80%);
+// Variação da cor verde
+$green-10: tint-color($green, 80%);
+$green-20: tint-color($green, 60%);
+$green-30: tint-color($green, 40%);
+$green-40: tint-color($green, 20%);
+$green-50: $green;
+$green-60: shade-color($green, 20%);
+$green-70: shade-color($green, 40%);
+$green-80: shade-color($green, 60%);
+$green-90: shade-color($green, 80%);
+// Variação da cor ciano
+$cyan-10: tint-color($cyan, 80%);
+$cyan-20: tint-color($cyan, 60%);
+$cyan-30: tint-color($cyan, 40%);
+$cyan-40: tint-color($cyan, 20%);
+$cyan-50: $cyan;
+$cyan-60: shade-color($cyan, 20%);
+$cyan-70: shade-color($cyan, 40%);
+$cyan-80: shade-color($cyan, 60%);
+$cyan-90: shade-color($cyan, 80%);
+// Variação da cor menta
+$mint-10: tint-color($mint, 80%);
+$mint-20: tint-color($mint, 60%);
+$mint-30: tint-color($mint, 40%);
+$mint-40: tint-color($mint, 20%);
+$mint-50: $mint;
+$mint-60: shade-color($mint, 20%);
+$mint-70: shade-color($mint, 40%);
+$mint-80: shade-color($mint, 60%);
+$mint-90: shade-color($mint, 80%);
+// Variação da cor magenta
+$magenta-10: tint-color($magenta, 80%);
+$magenta-20: tint-color($magenta, 60%);
+$magenta-30: tint-color($magenta, 40%);
+$magenta-40: tint-color($magenta, 20%);
+$magenta-50: $magenta;
+$magenta-60: shade-color($magenta, 20%);
+$magenta-70: shade-color($magenta, 40%);
+$magenta-80: shade-color($magenta, 60%);
+$magenta-90: shade-color($magenta, 80%);
+
+$primary-text: shade-color($primary, 60%);
+$secondary-text: shade-color($secondary, 60%);
+$success-text: shade-color($success, 60%);
+$info-text: shade-color($info, 60%);
+$warning-text: shade-color($warning, 60%);
+$danger-text: shade-color($danger, 60%);
+
+$primary-text-dark: tint-color($primary, 40%);
+$secondary-text-dark: tint-color($secondary, 40%);
+$success-text-dark: tint-color($success, 40%);
+$info-text-dark: tint-color($info, 40%);
+$warning-text-dark: tint-color($warning, 40%);
+$danger-text-dark: tint-color($danger, 40%);
+
+$primary-bg-subtle: tint-color($primary, 80%);
+$secondary-bg-subtle: tint-color($secondary, 80%);
+$success-bg-subtle: tint-color($success, 80%);
+$info-bg-subtle: tint-color($info, 80%);
+$warning-bg-subtle: tint-color($warning, 80%);
+$danger-bg-subtle: tint-color($danger, 80%);
+$light-bg-subtle: color.mix($gray-1, $white);
+
+$primary-bg-subtle-dark: shade-color($primary, 80%);
+$secondary-bg-subtle-dark: shade-color($secondary, 80%);
+$success-bg-subtle-dark: shade-color($success, 80%);
+$info-bg-subtle-dark: shade-color($info, 80%);
+$warning-bg-subtle-dark: shade-color($warning, 80%);
+$danger-bg-subtle-dark: shade-color($danger, 80%);
+$dark-bg-subtle-dark: color.mix($gray-8, $black);
+
+$primary-border-subtle: tint-color($primary, 60%);
+$secondary-border-subtle: tint-color($secondary, 60%);
+$success-border-subtle: tint-color($success, 60%);
+$info-border-subtle: tint-color($info, 60%);
+$warning-border-subtle: tint-color($warning, 60%);
+$danger-border-subtle: tint-color($danger, 60%);
+
+$primary-border-subtle-dark: shade-color($primary, 40%);
+$secondary-border-subtle-dark: shade-color($secondary, 40%);
+$success-border-subtle-dark: shade-color($success, 40%);
+$info-border-subtle-dark: shade-color($info, 40%);
+$warning-border-subtle-dark: shade-color($warning, 40%);
+$danger-border-subtle-dark: shade-color($danger, 40%);
+

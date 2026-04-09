@@ -1,29 +1,33 @@
-// Disable animation if transitions are disabled
+// Progress bars
+$progress-height: 1rem;
+$progress-font-size: $font-size-base * 0.75;
+$progress-bg: var(--#{$prefix}secondary-bg);
+$progress-border-radius: var(--#{$prefix}border-radius);
+$progress-box-shadow: var(--#{$prefix}box-shadow-inset);
+$progress-bar-color: $white;
+$progress-bar-bg: $primary;
+$progress-bar-animation-timing: 1s linear infinite;
+$progress-bar-transition: width 0.6s ease;
 
-// scss-docs-start progress-keyframes
 @if $enable-transitions {
   @keyframes progress-bar-stripes {
     0% { background-position-x: var(--#{$prefix}progress-height); }
   }
 }
-// scss-docs-end progress-keyframes
 
 .progress,
 .progress-stacked {
-  // scss-docs-start progress-css-vars
   --#{$prefix}progress-height: #{$progress-height};
-  @include rfs($progress-font-size, --#{$prefix}progress-font-size);
   --#{$prefix}progress-bg: #{$progress-bg};
   --#{$prefix}progress-border-radius: #{$progress-border-radius};
   --#{$prefix}progress-box-shadow: #{$progress-box-shadow};
   --#{$prefix}progress-bar-color: #{$progress-bar-color};
   --#{$prefix}progress-bar-bg: #{$progress-bar-bg};
   --#{$prefix}progress-bar-transition: #{$progress-bar-transition};
-  // scss-docs-end progress-css-vars
 
   display: flex;
   height: var(--#{$prefix}progress-height);
-  overflow: hidden; // force rounded corners by cropping it
+  overflow: hidden;
   @include font-size(var(--#{$prefix}progress-font-size));
   background-color: var(--#{$prefix}progress-bg);
   @include border-radius(var(--#{$prefix}progress-border-radius));

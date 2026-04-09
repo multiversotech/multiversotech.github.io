@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*=====================================================================================//
+//                                                                                     //
+//    ██    ██ █  █ █   █████ █ █   █ ████ ████  █████  ████  █████ ████  ███ █   █    //
+//    ███  ███ █  █ █     █   █ █   █ █    █   █ █     █    █   █   █    █    █   █    //
+//    █ ████ █ █  █ █     █   █ █   █ ███  ████  █████ █    █   █   ███  █    █████    //
+//    █  ██  █ █  █ █     █   █ ██ ██ █    █   █     █ █    █   █   █    █    █   █    //
+//    █      █  ██  ████  █   █  ███  ████ █   █ █████  ████    █   ████  ███ █   █    //
+//                                                                                     //
+//                      Design System - Core Configuration                             //
+//                    Inspirado na arquitetura do Bootstrap                            //
+//=====================================================================================*/
+/*
+Mapa $grid-breakpoints
+Funções de navegação (next, min, max, infix)
+*/
+/*
+Funções de paleta (tint, shade)
+Mapa $theme-colors
+Paleta expandida gerada (primary-100...900)
+Cores de contraste calculadas
+*/
+/*
+Matemática (add, subtract, divide)
+Contraste e luminância (contrast-ratio, color-contrast)
+Cores (tint-color, shade-color)
+Verificação (is-light, is-dark, wcag-level)
+*/
+/*
+$spacers
+$theme-colors
+$grid-columns
+$z-indexes
+$border-widths
+$font-sizes
+$displays
+*/
+/*
+Media queries (breakpoint-up, breakpoint-down, breakpoint-between)
+Tipografia (truncate, visually-hidden)
+Acessibilidade (focus-ring, sr-only)
+Layout (clearfix, flex-center)
+Transições (transition)
+*/
+
+/*# sourceMappingURL=core-main.css.map */

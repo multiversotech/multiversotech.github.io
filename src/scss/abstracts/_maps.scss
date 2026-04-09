@@ -1,0 +1,450 @@
+$grays: (
+  "white": $white,
+  "1": $gray-1,
+  "2": $gray-2,
+  "3": $gray-3,
+  "4": $gray-4,
+  "5": $gray-5,
+  "6": $gray-6,
+  "7": $gray-7,
+  "8": $gray-8,
+  "9": $gray-9,
+  "10": $gray-10,
+  "black": $black,
+);
+
+$base-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "neutra": $neutral,
+);
+
+$theme-colors: (
+  "primaria-1": $color-primary-1,
+  "primaria-2": $color-primary-2,
+  "primaria-3": $color-primary-3,
+  "primaria-4": $color-primary-4,
+  "primaria-5": $color-primary-5,
+  "primaria-6": $color-primary-6,
+  "primaria-7": $color-primary-7,
+  "primaria-8": $color-primary-8,
+  "primaria-9": $color-primary-9,
+  "primaria-10": $color-primary-10,
+  "secundaria-1": $color-secondary-1,
+  "secundaria-2": $color-secondary-2,
+  "secundaria-3": $color-secondary-3,
+  "secundaria-4": $color-secondary-4,
+  "secundaria-5": $color-secondary-5,
+  "secundaria-6": $color-secondary-6,
+  "secundaria-7": $color-secondary-7,
+  "secundaria-8": $color-secondary-8,
+  "secundaria-9": $color-secondary-9,
+  "secundaria-10": $color-secondary-10,
+  "terciaria-1": $color-tertiary-1,
+  "terciaria-2": $color-tertiary-2,
+  "terciaria-3": $color-tertiary-3,
+  "terciaria-4": $color-tertiary-4,
+  "terciaria-5": $color-tertiary-5,
+  "terciaria-6": $color-tertiary-6,
+  "terciaria-7": $color-tertiary-7,
+  "terciaria-8": $color-tertiary-8,
+  "terciaria-9": $color-tertiary-9,
+  "terciaria-10": $color-tertiary-10,
+);
+
+$colors-map: (
+  "blue-10": $blue-10,
+  "blue-20": $blue-20,
+  "blue-30": $blue-30,
+  "blue-40": $blue-40,
+  "blue-50": $blue-50,
+  "blue-60": $blue-60,
+  "blue-70": $blue-70,
+  "blue-80": $blue-80,
+  "blue-90": $blue-90,
+  "indigo-10": $indigo-10,
+  "indigo-20": $indigo-20,
+  "indigo-30": $indigo-30,
+  "indigo-40": $indigo-40,
+  "indigo-50": $indigo-50,
+  "indigo-60": $indigo-60,
+  "indigo-70": $indigo-70,
+  "indigo-80": $indigo-80,
+  "indigo-90": $indigo-90,
+  "purple-10": $purple-10,
+  "purple-20": $purple-20,
+  "purple-30": $purple-30,
+  "purple-40": $purple-40,
+  "purple-50": $purple-50,
+  "purple-60": $purple-60,
+  "purple-70": $purple-70,
+  "purple-80": $purple-80,
+  "purple-90": $purple-90,
+  "pink-10": $pink-10,
+  "pink-20": $pink-20,
+  "pink-30": $pink-30,
+  "pink-40": $pink-40,
+  "pink-50": $pink-50,
+  "pink-60": $pink-60,
+  "pink-70": $pink-70,
+  "pink-80": $pink-80,
+  "pink-90": $pink-90,
+  "red-10": $red-10,
+  "red-20": $red-20,
+  "red-30": $red-30,
+  "red-40": $red-40,
+  "red-50": $red-50,
+  "red-60": $red-60,
+  "red-70": $red-70,
+  "red-80": $red-80,
+  "red-90": $red-90,
+  "orange-10": $orange-10,
+  "orange-20": $orange-20,
+  "orange-30": $orange-30,
+  "orange-40": $orange-40,
+  "orange-50": $orange-50,
+  "orange-60": $orange-60,
+  "orange-70": $orange-70,
+  "orange-80": $orange-80,
+  "orange-90": $orange-90,
+  "gold-10": $gold-10,
+  "gold-20": $gold-20,
+  "gold-30": $gold-30,
+  "gold-40": $gold-40,
+  "gold-50": $gold-50,
+  "gold-60": $gold-60,
+  "gold-70": $gold-70,
+  "gold-80": $gold-80,
+  "gold-90": $gold-90,
+  "yellow-10": $yellow-10,
+  "yellow-20": $yellow-20,
+  "yellow-30": $yellow-30,
+  "yellow-40": $yellow-40,
+  "yellow-50": $yellow-50,
+  "yellow-60": $yellow-60,
+  "yellow-70": $yellow-70,
+  "yellow-80": $yellow-80,
+  "yellow-90": $yellow-90,
+  "green-10": $green-10,
+  "green-20": $green-20,
+  "green-30": $green-30,
+  "green-40": $green-40,
+  "green-50": $green-50,
+  "green-60": $green-60,
+  "green-70": $green-70,
+  "green-80": $green-80,
+  "green-90": $green-90,
+  "cyan-10": $cyan-10,
+  "cyan-20": $cyan-20,
+  "cyan-30": $cyan-30,
+  "cyan-40": $cyan-40,
+  "cyan-50": $cyan-50,
+  "cyan-60": $cyan-60,
+  "cyan-70": $cyan-70,
+  "cyan-80": $cyan-80,
+  "cyan-90": $cyan-90,
+  "mint-10": $mint-10,
+  "mint-20": $mint-20,
+  "mint-30": $mint-30,
+  "mint-40": $mint-40,
+  "mint-50": $mint-50,
+  "mint-60": $mint-60,
+  "mint-70": $mint-70,
+  "mint-80": $mint-80,
+  "mint-90": $mint-90,
+  "magenta-10": $magenta-10,
+  "magenta-20": $magenta-20,
+  "magenta-30": $magenta-30,
+  "magenta-40": $magenta-40,
+  "magenta-50": $magenta-50,
+  "magenta-60": $magenta-60,
+  "magenta-70": $magenta-70,
+  "magenta-80": $magenta-80,
+  "magenta-90": $magenta-90,
+);
+
+//--------------------------------------//
+//    VARIÁVEIS DE TEXTO DO TEMA        //
+//--------------------------------------//
+$theme-colors-text: (
+  "primary-text": $primary-text-emphasis,
+  "secondary-text": $secondary-text-emphasis,
+  "success-text": $success-text-emphasis,
+  "info-text": $info-text-emphasis,
+  "warning-text": $warning-text-emphasis,
+  "danger-text": $danger-text-emphasis,
+  "light-text": $light-text-emphasis,
+  "dark-text": $dark-text-emphasis,
+  "primary-text-emphasis-dark": $primary-text-emphasis-dark,
+  "secondary-text-emphasis-dark": $secondary-text-emphasis-dark,
+  "success-text-emphasis-dark": $success-text-emphasis-dark,
+  "info-text-emphasis-dark": $info-text-emphasis-dark,
+  "warning-text-emphasis-dark": $warning-text-emphasis-dark,
+  "danger-text-emphasis-dark": $danger-text-emphasis-dark,
+  "light-text-emphasis-dark": $light-text-emphasis-dark,
+  "dark-text-emphasis-dark": $dark-text-emphasis-dark,
+);
+
+//--------------------------------------//
+//    VARIÁVEIS DE BG DO TEMA        //
+//--------------------------------------//
+$theme-colors-bg-subtle: (
+  "primary-bg-subtle": $primary-bg-subtle,
+  "secondary-bg-subtle": $secondary-bg-subtle,
+  "success-bg-subtle": $success-bg-subtle,
+  "info-bg-subtle": $info-bg-subtle,
+  "warning-bg-subtle": $warning-bg-subtle,
+  "danger-bg-subtle": $danger-bg-subtle,
+  "light-bg-subtle": $light-bg-subtle,
+  "dark-bg-subtle": $dark-bg-subtle,
+  "primary-bg-subtle-dark": $primary-bg-subtle-dark,
+  "secondary-bg-subtle-dark": $secondary-bg-subtle-dark,
+  "success-bg-subtle-dark": $success-bg-subtle-dark,
+  "info-bg-subtle-dark": $info-bg-subtle-dark,
+  "warning-bg-subtle-dark": $warning-bg-subtle-dark,
+  "danger-bg-subtle-dark": $danger-bg-subtle-dark,
+  "light-bg-subtle-dark": $light-bg-subtle-dark,
+  "dark-bg-subtle-dark": $dark-bg-subtle-dark,
+);
+
+//--------------------------------------//
+//    VARIÁVEIS DE BORDA DO TEMA        //
+//--------------------------------------//
+$theme-colors-border-subtle: (
+  "primary-border-subtle": $primary-border-subtle,
+  "secondary-border-subtle": $secondary-border-subtle,
+  "success-border-subtle": $success-border-subtle,
+  "info-border-subtle": $info-border-subtle,
+  "warning-border-subtle": $warning-border-subtle,
+  "danger-border-subtle": $danger-border-subtle,
+  "light-border-subtle": $light-border-subtle,
+  "dark-border-subtle": $dark-border-subtle,
+  "primary-border-subtle-dark": $primary-border-subtle-dark,
+  "secondary-border-subtle-dark": $secondary-border-subtle-dark,
+  "success-border-subtle-dark": $success-border-subtle-dark,
+  "info-border-subtle-dark": $info-border-subtle-dark,
+  "warning-border-subtle-dark": $warning-border-subtle-dark,
+  "danger-border-subtle-dark": $danger-border-subtle-dark,
+  "light-border-subtle-dark": $light-border-subtle-dark,
+  "dark-border-subtle-dark": $dark-border-subtle-dark,
+);
+
+$border-widths: (
+  base: 1px,
+  md: 2px,
+  lg: 3px,
+  xl: 4px,
+);
+
+// "ARREDONDAMENTO" DA BORDA
+$border-radius: (
+  "sm": $border-radius-sm,
+  "md": $border-radius-md,
+  "lg": $border-radius-lg,
+  "xl": $border-radius-xl,
+  "xxl": $border-radius-xxl,
+  "pill": $border-radius-pill,
+);
+
+// ASPECT RATIO
+$aspect-ratios: (
+  "1x1": 100%,
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%),
+);
+
+// --- Opacidade --- //
+$opacities: (
+  "none": $opacity-none,
+  "disabled": $opacity-disabled,
+  "muted": $opacity-muted,
+  "heavy": $opacity-heavy,
+  "default": $opacity-default,
+);
+
+// --- Deslocamento --- //
+$offsets: (
+  "none": $offset-none,
+  "sm": $offset-sm,
+  "md": $offset-md,
+  "lg": $offset-lg,
+  "xl": $offset-xl,
+  "sm-n": $offset-sm-n,
+  "md-n": $offset-md-n,
+  "lg-n": $offset-lg-n,
+  "xl-n": $offset-xl-n,
+);
+
+// --- Suavidade --- //
+$blurs: (
+  "none": $blur-none,
+  "sm": $blur-sm,
+  "md": $blur-md,
+  "lg": $blur-lg,
+  "xl": $blur-xl,
+);
+
+$shadows: (
+  "color": $shadow-color,
+  "none": $shadow-none,
+  "sm": $shadow-sm,
+  "md": $shadow-md,
+  "lg": $shadow-lg,
+  "xl": $shadow-xl,
+  "sm-inset": $shadow-sm-inset,
+  "md-inset": $shadow-md-inset,
+  "lg-inset": $shadow-lg-inset,
+  "xl-inset": $shadow-xl-inset,
+  "sm-up": $shadow-sm-up,
+  "md-up": $shadow-md-up,
+  "lg-up": $shadow-lg-up,
+  "xl-up": $shadow-xl-up,
+  "sm-inset-up": $shadow-sm-inset-up,
+  "md-inset-up": $shadow-md-inset-up,
+  "lg-inset-up": $shadow-lg-inset-up,
+  "xl-inset-up": $shadow-xl-inset-up,
+  "sm-right": $shadow-sm-right,
+  "md-right": $shadow-md-right,
+  "lg-right": $shadow-lg-right,
+  "xl-right": $shadow-xl-right,
+  "sm-inset-right": $shadow-sm-inset-right,
+  "md-inset-right": $shadow-md-inset-right,
+  "lg-inset-right": $shadow-lg-inset-right,
+  "xl-inset-right": $shadow-xl-inset-right,
+  "sm-left": $shadow-sm-left,
+  "md-left": $shadow-md-left,
+  "lg-left": $shadow-lg-left,
+  "xl-left": $shadow-xl-left,
+  "sm-inset-left": $shadow-sm-inset-left,
+  "md-inset-left": $shadow-md-inset-left,
+  "lg-inset-left": $shadow-lg-inset-left,
+  "xl-inset-left": $shadow-xl-inset-left,
+);
+
+$icons-size: (
+  "base": $icon-size-base,
+  "xs": $icon-size-xs,
+  "sm": $icon-size-sm,
+  "lg": $icon-size-lg,
+  "2x": $icon-size-2x,
+  "3x": $icon-size-3x,
+  "4x": $icon-size-4x,
+  "5x": $icon-size-5x,
+  "6x": $icon-size-6x,
+  "7x": $icon-size-7x,
+  "8x": $icon-size-8x,
+  "9x": $icon-size-9x,
+  "10x": $icon-size-10x,
+);
+
+// TIPOGRAFIA
+
+// Família de fontes base
+$font-families: (
+  "body": $font-family-body,
+  "ui": $font-family-ui,
+  "heading": $font-family-heading,
+  "code": $font-family-code,
+  "display": $font-family-hero,
+  "logo-mvt": $font-family-logo-mvt,
+);
+
+// TAMANHOS DA FONTE
+$font-sizes: (
+  "base": $font-size-base,
+  "xxs": $font-size-xxs,
+  "xs": $font-size-xs,
+  "sm": $font-size-sm,
+  "lg": $font-size-lg,
+  "xl": $font-size-xl,
+  "2xl": $font-size-2xl,
+  "3xl": $font-size-3xl,
+  "4xl": $font-size-4xl,
+  "5xl": $font-size-5xl,
+  "6xl": $font-size-6xl,
+  "7xl": $font-size-7xl,
+  "8xl": $font-size-8xl,
+  "9xl": $font-size-9xl,
+  "10xl": $font-size-10xl,
+);
+
+// Pesos
+$font-weights: (
+  "light": $font-weight-light,
+  "normal": $font-weight-normal,
+  "medium": $font-weight-medium,
+  "semibold": $font-weight-semibold,
+  "bold": $font-weight-bold,
+  "extrabold": $font-weight-extrabold,
+  "black": $font-weight-black,
+);
+
+// Altura de linhas
+$line-height: (
+  "heading": $line-height-heading,
+  "body": $line-height-body,
+  "loose": $line-height-loose,
+);
+
+// SPACING
+// Controla o estilo padrão da maioria dos elementos. Principalmente focadas no espaçamento.
+// O padrão adotado foi de 1rem (16px) 
+$spacings: (
+  "none": $spacing-none,
+  "sm": $spacing-sm,
+  "half": $spacing-half,
+  "base": $spacing-base,
+  "md": $spacing-md,
+  "lg": $spacing-lg,
+  "xl": $spacing-xl,
+  "2x": $spacing-2xl,
+  "3x": $spacing-3xl,
+  "4x": $spacing-4xl,
+  "5x": $spacing-5xl,
+  "6x": $spacing-6xl,
+  "7x": $spacing-7xl,
+  "8x": $spacing-8xl,
+  "9x": $spacing-9xl,
+  "10x": $spacing-10xl,
+);
+
+// Tokens de alinhamento
+$tokens-alinhamento: (
+  "v-top": $alignment-vertical-top,
+  "v-center": $alignment-vertical-center,
+  "v-bottom": $alignment-vertical-bottom,
+  "h-left": $alignment-horizontal-left,
+  "h-center": $alignment-horizontal-center,
+  "h-right": $alignment-horizontal-right,
+);
+
+// Escala de tempo
+/// Mapa de durações de animação
+$durations: (
+  "instant": $duration-instant,
+  "very-fast": $duration-very-fast,
+  "fast": $duration-fast,
+  "base": $duration-base,
+  "moderate": $duration-moderate,
+  "epic": $duration-epic,
+  "very-slow": $duration-very-slow,
+);
+
+/// --- EASING ---
+/// Mapa de curvas de easing
+$easings: (
+  "standard": $ease-standard,
+  "in": $ease-entrance,
+  "out": $ease-exit,
+  "elastic": $ease-elastic,
+);
+
+// Posição
+// Define os pontos de ancoragem de posicionamento das arestas das funções de posicionamento.
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+);

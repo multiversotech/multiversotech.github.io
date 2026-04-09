@@ -1,0 +1,23 @@
+
+// Links
+// Estilizar elementos de âncora.
+$link-color: $primary;
+$link-decoration: underline;
+$link-shade-percentage: 20%;
+$link-hover-color: shift-color($link-color, $link-shade-percentage);
+$link-hover-decoration: null;
+
+$link-color-dark: tint-color($primary, 40%);
+$link-hover-color-dark: shift-color($link-color-dark, -$link-shade-percentage);
+
+$stretched-link-pseudo-element: after;
+$stretched-link-z-index: 1;
+
+// Links de ícones
+$icon-link-gap: 0.375rem;
+$icon-link-underline-offset: 0.25em;
+$icon-link-icon-size: 1em;
+$icon-link-icon-transition: 0.2s ease-in-out transform;
+$icon-link-icon-transform: translate3d(0.25em, 0, 0);
+
+
