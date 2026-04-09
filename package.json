@@ -2,7 +2,8 @@
   "name": "multiversotech.github.io",
   "version": "1.0.0",
   "description": "Plataforma open-source de conhecimento tech para a comunidade brasileira",
-  "main": "index.js",
+  "main": "main.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/multiversotech/multiversotech.github.io.git"
@@ -20,25 +21,22 @@
   ],
   "author": "Multiverso Tech Community",
   "license": "MIT",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/multiversotech/multiversotech.github.io/issues"
   },
-  "homepage": "https://github.com/multiversotech/multiversotech.github.io",
+  "homepage": "https://mutiversotech.github.io",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "stylelint": "stylelint **/*.css --fix",
-    "sass:watch": "sass --watch src/scss:dist/css/",
-    "sass:build": "sass src/scss/mvt-main.scss dist/css/mvt-main.min.css --style=compressed",
-    "sass:compile": "sass src/scss/mvt-main.scss dist/css/mvt-main.css",
+    "sass:build": "sass src/scss/core-main.scss dist/css/core-main.min.css --style=compressed",
+    "sass:compile": "sass src/scss/core-main.scss dist/css/core-main.css",
     "p:write": "npx prettier --write .",
     "p:check": "npx prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "changelog": "node src/scripts/update-changelog.mjs",
-    "dev": "npm run sass:watch",
-    "build:site": "node scripts/build.mjs",
-    "build": "npm run build:lib && npm run build:site"
+    "dev": "sass --watch src/scss:dist/css/",
+    "changelog": "node scripts/update-changelog.mjs",
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",

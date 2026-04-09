@@ -5,7 +5,6 @@
 import fs from 'fs-extra'; // Para mexer com arquivos e pastas
 import path from 'path';   // Para lidar com caminhos de arquivos
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
 
 // ========================================================
 // CONFIGURAÇÃO PARA ES MODULES
@@ -13,7 +12,6 @@ import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 
 // ========================================================
 // UTILITÁRIOS
