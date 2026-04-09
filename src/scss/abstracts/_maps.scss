@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "colors" as *;
+
 $grays: (
   "white": $white,
   "1": $gray-1,

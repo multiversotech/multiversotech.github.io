@@ -122,6 +122,7 @@ $letter-spacing-wide: 0.025em;
 // ── Espaçamento ───────────────────────────────────────────────────────────────
 $spacing: 1rem;
 
+$spacing-none: 0;
 $spacing-sm: $spacing * 0.25; // 4px
 $spacing-half: $spacing * 0.5; // 8px
 $spacing-base: $spacing; // 16px
@@ -367,37 +368,6 @@ $transition-base: all 0.2s ease-in-out;
 $transition-fade: opacity 0.15s linear;
 $transition-collapse: height 0.35s ease;
 $transition-collapse-width: width 0.35s ease;
-
-$body-color: $gray-9;
-$body-bg: $color-primary-2;
-
-$body-secondary-color: rgba($body-color, 0.75);
-$body-secondary-bg: $color-primary-10;
-
-$body-tertiary-color: rgba($body-color, 0.5);
-$body-tertiary-bg: $color-primary-6;
-
-$body-emphasis-color: $black;
-
-$body-color-dark: $gray-3;
-$body-bg-dark: $gray-9;
-$body-secondary-color-dark: rgba($body-color-dark, 0.75);
-$body-secondary-bg-dark: $gray-8;
-$body-tertiary-color-dark: rgba($body-color-dark, 0.5);
-$body-tertiary-bg-dark: color.mix($gray-8, $gray-9, 50%);
-$body-emphasis-color-dark: $white;
-$border-color-dark: $gray-7;
-$border-color-translucent-dark: rgba($white, 0.15);
-$headings-color-dark: inherit;
-
-$code-color-dark: tint-color($pink, 40%);
-$mark-color-dark: $body-color-dark;
-$mark-bg-dark: $yellow-80;
-
-$form-valid-color-dark: $green-30;
-$form-valid-border-color-dark: $green-30;
-$form-invalid-color-dark: $red-30;
-$form-invalid-border-color-dark: $red-30;
 
 // Alinhamento Vertical
 $alignment-vertical-top: top;

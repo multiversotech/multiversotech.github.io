@@ -5,6 +5,14 @@ Acessibilidade (focus-ring, sr-only)
 Layout (clearfix, flex-center)
 Transições (transition)
 */
+
+@use "sass:map";
+@use "sass:math";
+@use "sass:list";
+@use "sass:meta";
+@use "breakpoints" as *;
+@use "variables" as *;
+
 /// Aplica os estilos **a partir** do breakpoint informado
 /// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
 /// @example scss - Aplicar estilos em **lg** e **xl**

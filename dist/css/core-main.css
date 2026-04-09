@@ -20,20 +20,74 @@ Mapa $theme-colors
 Paleta expandida gerada (primary-100...900)
 Cores de contraste calculadas
 */
-/*
-Matemática (add, subtract, divide)
-Contraste e luminância (contrast-ratio, color-contrast)
-Cores (tint-color, shade-color)
-Verificação (is-light, is-dark, wcag-level)
+/* ── get-rgb() ─────────────────────────────────────────────────────────────────
+/// Retorna os canais R, G e B de uma cor como lista Sass (não string).
+/// Útil para construir valores rgb() ou CSS custom properties.
+///
+/// @param  {Color}  $color - Qualquer cor Sass (hex, rgb, hsl…)
+/// @return {List}   Lista de três números: (R, G, B) — cada um de 0 a 255
+///
+/// @example scss
+///   background: rgb(get-rgb(#ff8000));    // → rgb(255, 128, 0)
+///   --my-color-rgb: get-rgb(#ff8000);     // → 255, 128, 0
 */
-/*
-$spacers
-$theme-colors
-$grid-columns
-$z-indexes
-$border-widths
-$font-sizes
-$displays
+/* ── rgba-css-var() ────────────────────────────────────────────────────────────
+/// Gera um valor rgba() usando variáveis CSS, respeitando convenções de nome
+/// para casos especiais do body (bg e text) e o padrão geral.
+///
+/// @param  {String} $identifier - Nome base (ex: "body", "primary")
+/// @param  {String} $target     - Contexto: "bg", "text" ou nome de propriedade
+/// @return {String} Chamada rgba() com vars CSS interpoladas
+*/
+/* ── opaque() ──────────────────────────────────────────────────────────────────
+/// Simula como uma cor semitransparente aparece sobre um fundo sólido,
+/// devolvendo uma cor RGB totalmente opaca equivalente.
+/// Necessário antes de calcular luminância ou contraste.
+///
+/// @param  {Color} $background - Cor de fundo (deve ser opaca)
+/// @param  {Color} $foreground - Cor possivelmente transparente
+/// @return {Color} Cor resultante totalmente opaca
+*/
+/* ── tint-color() ─────────────────────────────────────────────────────────────
+/// Mistura uma cor com branco (torna mais clara).
+///
+/// @param  {Color}  $color  - Cor base
+/// @param  {Number} $weight - Percentual de branco a adicionar (0%–100%)
+/// @return {Color}
+*/
+/* ── shade-color() ─────────────────────────────────────────────────────────────
+/// Mistura uma cor com preto (torna mais escura).
+///
+/// @param  {Color}  $color  - Cor base
+/// @param  {Number} $weight - Percentual de preto a adicionar (0%–100%)
+/// @return {Color}
+/// */
+/* ── map-loop() ────────────────────────────────────────────────────────────────
+/// Percorre um mapa e aplica uma função a cada valor, devolvendo um novo mapa.
+/// Diferente do original, recebe a função já como referência (meta.get-function)
+/// para evitar chamadas de string frágeis.
+///
+/// @param  {Map}      $map  - Mapa de entrada
+/// @param  {Function} $func - Referência obtida via meta.get-function()
+/// @param  {ArgList}  $args - Argumentos extras passados após o valor atual
+/// @return {Map}      Novo mapa com os valores transformados
+///
+/// @example scss
+///   $lighten: meta.get-function("tint-color");
+///   $lighter-map: map-loop($colors, $lighten, 20%);
+///   equivale a chamar tint-color($value, 20%) para cada entrada
+*/
+/* ── negativify-map() ──────────────────────────────────────────────────────────
+/// Cria versões negativas dos valores de um mapa, prefixando as chaves com "n".
+/// Valores zero são ignorados (negativo de zero não faz sentido em spacing).
+///
+/// @param  {Map} $map - Mapa de entrada (ex: $spacers)
+/// @return {Map} Novo mapa com chaves "n{key}" e valores negativos
+///
+/// @example scss
+///   $negative-spacers: negativify-map((1: 4px, 2: 8px, 3: 16px));
+///  → ("n1": -4px, "n2": -8px, "n3": -16px)
+/// 
 */
 /*
 Media queries (breakpoint-up, breakpoint-down, breakpoint-between)

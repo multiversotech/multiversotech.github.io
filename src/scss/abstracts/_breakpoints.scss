@@ -9,6 +9,7 @@ Funções de navegação (next, min, max, infix)
 @use "sass:list";
 @use "sass:meta";
 @use "sass:map";
+@use "variables" as *;
 
 // --- BREAKPOINTS (Escala) ---
 $grid-breakpoints: (
@@ -28,9 +29,6 @@ $container-max-widths: (
   "xl": $container-max-width-xl,
   "xxl": $container-max-width-xxl,
 );
-
-// --- CONTAINER PADDING --- //
-$container-padding-x: $grid-gutter-width;
 
 // --- MAPA DE BREAKPOINTS -- //
 $breakpoints-name: (
