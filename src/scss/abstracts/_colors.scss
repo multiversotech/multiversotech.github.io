@@ -276,3 +276,9 @@ $form-valid-color-dark: $green-30;
 $form-valid-border-color-dark: $green-30;
 $form-invalid-color-dark: $red-30;
 $form-invalid-border-color-dark: $red-30;
+
+// ── Links ────────────────────────────────────────────────────────────────────
+$link-color: $primary;
+$link-hover-color: shift-color($link-color, $link-shade-percentage);
+$link-color-dark: tint-color($primary, 40%);
+$link-hover-color-dark: shift-color($link-color-dark, -$link-shade-percentage);

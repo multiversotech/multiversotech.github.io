@@ -1,19 +1,11 @@
-
-@use "./configs" as *;
-/*
-Media queries (breakpoint-up, breakpoint-down, breakpoint-between)
-Tipografia (truncate, visually-hidden)
-Acessibilidade (focus-ring, sr-only)
-Layout (clearfix, flex-center)
-Transições (transition)
-*/
-
 @use "sass:map";
 @use "sass:math";
 @use "sass:list";
 @use "sass:meta";
-@use "breakpoints" as *;
-@use "variables" as *;
+@use "./configs" as *;
+@use "./breakpoints" as *;
+@use "./variables" as *;
+@use "./functions" as *;
 
 /// Aplica os estilos **a partir** do breakpoint informado
 /// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
