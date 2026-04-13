@@ -1,3 +1,5 @@
+@use "./btn-base" as *;
+@use "../abstracts" as *;
 .btn-group,
 .btn-group-vertical {
   position: relative;

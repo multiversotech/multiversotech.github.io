@@ -1,3 +1,4 @@
+@use "../abstracts" as *;
 // Pagination
 $pagination-padding-y: 0.375rem;
 $pagination-padding-x: 0.75rem;
@@ -145,16 +146,16 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
 // Sizing
 //
 
+@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+  --#{$prefix}pagination-padding-x: #{$padding-x};
+  --#{$prefix}pagination-padding-y: #{$padding-y};
+  --#{$prefix}pagination-border-radius: #{$border-radius};
+}
+
 .pagination-lg {
   @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $pagination-border-radius-lg);
 }
 
 .pagination-sm {
   @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $pagination-border-radius-sm);
-}
-
-@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --#{$prefix}pagination-padding-x: #{$padding-x};
-  --#{$prefix}pagination-padding-y: #{$padding-y};
-  --#{$prefix}pagination-border-radius: #{$border-radius};
 }

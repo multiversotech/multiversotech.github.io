@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "../abstracts" as *;
 // Modals
 $modal-inner-padding: $spacing;
 

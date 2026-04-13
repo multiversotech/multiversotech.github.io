@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
 @use "../abstracts/configs" as *;
 @use "../abstracts/variables" as *;
 @use "../abstracts/breakpoints" as *;
@@ -223,22 +224,22 @@ $table-variants: (
     $hover-bg: color.mix(
       $color,
       $background,
-      percentage($table-hover-bg-factor)
+      math.percentage($table-hover-bg-factor)
     );
     $striped-bg: color.mix(
       $color,
       $background,
-      percentage($table-striped-bg-factor)
+      math.percentage($table-striped-bg-factor)
     );
     $active-bg: color.mix(
       $color,
       $background,
-      percentage($table-active-bg-factor)
+      math.percentage($table-active-bg-factor)
     );
     $table-border-color: color.mix(
       $color,
       $background,
-      percentage($table-border-factor)
+      math.percentage($table-border-factor)
     );
 
     --#{$prefix}table-color: #{$color};

@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "../abstracts" as *;
 // Buttons
 $btn-color: var(--#{$prefix}body-color);
 $btn-padding-y: 0.375rem;

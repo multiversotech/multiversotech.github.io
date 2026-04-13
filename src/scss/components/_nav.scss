@@ -1,11 +1,11 @@
+@use "../abstracts" as *;
 // ─────────────────────────────────────────────────────────────────────────────
 // NAV
 // ─────────────────────────────────────────────────────────────────────────────
 // Classe base para qualquer componente de navegação.
 // Funciona com <nav>, <ul> ou <ol>.
 // Navs
-$nav-link-padding-y: 0.5rem;
-$nav-link-padding-x: 1rem;
+
 $nav-link-font-size: null;
 $nav-link-font-weight: null;
 $nav-link-color: var(--#{$prefix}link-color);
