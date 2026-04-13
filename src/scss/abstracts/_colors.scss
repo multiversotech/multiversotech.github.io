@@ -9,40 +9,6 @@ Cores de contraste calculadas
 @use "variables" as *;
 @use "functions" as *;
 
-// Cor primária
-$color-primary-1: #f5eeff;
-$color-primary-2: #e8deff;
-$color-primary-3: #cdbdff;
-$color-primary-4: #b39cff;
-$color-primary-5: #9a7bff;
-$color-primary-6: #8155ff;
-$color-primary-7: #6833ea;
-$color-primary-8: #4f00d0;
-$color-primary-9: #370096;
-$color-primary-10: #20005f;
-
-// Cor de destaque/ação
-$color-secondary-1: #ffecf0;
-$color-secondary-2: #ffd9e4;
-$color-secondary-3: #ffb0cc;
-$color-secondary-4: #ff83b5;
-$color-secondary-5: #f94f9e;
-$color-secondary-6: #d73384;
-$color-secondary-7: #b50f6a;
-$color-secondary-8: #8d0050;
-$color-secondary-9: #640037;
-$color-secondary-10: #3e0020;
-
-$color-tertiary-1: #d2f7ff;
-$color-tertiary-2: #9cf0ff;
-$color-tertiary-3: #00daf3;
-$color-tertiary-4: #00bcd2;
-$color-tertiary-5: #009fb2;
-$color-tertiary-6: #008393;
-$color-tertiary-7: #006875;
-$color-tertiary-8: #004f58;
-$color-tertiary-9: #00363d;
-$color-tertiary-10: #001f24;
 
 $warning-10: tint-color($warning, 80%); // mais claro
 $warning-20: tint-color($warning, 60%);
@@ -291,59 +257,22 @@ $info-border-subtle-dark: shade-color($info, 40%);
 $warning-border-subtle-dark: shade-color($warning, 40%);
 $danger-border-subtle-dark: shade-color($danger, 40%);
 
-
-// ── Tokens de Corpo ───────────────────────────────────────────────────────────
-$body-color: $gray-9;
-$body-bg: $color-primary-2;
-
-$body-secondary-color: rgba($body-color, 0.75);
-$body-secondary-bg: $color-primary-10;
-
-$body-tertiary-color: rgba($body-color, 0.5);
-$body-tertiary-bg: $color-primary-6;
-
-$body-emphasis-color: $black;
-
-$body-color-dark: $gray-3;
-$body-bg-dark: $gray-9;
-$body-secondary-color-dark: rgba($body-color-dark, 0.75);
-$body-secondary-bg-dark: $gray-8;
 $body-tertiary-color-dark: rgba($body-color-dark, 0.5);
 $body-tertiary-bg-dark: color.mix($gray-8, $gray-9, 50%);
-$body-emphasis-color-dark: $white;
-$border-color-dark: $gray-7;
+$body-secondary-color-dark: rgba($body-color-dark, 0.75);
 $border-color-translucent-dark: rgba($white, 0.15);
+
 $headings-color-dark: inherit;
 
-$code-color-dark: tint-color($pink, 40%);
-$mark-color-dark: $body-color-dark;
+$body-secondary-color: rgba($body-color, 0.75);
+$body-tertiary-color: rgba($body-color, 0.5);
+
+$mark-bg: $yellow-10;
 $mark-bg-dark: $yellow-80;
+
+$code-color-dark: tint-color($pink, 40%);
 
 $form-valid-color-dark: $green-30;
 $form-valid-border-color-dark: $green-30;
 $form-invalid-color-dark: $red-30;
 $form-invalid-border-color-dark: $red-30;
-
-// ── Aliases de ênfase de texto ────────────────────────────────────────────────
-$primary-text-emphasis: $primary-text;
-$secondary-text-emphasis: $secondary-text;
-$success-text-emphasis: $success-text;
-$info-text-emphasis: $info-text;
-$warning-text-emphasis: $warning-text;
-$danger-text-emphasis: $danger-text;
-$light-text-emphasis: $gray-7;
-$dark-text-emphasis: $gray-2;
-
-$primary-text-emphasis-dark: $primary-text-dark;
-$secondary-text-emphasis-dark: $secondary-text-dark;
-$success-text-emphasis-dark: $success-text-dark;
-$info-text-emphasis-dark: $info-text-dark;
-$warning-text-emphasis-dark: $warning-text-dark;
-$danger-text-emphasis-dark: $danger-text-dark;
-$light-text-emphasis-dark: $gray-2;
-$dark-text-emphasis-dark: $gray-9;
-
-// ── Tokens de modo escuro (bg-subtle, border-subtle) ──────────────────────────
-$light-bg-subtle-dark: $gray-8;
-$light-border-subtle-dark: $gray-7;
-$dark-border-subtle-dark: $gray-6;

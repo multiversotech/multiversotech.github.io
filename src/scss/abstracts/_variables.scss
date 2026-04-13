@@ -1,4 +1,5 @@
 @use "sass:string";
+@use "./configs" as *;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MVT — _variables.scss
@@ -35,6 +36,40 @@ $light: $white;
 $dark: $black;
 
 // ── Paleta Estendida ──────────────────────────────────────────────────────────
+// Cor primária
+$color-primary-1: #f5eeff;
+$color-primary-2: #e8deff;
+$color-primary-3: #cdbdff;
+$color-primary-4: #b39cff;
+$color-primary-5: #9a7bff;
+$color-primary-6: #8155ff;
+$color-primary-7: #6833ea;
+$color-primary-8: #4f00d0;
+$color-primary-9: #370096;
+$color-primary-10: #20005f;
+
+// Cor de destaque/ação
+$color-secondary-1: #ffecf0;
+$color-secondary-2: #ffd9e4;
+$color-secondary-3: #ffb0cc;
+$color-secondary-4: #ff83b5;
+$color-secondary-5: #f94f9e;
+$color-secondary-6: #d73384;
+$color-secondary-7: #b50f6a;
+$color-secondary-8: #8d0050;
+$color-secondary-9: #640037;
+$color-secondary-10: #3e0020;
+
+$color-tertiary-1: #d2f7ff;
+$color-tertiary-2: #9cf0ff;
+$color-tertiary-3: #00daf3;
+$color-tertiary-4: #00bcd2;
+$color-tertiary-5: #009fb2;
+$color-tertiary-6: #008393;
+$color-tertiary-7: #006875;
+$color-tertiary-8: #004f58;
+$color-tertiary-9: #00363d;
+$color-tertiary-10: #001f24;
 
 $blue: #2809c3;
 $indigo: #745fe9;
@@ -64,6 +99,29 @@ $min-contrast-ratio: 4.5;
 $color-contrast-dark: $black;
 $color-contrast-light: $white;
 
+// ── Tokens de Corpo ───────────────────────────────────────────────────────────
+$body-color: $gray-9;
+$body-bg: $color-primary-2;
+
+$body-secondary-bg: $color-primary-10;
+
+$body-tertiary-bg: $color-primary-6;
+
+$body-emphasis-color: $black;
+
+$body-color-dark: $gray-3;
+$body-bg-dark: $gray-9;
+
+$body-secondary-bg-dark: $gray-8;
+
+$body-emphasis-color-dark: $white;
+$border-color-dark: $gray-7;
+
+// ── Tokens de modo escuro (bg-subtle, border-subtle) ──────────────────────────
+$light-bg-subtle-dark: $gray-8;
+$light-border-subtle-dark: $gray-7;
+$dark-border-subtle-dark: $gray-6;
+
 // ── Tipografia — Famílias ─────────────────────────────────────────────────────
 $font-family-heading: "Space Grotesk" !default; // Títulos e headings
 $font-family-body: "Manrope" !default; // Texto padrão
@@ -73,6 +131,7 @@ $font-family-hero: "Monomaniac One" !default; // Display e Hero
 $font-family-logo-mvt: "Lilita One" !default; // Logo MVT
 
 // ── Tipografia — Tamanhos ─────────────────────────────────────────────────────
+$font-size-root: null;
 $font-size-base: 1rem;
 
 $font-size-xxs: $font-size-base * 0.625; // 10px
@@ -334,13 +393,9 @@ $icon-size-9x: $icon-size-base * 9; // 144px
 $icon-size-10x: $icon-size-base * 10; // 160px
 
 // Variáveis ​​de borda
-
-
-
 $border-style: solid;
 $border-color: $gray-3;
 $border-color-translucent: rgba($black, 0.175);
-
 
 // SOMBRAS
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
@@ -378,50 +433,48 @@ $alignment-vertical-bottom: bottom;
 $alignment-horizontal-left: left;
 $alignment-horizontal-center: center;
 $alignment-horizontal-right: right;
-// ─────────────────────────────────────────────────────────────────────────────
-// Camada de Configuração
-// ─────────────────────────────────────────────────────────────────────────────
-// Responsabilidade:
-//   - Definir comportamento global do Design System
-//   - Controlar features via flags
-//   - Centralizar convenções de prefixo e sufixo
-//
-// Observação:
-//   Este arquivo NÃO define estilos. Apenas controla como o sistema se comporta.
-//   Todas as variáveis usam !default para permitir override sem editar este arquivo.
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ── Prefixos ──────────────────────────────────────────────────────────────────
-$prefix: "mvt-" !default;
-$prefix-lite: "mvt-lite-" !default;
+$lead-font-size: $font-size-base * 1.25;
+$lead-font-weight: 300;
 
-// ── Build Lite ────────────────────────────────────────────────────────────────
-$enable-lite: false !default;
-$suffix-lite: "-lite" !default;
+$small-font-size: 0.875em;
 
-// ── Sufixos de Tema ───────────────────────────────────────────────────────────
-$suffix-theme-dark: "-dark";
-$suffix-theme-light: "-light";
+$sub-sup-font-size: 0.75em;
 
-// ── Tema Escuro ───────────────────────────────────────────────────────────────
-$enable-dark-mode: true;
-$color-mode-type: "data";
+$text-muted: var(--#{$prefix}secondary-color);
 
-// ── Estrutura ─────────────────────────────────────────────────────────────────
-$enable-grid-classes: true;
-$enable-container-classes: true;
-$enable-cssgrid: false; // CSS Grid nativo (desativado por compatibilidade)
+$initialism-font-size: $small-font-size;
 
-// ── Sistema Visual ────────────────────────────────────────────────────────────
-$enable-rounded: true;
-$enable-shadows: false;
-$enable-gradients: false;
+$blockquote-margin-y: $spacing;
+$blockquote-font-size: $font-size-base * 1.25;
+$blockquote-footer-color: $gray-6;
+$blockquote-footer-font-size: $font-size-sm;
 
-// ── Interação ─────────────────────────────────────────────────────────────────
-$enable-transitions: true;
-$enable-reduced-motion: true;
-$enable-smooth-scroll: true;
-$enable-button-pointers: true;
-$enable-negative-margins: false;
-$enable-important-utilities: true;
+$hr-margin-y: $spacing;
+$hr-color: inherit;
+$hr-bg-color: null;
+$hr-height: null;
 
+$hr-border-color: null;
+$hr-border-width: var(--#{$prefix}border-width);
+$hr-opacity: 0.25;
+
+$vr-border-width: var(--#{$prefix}border-width);
+
+$legend-margin-bottom: 0.5rem;
+$legend-font-size: 1.5rem;
+$legend-font-weight: null;
+
+$dt-font-weight: $font-weight-bold;
+
+$list-inline-padding: 0.5rem;
+
+$mark-padding: 0.1875em;
+$mark-color: $body-color;
+
+$headings-margin-bottom: $spacing * 0.5;
+$headings-font-family: null;
+$headings-font-style: null;
+$headings-font-weight: 500;
+$headings-line-height: 1.2;
+$headings-color: inherit;

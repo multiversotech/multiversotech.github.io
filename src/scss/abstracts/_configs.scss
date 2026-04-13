@@ -1,0 +1,46 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Camada de Configuração
+// ─────────────────────────────────────────────────────────────────────────────
+// Responsabilidade:
+//   - Definir comportamento global do Design System
+//   - Controlar features via flags
+//   - Centralizar convenções de prefixo e sufixo
+//
+// Observação:
+//   Este arquivo NÃO define estilos. Apenas controla como o sistema se comporta.
+//   Todas as variáveis usam !default para permitir override sem editar este arquivo.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Prefixos ──────────────────────────────────────────────────────────────────
+$prefix: "mvt-" !default;
+$prefix-lite: "mvt-lite-" !default;
+
+// ── Build Lite ────────────────────────────────────────────────────────────────
+$enable-lite: false !default;
+$suffix-lite: "-lite" !default;
+
+// ── Sufixos de Tema ───────────────────────────────────────────────────────────
+$suffix-theme-dark: "-dark";
+$suffix-theme-light: "-light";
+
+// ── Tema Escuro ───────────────────────────────────────────────────────────────
+$enable-dark-mode: true;
+$color-mode-type: "data";
+
+// ── Estrutura ─────────────────────────────────────────────────────────────────
+$enable-grid-classes: true;
+$enable-container-classes: true;
+$enable-cssgrid: false; // CSS Grid nativo (desativado por compatibilidade)
+
+// ── Sistema Visual ────────────────────────────────────────────────────────────
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+
+// ── Interação ─────────────────────────────────────────────────────────────────
+$enable-transitions: true;
+$enable-reduced-motion: true;
+$enable-smooth-scroll: true;
+$enable-button-pointers: true;
+$enable-negative-margins: false;
+$enable-important-utilities: true;
