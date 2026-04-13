@@ -1,3 +1,4 @@
+@use "../abstracts" as *;
 :root {
   @each $name, $value in $grid-breakpoints {
     --#{$prefix}breakpoint-#{$name}: #{$value};
