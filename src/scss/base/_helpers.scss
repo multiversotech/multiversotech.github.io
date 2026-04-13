@@ -1,18 +1,21 @@
+@use "sass:map";
+@use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/maps" as *;
+@use "../components/link" as *;
+
 .clearfix {
   @include clearfix();
 }
 
 @each $color, $value in $theme-colors {
   .text-bg-#{$color} {
-    @if $enable-important-utilities {
-      color: color-contrast($value) !important;
-      background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1)) !important;
-    } @else {
       color: color-contrast($value);
       background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1));
     }
   }
-}
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {

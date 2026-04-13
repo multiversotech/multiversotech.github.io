@@ -1,13 +1,8 @@
 @use "sass:meta";
 @use "sass:map";
-@use "../abstracts/variables/colors" as *;
-@use "../abstracts/variables/typography" as *;
-@use "../abstracts/variables/components" as *;
-@use "../abstracts/variables/default" as *;
-@use "../abstracts/variables/link" as *;
-@use "../abstracts/functions/colors" as *;
-@use "../abstracts/mixins/color-mode" as *;
-@use "../base/utilities" as *;
+@use "../abstracts/configs" as *;
+@use "./utilities" as *;
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ROOT — Variáveis CSS globais do design system

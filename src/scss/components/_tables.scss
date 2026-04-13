@@ -1,3 +1,13 @@
+@use "sass:color";
+@use "sass:map";
+@use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+
+
 // TABELAS
 $table-cell-padding-y: 0.5rem;
 $table-cell-padding-x: 0.5rem;
@@ -80,7 +90,7 @@ $table-variants: (
   --#{$prefix}table-hover-bg: #{$table-hover-bg};
 
   width: 100%;
-  margin-bottom: $spacer;
+  margin-bottom: $spacing;
   vertical-align: $table-cell-vertical-align;
   border-color: var(--#{$prefix}table-border-color);
 
@@ -207,27 +217,6 @@ $table-variants: (
 //
 // Table variants set the table cell backgrounds, border colors
 // and the colors of the striped, hovered & active tables
-
-@each $color, $value in $table-variants {
-  @include table-variant($color, $value);
-}
-
-// Responsive tables
-//
-// Generate series of `.table-responsive-*` classes for configuring the screen
-// size of where your table will overflow.
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-  @include media-breakpoint-down($breakpoint) {
-    .table-responsive#{$infix} {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-}
-
 @mixin table-variant($state, $background) {
   .table-#{$state} {
     $color: color-contrast(opaque($body-bg, $background));
@@ -266,3 +255,25 @@ $table-variants: (
     border-color: var(--#{$prefix}table-border-color);
   }
 }
+
+@each $color, $value in $table-variants {
+  @include table-variant($color, $value);
+}
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+
+@each $breakpoint in map.keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-down($breakpoint) {
+    .table-responsive#{$infix} {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+

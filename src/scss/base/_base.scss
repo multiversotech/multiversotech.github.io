@@ -1,11 +1,8 @@
-@use "../abstracts/variables/default" as *;
-@use "../abstracts/variables/colors" as *;
-@use "../abstracts/variables/typography" as *;
-@use "../abstracts/variables/spacing" as *;
-@use "../abstracts/variables/link" as *;
-@use "../abstracts/variables/components" as *;
-@use "../abstracts/variables/tables" as *;
-@use "../abstracts/mixins/typography" as *;
+@use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../components/link" as *;
+@use "../components/tables" as *;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // REBOOT
