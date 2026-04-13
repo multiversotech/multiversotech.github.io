@@ -1,6 +1,11 @@
 @use "sass:meta";
 @use "sass:map";
 @use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/maps" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
 @use "./utilities" as *;
 
 
@@ -115,7 +120,7 @@
 
   // ── Bordas ───────────────────────────────────────────────────────────────────
 
-  --#{$prefix}border-width: #{$border-width};
+  --#{$prefix}border-width: #{$border-width-base};
   --#{$prefix}border-style: #{$border-style};
   --#{$prefix}border-color: #{$border-color};
   --#{$prefix}border-color-translucent: #{$border-color-translucent};
