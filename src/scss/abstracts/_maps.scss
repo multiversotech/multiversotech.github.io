@@ -1,59 +1,88 @@
 @use "variables" as *;
 @use "colors" as *;
 
-$grays: (
-  "white": $white,
-  "1": $gray-1,
-  "2": $gray-2,
-  "3": $gray-3,
-  "4": $gray-4,
-  "5": $gray-5,
-  "6": $gray-6,
-  "7": $gray-7,
-  "8": $gray-8,
-  "9": $gray-9,
-  "10": $gray-10,
-  "black": $black,
-);
-
 $base-colors: (
+  "white": $white,
+  "black": $black,
   "primary": $primary,
   "secondary": $secondary,
-  "tertiary": $tertiary,
-  "neutra": $neutral,
+  "neutral": $neutral,
+  "warning": $warning,
+  "success": $success,
+  "danger": $danger,
+  "info": $info,
+);
+$theme-colors: (
+  "primary-1": $primary-10,
+  "primary-2": $primary-20,
+  "primary-3": $primary-30,
+  "primary-4": $primary-40,
+  "primary-5": $primary-50,
+  "primary-6": $primary-60,
+  "primary-7": $primary-70,
+  "primary-8": $primary-80,
+  "primary-9": $primary-90,
+  "secondary-1": $secondary-10,
+  "secondary-2": $secondary-20,
+  "secondary-3": $secondary-30,
+  "secondary-4": $secondary-40,
+  "secondary-5": $secondary-50,
+  "secondary-6": $secondary-60,
+  "secondary-7": $secondary-70,
+  "secondary-8": $secondary-80,
+  "secondary-9": $secondary-90,
+  "neutral-1": $neutral-10,
+  "neutral-2": $neutral-20,
+  "neutral-3": $neutral-30,
+  "neutral-4": $neutral-40,
+  "neutral-5": $neutral-50,
+  "neutral-6": $neutral-60,
+  "neutral-7": $neutral-70,
+  "neutral-8": $neutral-80,
+  "neutral-9": $neutral-90,
 );
 
-$theme-colors: (
-  "primaria-1": $color-primary-1,
-  "primaria-2": $color-primary-2,
-  "primaria-3": $color-primary-3,
-  "primaria-4": $color-primary-4,
-  "primaria-5": $color-primary-5,
-  "primaria-6": $color-primary-6,
-  "primaria-7": $color-primary-7,
-  "primaria-8": $color-primary-8,
-  "primaria-9": $color-primary-9,
-  "primaria-10": $color-primary-10,
-  "secundaria-1": $color-secondary-1,
-  "secundaria-2": $color-secondary-2,
-  "secundaria-3": $color-secondary-3,
-  "secundaria-4": $color-secondary-4,
-  "secundaria-5": $color-secondary-5,
-  "secundaria-6": $color-secondary-6,
-  "secundaria-7": $color-secondary-7,
-  "secundaria-8": $color-secondary-8,
-  "secundaria-9": $color-secondary-9,
-  "secundaria-10": $color-secondary-10,
-  "terciaria-1": $color-tertiary-1,
-  "terciaria-2": $color-tertiary-2,
-  "terciaria-3": $color-tertiary-3,
-  "terciaria-4": $color-tertiary-4,
-  "terciaria-5": $color-tertiary-5,
-  "terciaria-6": $color-tertiary-6,
-  "terciaria-7": $color-tertiary-7,
-  "terciaria-8": $color-tertiary-8,
-  "terciaria-9": $color-tertiary-9,
-  "terciaria-10": $color-tertiary-10,
+
+$states-color: (
+  "warning-10": $warning-10,
+  "warning-20": $warning-20,
+  "warning-30": $warning-30,
+  "warning-40": $warning-40,
+  "warning-50": $warning-50,
+  "warning-60": $warning-60,
+  "warning-70": $warning-70,
+  "warning-80": $warning-80,
+  "warning-90": $warning-90,
+
+  "success-10": $success-10,
+  "success-20": $success-20,
+  "success-30": $success-30,
+  "success-40": $success-40,
+  "success-50": $success-50,
+  "success-60": $success-60,
+  "success-70": $success-70,
+  "success-80": $success-80,
+  "success-90": $success-90,
+
+  "danger-10": $danger-10,
+  "danger-20": $danger-20,
+  "danger-30": $danger-30,
+  "danger-40": $danger-40,
+  "danger-50": $danger-50,
+  "danger-60": $danger-60,
+  "danger-70": $danger-70,
+  "danger-80": $danger-80,
+  "danger-90": $danger-90,
+
+  "info-10": $info-10,
+  "info-20": $info-20,
+  "info-30": $info-30,
+  "info-40": $info-40,
+  "info-50": $info-50,
+  "info-60": $info-60,
+  "info-70": $info-70,
+  "info-80": $info-80,
+  "info-90": $info-90,
 );
 
 $colors-map: (
@@ -177,14 +206,13 @@ $theme-colors-text: (
   "info-text": $info-text,
   "warning-text": $warning-text,
   "danger-text": $danger-text,
-  "light-text": $light-text,
-  "dark-text": $dark-text,
-  "primary-text-emphasis-dark": $primary-text-dark,
-  "secondary-text-emphasis-dark": $secondary-text-dark,
-  "success-text-emphasis-dark": $success-text-dark,
-  "info-text-emphasis-dark": $info-text-dark,
-  "warning-text-emphasis-dark": $warning-text-dark,
-  "danger-text-emphasis-dark": $danger-text-dark,
+
+  "primary-text-dark": $primary-text-dark,
+  "secondary-text-dark": $secondary-text-dark,
+  "success-text-dark": $success-text-dark,
+  "info-text-dark": $info-text-dark,
+  "warning-text-dark": $warning-text-dark,
+  "danger-text-dark": $danger-text-dark,
 );
 
 //--------------------------------------//
@@ -198,14 +226,13 @@ $theme-colors-bg-subtle: (
   "warning-bg-subtle": $warning-bg-subtle,
   "danger-bg-subtle": $danger-bg-subtle,
   "light-bg-subtle": $light-bg-subtle,
-  "dark-bg-subtle": $dark-bg-subtle,
+
   "primary-bg-subtle-dark": $primary-bg-subtle-dark,
   "secondary-bg-subtle-dark": $secondary-bg-subtle-dark,
   "success-bg-subtle-dark": $success-bg-subtle-dark,
   "info-bg-subtle-dark": $info-bg-subtle-dark,
   "warning-bg-subtle-dark": $warning-bg-subtle-dark,
   "danger-bg-subtle-dark": $danger-bg-subtle-dark,
-  "light-bg-subtle-dark": $light-bg-subtle-dark,
   "dark-bg-subtle-dark": $dark-bg-subtle-dark,
 );
 
@@ -219,16 +246,14 @@ $theme-colors-border-subtle: (
   "info-border-subtle": $info-border-subtle,
   "warning-border-subtle": $warning-border-subtle,
   "danger-border-subtle": $danger-border-subtle,
-  "light-border-subtle": $light-border-subtle,
-  "dark-border-subtle": $dark-border-subtle,
+
   "primary-border-subtle-dark": $primary-border-subtle-dark,
   "secondary-border-subtle-dark": $secondary-border-subtle-dark,
   "success-border-subtle-dark": $success-border-subtle-dark,
   "info-border-subtle-dark": $info-border-subtle-dark,
   "warning-border-subtle-dark": $warning-border-subtle-dark,
   "danger-border-subtle-dark": $danger-border-subtle-dark,
-  "light-border-subtle-dark": $light-border-subtle-dark,
-  "dark-border-subtle-dark": $dark-border-subtle-dark,
+
 );
 
 $border-widths: (
@@ -239,7 +264,7 @@ $border-widths: (
 );
 
 // "ARREDONDAMENTO" DA BORDA
-$border-radii: (
+$border-radius: (
   "sm": $border-radius-sm,
   "md": $border-radius-md,
   "lg": $border-radius-lg,
@@ -349,7 +374,7 @@ $font-families: (
   "heading": $font-family-heading,
   "code": $font-family-code,
   "display": $font-family-hero,
-  "logo-mvt": $font-family-logo-mvt,
+  "logo-mvt": $font-family-logo,
 );
 
 // TAMANHOS DA FONTE
@@ -391,7 +416,7 @@ $line-height: (
 
 // SPACING
 // Controla o estilo padrão da maioria dos elementos. Principalmente focadas no espaçamento.
-// O padrão adotado foi de 1rem (16px) 
+// O padrão adotado foi de 1rem (16px)
 $spacings: (
   "none": $spacing-none,
   "sm": $spacing-sm,
@@ -448,4 +473,17 @@ $position-values: (
   0: 0,
   50: 50%,
   100: 100%,
+);
+
+// Z-index
+$z-index-levels: (
+  "z-drop": $z-index-dropdown,
+  "z-sticky": $z-index-sticky,
+  "z-link": $stretched-link-z-index,
+  "z-fix": $z-index-fixed,
+  "z-off": $z-index-offcanvas,
+  "z-modal": $z-index-modal,
+  "z-popover": $z-index-popover,
+  "z-tool": $z-index-tooltip,
+  "z-toast": $z-index-toast,
 );

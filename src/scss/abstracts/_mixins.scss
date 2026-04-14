@@ -26,14 +26,15 @@
   }
 }
 
-// Aplica os estilos **até** o breakpoint informado
-// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
-// @example scss - Aplicar estilos em **xs**, **sm** e **md**
-//  .#{$prefix}cookiebar {
-//    @include media-breakpoint-down(md) {
-//      ...
-//    }
-//  }
+/// Aplica os estilos **até** o breakpoint informado
+/// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
+/// @example scss - Aplicar estilos em **xs**, **sm** e **md**
+///  .#{$prefix}cookiebar {
+///    @include media-breakpoint-down(md) {
+///      ...
+///    }
+///  }
+
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
@@ -45,8 +46,9 @@
   }
 }
 
-// Media that spans multiple breakpoint widths.
-// Makes the @content apply between the min and max breakpoints
+/// Media that spans multiple breakpoint widths.
+/// Makes the @content apply between the min and max breakpoints
+
 @mixin media-breakpoint-between(
   $lower,
   $upper,
@@ -70,9 +72,9 @@
   }
 }
 
-// Media between the breakpoint's minimum and maximum widths.
-// No minimum for the smallest breakpoint, and no maximum for the largest one.
-// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+/// Media between the breakpoint's minimum and maximum widths.
+/// No minimum for the smallest breakpoint, and no maximum for the largest one.
+/// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   $next: breakpoint-next($name, $breakpoints);
@@ -93,7 +95,7 @@
   }
 }
 
-// Container mixins
+/// Container mixins
 @mixin make-container($gutter: $container-padding-x) {
   --#{$prefix}gutter-x: #{$gutter};
   --#{$prefix}gutter-y: 0;
@@ -137,7 +139,7 @@
   }
 }
 
-// Sistema de grade
+/// Sistema de grade
 @mixin make-row($gutter: $grid-gutter-width) {
   --#{$prefix}gutter-x: #{$gutter};
   --#{$prefix}gutter-y: 0;
@@ -212,7 +214,7 @@
   }
 }
 
-// Framework grid generation
+/// Framework grid generation
 @mixin make-grid-columns(
   $columns: $grid-columns,
   $gutter: $grid-gutter-width,
@@ -262,13 +264,13 @@
       $gutters: $spacing;
 
       @each $key, $value in $gutters {
-        .g#{$infix}-#{$key},
-        .gx#{$infix}-#{$key} {
+        .gutter-#{$infix}-#{$key},
+        .gutter-x#{$infix}-#{$key} {
           --#{$prefix}gutter-x: #{$value};
         }
 
-        .g#{$infix}-#{$key},
-        .gy#{$infix}-#{$key} {
+        .gutter-#{$infix}-#{$key},
+        .gutter-y#{$infix}-#{$key} {
           --#{$prefix}gutter-y: #{$value};
         }
       }
@@ -283,12 +285,12 @@
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       @if $columns > 0 {
         @for $i from 1 through $columns {
-          .g-col#{$infix}-#{$i} {
+          .grid-col#{$infix}-#{$i} {
             grid-column: auto / span $i;
           }
         }
         @for $i from 1 through ($columns - 1) {
-          .g-start#{$infix}-#{$i} {
+          .grid-start#{$infix}-#{$i} {
             grid-column-start: $i;
           }
         }
@@ -406,11 +408,11 @@
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MIXINS — BORDER RADIUS
-// ─────────────────────────────────────────────────────────────────────────────
+/// ─────────────────────────────────────────────────────────────────────────────
+/// MIXINS — BORDER RADIUS
+/// ─────────────────────────────────────────────────────────────────────────────
 
-// ── valid-radius() ────────────────────────────────────────────────────────────
+/// ── valid-radius() ────────────────────────────────────────────────────────────
 /// Garante que nenhum valor numérico de border-radius seja negativo.
 /// Valores não numéricos (ex: "inherit", "50%") são passados sem alteração.
 ///
@@ -446,7 +448,7 @@
   }
 }
 
-// ── Lados individuais ─────────────────────────────────────────────────────────
+/// ── Lados individuais ─────────────────────────────────────────────────────────
 /// Cada mixin aplica border-radius em dois cantos do lado correspondente.
 /// Seguem a convenção lógica CSS (start/end em vez de left/right).
 
@@ -478,7 +480,7 @@
   }
 }
 
-// ── Cantos individuais ────────────────────────────────────────────────────────
+/// ── Cantos individuais ────────────────────────────────────────────────────────
 /// Aplica border-radius em um único canto.
 
 @mixin border-top-start-radius($radius: $border-radius) {
@@ -563,11 +565,11 @@
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MIXINS — TIPOGRAFIA
-// ─────────────────────────────────────────────────────────────────────────────
+/// ─────────────────────────────────────────────────────────────────────────────
+/// MIXINS — TIPOGRAFIA
+/// ─────────────────────────────────────────────────────────────────────────────
 
-// ── font-size() ───────────────────────────────────────────────────────────────
+/// ── font-size() ───────────────────────────────────────────────────────────────
 /// Aplica font-size com conversão automática de px → rem quando necessário.
 /// Aceita: valor rem/em direto, CSS var(), ou valor em px (converte pra rem).
 ///
@@ -587,7 +589,7 @@
   }
 }
 
-// ── font-family() ─────────────────────────────────────────────────────────────
+/// ── font-family() ─────────────────────────────────────────────────────────────
 /// Aplica uma família de fontes a partir do mapa $font-families.
 /// Chaves válidas: "body", "ui", "heading", "code", "display", "logo-mvt"
 ///
@@ -607,7 +609,7 @@
   font-family: map.get($font-families, $name);
 }
 
-// ── font-weight() ─────────────────────────────────────────────────────────────
+/// ── font-weight() ─────────────────────────────────────────────────────────────
 /// Aplica um peso de fonte a partir do mapa $font-weights.
 /// Chaves válidas: "light", "normal", "medium", "semibold", "bold", "extrabold", "black"
 ///
@@ -626,7 +628,7 @@
   font-weight: map.get($font-weights, $weight);
 }
 
-// ── line-height() ─────────────────────────────────────────────────────────────
+/// ── line-height() ─────────────────────────────────────────────────────────────
 /// Aplica uma altura de linha a partir do mapa $line-height.
 /// Chaves válidas: "heading", "body", "loose"
 ///
@@ -646,7 +648,7 @@
   line-height: map.get($line-height, $name);
 }
 
-// ── text-truncate() ───────────────────────────────────────────────────────────
+/// ── text-truncate() ───────────────────────────────────────────────────────────
 /// Corta o texto com reticências em uma única linha.
 /// Requer que o elemento tenha largura definida.
 ///
@@ -660,7 +662,7 @@
   text-overflow: ellipsis;
 }
 
-// ── text-truncate-multiline() ─────────────────────────────────────────────────
+/// ── text-truncate-multiline() ─────────────────────────────────────────────────
 /// Corta o texto com reticências após N linhas (WebKit line clamp).
 ///
 /// @param  {Number} $lines - Número de linhas antes do corte (padrão: 2)
@@ -680,7 +682,7 @@
   overflow: hidden;
 }
 
-// ── fluid-type() ──────────────────────────────────────────────────────────────
+/// ── fluid-type() ──────────────────────────────────────────────────────────────
 /// Tipografia fluida via clamp(): interpola o tamanho da fonte
 /// entre um mínimo e máximo conforme a largura da viewport.
 ///
@@ -715,7 +717,7 @@
   font-size: clamp(#{$min-rem}, #{$slope-vw} + #{$intercept-rem}, #{$max-rem});
 }
 
-// ── RESET TEXT ──────────────────────────────────────────────────────────────
+/// ── RESET TEXT ──────────────────────────────────────────────────────────────
 @mixin reset-text {
   font-family: $font-family-body;
   font-style: normal;
@@ -752,10 +754,10 @@
   }
 }
 
-// Use to only display content when it's focused, or one of its child elements is focused
-// (i.e. when focus is within the element/container that the class was applied to)
-//
-// Useful for "Skip to main content" links; see https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
+/// Use to only display content when it's focused, or one of its child elements is focused
+/// (i.e. when focus is within the element/container that the class was applied to)
+///
+/// Useful for "Skip to main content" links; see https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
 
 @mixin visually-hidden-focusable() {
   &:not(:focus):not(:focus-within) {
@@ -772,25 +774,66 @@
 }
 
 // Horizontal gradient, da esquerda para direita
-@mixin gradient-x($start-color: $gray-7, $end-color: $gray-8, $start-percent: 0%, $end-percent: 100%) {
-  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+@mixin gradient-x(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $start-percent: 0%,
+  $end-percent: 100%
+) {
+  background-image: linear-gradient(
+    to right,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
 }
 
-// Vertical gradient, de cima para baixo
-@mixin gradient-y($start-color: $gray-7, $end-color: $gray-8, $start-percent: null, $end-percent: null) {
-  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+/// Vertical gradient, de cima para baixo
+@mixin gradient-y(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $start-percent: null,
+  $end-percent: null
+) {
+  background-image: linear-gradient(
+    to bottom,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
 }
 
-@mixin gradient-directional($start-color: $gray-7, $end-color: $gray-8, $deg: 45deg) {
+@mixin gradient-directional(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $deg: 45deg
+) {
   background-image: linear-gradient($deg, $start-color, $end-color);
 }
 
-@mixin gradient-x-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
-  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+@mixin gradient-x-three-colors(
+  $start-color: $blue,
+  $mid-color: $purple,
+  $color-stop: 50%,
+  $end-color: $red
+) {
+  background-image: linear-gradient(
+    to right,
+    $start-color,
+    $mid-color $color-stop,
+    $end-color
+  );
 }
 
-@mixin gradient-y-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
-  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+@mixin gradient-y-three-colors(
+  $start-color: $blue,
+  $mid-color: $purple,
+  $color-stop: 50%,
+  $end-color: $red
+) {
+  background-image: linear-gradient(
+    $start-color,
+    $mid-color $color-stop,
+    $end-color
+  );
 }
 
 @mixin gradient-radial($inner-color: $gray-7, $outer-color: $gray-8) {
@@ -798,7 +841,16 @@
 }
 
 @mixin gradient-striped($color: rgba($white, 0.15), $angle: 45deg) {
-  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  background-image: linear-gradient(
+    $angle,
+    $color 25%,
+    transparent 25%,
+    transparent 50%,
+    $color 50%,
+    $color 75%,
+    transparent 75%,
+    transparent
+  );
 }
 
 @mixin overlay-backdrop($z-index-levels, $backdrop-bg, $backdrop-opacity) {

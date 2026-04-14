@@ -1,14 +1,36 @@
-/*
-Funções de paleta (tint, shade)
-Mapa $theme-colors
-Paleta expandida gerada (primary-100...900)
-Cores de contraste calculadas
-*/
-
 @use "sass:color";
-@use "variables" as *;
-@use "functions" as *;
+@use "./variables" as *;
+@use "./functions" as *;
 
+$primary-10: tint-color(#501ea0, 80%); // mais claro
+$primary-20: tint-color(#501ea0, 60%);
+$primary-30: tint-color(#501ea0, 40%);
+$primary-40: tint-color(#501ea0, 20%);
+$primary-50: #501ea0; // base
+$primary-60: shade-color(#501ea0, 20%);
+$primary-70: shade-color(#501ea0, 40%);
+$primary-80: shade-color(#501ea0, 60%);
+$primary-90: shade-color(#501ea0, 80%); // mais escuro
+
+$secondary-10: tint-color(#140a86, 80%); // mais claro
+$secondary-20: tint-color(#140a86, 60%);
+$secondary-30: tint-color(#140a86, 40%);
+$secondary-40: tint-color(#140a86, 20%);
+$secondary-50: #140a86; // base
+$secondary-60: shade-color(#140a86, 20%);
+$secondary-70: shade-color(#140a86, 40%);
+$secondary-80: shade-color(#140a86, 60%);
+$secondary-90: shade-color(#140a86, 80%); // mais escuro
+
+$neutral-10: tint-color($neutral, 80%); // mais claro
+$neutral-20: tint-color($neutral, 60%);
+$neutral-30: tint-color($neutral, 40%);
+$neutral-40: tint-color($neutral, 20%);
+$neutral-50: $neutral; // base
+$neutral-60: shade-color($neutral, 20%);
+$neutral-70: shade-color($neutral, 40%);
+$neutral-80: shade-color($neutral, 60%);
+$neutral-90: shade-color($neutral, 80%); // mais escuro
 
 $warning-10: tint-color($warning, 80%); // mais claro
 $warning-20: tint-color($warning, 60%);
@@ -49,48 +71,6 @@ $info-60: shade-color($info, 20%);
 $info-70: shade-color($info, 40%);
 $info-80: shade-color($info, 60%);
 $info-90: shade-color($info, 80%);
-
-$states-color: (
-  "warning-10": $warning-10,
-  "warning-20": $warning-20,
-  "warning-30": $warning-30,
-  "warning-40": $warning-40,
-  "warning-50": $warning-50,
-  "warning-60": $warning-60,
-  "warning-70": $warning-70,
-  "warning-80": $warning-80,
-  "warning-90": $warning-90,
-
-  "success-10": $success-10,
-  "success-20": $success-20,
-  "success-30": $success-30,
-  "success-40": $success-40,
-  "success-50": $success-50,
-  "success-60": $success-60,
-  "success-70": $success-70,
-  "success-80": $success-80,
-  "success-90": $success-90,
-
-  "danger-10": $danger-10,
-  "danger-20": $danger-20,
-  "danger-30": $danger-30,
-  "danger-40": $danger-40,
-  "danger-50": $danger-50,
-  "danger-60": $danger-60,
-  "danger-70": $danger-70,
-  "danger-80": $danger-80,
-  "danger-90": $danger-90,
-
-  "info-10": $info-10,
-  "info-20": $info-20,
-  "info-30": $info-30,
-  "info-40": $info-40,
-  "info-50": $info-50,
-  "info-60": $info-60,
-  "info-70": $info-70,
-  "info-80": $info-80,
-  "info-90": $info-90,
-);
 
 // Variação da cor azul
 $blue-10: tint-color($blue, 80%);
@@ -214,58 +194,50 @@ $magenta-80: shade-color($magenta, 60%);
 $magenta-90: shade-color($magenta, 80%);
 
 $primary-text: shade-color($primary, 60%);
-$secondary-text: shade-color($secondary, 60%);
+$secondary-text: shade-color($neutral, 60%);
 $success-text: shade-color($success, 60%);
 $info-text: shade-color($info, 60%);
 $warning-text: shade-color($warning, 60%);
 $danger-text: shade-color($danger, 60%);
 
 $primary-text-dark: tint-color($primary, 40%);
-$secondary-text-dark: tint-color($secondary, 40%);
+$secondary-text-dark: tint-color($neutral, 40%);
 $success-text-dark: tint-color($success, 40%);
 $info-text-dark: tint-color($info, 40%);
 $warning-text-dark: tint-color($warning, 40%);
 $danger-text-dark: tint-color($danger, 40%);
 
 $primary-bg-subtle: tint-color($primary, 80%);
-$secondary-bg-subtle: tint-color($secondary, 80%);
+$secondary-bg-subtle: tint-color($neutral, 80%);
 $success-bg-subtle: tint-color($success, 80%);
 $info-bg-subtle: tint-color($info, 80%);
 $warning-bg-subtle: tint-color($warning, 80%);
 $danger-bg-subtle: tint-color($danger, 80%);
-$light-bg-subtle: color.mix($gray-1, $white);
+$light-bg-subtle: color.mix($neutral-10, $white);
 
 $primary-bg-subtle-dark: shade-color($primary, 80%);
-$secondary-bg-subtle-dark: shade-color($secondary, 80%);
+$secondary-bg-subtle-dark: shade-color($neutral, 80%);
 $success-bg-subtle-dark: shade-color($success, 80%);
 $info-bg-subtle-dark: shade-color($info, 80%);
 $warning-bg-subtle-dark: shade-color($warning, 80%);
 $danger-bg-subtle-dark: shade-color($danger, 80%);
-$dark-bg-subtle-dark: color.mix($gray-8, $black);
+$dark-bg-subtle-dark: color.mix($neutral-80, $black);
 
 $primary-border-subtle: tint-color($primary, 60%);
-$secondary-border-subtle: tint-color($secondary, 60%);
+$secondary-border-subtle: tint-color($neutral, 60%);
 $success-border-subtle: tint-color($success, 60%);
 $info-border-subtle: tint-color($info, 60%);
 $warning-border-subtle: tint-color($warning, 60%);
 $danger-border-subtle: tint-color($danger, 60%);
 
 $primary-border-subtle-dark: shade-color($primary, 40%);
-$secondary-border-subtle-dark: shade-color($secondary, 40%);
+$secondary-border-subtle-dark: shade-color($neutral, 40%);
 $success-border-subtle-dark: shade-color($success, 40%);
 $info-border-subtle-dark: shade-color($info, 40%);
 $warning-border-subtle-dark: shade-color($warning, 40%);
 $danger-border-subtle-dark: shade-color($danger, 40%);
 
-$body-tertiary-color-dark: rgba($body-color-dark, 0.5);
-$body-tertiary-bg-dark: color.mix($gray-8, $gray-9, 50%);
-$body-secondary-color-dark: rgba($body-color-dark, 0.75);
-$border-color-translucent-dark: rgba($white, 0.15);
-
 $headings-color-dark: inherit;
-
-$body-secondary-color: rgba($body-color, 0.75);
-$body-tertiary-color: rgba($body-color, 0.5);
 
 $mark-bg: $yellow-10;
 $mark-bg-dark: $yellow-80;

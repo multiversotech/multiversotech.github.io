@@ -10,7 +10,7 @@
 // COLOR UTILITIES
 // ─────────────────────────────────────────────────────────────────────────────
 
-/* ── get-rgb() ─────────────────────────────────────────────────────────────────
+// ── get-rgb() ─────────────────────────────────────────────────────────────────
 /// Retorna os canais R, G e B de uma cor como lista Sass (não string).
 /// Útil para construir valores rgb() ou CSS custom properties.
 ///
@@ -20,7 +20,7 @@
 /// @example scss
 ///   background: rgb(#{get-rgb(#ff8000)});    // → rgb(255, 128, 0)
 ///   --my-color-rgb: #{get-rgb(#ff8000)};     // → 255, 128, 0
-*/
+///
 
 @function get-rgb($color) {
   @if meta.type-of($color) != "color" {
@@ -34,14 +34,14 @@
   );
 }
 
-/* ── rgba-css-var() ────────────────────────────────────────────────────────────
+/// ── rgba-css-var() ────────────────────────────────────────────────────────────
 /// Gera um valor rgba() usando variáveis CSS, respeitando convenções de nome
 /// para casos especiais do body (bg e text) e o padrão geral.
 ///
 /// @param  {String} $identifier - Nome base (ex: "body", "primary")
 /// @param  {String} $target     - Contexto: "bg", "text" ou nome de propriedade
 /// @return {String} Chamada rgba() com vars CSS interpoladas
-*/
+///
 
 @function rgba-css-var($identifier, $target) {
   // Caso especial: body background
@@ -64,7 +64,7 @@
   );
 }
 
-/* ── opaque() ──────────────────────────────────────────────────────────────────
+/// ── opaque() ──────────────────────────────────────────────────────────────────
 /// Simula como uma cor semitransparente aparece sobre um fundo sólido,
 /// devolvendo uma cor RGB totalmente opaca equivalente.
 /// Necessário antes de calcular luminância ou contraste.
@@ -72,7 +72,7 @@
 /// @param  {Color} $background - Cor de fundo (deve ser opaca)
 /// @param  {Color} $foreground - Cor possivelmente transparente
 /// @return {Color} Cor resultante totalmente opaca
-*/
+///
 
 @function opaque($background, $foreground) {
   @return color.mix(
@@ -82,13 +82,13 @@
   );
 }
 
-/* ── tint-color() ─────────────────────────────────────────────────────────────
+/// ── tint-color() ─────────────────────────────────────────────────────────────
 /// Mistura uma cor com branco (torna mais clara).
 ///
 /// @param  {Color}  $color  - Cor base
 /// @param  {Number} $weight - Percentual de branco a adicionar (0%–100%)
 /// @return {Color}
-*/
+///
 
 @function tint-color($color, $weight) {
   @if meta.type-of($color) != "color" {
@@ -101,13 +101,13 @@
   @return color.mix(white, $color, $weight);
 }
 
-/* ── shade-color() ─────────────────────────────────────────────────────────────
+/// ── shade-color() ─────────────────────────────────────────────────────────────
 /// Mistura uma cor com preto (torna mais escura).
 ///
 /// @param  {Color}  $color  - Cor base
 /// @param  {Number} $weight - Percentual de preto a adicionar (0%–100%)
 /// @return {Color}
-/// */
+///
 
 @function shade-color($color, $weight) {
   @if meta.type-of($color) != "color" {
@@ -177,7 +177,7 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
   @return var(--#{$var-name});
 }
 
-/* ── map-loop() ────────────────────────────────────────────────────────────────
+/// ── map-loop() ────────────────────────────────────────────────────────────────
 /// Percorre um mapa e aplica uma função a cada valor, devolvendo um novo mapa.
 /// Diferente do original, recebe a função já como referência (meta.get-function)
 /// para evitar chamadas de string frágeis.
@@ -191,7 +191,7 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
 ///   $lighten: meta.get-function("tint-color");
 ///   $lighter-map: map-loop($colors, $lighten, 20%);
 ///   equivale a chamar tint-color($value, 20%) para cada entrada
-*/
+///
 
 @function map-loop($map, $func, $args...) {
   @if meta.type-of($map) != "map" {
@@ -217,7 +217,7 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
   @return $result;
 }
 
-/* ── negativify-map() ──────────────────────────────────────────────────────────
+/// ── negativify-map() ──────────────────────────────────────────────────────────
 /// Cria versões negativas dos valores de um mapa, prefixando as chaves com "n".
 /// Valores zero são ignorados (negativo de zero não faz sentido em spacing).
 ///
@@ -228,7 +228,7 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
 ///   $negative-spacers: negativify-map((1: 4px, 2: 8px, 3: 16px));
 ///  → ("n1": -4px, "n2": -8px, "n3": -16px)
 /// 
-*/
+///
 
 @function negativify-map($map) {
   $result: ();

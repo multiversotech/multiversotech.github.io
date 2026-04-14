@@ -1,15 +1,10 @@
-/*
-Mapa $grid-breakpoints
-Funções de navegação (next, min, max, infix)
-*/
-
 @use "sass:color";
 @use "sass:math";
 @use "sass:string";
 @use "sass:list";
 @use "sass:meta";
 @use "sass:map";
-@use "variables" as *;
+@use "./variables" as *;
 
 // --- BREAKPOINTS (Escala) ---
 $grid-breakpoints: (
