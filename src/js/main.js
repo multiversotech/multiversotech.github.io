@@ -1,6 +1,7 @@
 import ThemeToggle from "./components/theme-toggle.js";
+import Acessibility from "./components/acessibility.js";
 
-// Inicializa o toggle de tema
 new ThemeToggle();
+new Acessibility();
 
-export { ThemeToggle };
+export { ThemeToggle, Acessibility };
