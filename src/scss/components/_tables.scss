@@ -18,7 +18,7 @@ $table-cell-padding-x-sm: 0.25rem;
 $table-cell-vertical-align: top;
 
 $table-color: var(--#{$prefix}emphasis-color);
-$table-bg: var(--#{$prefix}body-bg);
+$table-bg-body: shade-color($primary, 60%);
 $table-accent-bg: transparent;
 
 $table-th-font-weight: null;
@@ -80,7 +80,7 @@ $table-variants: (
   --#{$prefix}table-bg-state: initial;
   // End of reset
   --#{$prefix}table-color: #{$table-color};
-  --#{$prefix}table-bg: #{$table-bg};
+  --#{$prefix}table-bg: #{$table-bg-body};
   --#{$prefix}table-border-color: #{$table-border-color};
   --#{$prefix}table-accent-bg: #{$table-accent-bg};
   --#{$prefix}table-striped-color: #{$table-striped-color};
@@ -220,7 +220,7 @@ $table-variants: (
 // and the colors of the striped, hovered & active tables
 @mixin table-variant($state, $background) {
   .table-#{$state} {
-    $color: color-contrast(opaque($body-bg, $background));
+    $color: color-contrast(opaque($table-bg-body, $background));
     $hover-bg: color.mix(
       $color,
       $background,

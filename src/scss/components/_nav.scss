@@ -6,22 +6,21 @@
 // Funciona com <nav>, <ul> ou <ol>.
 // Navs
 
-$nav-link-font-size: null;
-$nav-link-font-weight: null;
-$nav-link-color: var(--#{$prefix}link-color);
-$nav-link-hover-color: var(--#{$prefix}link-hover-color);
+
 $nav-link-transition:
   color 0.15s ease-in-out,
   background-color 0.15s ease-in-out,
   border-color 0.15s ease-in-out;
-$nav-link-disabled-color: var(--#{$prefix}secondary-color);
+
 $nav-link-focus-box-shadow: $focus-ring-box-shadow;
 
 $nav-tabs-border-color: var(--#{$prefix}border-color);
 $nav-tabs-border-width: var(--#{$prefix}border-width);
 $nav-tabs-border-radius: var(--#{$prefix}border-radius);
+
 $nav-tabs-link-hover-border-color: var(--#{$prefix}secondary-bg)
   var(--#{$prefix}secondary-bg) $nav-tabs-border-color;
+
 $nav-tabs-link-active-color: var(--#{$prefix}emphasis-color);
 $nav-tabs-link-active-bg: var(--#{$prefix}body-bg);
 $nav-tabs-link-active-border-color: var(--#{$prefix}border-color)
@@ -36,29 +35,32 @@ $nav-underline-border-width: 0.125rem;
 $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
 
 // ── Base ──────────────────────────────────────────────────────────────────────
+$nav-link-padding-y: 0.5rem;
+$nav-link-padding-x: 1rem;
 
+$nav-link-color: var(--mvt-link-color);
+$nav-link-hover-color: var(--mvt-link-hover-color);
+$nav-link-disabled-color: var(--mvt-link-disabled-color);
 .nav {
-  --#{$prefix}nav-link-padding-x:       #{$nav-link-padding-x};
-  --#{$prefix}nav-link-padding-y:       #{$nav-link-padding-y};
-  --#{$prefix}nav-link-font-size:       #{$nav-link-font-size};
-  --#{$prefix}nav-link-font-weight:     #{$nav-link-font-weight};
-  --#{$prefix}nav-link-color:           #{$nav-link-color};
-  --#{$prefix}nav-link-hover-color:     #{$nav-link-hover-color};
-  --#{$prefix}nav-link-disabled-color:  #{$nav-link-disabled-color};
+  --#{$prefix}nav-link-padding-x: 0.5rem;
+  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+  --#{$prefix}nav-link-color: #{$nav-link-color};
+  --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
+  --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
 
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0;
+  padding: 0.5rem 1rem;
   margin-bottom: 0;
   list-style: none;
 }
 
 .nav-link {
   display: block;
-  padding: var(--#{$prefix}nav-link-padding-y) var(--#{$prefix}nav-link-padding-x);
-  font-size: var(--#{$prefix}nav-link-font-size);
-  font-weight: var(--#{$prefix}nav-link-font-weight);
-  color: var(--#{$prefix}nav-link-color);
+  padding: 1rem 0.5rem;
+  font-size: var(--mvt-font-size-base);
+  font-weight: var(--mvt-font-weight-semibold);
+  color: var(--mvt-link-color);
   @if $link-decoration != none {
     text-decoration: none;
   }
@@ -69,7 +71,7 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
 
   &:hover,
   &:focus {
-    color: var(--#{$prefix}nav-link-hover-color);
+    color: var(--#{$prefix}link-hover-color);
     @if $link-hover-decoration == underline {
       text-decoration: none;
     }
@@ -88,19 +90,19 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
   }
 }
 
-
 // ── Tabs ──────────────────────────────────────────────────────────────────────
 
 .nav-tabs {
-  --#{$prefix}nav-tabs-border-width:              #{$nav-tabs-border-width};
-  --#{$prefix}nav-tabs-border-color:              #{$nav-tabs-border-color};
-  --#{$prefix}nav-tabs-border-radius:             #{$nav-tabs-border-radius};
-  --#{$prefix}nav-tabs-link-hover-border-color:   #{$nav-tabs-link-hover-border-color};
-  --#{$prefix}nav-tabs-link-active-color:         #{$nav-tabs-link-active-color};
-  --#{$prefix}nav-tabs-link-active-bg:            #{$nav-tabs-link-active-bg};
-  --#{$prefix}nav-tabs-link-active-border-color:  #{$nav-tabs-link-active-border-color};
+  --#{$prefix}nav-tabs-border-width: #{$nav-tabs-border-width};
+  --#{$prefix}nav-tabs-border-color: #{$nav-tabs-border-color};
+  --#{$prefix}nav-tabs-border-radius: #{$nav-tabs-border-radius};
+  --#{$prefix}nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
+  --#{$prefix}nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
+  --#{$prefix}nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
+  --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
 
-  border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
+  border-bottom: var(--#{$prefix}nav-tabs-border-width) solid
+    var(--#{$prefix}nav-tabs-border-color);
 
   .nav-link {
     // Margem negativa faz a borda do link ativo cobrir a borda inferior do .nav-tabs
@@ -132,13 +134,12 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
   }
 }
 
-
 // ── Pills ─────────────────────────────────────────────────────────────────────
 
 .nav-pills {
-  --#{$prefix}nav-pills-border-radius:        #{$nav-pills-border-radius};
-  --#{$prefix}nav-pills-link-active-color:    #{$nav-pills-link-active-color};
-  --#{$prefix}nav-pills-link-active-bg:       #{$nav-pills-link-active-bg};
+  --#{$prefix}nav-pills-border-radius: #{$nav-pills-border-radius};
+  --#{$prefix}nav-pills-link-active-color: #{$nav-pills-link-active-color};
+  --#{$prefix}nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
 
   .nav-link {
     @include border-radius(var(--#{$prefix}nav-pills-border-radius));
@@ -151,13 +152,12 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
   }
 }
 
-
 // ── Underline ─────────────────────────────────────────────────────────────────
 
 .nav-underline {
-  --#{$prefix}nav-underline-gap:                #{$nav-underline-gap};
-  --#{$prefix}nav-underline-border-width:       #{$nav-underline-border-width};
-  --#{$prefix}nav-underline-link-active-color:  #{$nav-underline-link-active-color};
+  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
+  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
+  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
 
   gap: var(--#{$prefix}nav-underline-gap);
 
@@ -179,7 +179,6 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
     border-bottom-color: currentcolor;
   }
 }
-
 
 // ── Fill e Justified ──────────────────────────────────────────────────────────
 // .nav-fill     → cada item ocupa espaço proporcional ao seu conteúdo
@@ -209,7 +208,6 @@ $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
     width: 100%;
   }
 }
-
 
 // ── Tab content ───────────────────────────────────────────────────────────────
 // Painéis ocultados por padrão, exibidos quando .active é aplicado.

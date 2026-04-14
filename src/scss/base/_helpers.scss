@@ -4,7 +4,6 @@
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 @use "../abstracts/maps" as *;
-@use "../components/link" as *;
 
 .clearfix {
   @include clearfix();

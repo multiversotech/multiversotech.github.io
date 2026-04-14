@@ -1,48 +1,553 @@
 @use "sass:map";
+@use "sass:meta";
+@use "sass:list";
+@use "sass:string";
+@use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/maps" as *;
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 
-$utilities: () !default;
+$utilities: ();
 
-@each $breakpoint in map.keys($grid-breakpoints) {
-  // Generate media query if needed
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+// Utilities
+$utilities: map.merge(
+  (
+    "align": (
+        property: vertical-align,
+        class: align,
+        values: baseline top middle bottom text-bottom text-top,
+      ),
 
-    // Loop over each utility property
-    @each $key, $utility in $utilities {
-      // The utility can be disabled with `false`, thus check if the utility is a map first
-      // Only proceed if responsive media queries are enabled or if it's the base media query
-      @if type-of($utility) ==
-        "map" and
-        (map-get($utility, responsive) or $infix == "")
-      {
-        @include generate-utility($utility, $infix);
-      }
-    }
-  }
-}
+    "float": (
+        responsive: true,
+        property: float,
+        values: (
+          start: left,
+          end: right,
+          none: none,
+        ),
+      ),
+
+    // Object Fit utilities
+    "object-fit": (
+        responsive: true,
+        property: object-fit,
+        values: (
+          contain: contain,
+          cover: cover,
+          fill: fill,
+          scale: scale-down,
+          none: none,
+        ),
+      ),
+    // scss-docs-end utils-object-fit
+    // Opacity utilities
+    // scss-docs-start utils-opacity
+    "opacity": (
+        property: opacity,
+        values: (
+          0: 0,
+          25: 0.25,
+          50: 0.5,
+          75: 0.75,
+          100: 1,
+        ),
+      ),
+
+    "overflow": (
+        property: overflow,
+        values: auto hidden visible scroll,
+      ),
+    "overflow-x": (
+      property: overflow-x,
+      values: auto hidden visible scroll,
+    ),
+    "overflow-y": (
+      property: overflow-y,
+      values: auto hidden visible scroll,
+    ),
+    
+    "display": (
+        responsive: true,
+        print: true,
+        property: display,
+        class: d,
+        values: inline inline-block block grid inline-grid table table-row
+          table-cell flex inline-flex none,
+      ),
+
+    "shadow": (
+        property: box-shadow,
+        class: shadow,
+        values: (
+          null: var(--#{$prefix}box-shadow),
+          sm: var(--#{$prefix}box-shadow-sm),
+          lg: var(--#{$prefix}box-shadow-lg),
+          none: none,
+        ),
+      ),
+
+    "position": (
+      property: position,
+      values: static relative absolute fixed sticky,
+    ),
+
+    "top": (
+      property: top,
+      values: $position-values,
+    ),
+    "bottom": (
+      property: bottom,
+      values: $position-values,
+    ),
+    "start": (
+      property: left,
+      class: start,
+      values: $position-values,
+    ),
+    "end": (
+      property: right,
+      class: end,
+      values: $position-values,
+    ),
+    "translate-middle": (
+      property: transform,
+      class: translate-middle,
+      values: (
+        null: translate(-50%, -50%),
+        x: translateX(-50%),
+        y: translateY(-50%),
+      ),
+    ),
+    // scss-docs-end utils-position
+    // scss-docs-start utils-borders
+    "border": (
+        property: border,
+        values: (
+          null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+            var(--#{$prefix}border-color),
+          0: 0,
+        ),
+      ),
+    "border-top": (
+      property: border-top,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+          var(--#{$prefix}border-color),
+        0: 0,
+      ),
+    ),
+    "border-end": (
+      property: border-right,
+      class: border-end,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+          var(--#{$prefix}border-color),
+        0: 0,
+      ),
+    ),
+    "border-bottom": (
+      property: border-bottom,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+          var(--#{$prefix}border-color),
+        0: 0,
+      ),
+    ),
+    "border-start": (
+      property: border-left,
+      class: border-start,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+          var(--#{$prefix}border-color),
+        0: 0,
+      ),
+    ),
+
+    "border-opacity": (
+      css-var: true,
+      class: border-opacity,
+      values: (
+        10: 0.1,
+        25: 0.25,
+        50: 0.5,
+        75: 0.75,
+        100: 1,
+      ),
+    ),
+
+    // Sizing utilities
+    "width": (
+        property: width,
+        class: w,
+        values: (
+          25: 25%,
+          50: 50%,
+          75: 75%,
+          100: 100%,
+          auto: auto,
+        ),
+      ),
+    "max-width": (
+      property: max-width,
+      class: mw,
+      values: (
+        100: 100%,
+      ),
+    ),
+    "viewport-width": (
+      property: width,
+      class: vw,
+      values: (
+        100: 100vw,
+      ),
+    ),
+    "min-viewport-width": (
+      property: min-width,
+      class: min-vw,
+      values: (
+        100: 100vw,
+      ),
+    ),
+    "height": (
+      property: height,
+      class: height,
+      values: (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%,
+        auto: auto,
+      ),
+    ),
+    "max-height": (
+      property: max-height,
+      class: max-height,
+      values: (
+        100: 100%,
+      ),
+    ),
+    "viewport-height": (
+      property: height,
+      class: viewport-height,
+      values: (
+        100: 100vh,
+      ),
+    ),
+    "min-viewport-height": (
+      property: min-height,
+      class: min-height,
+      values: (
+        100: 100vh,
+      ),
+    ),
+    // scss-docs-end utils-sizing
+    // Flex utilities
+    // scss-docs-start utils-flex
+    "flex": (
+        responsive: true,
+        property: flex,
+        values: (
+          fill: 1 1 auto,
+        ),
+      ),
+    "flex-direction": (
+      responsive: true,
+      property: flex-direction,
+      class: flex,
+      values: row column row-reverse column-reverse,
+    ),
+    "flex-grow": (
+      responsive: true,
+      property: flex-grow,
+      class: flex,
+      values: (
+        grow-0: 0,
+        grow-1: 1,
+      ),
+    ),
+    "flex-shrink": (
+      responsive: true,
+      property: flex-shrink,
+      class: flex,
+      values: (
+        shrink-0: 0,
+        shrink-1: 1,
+      ),
+    ),
+    "flex-wrap": (
+      responsive: true,
+      property: flex-wrap,
+      class: flex,
+      values: wrap nowrap wrap-reverse,
+    ),
+    "justify-content": (
+      responsive: true,
+      property: justify-content,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+        evenly: space-evenly,
+      ),
+    ),
+    "align-items": (
+      responsive: true,
+      property: align-items,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        baseline: baseline,
+        stretch: stretch,
+      ),
+    ),
+    "align-content": (
+      responsive: true,
+      property: align-content,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+        stretch: stretch,
+      ),
+    ),
+    "align-self": (
+      responsive: true,
+      property: align-self,
+      values: (
+        auto: auto,
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        baseline: baseline,
+        stretch: stretch,
+      ),
+    ),
+    "order": (
+      responsive: true,
+      property: order,
+      values: (
+        first: -1,
+        0: 0,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        last: 6,
+      ),
+    ),
+    // Margin utilities
+    "margin": (
+        responsive: true,
+        property: margin,
+        class: mg,
+        values: map.merge(
+            $spacings,
+            (
+              auto: auto,
+            )
+          ),
+      ),
+    "margin-horizontal": (
+      responsive: true,
+      property: margin-right margin-left,
+      class: mg-h,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+    "margin-vertical": (
+      responsive: true,
+      property: margin-top margin-bottom,
+      class: mg-v,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+    "margin-top": (
+      responsive: true,
+      property: margin-top,
+      class: mg-top,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+    "margin-right": (
+      responsive: true,
+      property: margin-right,
+      class: mg-right,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+    "margin-bottom": (
+      responsive: true,
+      property: margin-bottom,
+      class: mg-bottom,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+    "margin-left": (
+      responsive: true,
+      property: margin-left,
+      class: mg-left,
+      values: map.merge(
+          $spacings,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+   
+    // Padding utilities
+    "padding": (
+        responsive: true,
+        property: padding,
+        class: pad,
+        values: $spacings,
+      ),
+
+    "padding-h": (
+      responsive: true,
+      property: padding-right padding-left,
+      class: pad-h,
+      values: $spacings,
+    ),
+
+    "padding-v": (
+      responsive: true,
+      property: padding-top padding-bottom,
+      class: pad-v,
+      values: $spacings,
+    ),
+
+    "padding-top": (
+      responsive: true,
+      property: padding-top,
+      class: pad-top,
+      values: $spacings,
+    ),
+
+    "padding-end": (
+      responsive: true,
+      property: padding-right,
+      class: pad-right,
+      values: $spacings,
+    ),
+
+    "padding-bottom": (
+      responsive: true,
+      property: padding-bottom,
+      class: pad-botton,
+      values: $spacings,
+    ),
+
+    "padding-start": (
+      responsive: true,
+      property: padding-left,
+      class: pad-left,
+      values: $spacings,
+    ),
+
+    // Gap utility
+    "gap": (
+        responsive: true,
+        property: gap,
+        class: gap,
+        values: $spacings,
+      ),
+
+    "row-gap": (
+      responsive: true,
+      property: row-gap,
+      class: row-gap,
+      values: $spacings,
+    ),
+
+    "column-gap": (
+      responsive: true,
+      property: column-gap,
+      class: col-gap,
+      values: $spacings,
+    ),
+  
+    "white-space": (
+      property: white-space,
+      class: text,
+      values: (
+        wrap: normal,
+        nowrap: nowrap,
+      ),
+    ),
+
+    "word-wrap": (
+      property: word-wrap word-break,
+      class: text,
+      values: (
+        break: break-word,
+      ),
+    ), 
+
+    "visibility": (
+        property: visibility,
+        class: null,
+        values: (
+          visible: visible,
+          invisible: hidden,
+        ),
+      ),
+
+    "z-index": (
+        property: z-index,
+        class: z,
+        values: $z-index-levels,
+      )
+  ),
+  $utilities
+);
 
 // Utility generator
-// Used to generate utilities & print utilities
-@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
-  $values: map-get($utility, values);
+@mixin generate-utility($utility, $infix: "") {
+  $values: map.get($utility, values);
 
   // If the values are a list or string, convert it into a map
-  @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
-    $values: zip($values, $values);
+  @if meta.type-of($values) == "string" or meta.type-of(list.nth($values, 1)) != "list" {
+    $values: list.zip($values, $values);
   }
 
   @each $key, $value in $values {
-    $properties: map-get($utility, property);
+    $properties: map.get($utility, property);
 
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
-    @if type-of($properties) == "string" {
-      $properties: append((), $properties);
+    @if meta.type-of($properties) == "string" {
+      $properties: list.append((), $properties);
     }
 
     // Use custom class if present
-    $property-class: nth($properties, 1);
+    $property-class: list.nth($properties, 1);
     @if map.has-key($utility, class) {
       $property-class: map.get($utility, class);
     }
@@ -50,19 +555,17 @@ $utilities: () !default;
       $property-class: "";
     }
 
-    // Use custom CSS variable name if present, otherwise default to `class`
     $css-variable-name: map.get($utility, class);
     @if map.has-key($utility, css-variable-name) {
       $css-variable-name: map.get($utility, css-variable-name);
     }
 
-    // State params to generate pseudo-classes
     $state: ();
     @if map.has-key($utility, state) {
       $state: map.get($utility, state);
     }
 
-    @if $property-class == "" and str-slice($infix, 1, 1) == "-" {
+    @if $property-class == "" and string-slice($infix, 1, 1) == "-" {
       $infix: str-slice($infix, 2);
     }
 
@@ -76,45 +579,41 @@ $utilities: () !default;
       }
     }
 
-    @if map-get($utility, rfs) {
-      // Inside the media query
-      @if $is-rfs-media-query {
-        $val: rfs-value($value);
+    $is-css-var: map.get($utility, css-var);
+    $is-local-vars: map.get($utility, local-vars);
 
-        // Do not render anything if fluid and non fluid values are the same
-        @if $val == rfs-fluid-value($value) {
-          $value: null;
-        } @else {
-          $value: $val;
-        }
-      } @else {
-        $value: rfs-fluid-value($value);
-      }
-    }
-
-    $is-css-var: map-get($utility, css-var);
-    $is-local-vars: map-get($utility, local-vars);
-    $is-rtl: map-get($utility, rtl);
-
-    @if $value != null {
-      @if $is-rtl == false {
-        /* rtl:begin:remove */
+    @if $is-css-var {
+      .#{$property-class + $infix + $property-class-modifier} {
+        --#{$prefix}#{$css-variable-name}: #{$value};
       }
 
-      @if $is-css-var {
-        .#{$property-class + $infix + $property-class-modifier} {
+      @each $pseudo in $state {
+        .#{$property-class
+          + $infix
+          + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
           --#{$prefix}#{$css-variable-name}: #{$value};
         }
-
-        @each $pseudo in $state {
-          .#{$property-class
-            + $infix
-            + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{$prefix}#{$css-variable-name}: #{$value};
+      }
+    } @else {
+      .#{$property-class + $infix + $property-class-modifier} {
+        @each $property in $properties {
+          @if $is-local-vars {
+            @each $local-var, $variable in $is-local-vars {
+              --#{$prefix}#{$local-var}: #{$variable};
+            }
+          }
+          @if $enable-important-utilities {
+            #{$property}: $value !important;
+          } @else {
+            #{$property}: $value;
           }
         }
-      } @else {
-        .#{$property-class + $infix + $property-class-modifier} {
+      }
+
+      @each $pseudo in $state {
+        .#{$property-class
+          + $infix
+          + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
           @each $property in $properties {
             @if $is-local-vars {
               @each $local-var, $variable in $is-local-vars {
@@ -128,29 +627,21 @@ $utilities: () !default;
             }
           }
         }
-
-        @each $pseudo in $state {
-          .#{$property-class
-            + $infix
-            + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            @each $property in $properties {
-              @if $is-local-vars {
-                @each $local-var, $variable in $is-local-vars {
-                  --#{$prefix}#{$local-var}: #{$variable};
-                }
-              }
-              @if $enable-important-utilities {
-                #{$property}: $value !important;
-              } @else {
-                #{$property}: $value;
-              }
-            }
-          }
-        }
       }
+    }
+  }
+}
 
-      @if $is-rtl == false {
-        /* rtl:end:remove */
+@each $breakpoint in map.keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $key, $utility in $utilities {
+      @if meta.type-of($utility) ==
+        "map" and
+        (map.get($utility, responsive) or $infix == "")
+      {
+        @include generate-utility($utility, $infix);
       }
     }
   }

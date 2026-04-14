@@ -34,7 +34,7 @@ $btn-focus-blur: $focus-ring-blur;
 
 $btn-link-color: var(--#{$prefix}link-color);
 $btn-link-hover-color: var(--#{$prefix}link-hover-color);
-$btn-link-disabled-color: $gray-6;
+$btn-link-disabled-color: $neutral-60;
 $btn-link-focus-shadow-rgb: to-rgb(
   color.mix(color-contrast($link-color), $link-color, 15%)
 );

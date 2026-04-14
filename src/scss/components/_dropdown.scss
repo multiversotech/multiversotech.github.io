@@ -31,12 +31,12 @@ $dropdown-link-disabled-color: var(--#{$prefix}tertiary-color);
 $dropdown-item-padding-y: $spacing * 0.25;
 $dropdown-item-padding-x: $spacing;
 
-$dropdown-header-color: $gray-6;
+$dropdown-header-color: $neutral-60;
 $dropdown-header-padding-x: $spacing;
 $dropdown-header-padding-y: $spacing-half;
 
-$dropdown-dark-color: $gray-3;
-$dropdown-dark-bg: $gray-8;
+$dropdown-dark-color: $neutral-30;
+$dropdown-dark-bg: $neutral-80;
 $dropdown-dark-border-color: $dropdown-border-color;
 $dropdown-dark-divider-bg: $dropdown-divider-bg;
 $dropdown-dark-box-shadow: null;
@@ -45,8 +45,8 @@ $dropdown-dark-link-hover-color: $white;
 $dropdown-dark-link-hover-bg: rgba($white, 0.15);
 $dropdown-dark-link-active-color: $dropdown-link-active-color;
 $dropdown-dark-link-active-bg: $dropdown-link-active-bg;
-$dropdown-dark-link-disabled-color: $gray-5;
-$dropdown-dark-header-color: $gray-5;
+$dropdown-dark-link-disabled-color: $neutral-50;
+$dropdown-dark-header-color: $neutral-50;
 
 .dropdown {
   position: relative;
