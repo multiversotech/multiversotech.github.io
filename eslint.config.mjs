@@ -6,6 +6,15 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
+    ignores: [
+      "node_modules/",
+      "dist/",
+      "package-lock.json",
+      "my-notes.md",
+      ".claude/",
+    ],
+  },
+  {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
     extends: ["js/recommended"],
@@ -34,5 +43,9 @@ export default defineConfig([
     plugins: { markdown },
     language: "markdown/gfm",
     extends: ["markdown/recommended"],
+    rules: {
+      // Falsos positivos em CHANGELOG ([Unreleased]) e CODE_OF_CONDUCT (notas de template)
+      "markdown/no-missing-label-refs": "off",
+    },
   },
 ]);

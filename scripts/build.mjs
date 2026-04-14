@@ -18,6 +18,7 @@ const __dirname = path.dirname(__filename);
 // ========================================================
 
 // Gera slug a partir de um termo (usado futuramente no glossário)
+// eslint-disable-next-line no-unused-vars
 function generateSlug(termo) {
     return termo
         .toLowerCase()
