@@ -12,7 +12,7 @@ O **Multiverso Tech** é uma plataforma open-source colaborativa de glossário e
 - **Ferramentas**: Node.js, npm, ES Modules (.mjs)
 
 ### Estrutura de Diretórios
-```
+```text
 src/
 ├── assets/                  # Imagens, ícones, fontes
 │   ├── fonts/
@@ -104,14 +104,14 @@ scripts/                     # Scripts de build/automação (ES Modules .mjs)
 ### 4.1 Build Time (Development & CI)
 
 #### 4.1.1 SCSS → CSS
-```
+```text
 src/scss/mvt-main.scss
   ↓ (compila via Sass)
 dist/css/mvt-main.css ou .min.css (compressed para produção)
 ```
 
 #### 4.1.2 Templates → HTML (via build.mjs)
-```
+```text
 src/templates/index.html
   ↓ (processIncludes recursivamente)
   ├─ src/templates/partials/head.html
@@ -134,7 +134,7 @@ Sistema de includes:
 - FontAwesome 7: Carregado via npm (`@fortawesome/fontawesome-free`)
 
 #### 4.1.4 Linting & Validação
-```
+```text
 ESLint (JS)           →  Valida código JavaScript
 Stylelint (SCSS)      →  Valida estilos CSS
 Prettier              →  Formata código

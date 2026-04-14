@@ -83,7 +83,7 @@ Crie uma branch específica para a sua alteração. Use um nome descritivo.
 
 #### Passo 5: Faça o Commit das suas Alterações
 Adicione os arquivos modificados e crie um commit com uma mensagem clara.
-```
+```bash
 git add .
 git commit -m "feat: Adiciona o termo API ao glossário"
 (Usamos o padrão Conventional Commits para as mensagens de commit, mas não se preocupe se não seguir à risca no começo.)
@@ -91,7 +91,7 @@ git commit -m "feat: Adiciona o termo API ao glossário"
 
 #### Passo 6: Envie suas Alterações (Push)
 Envie a sua branch para o seu fork no GitHub:
-```
+```bash
 git push origin feat/adiciona-termo-api
 ```
 
