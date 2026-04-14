@@ -5,7 +5,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
-## [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+## [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0//)
 feat: - indica que seu trecho de código está incluindo um novo recurso (se relaciona com o MINOR do versionamento semântico).
 fix: - trecho de código commitado está solucionando um problema (bug fix), (se relaciona com o PATCH do versionamento semântico).
 docs: -  mudanças na documentação (Não inclui alterações em código).
@@ -22,7 +22,27 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ---
 
-## [Unreleased] - 2026-04-03
+## [Unreleased] - 2026-04-14
+
+---
+
+## 2026-04-13
+
+---
+
+## 2026-04-09
+
+---
+
+## 2026-04-04
+
+### Outros
+
+- Refactor (SCSS): reescrever os utilitários _colors e _contrast (`c2b3d2b`)
+
+---
+
+## 2026-04-03
 
 ### Outros
 
@@ -44,8 +64,8 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ## Estatísticas do Projeto
 
-- **Total de commits:** 16
-- **Período:** 2026-02-07 - 2026-04-03
+- **Total de commits:** 64
+- **Período:** 2026-02-07 - 2026-04-14
 - **Contribuidores:** 1
 
 ### Contribuidores
