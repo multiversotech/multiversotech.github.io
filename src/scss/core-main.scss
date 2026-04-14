@@ -10,9 +10,22 @@
 //                    Inspirado na arquitetura do Bootstrap                            //
 //=====================================================================================*/
 
+// 1. Abstracts first 
 @use "./abstracts";
+
+// 2. Vendors (CSS externo pode sobrescrever)
+
+// 3. Base
 @use "./base";
-@use "./components";
+
+// 4. Layout
 @use "./layout";
+
+// 5. Components
+@use "./components";
+
+// 6. Pages
 @use "./pages";
+
+// 7. Themes (por último para poder sobrescrever)
 @use "./themes";

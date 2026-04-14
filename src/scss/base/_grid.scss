@@ -1,4 +1,9 @@
-@use "../abstracts" as *;
+@use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/maps" as *;
+@use "../abstracts/mixins" as *;
+
 :root {
   @each $name, $value in $grid-breakpoints {
     --#{$prefix}breakpoint-#{$name}: #{$value};
