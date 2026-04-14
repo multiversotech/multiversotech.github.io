@@ -18,7 +18,7 @@ class ThemeToggle {
       const temaPadrao = temaSalvo || (prefereTemaClaro ? "light" : "dark");
 
       html.setAttribute("data-theme", temaPadrao);
-      atualizaIcon(temaPadrao);
+      this.atualizaIcon(temaToggle, temaPadrao);
 
       // Toggle
       temaToggle.addEventListener("click", () => {
@@ -27,16 +27,15 @@ class ThemeToggle {
 
         html.setAttribute("data-theme", proximo);
         localStorage.setItem("tema", proximo);
-        atualizaIcon(proximo);
+        this.atualizaIcon(temaToggle, proximo);
       });
-
-      function atualizaIcon(tema) {
-        const icon = temaToggle.querySelector("i");
-        if (!icon) return;
-
-        icon.className = tema === "light" ? "fas fa-sun" : "fas fa-moon";
-      }
     });
+  }
+
+  atualizaIcon(temaToggle, tema) {
+    const icon = temaToggle.querySelector("i");
+    if (!icon) return;
+    icon.className = tema === "light" ? "fas fa-sun" : "fas fa-moon";
   }
 }
 
