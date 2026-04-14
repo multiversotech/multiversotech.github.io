@@ -1,14 +1,18 @@
+@use "../abstracts/configs" as *;
+@use "../abstracts/functions" as *;
 /* ======================================
         DESIGN SYSTEM (DARK MODE)
     Paleta: Cyberpunk / Gaming / Tech
 ========================================= */
 [data-theme="dark"] {
-  /* Backgrounds */
-  --background-body: var(--cor-primaria-7);
-  --background-header: var(--violet-alt-90);
-  --background-footer: var(--violet-alt-90);
-  --background-light: var(--cor-pure-white);
-  --background-dark: var(--cor-pure-black);
+  --#{$prefix}background-body: var(--mvt-color-indigo-80);
+  --#{$prefix}background-header: var(--mvt-color-primary-8);
+  --#{$prefix}background-footer: var(--mvt-color-primary-8);
+
+--#{$prefix}link-color: var(--mvt-primary-text-dark);
+--#{$prefix}link-hover-color: var(--on-primary-fixed-variant);
+--#{$prefix}link-disabled-color: var(--ui-primary);
+
   --background-alternative: var(--cor-primaria-6);
   --background-success: var(--cor-estado-success);
   --background-warning: var(--cor-estado-warning);
