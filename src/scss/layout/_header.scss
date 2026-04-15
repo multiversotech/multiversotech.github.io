@@ -5,7 +5,7 @@
    HEADER - Dropdown, Menu e Acessibilidade
  ======================================== */
 .text-gradient {
-  background: var(--text-gradient-base);
+  background: var(--mvt-text-gradient-base);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -15,4 +15,96 @@
 
 .navbar {
   background-color: var(--mvt-background-header);
+}
+
+.nav-item {
+  color: var(--mvt-text-inverse);
+  font-size: var(--mvt-font-size-base);
+  position: relative;
+  text-decoration: none;
+  font-weight: var(--mvt-font-weight-bold);
+  transition: color 0.3s;
+}
+
+.nav-item:hover {
+  color: var(--mvt-text-accent-principal);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--mvt-gradient-base);
+  transition: width 250ms;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn-toggler button {
+  font-size: var(--mvt-icon-size-lg);
+  transition: color 0.3s;
+  padding: var(--mvt-spacing-sm) var(--mvt-spacing-half);
+  border-radius: var(--mvt-radius-pill);
+  transition: background 0.25s ease;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.btn-toggler button:hover {
+  box-shadow: none;
+}
+
+.form-control {
+  font-size: var(--mvt-font-size-sm);
+  font-weight: var(--mvt-font-weight-normal);
+  line-height: var(--mvt-line-height-body);
+  color: var(--mvt-text-link-disabled-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--mvt-background-input);
+  background-clip: padding-box;
+  border: var(--mvt-border-width-base) solid var(--mvt-border-color);
+  border-radius: var(--mvt-radius-lg);
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-control {
+    transition: none;
+  }
+}
+
+.form-control:focus {
+  color: var(--mvt-text-link-disabled-color);
+  border-color: var(--mvt-color-primary);
+  border-width: var(--mvt-border-width-md);
+  outline: 0;
+  box-shadow: var(--mvt-box-shadow-sm);
+}
+
+.form-control::placeholder {
+  color: var(--mvt-text-link-disabled-color);
+  opacity: 1;
+}
+
+.search button {
+  font-size: var(--mvt-icon-size-lg);
+  transition: color 0.3s;
+  padding: var(--mvt-spacing-sm) var(--mvt-spacing-half);
+  border-radius: var(--mvt-radius-pill);
+  transition: background 0.25s ease;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.search button:hover {
+  box-shadow: none;
 }
