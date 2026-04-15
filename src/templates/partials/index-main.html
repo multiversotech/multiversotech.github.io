@@ -11,66 +11,53 @@
 </div>
 
 <!-- Hero -->
-<section id="home" class="hero" aria-labelledby="hero-title">
+<section id="home" class="hero position-relative d-flex max-height-100" aria-labelledby="hero-title">
 
-    <div class="container">
+    <div class="container-fluid">
 
-        <div class="hero-conteudo">
+        <div class="hero-conteudo w-75">
 
-            <div class="hero-badge" aria-hidden="true">
+            <div class="hero-badge d-inline-block pad-v-half pad-h-base mg-top-6x mg-bottom-3x" aria-hidden="true">
                 🌟 Open Source • Gratuito • Colaborativo
             </div>
 
-            <div id="hero-title" class="hero-titulo">
-                Explore o <span class="texto-gradiente">Multiverso</span><br>
+            <div id="hero-title" class="hero-titulo mg-bottom-2x">
+                Explore o <span class="text-gradient">Multiverso</span><br>
                 da Tecnologia
             </div>
 
-            <div class="hero-subtitulo">
+            <div class="hero-subtitulo mg-bottom-base">
                 Glossário colaborativo e open-source com recursos gratuitos e acessíveis que
                 traduz e explica
                 termos de tecnologia do inglês para o português.
             </div>
-
-            <div class="hero-destaque">
+            <div class="hero-destaque mg-bottom-4x">
                 <span class="destaque">Aprenda</span>,
                 <span class="destaque">contribua</span> e
                 <span class="destaque">evolua</span>.
             </div>
-
-            <div class="hero-btn">
-                <div>
-                    <a href="/glossario/" class="btn btn-magic-button">
-                        <i class="fas fa-book-open" aria-hidden="true"></i>
-                        <span>Explorar Glossário</span>
-                    </a>
-                </div>
-
-                <div class="btn">
-                    <a href="/vocabulario/" target="_blank" class="btn magic-btn">
-                        <i class="fas fa-language" aria-hidden="true"></i>
-                        <span>Vocabulário</span>
-                    </a>
-                </div>
-
-                <div class="btn">
-                    <a href="https://github.com/multiversotech/multiversotech.github.io" class="btn-hero btn-principal"
-                        target="_blank" rel="noopener">
-                        <i class="fab fa-github" aria-hidden="true"></i>
-                        <span>GitHub</span>
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="scroll-indicator" aria-hidden="true">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-
         </div>
 
-    </div>
+        <div class="d-flex justify-content-center gap-2x mg-bottom-10x">
+            <button class="btn">
+                <a href="/glossario/">
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    <span>Explorar Glossário</span>
+                </a>
+            </button>
 
+            <button class="btn">
+                <a href="/vocabulario/" target="_blank">
+                    <i class="fas fa-language" aria-hidden="true"></i>
+                    <span>Vocabulário</span>
+                </a>
+            </button>
+        </div>
+
+        <div class="scroll-indicator pad-top-10x" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
 </section>
 
 <!-- Seção de Recursos -->
@@ -211,9 +198,9 @@
                 Termos Recentes
             </h2>
 
-            <button class="btn"><a href="/glossario/" class="btn-ver-todos">
-                    Ver todos <span aria-hidden="true">→</span>
-                </a>
+            <a href="/glossario/" class="btn btn-ver-todos">
+                Ver todos <span aria-hidden="true">→</span>
+            </a>
         </header>
 
         <div class="termos-grid" id="termosRecentes" role="list" aria-live="polite">
@@ -318,7 +305,6 @@
                 <i class="fab fa-github" aria-hidden="true"></i>
                 Contribuir no GitHub
             </a>
-
         </div>
     </div>
 </section>
