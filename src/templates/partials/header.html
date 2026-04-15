@@ -1,294 +1,88 @@
-<div class="container">
-    <div class="header-logo display-flex justify-content-between p-vertical-md mb-2x border-bottom">
-        <div class="d-flex align-items-center">
-            <img class="logo-img" src="../assets/icons/icon-fundo-transparente.png" width="48" height="48" alt="">
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <div class="navbar-brand d-flex gap-half">
+            <img class="d-inline-block align-text-top" src="/src/assets/icons/icon-fundo-transparente.png" width="48"
+                height="48" alt="">
             <h1 class="text-gradient">MultiversoTech</h1>
         </div>
 
-        <div class="theme-nav">
-            <button type="button" class="tema-toggle" id="temaToggle" aria-label="Alternar entre tema claro e escuro">
-                <i class="fas fa-sun" aria-hidden="true"></i>
-            </button>
-
-            <button type="button" class="menu-toggle" aria-label="Abrir menu mobile" aria-expanded="false"
-                aria-controls="navMenu">
-                <i class="fa-solid fa-bars" aria-hidden="true"></i>
-            </button>
-        </div>
-    </div>
-
-    <div class="nav">
-        <ul>
-            <li><a href="#home" class="nav-link">Início</a></li>
-            <li><a href="/glossario/" class="nav-link">Glossário</a></li>
-            <li><a href="/vocabulario/" class="nav-link">Vocabulário</a></li>
-            <li><a href="#linguagens" class="nav-link">Linguagens</a></li>
-            <li><a href="#ferramentas" class="nav-link">Ferramentas</a></li>
-            <li><a href="#blog" class="nav-link">Blog & Artigos</a></li>
-            <li><a href="#sobre" class="nav-link">Sobre</a></li>
-        </ul>
-    </div>
-
-    <div class="px-3 py-2 border-bottom mb-3">
-        <div class="container d-flex flex-wrap justify-content-center">
-
-            <div class="menu-acessibilidade">
-                <button type="menu" aria-label="Menu de Acessibilidade" data-toggle="menu"
-                    data-target="menu-acessibilidade">
-                    <div class="content">Acessibilidade</div>
-                </button>
-
-                <div class="menu-open">
-                    <button class="mvt-btn-def" type="button" aria-label="Abrir o menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                    </button>
-                </div>
-
-                <div class="menu-close">
-                    <button class="mvt-btn-def" type="button" aria-label="Fechar o menu" data-dismiss="menu"><i
-                            class="fas fa-times" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="menu-folder">
-                <a class="mvt-item-folder" href="javascript: void(0)" role="treeitem">
-                    <svg class="icon-item" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                        width="auto" fill="#8C1AF6">
-                        <path
-                            d="M448-80v-226.67h66.67v80H840V-160H514.67v80H448Zm-328-80v-66.67h261.33V-160H120Zm141.67-240H334l44.67-123.67h203.66L626.67-400h71.66L515.67-880h-72l-182 480Zm139-183.33 78-219.67h2.66l78 219.67H400.67Z" />
-                    </svg>
-                    <span class="content">
-                        Ajustes de fontes
-                    </span>
-                </a>
-
-                <ul>
-                    <!-- Tamanho da fonte -->
-                    <li>
-                        <div class="mvt-item-folder cam">
-                            <svg class="icon-item" xmlns="http://www.w3.org/2000/svg" height="32px"
-                                viewBox="0 -960 960 960" width="auto" fill="#8C1AF6">
-                                <path
-                                    d="M566.67-160v-533.33H360V-800h520v106.67H673.33V-160H566.67Zm-360 0v-333.33H80V-600h360v106.67H313.33V-160H206.67Z" />
-                            </svg>
-                            <span class="content">
-                                Tamanho da fonte
-                            </span>
-                        </div>
-
-                        <div class="slider">
-                            <svg class="icon-item" xmlns="http://www.w3.org/2000/svg" height="24px"
-                                viewBox="0 -960 960 960" width="auto" fill="#8C1AF6">
-                                <path
-                                    d="m40-200 216.67-560h86.66L560-200h-82l-55-147.67H177L122-200H40Zm162.67-217.33h194.66l-95.33-258h-4l-95.33 258Zm404-29.34v-66.66H920v66.66H606.67Z" />
-                            </svg>
-                            <input type="range" id="fontSizeSlider" min="0.8" max="2.0" step="0.1" value="1">
-                            <svg class="icon-item" xmlns="http://www.w3.org/2000/svg" height="24px"
-                                viewBox="0 -960 960 960" width="auto" fill="#8C1AF6">
-                                <path
-                                    d="m40-200 216.67-560h86.66L560-200h-82l-55-147.67H177L122-200H40Zm162.67-217.33h194.66l-95.33-258h-4l-95.33 258Zm524 97.33v-126.67H600v-66.66h126.67V-640h66.66v126.67H920v66.66H793.33V-320h-66.66Z" />
-                            </svg>
-                        </div>
-                        <p class="slider-value">Valor: <span id="fontSizeValue"> </span></p>
-                    </li>
-                    <!-- Espaçamento entre letras -->
-                    <li>
-                        <div class="mvt-item-folder cam">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="auto"
-                                fill="#8C1AF6">
-                                <path
-                                    d="M80-160v-640h66.67v640H80Zm733.33 0v-640H880v640h-66.67Zm-510-122.67L452-681.33h56l149.33 398.66h-55l-38-108H395.67l-38 108h-54.34Zm109.34-154h134.6l-66-186h-2.66l-66 186Z" />
-                            </svg>
-                            <span class="content">
-                                Espaçamento entre letras
-                            </span>
-                        </div>
-                        <div class="slider">
-                            <span>-</span>
-                            <input type="range" id="letterSpacingSlider" min="0" max="3" step="0.2" value="0">
-                            <span>+</span>
-                        </div>
-                        <p class="slider-value">Valor: <span id="letterSpacingValue">Normal</span>
-                        </p>
-                    </li>
-                    <!-- Espaçamento entre linhas -->
-                    <li>
-                        <div class="mvt-item-folder cam">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                                fill="#8C1AF6">
-                                <path d="M200-200v-560h80v560h-80Zm480 0v-560h80v560h-80Z" />
-                            </svg>
-                            <span class="content">Espaçamento entre linhas</span>
-                        </div>
-                        <div class="slider">
-                            <span class="icon-item">-</span>
-                            <input type="range" id="lineHeightSlider" min="1.2" max="2.5" step="0.1" value="1.5">
-                            <span class="icon-item">+</span>
-                        </div>
-                        <p class="slider-value">Valor: <span id="lineHeightValue">1.5</span></p>
-                    </li>
-                    <!-- Fonte legível (toggle) -->
-                    <li>
-                        <div class="mvt-item-folder cam">
-                            <div class="toggle-container">
-                                <div class="toggle-switch" id="legibleToggle"></div>
-                                <span class="content">Fonte legível</span>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="menu-folder">
-                <a class="mvt-item-folder" href="javascript: void(0)" role="treeitem">
-                    <span class="icon">
-                        <i class="fas fa-bell" aria-hidden="true"></i>
-                    </span>
-                    <span class="content">
-                        Ampliadores
-                    </span>
-                </a>
-
-                <ul>
-                    <li>
-                        <a class="mvt-item-folder cam" href="javascript: void(0)" role="treeitem">
-                            <span class="icon">
-                                <i class="fas fa-bell" aria-hidden="true"></i>
-                            </span>
-                            <span class="content">
-                                Ampliar texto
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="mvt-item-folder cam" href="javascript: void(0)" role="treeitem">
-                            <span class="icon">
-                                <i class="fas fa-bell" aria-hidden="true"></i>
-                            </span>
-                            <span class="content">
-                                Ampliar tela
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="menu-folder">
-                <a class="mvt-item-folder" href="javascript: void(0)" role="treeitem">
-                    <span class="icon">
-                        <i class="fas fa-bell" aria-hidden="true"></i>
-                    </span>
-                    <span class="content">
-                        Cursor
-                    </span>
-                </a>
-            </div>
-
-            <div class="menu-folder">
-                <a class="mvt-item-folder" href="javascript: void(0)" role="treeitem"><span class="icon"><i
-                            class="fas fa-bell" aria-hidden="true"></i></span>
-                    <span class="content">
-                        Ajuste de cor
-                    </span>
-                </a>
-
-                <ul>
-                    <li><a class="mvt-item-folder cam" href="javascript: void(0)" role="treeitem"><span class="icon"><i
-                                    class="fas fa-book" aria-hidden="true"></i></span><span
-                                class="content">Monocromático</span></a></li>
-
-                    <li>
-                        <a class="mvt-item-folder  cam" href="javascript: void(0)" role="treeitem">
-                            <span class="icon">
-                                <i class="fas fa-tree" aria-hidden="true"></i>
-                            </span>
-                            <span class="content">
-                                Alto contraste escuro
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="mvt-item-folder cam" href="javascript: void(0)" role="treeitem">
-                            <span class="icon">
-                                <i class="fas fa-tree" aria-hidden="true"></i>
-                            </span>
-                            <span class="content">
-                                Alto
-                                contraste claro</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="mvt-item-folder cam" href="javascript: void(0)" role="treeitem">
-                            <span class="icon">
-                                <i class="fas fa-tree" aria-hidden="true"></i>
-                            </span>
-                            <span class="content">
-                                Modo contraste
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="dropdown position-fixed bottom-0 end-0 mb-3x me-3x">
-            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="drop" type="button"
-                type="button" aria-expanded="false" data-toggle="dropdown" aria-label="Acesso rápido (auto)">
-                <svg class="bi my-1 theme-icon-active" aria-hidden="true">
-                    <use href="#circle-half"></use>
-                </svg>
-                <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
-                <span class="visually-hidden" id="theme-text">Acesso Rápido</span>
-            </button>
-
-
-            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="theme-text">
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" aria-pressed="false">
-                        <a href="" class="bi me-2 opacity-50" aria-hidden="true">
-                            Repositório GitHub
-                        </a>
-                    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Início</a>
                 </li>
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" aria-pressed="false">
-                        <a href="" class="bi me-2 opacity-50" aria-hidden="true">
-                            Issues
-                        </a>
-                    </button>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/glossario/">Glossário</a>
                 </li>
-
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" aria-pressed="false">
-                        <a href="" class="bi me-2 opacity-50" aria-hidden="true">
-                            Como contribuir
-                        </a>
-                    </button>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/vocabulario/">Vocabulário</a>
                 </li>
-
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" aria-pressed="false">
-                        <a href="" class="bi me-2 opacity-50" aria-hidden="true">
-                            Link de acesso 4
-                        </a>
-                    </button>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#linguagens">Linguagens</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#ferramentas">Ferramentas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#blog">Blog & Artigos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#sobre">Sobre</a>
                 </li>
             </ul>
         </div>
 
-        <div class="text-end">
-            <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-                <input type="search" placeholder="O que você procura?" aria-label="Pesquisa" />
-                <button class="mvt-btn circle small" type="button" aria-label="Pesquisar">
-                    <i class="fas fa-search" aria-hidden="true">
-                    </i>
+        <div class="btn-toggler gap-half d-flex  align-items-center align-content-center">
+            <div class="acesso-rapido dropdown">
+                <button class="btn dropdown-toggle" type="button" aria-label="Menu de Acesso Rápido"
+                    aria-expanded="false" aria-controls="acessoRapido">
+                    <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu" id="acessoRapido">
+                    <li>
+                        <a class="nav-link active" aria-current="page"
+                            href="https://github.com/multiversotech/multiversotech.github.io"><i
+                                class="fa-brands fa-github"></i> Repositório</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page"
+                            href="https://github.com/multiversotech/multiversotech.github.io/issues"><i
+                                class="fa-solid fa-bug"></i> Issues</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fa-regular fa-handshake"></i>
+                            Como Contribuir</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page"
+                            href="https://www.instagram.com/multiversotechbr"><i class="fa-brands fa-instagram"></i>
+                            Instagram</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page"
+                            href="https://linkedin.com/company/multiversotech"><i class="fa-brands fa-linkedin"></i>
+                            LinkedIn</a>
+                    </li>
+                </div>
+            </div>
+
+            <button type="button" class="tema-toggle btn" id="temaToggle"
+                aria-label="Alternar entre tema claro e escuro">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+            </button>
+
+            <button type="button" class="menu-toggle btn" aria-label="Abrir menu mobile" aria-expanded="false"
+                aria-controls="navMenu">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <form class="d-flex gap-half search" role="search">
+                <input class="form-control pad-v-sm pad-h-md" type="search" placeholder="O que você procura?"
+                    aria-label="Pesquisa" />
+                <button class="btn" type="submit" aria-label="Pesquisar">
+                    <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
             </form>
         </div>
     </div>
-
-</div>
+</nav>
