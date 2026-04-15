@@ -16,22 +16,23 @@ src/
 ├── templates/           # Templates HTML com diretivas de include
 │   └── partials/        # Fragmentos reutilizáveis (header, footer)
 ├── js/                  # JavaScript modular (ES6+, sem bundler)
-│   ├── components/      # Componentes interativos (ThemeToggle, Dropdown)
+│   ├── components/      # Componentes interativos (ThemeToggle, AcessoRapido)
 │   ├── pages/           # Controladores por página (home, glossario, termo)
 │   └── main.js          # Entry point — instancia e re-exporta componentes
 └── scss/                # Design system em SASS
     ├── abstracts/
     │   ├── _variables.scss   # Tokens primitivos (tipografia, espaçamento, sombras, etc.)
     │   ├── _colors.scss      # Paleta de cores e tokens semânticos
+    │   ├── _configs.scss     # Flags de comportamento global (prefixo, dark mode, transitions)
     │   ├── _functions.scss   # Funções SCSS (tint, shade, contraste)
     │   ├── _mixins.scss      # Mixins reutilizáveis
     │   ├── _breakpoints.scss # Variáveis e mapa de breakpoints
     │   └── _maps.scss        # Mapas SCSS auxiliares
-    ├── base/                 # reboot, root, tipografia, helpers
+    ├── base/                 # reboot, root, tipografia, helpers, grid
     ├── components/           # alert, badge, button, card, dropdown, modal, nav…
-    ├── layout/               # header, navigation, grid, sidebar
+    ├── layout/               # header, footer, index-main, sidebar
     ├── pages/                # estilos por página (home, etc.)
-    ├── themes/               # _dark-theme.scss, _light-theme.scss
+    ├── themes/               # _dark-theme.scss, _light-theme.scss, _global.scss
     ├── _abstracts.scss       # Índice: @forward de abstracts/
     ├── _base.scss            # Índice: @forward de base/
     ├── _components.scss      # Índice: @forward de components/
@@ -90,10 +91,7 @@ npm run stylelint
 # Atualizar CHANGELOG
 npm run changelog
 
-# Build do site (gera pasta site/)
-npm run build:site
-
-# Build completo (lib + site)
+# Build completo (gera pasta site/)
 npm run build
 ```
 
@@ -110,7 +108,7 @@ O deploy é feito automaticamente pelo GitHub Actions a cada push na branch `mai
 - Adicionar novas variáveis em `src/scss/abstracts/_variables.scss`; cores vão em `src/scss/abstracts/_colors.scss`
 - Cores definidas exclusivamente em `src/scss/abstracts/_colors.scss`
 - Variáveis de tema escuro (dark mode) em `src/scss/themes/_dark-theme.scss`
-- Flags de comportamento global (prefixo, dark mode, transitions, etc.) em `src/scss/abstracts/_variables.scss` — todas com `!default`
+- Flags de comportamento global (prefixo, dark mode, transitions, etc.) em `src/scss/abstracts/_configs.scss`
 
 ### JavaScript
 
