@@ -6,7 +6,7 @@ import { execSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CHANGELOG_PATH = path.join(__dirname, "..", "CHANGELOG.md");
+const CHANGELOG_PATH = path.join(__dirname, '..', 'CHANGELOG.md');
 
 // Função para obter todos os commits
 function getAllCommits() {
@@ -183,14 +183,19 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
     // Ordem de preferência das categorias
     const categoryOrder = [
-      "Adicionado",
-      "Alterado",
-      "Corrigido",
-      "Documentação",
-      "Refatoração",
-      "Manutenção",
-      "Testes",
-      "Exclusão",
+      "✨ Adicionado",
+      "📦 Alterado",
+      "⚡ Alterado",
+      "💄 Estilização de interface",
+      "🧱 Alterado",
+      "🗃️ Alterado",
+      "🧹 Alterado",
+      "🐛 Corrigido",
+      "📚 Documentação",
+      "♻️ Refatoração",
+      "🔧 Manutenção",
+      "🧪 Testes",
+      "🗑️ Exclusão",
       "Outros",
     ];
 

@@ -82,81 +82,58 @@
                     </ul>
                 </div>
 
-            
-                <div class="btn-toggler gap-half d-flex">
-                    <div class="acessibilidade dropdown">
-                        <button class="btn btn-primaria-5 dropdown-toggle" type="button"
-                            aria-label="Menu de Acessibilidade" aria-expanded="false"
-                            aria-controls="menuAcessibilidade">
-                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                <div class="btn-toggler gap-half d-flex  align-items-center align-content-center">
+                    <div class="acesso-rapido dropdown">
+                        <button class="btn dropdown-toggle" type="button" aria-label="Menu de Acesso Rápido"
+                            aria-expanded="false" aria-controls="acessoRapido">
+                            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                         </button>
-                        <div class="dropdown-menu" id="menuAcessibilidade">
-                            <ul>
-                                <li>
-                                    <label for="fontSizeSlider" class="form-label">
-                                        <i class="fa fa-font" aria-hidden="true"></i>
-                                        Tamanho da Fonte
-                                    </label>
-                                    <input type="range" class="form-range" id="fontSizeSlider" min="0.8" max="2.0"
-                                        step="0.1" value="1">
-                                    <p class="slider-value">Valor: <span id="fontSizeValue"></span></p>
-                                </li>
-                                <li>
-                                    <label for="letterSpacingSlider" class="form-label">
-                                        <i class="fa fa-text-width" aria-hidden="true"></i>
-                                        Espaçamento entre letras
-                                    </label>
-                                    <input type="range" id="letterSpacingSlider" min="0" max="3" step="0.2" value="0">
-                                    <p class="slider-value">Valor: <span id="letterSpacingValue"></span></p>
-                                </li>
-                                <li>
-                                    <label for="lineHeightSlider" class="form-label">
-                                        <i class="fa fa-text-height" aria-hidden="true"></i>
-                                        Espaçamento entre linhas
-                                    </label>
-                                    <input type="range" id="lineHeightSlider" min="1.2" max="2.5" step="0.1"
-                                        value="1.2">
-                                    <p class="slider-value">Valor: <span id="lineHeightValue"></span></p>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li class="dropdown-header">
-                                    <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
-                                    Modo contraste
-                                </li>
-                                <li>
-                                    <button type="button" id="contrastDark" class="btn-contraste">
-                                        <i class="fa-solid fa-circle-plus" aria-hidden="true"></i>
-                                        Alto contraste escuro
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button" id="contrastLight" class="btn-contraste">
-                                        <i class="fa-solid fa-circle-minus" aria-hidden="true"></i>
-                                        Alto contraste claro
-                                    </button>
-                                </li>
-                            </ul>
+                        <div class="dropdown-menu" id="acessoRapido">
+                            <li>
+                                <a class="nav-link active" aria-current="page"
+                                    href="https://github.com/multiversotech/multiversotech.github.io"><i
+                                        class="fa-brands fa-github"></i> Repositório</a>
+                            </li>
+                            <li>
+                                <a class="nav-link active" aria-current="page"
+                                    href="https://github.com/multiversotech/multiversotech.github.io/issues"><i
+                                        class="fa-solid fa-bug"></i> Issues</a>
+                            </li>
+                            <li>
+                                <a class="nav-link active" aria-current="page" href="#"><i
+                                        class="fa-regular fa-handshake"></i> Como Contribuir</a>
+                            </li>
+                            <li>
+                                <a class="nav-link active" aria-current="page"
+                                    href="https://www.instagram.com/multiversotechbr"><i
+                                        class="fa-brands fa-instagram"></i> Instagram</a>
+                            </li>
+                            <li>
+                                <a class="nav-link active" aria-current="page"
+                                    href="https://linkedin.com/company/multiversotech"><i
+                                        class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                            </li>
                         </div>
                     </div>
 
-                    <button type="button" class="tema-toggle btn btn-primaria-5" id="temaToggle"
+                    <button type="button" class="tema-toggle btn" id="temaToggle"
                         aria-label="Alternar entre tema claro e escuro">
                         <i class="fas fa-sun" aria-hidden="true"></i>
                     </button>
 
-                    <button type="button" class="menu-toggle btn btn-primaria-5" aria-label="Abrir menu mobile"
-                        aria-expanded="false" aria-controls="navMenu">
+                    <button type="button" class="menu-toggle btn" aria-label="Abrir menu mobile" aria-expanded="false"
+                        aria-controls="navMenu">
                         <i class="fa-solid fa-bars" aria-hidden="true"></i>
                     </button>
-                </div>
 
-                <form class="" role="search">
-                    <input type="search" placeholder="O que você procura?" aria-label="Pesquisa" />
-                    <button class="btn" type="button" aria-label="Pesquisar">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </button>
-                </form>
+                    <form class="d-flex gap-half search" role="search">
+                        <input class="form-control pad-v-sm pad-h-md" type="search" placeholder="O que você procura?"
+                            aria-label="Pesquisa" />
+                        <button class="btn" type="submit" aria-label="Pesquisar">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </nav>
     </header>
@@ -175,66 +152,54 @@
         </div>
 
         <!-- Hero -->
-        <section id="home" class="hero" aria-labelledby="hero-title">
+        <section id="home" class="hero position-relative d-flex max-height-100" aria-labelledby="hero-title">
 
-            <div class="container">
+            <div class="container-fluid">
 
-                <div class="hero-conteudo">
+                <div class="hero-conteudo w-75">
 
-                    <div class="hero-badge" aria-hidden="true">
+                    <div class="hero-badge d-inline-block pad-v-half pad-h-base mg-top-6x mg-bottom-3x"
+                        aria-hidden="true">
                         🌟 Open Source • Gratuito • Colaborativo
                     </div>
 
-                    <div id="hero-title" class="hero-titulo">
-                        Explore o <span class="texto-gradiente">Multiverso</span><br>
+                    <div id="hero-title" class="hero-titulo mg-bottom-2x">
+                        Explore o <span class="text-gradient">Multiverso</span><br>
                         da Tecnologia
                     </div>
 
-                    <div class="hero-subtitulo">
+                    <div class="hero-subtitulo mg-bottom-base">
                         Glossário colaborativo e open-source com recursos gratuitos e acessíveis que
                         traduz e explica
                         termos de tecnologia do inglês para o português.
                     </div>
-
-                    <div class="hero-destaque">
+                    <div class="hero-destaque mg-bottom-4x">
                         <span class="destaque">Aprenda</span>,
                         <span class="destaque">contribua</span> e
                         <span class="destaque">evolua</span>.
                     </div>
-
-                    <div class="hero-btn">
-                        <div>
-                            <a href="/glossario/" class="btn btn-magic-button">
-                                <i class="fas fa-book-open" aria-hidden="true"></i>
-                                <span>Explorar Glossário</span>
-                            </a>
-                        </div>
-
-                        <div class="btn">
-                            <a href="/vocabulario/" target="_blank" class="btn magic-btn">
-                                <i class="fas fa-language" aria-hidden="true"></i>
-                                <span>Vocabulário</span>
-                            </a>
-                        </div>
-
-                        <div class="btn">
-                            <a href="https://github.com/multiversotech/multiversotech.github.io"
-                                class="btn-hero btn-principal" target="_blank" rel="noopener">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span>GitHub</span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="scroll-indicator" aria-hidden="true">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-
                 </div>
 
-            </div>
+                <div class="d-flex justify-content-center gap-2x mg-bottom-10x">
+                    <button class="btn">
+                        <a href="/glossario/">
+                            <i class="fas fa-book-open" aria-hidden="true"></i>
+                            <span>Explorar Glossário</span>
+                        </a>
+                    </button>
 
+                    <button class="btn">
+                        <a href="/vocabulario/" target="_blank">
+                            <i class="fas fa-language" aria-hidden="true"></i>
+                            <span>Vocabulário</span>
+                        </a>
+                    </button>
+                </div>
+
+                <div class="scroll-indicator pad-top-10x" aria-hidden="true">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
         </section>
 
         <!-- Seção de Recursos -->
