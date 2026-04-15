@@ -19,6 +19,7 @@ const __dirname = path.dirname(__filename);
 
 const templatesPath = path.resolve(__dirname, "..", "src", "templates");
 const assetsPath = path.resolve(__dirname, "..", "src", "assets");
+const distJsPath = path.resolve(__dirname, "..", "src", "js");
 const distCssPath = path.resolve(__dirname, "..", "dist", "css");
 const sitePath = path.resolve(__dirname, "..", "site");
 
@@ -32,6 +33,8 @@ async function build() {
     // 1. Limpa a pasta 'site' e copia os 'assets', CSS compilado e JS
     await fs.emptyDir(sitePath);
     console.log('🧹 Pasta "site" limpa.');
+    await fs.copy(distJsPath, path.join(sitePath, "js"));
+    console.log("📜 JS copiado.");
     await fs.copy(assetsPath, path.join(sitePath, "assets"));
     console.log("📂 Assets copiados.");
     await fs.copy(distCssPath, path.join(sitePath, "css"));
