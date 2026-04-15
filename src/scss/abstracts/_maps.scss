@@ -200,6 +200,8 @@ $colors-map: (
 //    VARIÁVEIS DE TEXTO DO TEMA        //
 //--------------------------------------//
 $theme-colors-text: (
+  "text-light": $text-light,
+  "text-dark": $text-dark,
   "primary-text": $primary-text,
   "secondary-text": $secondary-text,
   "success-text": $success-text,
@@ -233,7 +235,7 @@ $theme-colors-bg-subtle: (
   "info-bg-subtle-dark": $info-bg-subtle-dark,
   "warning-bg-subtle-dark": $warning-bg-subtle-dark,
   "danger-bg-subtle-dark": $danger-bg-subtle-dark,
-  "dark-bg-subtle-dark": $dark-bg-subtle-dark,
+  "dark-bg-subtle-dark": $dark-bg-subtle,
 );
 
 //--------------------------------------//
@@ -477,13 +479,13 @@ $position-values: (
 
 // Z-index
 $z-index-levels: (
-  "z-drop": $z-index-dropdown,
-  "z-sticky": $z-index-sticky,
-  "z-link": $stretched-link-z-index,
-  "z-fix": $z-index-fixed,
-  "z-off": $z-index-offcanvas,
-  "z-modal": $z-index-modal,
-  "z-popover": $z-index-popover,
-  "z-tool": $z-index-tooltip,
-  "z-toast": $z-index-toast,
+  "index-drop": $z-index-dropdown,
+  "index-sticky": $z-index-sticky,
+  "index-link": $stretched-link-z-index,
+  "index-fix": $z-index-fixed,
+  "index-off": $z-index-offcanvas,
+  "index-modal": $z-index-modal,
+  "index-popover": $z-index-popover,
+  "index-tool": $z-index-tooltip,
+  "index-toast": $z-index-toast,
 );
