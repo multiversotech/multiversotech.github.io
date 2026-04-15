@@ -1,7 +1,10 @@
 import ThemeToggle from "./components/theme-toggle.js";
-import Acessibility from "./components/acessibility.js";
+import AcessoRapido from "./components/quick-access.js";
 
 new ThemeToggle();
-new Acessibility();
+new AcessoRapido();
 
-export { ThemeToggle, Acessibility };
+export { 
+    ThemeToggle, 
+    AcessoRapido 
+};
