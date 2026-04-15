@@ -122,7 +122,7 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
   .nav-link.active,
   .nav-item.show .nav-link {
     color: var(--#{$prefix}nav-tabs-link-active-color);
-    background-color: var(--#{$prefix}nav-tabs-link-active-bg);
+    background-color: null;
     border-color: var(--#{$prefix}nav-tabs-link-active-border-color);
   }
 
@@ -203,7 +203,6 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
 
 .nav-fill,
 .nav-justified {
-  // Garante que <button> cresça igual a <a> no layout flex
   .nav-item .nav-link {
     width: 100%;
   }
