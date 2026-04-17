@@ -1,9 +1,21 @@
 @use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 
 /* ========================================
    HEADER - Dropdown, Menu e Acessibilidade
  ======================================== */
+.header {
+  background-color: var(--mvt-background-header);
+}
+
+.logo {
+  gap: var(--mvt-spacing-sm);
+  @if $link-decoration != none {
+    text-decoration: none;
+  }
+}
+
 .text-gradient {
   background: var(--mvt-text-gradient-base);
   -webkit-background-clip: text;
@@ -11,38 +23,6 @@
   background-clip: text;
   font-family: var(--mvt-font-logo-mvt);
   text-transform: uppercase;
-}
-
-.navbar {
-  background-color: var(--mvt-background-header);
-}
-
-.nav-item {
-  color: var(--mvt-text-inverse);
-  font-size: var(--mvt-font-size-base);
-  position: relative;
-  text-decoration: none;
-  font-weight: var(--mvt-font-weight-bold);
-  transition: color 0.3s;
-}
-
-.nav-item:hover {
-  color: var(--mvt-text-accent-principal);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: var(--mvt-gradient-base);
-  transition: width 250ms;
-}
-
-.nav-link:hover::after {
-  width: 100%;
 }
 
 .btn-toggler button {
@@ -57,6 +37,84 @@
 
 .btn-toggler button:hover {
   box-shadow: none;
+}
+
+.btn-toggler .menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .btn-toggler .menu-toggle {
+    display: none !important;
+  }
+}
+
+.mvt-nav {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  list-style: none;
+  background-color: var(--mvt-background-header);
+}
+
+.mvt-nav-link {
+  display: block;
+  color: var(--mvt-text-inverse);
+  font-size: var(--mvt-font-size-base);
+  font-weight: var(--mvt-font-weight-semibold);
+  @if $link-decoration != none {
+    text-decoration: none;
+  }
+  position: relative;
+  text-decoration: none;
+  background: var(--mvt-background-header);
+  border: 0;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--mvt-text-accent-principal);
+    @if $link-hover-decoration == underline {
+      text-decoration: none;
+    }
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: #{$focus-ring-box-shadow};
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--mvt-link-disabled-color);
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.mvt-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--mvt-gradient-base);
+  transition: width 250ms;
+}
+
+.mvt-nav-link:hover::after {
+  width: 100%;
+}
+
+.mvt-nav-item {
+  text-align: start;
+  justify-content: start;
 }
 
 .form-control {

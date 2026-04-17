@@ -3,6 +3,7 @@
 @use "sass:list";
 @use "sass:string";
 @use "../abstracts/configs" as *;
+@use "../abstracts/functions" as *;
 @use "../abstracts/variables" as *;
 @use "../abstracts/maps" as *;
 @use "../abstracts/breakpoints" as *;
@@ -14,79 +15,90 @@ $utilities: ();
 $utilities: map.merge(
   (
     "align": (
-        property: vertical-align,
-        class: align,
-        values: baseline top middle bottom text-bottom text-top,
-      ),
+      property: vertical-align,
+      class: align,
+      values: baseline top middle bottom text-bottom text-top,
+    ),
 
     "float": (
-        responsive: true,
-        property: float,
-        values: (
-          start: left,
-          end: right,
-          none: none,
-        ),
+      responsive: true,
+      property: float,
+      values: (
+        start: left,
+        end: right,
+        none: none,
       ),
+    ),
 
-    // Object Fit utilities
     "object-fit": (
-        responsive: true,
-        property: object-fit,
-        values: (
-          contain: contain,
-          cover: cover,
-          fill: fill,
-          scale: scale-down,
-          none: none,
-        ),
+      responsive: true,
+      property: object-fit,
+      values: (
+        contain: contain,
+        cover: cover,
+        fill: fill,
+        scale: scale-down,
+        none: none,
       ),
-    // scss-docs-end utils-object-fit
-    // Opacity utilities
-    // scss-docs-start utils-opacity
+    ),
+
     "opacity": (
-        property: opacity,
-        values: (
-          0: 0,
-          25: 0.25,
-          50: 0.5,
-          75: 0.75,
-          100: 1,
-        ),
+      property: opacity,
+      values: (
+        0: 0,
+        25: 0.25,
+        50: 0.5,
+        75: 0.75,
+        100: 1,
       ),
+    ),
 
     "overflow": (
-        property: overflow,
-        values: auto hidden visible scroll,
-      ),
+      property: overflow,
+      values: auto hidden visible scroll,
+    ),
+
     "overflow-x": (
       property: overflow-x,
       values: auto hidden visible scroll,
     ),
+
     "overflow-y": (
       property: overflow-y,
       values: auto hidden visible scroll,
     ),
-    
+
     "display": (
-        responsive: true,
-        print: true,
-        property: display,
-        class: d,
-        values: inline inline-block block grid inline-grid table table-row
-          table-cell flex inline-flex none,
-      ),
+      responsive: true,
+      print: true,
+      property: display,
+      class: display,
+      values: inline inline-block block grid inline-grid table table-row
+        table-cell flex inline-flex none,
+    ),
 
     "shadow": (
-        property: box-shadow,
-        class: shadow,
-        values: (
-          null: var(--#{$prefix}box-shadow),
-          sm: var(--#{$prefix}box-shadow-sm),
-          lg: var(--#{$prefix}box-shadow-lg),
-          none: none,
-        ),
+      property: box-shadow,
+      class: shadow,
+      values: (
+        null: var(--#{$prefix}box-shadow),
+        sm: var(--#{$prefix}box-shadow-sm),
+        lg: var(--#{$prefix}box-shadow-lg),
+        none: none,
       ),
+    ),
+
+    "focus-ring": (
+      css-var: true,
+      css-variable-name: focus-ring-color,
+      class: focus-ring,
+      values: map-loop(
+          $base-colors,
+          meta.get-function("rgba-css-var"),
+          "$key",
+          "focus-ring"
+        ),
+    ),
 
     "position": (
       property: position,
@@ -120,67 +132,11 @@ $utilities: map.merge(
         y: translateY(-50%),
       ),
     ),
-    // scss-docs-end utils-position
-    // scss-docs-start utils-borders
-    "border": (
-        property: border,
-        values: (
-          null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-            var(--#{$prefix}border-color),
-          0: 0,
-        ),
-      ),
-    "border-top": (
-      property: border-top,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-          var(--#{$prefix}border-color),
-        0: 0,
-      ),
-    ),
-    "border-end": (
-      property: border-right,
-      class: border-end,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-          var(--#{$prefix}border-color),
-        0: 0,
-      ),
-    ),
-    "border-bottom": (
-      property: border-bottom,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-          var(--#{$prefix}border-color),
-        0: 0,
-      ),
-    ),
-    "border-start": (
-      property: border-left,
-      class: border-start,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-          var(--#{$prefix}border-color),
-        0: 0,
-      ),
-    ),
-
-    "border-opacity": (
-      css-var: true,
-      class: border-opacity,
-      values: (
-        10: 0.1,
-        25: 0.25,
-        50: 0.5,
-        75: 0.75,
-        100: 1,
-      ),
-    ),
 
     // Sizing utilities
     "width": (
         property: width,
-        class: w,
+        class: width,
         values: (
           25: 25%,
           50: 50%,
@@ -191,14 +147,14 @@ $utilities: map.merge(
       ),
     "max-width": (
       property: max-width,
-      class: mw,
+      class: max-width,
       values: (
         100: 100%,
       ),
     ),
     "viewport-width": (
       property: width,
-      class: vw,
+      class: viewport-width,
       values: (
         100: 100vw,
       ),
@@ -242,16 +198,15 @@ $utilities: map.merge(
         100: 100vh,
       ),
     ),
-    // scss-docs-end utils-sizing
-    // Flex utilities
-    // scss-docs-start utils-flex
+
     "flex": (
-        responsive: true,
-        property: flex,
-        values: (
-          fill: 1 1 auto,
-        ),
+      responsive: true,
+      property: flex,
+      values: (
+        fill: 1 1 auto,
       ),
+    ),
+
     "flex-direction": (
       responsive: true,
       property: flex-direction,
@@ -347,7 +302,7 @@ $utilities: map.merge(
     "margin": (
         responsive: true,
         property: margin,
-        class: mg,
+        class: margin,
         values: map.merge(
             $spacings,
             (
@@ -421,7 +376,7 @@ $utilities: map.merge(
           )
         ),
     ),
-   
+
     // Padding utilities
     "padding": (
         responsive: true,
@@ -493,7 +448,7 @@ $utilities: map.merge(
       class: col-gap,
       values: $spacings,
     ),
-  
+
     "white-space": (
       property: white-space,
       class: text,
@@ -509,22 +464,110 @@ $utilities: map.merge(
       values: (
         break: break-word,
       ),
-    ), 
+    ),
+
+    "bg-opacity": (
+      css-var: true,
+      class: bg-opacity,
+      values: (
+        10: 0.1,
+        25: 0.25,
+        50: 0.5,
+        75: 0.75,
+        100: 1,
+      ),
+    ),
+
+    "border-radius": (
+      property: border-radius,
+      class: border-radius,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        sm: var(--#{$prefix}border-radius-sm),
+        md: var(--#{$prefix}border-radius),
+        lg: var(--#{$prefix}border-radius-lg),
+        xl: var(--#{$prefix}border-radius-xl),
+        xxl: var(--#{$prefix}border-radius-xxl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
+    "border-radius-top": (
+      property: border-top-left-radius border-top-right-radius,
+      class: border-radius-top,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        sm: var(--#{$prefix}border-radius-sm),
+        md: var(--#{$prefix}border-radius),
+        lg: var(--#{$prefix}border-radius-lg),
+        xl: var(--#{$prefix}border-radius-xl),
+        xxl: var(--#{$prefix}border-radius-xxl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
+    "border-radius-end": (
+      property: border-top-right-radius border-bottom-right-radius,
+      class: border-radius-end,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        sm: var(--#{$prefix}border-radius-sm),
+        md: var(--#{$prefix}border-radius),
+        lg: var(--#{$prefix}border-radius-lg),
+        xl: var(--#{$prefix}border-radius-xl),
+        xxl: var(--#{$prefix}border-radius-xxl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
+    "border-radius-bottom": (
+      property: border-bottom-right-radius border-bottom-left-radius,
+      class: border-radius-bottom,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        sm: var(--#{$prefix}border-radius-sm),
+        md: var(--#{$prefix}border-radius),
+        lg: var(--#{$prefix}border-radius-lg),
+        xl: var(--#{$prefix}border-radius-xl),
+        xxl: var(--#{$prefix}border-radius-xxl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
+    "border-radius-start": (
+      property: border-bottom-left-radius border-top-left-radius,
+      class: border-radius-start,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+         sm: var(--#{$prefix}border-radius-sm),
+        md: var(--#{$prefix}border-radius),
+        lg: var(--#{$prefix}border-radius-lg),
+        xl: var(--#{$prefix}border-radius-xl),
+        xxl: var(--#{$prefix}border-radius-xxl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
 
     "visibility": (
-        property: visibility,
-        class: null,
-        values: (
-          visible: visible,
-          invisible: hidden,
-        ),
+      property: visibility,
+      class: null,
+      values: (
+        visible: visible,
+        invisible: hidden,
       ),
+    ),
 
     "z-index": (
-        property: z-index,
-        class: z,
-        values: $z-index-levels,
-      )
+      property: z-index,
+      class: z,
+      values: $z-index-levels,
+    ),
   ),
   $utilities
 );
@@ -534,7 +577,11 @@ $utilities: map.merge(
   $values: map.get($utility, values);
 
   // If the values are a list or string, convert it into a map
-  @if meta.type-of($values) == "string" or meta.type-of(list.nth($values, 1)) != "list" {
+  @if meta.type-of($values) ==
+    "string" or
+    meta.type-of(list.nth($values, 1)) !=
+    "list"
+  {
     $values: list.zip($values, $values);
   }
 
@@ -565,8 +612,8 @@ $utilities: map.merge(
       $state: map.get($utility, state);
     }
 
-    @if $property-class == "" and string-slice($infix, 1, 1) == "-" {
-      $infix: str-slice($infix, 2);
+    @if $property-class == "" and string.slice($infix, 1, 1) == "-" {
+      $infix: string.slice($infix, 2);
     }
 
     // Don't prefix if value key is null (e.g. with shadow class)
@@ -647,4 +694,10 @@ $utilities: map.merge(
   }
 }
 
-
+@media print {
+  @each $key, $utility in $utilities {
+    @if meta.type-of($utility) == "map" and map.get($utility, print) == true {
+      @include generate-utility($utility, "-print");
+    }
+  }
+}
