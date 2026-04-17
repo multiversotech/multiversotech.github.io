@@ -8,13 +8,6 @@
 @use "./functions" as *;
 
 /// Aplica os estilos **a partir** do breakpoint informado
-/// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
-/// @example scss - Aplicar estilos em **lg** e **xl**
-///  .#{$prefix}cookiebar {
-///    @include media-breakpoint-up(lg) {
-///      ...
-///    }
-///  }
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
@@ -27,14 +20,6 @@
 }
 
 /// Aplica os estilos **até** o breakpoint informado
-/// @param {String} $breakpoint - **Usar**: xs, sm, md, lg ou xl
-/// @example scss - Aplicar estilos em **xs**, **sm** e **md**
-///  .#{$prefix}cookiebar {
-///    @include media-breakpoint-down(md) {
-///      ...
-///    }
-///  }
-
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
@@ -45,9 +30,6 @@
     @content;
   }
 }
-
-/// Media that spans multiple breakpoint widths.
-/// Makes the @content apply between the min and max breakpoints
 
 @mixin media-breakpoint-between(
   $lower,
@@ -72,9 +54,6 @@
   }
 }
 
-/// Media between the breakpoint's minimum and maximum widths.
-/// No minimum for the smallest breakpoint, and no maximum for the largest one.
-/// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   $next: breakpoint-next($name, $breakpoints);
@@ -95,208 +74,185 @@
   }
 }
 
-/// Container mixins
-@mixin make-container($gutter: $container-padding-x) {
-  --#{$prefix}gutter-x: #{$gutter};
-  --#{$prefix}gutter-y: 0;
-  width: 100%;
-  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
-  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
-  margin-right: auto;
-  margin-left: auto;
+@mixin resizable($direction) {
+  overflow: auto;
+  resize: $direction;
 }
 
-@mixin color-mode($mode: light, $root: false) {
-  @if $color-mode-type == "media-query" {
-    @if $root == true {
-      @media (prefers-color-scheme: $mode) {
-        :root {
-          @content;
-        }
-      }
-    } @else {
-      @media (prefers-color-scheme: $mode) {
-        @content;
-      }
-    }
-  } @else {
-    @if $root == true {
-      // Atributo no :root garante especificidade máxima
-      :root[data-#{$prefix}theme="#{$mode}"] {
-        @content;
-      }
-    } @else {
-      [data-#{$prefix}theme="#{$mode}"] {
-        @content;
-      }
-    }
+/// Útil para links "Skip to main content" links;
+/// https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
+@mixin visually-hidden() {
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+
+  &:not(caption) {
+    position: absolute !important;
+  }
+
+  * {
+    overflow: hidden !important;
   }
 }
 
-@mixin color-scheme($name) {
-  @media (prefers-color-scheme: #{$name}) {
-    @content;
+@mixin visually-hidden-focusable() {
+  &:not(:focus):not(:focus-within) {
+    @include visually-hidden();
   }
 }
 
-/// Sistema de grade
-@mixin make-row($gutter: $grid-gutter-width) {
-  --#{$prefix}gutter-x: #{$gutter};
-  --#{$prefix}gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--#{$prefix}gutter-y));
-  margin-right: calc(-0.5 * var(--#{$prefix}gutter-x));
-  margin-left: calc(-0.5 * var(--#{$prefix}gutter-x));
+/// RESET TEXT
+@mixin reset-text {
+  font-family: $font-family-body;
+  font-style: normal;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-body;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
 }
 
-@mixin make-col-ready() {
-  @if meta.variable-exists(include-column-box-sizing) and
-    $include-column-box-sizing
-  {
-    box-sizing: border-box;
-  }
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
-  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
-  margin-top: var(--#{$prefix}gutter-y);
+// Truncar texto
+// Requer inline-block ou block para formatação adequada
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/// Cria as colunas da Grid.
-/// @param {Number} $columns - **Usar**: 4, 8 ou 12
-/// @param {String} $breakpoint [null] - **Usar**: xs, sm, md, lg ou xl **(Opcional)**
-/// @example scss - Criar classes até 4 colunas
-///  @include make-columns(4);
-/// @example scss - Criar classes até 8 colunas para breakpoint **sm**
-///  @include make-columns(8, "sm");
-@mixin make-columns($columns, $breakpoint: null) {
-  $breakpoint-suffix: "";
-  @if $breakpoint {
-    $breakpoint-suffix: "-#{$breakpoint}";
+@mixin overlay-backdrop($z-index-levels, $backdrop-bg, $backdrop-opacity) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-index-levels;
+  width: 100vw;
+  height: 100vh;
+  background-color: $backdrop-bg;
+
+  &.fade {
+    opacity: 0;
   }
-  .col#{$breakpoint-suffix} {
-    flex: 1 0 0%;
-    min-width: math.div(1, $columns) * 100%;
-  }
-  .col#{$breakpoint-suffix}-auto {
-    flex: 0 0 auto;
-    width: auto;
-  }
-  @for $i from 1 through $columns {
-    .col#{$breakpoint-suffix}-#{$i} {
-      flex-basis: math.div($i, $columns) * 100%;
-      max-width: math.div($i, $columns) * 100%;
-    }
+  &.show {
+    opacity: $backdrop-opacity;
   }
 }
 
-@mixin make-col-auto() {
-  flex: 0 0 auto;
-  width: auto;
-}
-
-@mixin make-col-offset($size, $columns: $grid-columns) {
-  $num: divide($size, $columns);
-  @if $num == 0 {
-    margin-left: 0;
-  } @else {
-    margin-left: math.percentage($num);
-  }
-}
-
-// Row columns
-@mixin row-cols($count) {
-  > * {
-    flex: 0 0 auto;
-    width: math.percentage(divide(1, $count));
-  }
-}
-
-/// Framework grid generation
-@mixin make-grid-columns(
-  $columns: $grid-columns,
-  $gutter: $grid-gutter-width,
-  $breakpoints: $grid-breakpoints
+@mixin button-variant(
+  $background,
+  $border,
+  $color: color-contrast($background),
+  $hover-background: null,
+  $hover-border: null,
+  $hover-color: null,
+  $active-background: null,
+  $active-border: null,
+  $active-color: null,
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: null
 ) {
-  @each $breakpoint in map.keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
+  $use-shade: $color == $color-contrast-light;
 
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
-      .col#{$infix} {
-        flex: 1 0 0;
-      }
-
-      .row-cols#{$infix}-auto > * {
-        @include make-col-auto();
-      }
-
-      @if $grid-row-columns > 0 {
-        @for $i from 1 through $grid-row-columns {
-          .row-cols#{$infix}-#{$i} {
-            @include row-cols($i);
-          }
-        }
-      }
-
-      .col#{$infix}-auto {
-        @include make-col-auto();
-      }
-
-      @if $columns > 0 {
-        @for $i from 1 through $columns {
-          .col#{$infix}-#{$i} {
-            @include make-columns($i, $columns);
-          }
-        }
-
-        @for $i from 0 through ($columns - 1) {
-          @if not($infix == "" and $i == 0) {
-            .offset#{$infix}-#{$i} {
-              @include make-col-offset($i, $columns);
-            }
-          }
-        }
-      }
-
-      // Gutters
-      $gutters: $spacing;
-
-      @each $key, $value in $gutters {
-        .gutter-#{$infix}-#{$key},
-        .gutter-x#{$infix}-#{$key} {
-          --#{$prefix}gutter-x: #{$value};
-        }
-
-        .gutter-#{$infix}-#{$key},
-        .gutter-y#{$infix}-#{$key} {
-          --#{$prefix}gutter-y: #{$value};
-        }
-      }
+  @if $hover-background == null {
+    @if $use-shade {
+      $hover-background: shade-color($background, $btn-hover-bg-shade-amount);
+    } @else {
+      $hover-background: tint-color($background, $btn-hover-bg-tint-amount);
     }
   }
+
+  @if $hover-border == null {
+    @if $use-shade {
+      $hover-border: shade-color($border, $btn-hover-border-shade-amount);
+    } @else {
+      $hover-border: tint-color($border, $btn-hover-border-tint-amount);
+    }
+  }
+
+  @if $hover-color == null {
+    $hover-color: color-contrast($hover-background);
+  }
+
+  @if $active-background == null {
+    @if $use-shade {
+      $active-background: shade-color($background, $btn-active-bg-shade-amount);
+    } @else {
+      $active-background: tint-color($background, $btn-active-bg-tint-amount);
+    }
+  }
+
+  @if $active-border == null {
+    @if $use-shade {
+      $active-border: shade-color($border, $btn-active-border-shade-amount);
+    } @else {
+      $active-border: tint-color($border, $btn-active-border-tint-amount);
+    }
+  }
+
+  @if $active-color == null {
+    $active-color: color-contrast($active-background);
+  }
+
+  @if $disabled-color == null {
+    $disabled-color: color-contrast($disabled-background);
+  }
+
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-bg: #{$background};
+  --#{$prefix}btn-border-color: #{$border};
+  --#{$prefix}btn-hover-color: #{$hover-color};
+  --#{$prefix}btn-hover-bg: #{$hover-background};
+  --#{$prefix}btn-hover-border-color: #{$hover-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$disabled-color};
+  --#{$prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
 }
 
-@mixin make-css-grid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
-  @each $breakpoint in map.keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
+@mixin button-outline-variant(
+  $color,
+  $color-hover: color-contrast($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-contrast($active-background)
+) {
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-border-color: #{$color};
+  --#{$prefix}btn-hover-color: #{$color-hover};
+  --#{$prefix}btn-hover-bg: #{$active-background};
+  --#{$prefix}btn-hover-border-color: #{$active-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$color};
+  --#{$prefix}btn-disabled-bg: transparent;
+  --#{$prefix}btn-disabled-border-color: #{$color};
+  --#{$prefix}gradient: none;
+}
 
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
-      @if $columns > 0 {
-        @for $i from 1 through $columns {
-          .grid-col#{$infix}-#{$i} {
-            grid-column: auto / span $i;
-          }
-        }
-        @for $i from 1 through ($columns - 1) {
-          .grid-start#{$infix}-#{$i} {
-            grid-column-start: $i;
-          }
-        }
-      }
-    }
-  }
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  --#{$prefix}btn-padding-y: #{$padding-y};
+  --#{$prefix}btn-padding-x: #{$padding-x};
+  --#{$prefix}btn-font-size: #{$font-size};
+  --#{$prefix}btn-border-radius: #{$border-radius};
 }
 
 @mixin caret-down($width: $caret-width) {
@@ -365,80 +321,16 @@
   }
 }
 
-@mixin clearfix() {
-  .clearfix {
-    &::after {
-      display: block;
-      clear: both;
-      content: "";
-    }
-  }
+
+// Lists
+@mixin list-unstyled {
+  padding-left: 0;
+  list-style: none;
 }
 
-@mixin box-shadow($shadow...) {
-  @if $enable-shadows {
-    $result: ();
-    $has-single-value: false;
-    $single-value: null;
-
-    @each $value in $shadow {
-      @if $value != null {
-        @if $value ==
-          none or
-          $value ==
-          initial or
-          $value ==
-          inherit or
-          $value ==
-          unset
-        {
-          $has-single-value: true;
-          $single-value: $value;
-        } @else {
-          $result: append($result, $value, "comma");
-        }
-      }
-    }
-
-    @if $has-single-value {
-      box-shadow: $single-value;
-    } @else if (length($result) > 0) {
-      box-shadow: $result;
-    }
-  }
-}
-
-/// ─────────────────────────────────────────────────────────────────────────────
-/// MIXINS — BORDER RADIUS
-/// ─────────────────────────────────────────────────────────────────────────────
-
-/// ── valid-radius() ────────────────────────────────────────────────────────────
-/// Garante que nenhum valor numérico de border-radius seja negativo.
-/// Valores não numéricos (ex: "inherit", "50%") são passados sem alteração.
-///
-/// @param  {List} $radius - Um ou mais valores de raio
-/// @return {List} Lista com valores negativos substituídos por 0
-
-@function valid-radius($radius) {
-  $result: ();
-
-  @each $value in $radius {
-    @if meta.type-of($value) == "number" {
-      $result: list.append($result, math.max($value, 0));
-    } @else {
-      $result: list.append($result, $value);
-    }
-  }
-
-  @return $result;
-}
-
-// ── border-radius() ───────────────────────────────────────────────────────────
+/// ──────── BORDER RADIUS ────────────────
 /// Aplica border-radius em todos os cantos.
 /// Quando $enable-rounded é false, aplica $fallback-border-radius se fornecido.
-///
-/// @param {List}         $radius                - Raio(s) desejado(s)
-/// @param {Number|false} $fallback-border-radius - Fallback quando rounded está desativado
 
 @mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
   @if $enable-rounded {
@@ -448,10 +340,7 @@
   }
 }
 
-/// ── Lados individuais ─────────────────────────────────────────────────────────
 /// Cada mixin aplica border-radius em dois cantos do lado correspondente.
-/// Seguem a convenção lógica CSS (start/end em vez de left/right).
-
 @mixin border-top-radius($radius: $border-radius) {
   @if $enable-rounded {
     border-top-left-radius: valid-radius($radius);
@@ -480,9 +369,7 @@
   }
 }
 
-/// ── Cantos individuais ────────────────────────────────────────────────────────
 /// Aplica border-radius em um único canto.
-
 @mixin border-top-start-radius($radius: $border-radius) {
   @if $enable-rounded {
     border-top-left-radius: valid-radius($radius);
@@ -507,6 +394,167 @@
   }
 }
 
+@mixin box-shadow($shadow...) {
+  @if $enable-shadows {
+    $result: ();
+    $has-single-value: false;
+    $single-value: null;
+
+    @each $value in $shadow {
+      @if $value != null {
+        @if $value == none or $value == initial or $value == inherit or $value == unset {
+          $has-single-value: true;
+          $single-value: $value;
+        } @else {
+          $result: list.append($result, $value, $separator: comma);
+        }
+      }
+    }
+
+    @if $has-single-value {
+      box-shadow: $single-value;
+    } @else if list.length($result) > 0 {
+      box-shadow: $result;
+    }
+  }
+}
+
+@mixin gradient-bg($color: null) {
+  background-color: $color;
+
+  @if $enable-gradients {
+    background-image: var(--#{$prefix}gradient);
+  }
+}
+
+// Horizontal gradient, da esquerda para direita
+@mixin gradient-x(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $start-percent: 0%,
+  $end-percent: 100%
+) {
+  background-image: linear-gradient(
+    to right,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
+}
+
+/// Vertical gradient, de cima para baixo
+@mixin gradient-y(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $start-percent: null,
+  $end-percent: null
+) {
+  background-image: linear-gradient(
+    to bottom,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
+}
+
+@mixin gradient-directional(
+  $start-color: $gray-7,
+  $end-color: $gray-8,
+  $deg: 45deg
+) {
+  background-image: linear-gradient($deg, $start-color, $end-color);
+}
+
+@mixin gradient-x-three-colors(
+  $start-color: $blue,
+  $mid-color: $purple,
+  $color-stop: 50%,
+  $end-color: $red
+) {
+  background-image: linear-gradient(
+    to right,
+    $start-color,
+    $mid-color $color-stop,
+    $end-color
+  );
+}
+
+@mixin gradient-y-three-colors(
+  $start-color: $blue,
+  $mid-color: $purple,
+  $color-stop: 50%,
+  $end-color: $red
+) {
+  background-image: linear-gradient(
+    to bottom,
+    $start-color,
+    $mid-color $color-stop,
+    $end-color
+  );
+}
+
+@mixin gradient-radial($inner-color: $gray-7, $outer-color: $gray-8) {
+  background-image: radial-gradient(circle, $inner-color, $outer-color);
+}
+
+@mixin gradient-striped($color: rgba($white, 0.15), $angle: 45deg) {
+  background-image: linear-gradient(
+    $angle,
+    $color 25%,
+    transparent 25%,
+    transparent 50%,
+    $color 50%,
+    $color 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+@mixin transition($transition...) {
+  @if list.length($transition) == 0 {
+    $transition: $transition-base;
+  }
+
+  @if list.length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "A palavra-chave 'none' ou 'null' deve ser usada como um único argumento.";
+     }
+    }
+  }
+
+  @if $enable-transitions {
+    @if list.nth($transition, 1) != null {
+      transition: $transition;
+    }
+
+    @if $enable-reduced-motion and list.nth($transition, 1) != null and list.nth($transition, 1) != none {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+}
+
+@mixin clearfix() {
+  .clearfix {
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }
+}
+
+/// Container mixins
+@mixin make-container($gutter: $container-padding-x) {
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
+  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @mixin list-group-item-variant($state, $background, $color) {
   .list-group-item-#{$state} {
     color: $color;
@@ -528,42 +576,9 @@
   }
 }
 
-// Lists
-@mixin list-unstyled {
-  padding-left: 0;
-  list-style: none;
-}
 
-@mixin transition($transition...) {
-  @if list.length($transition) == 0 {
-    $transition: $transition-base;
-  }
 
-  @if list.length($transition) > 1 {
-    @each $value in $transition {
-      @if $value == null or $value == none {
-        @warn "A palavra-chave 'none' ou 'null' deve ser usada como um único argumento.";
-      }
-    }
-  }
 
-  @if $enable-transitions {
-    @if list.nth($transition, 1) != null {
-      transition: $transition;
-    }
-
-    @if $enable-reduced-motion and
-      list.nth($transition, 1) !=
-      null and
-      list.nth($transition, 1) !=
-      none
-    {
-      @media (prefers-reduced-motion: reduce) {
-        transition: none;
-      }
-    }
-  }
-}
 
 /// ─────────────────────────────────────────────────────────────────────────────
 /// MIXINS — TIPOGRAFIA
@@ -648,40 +663,6 @@
   line-height: map.get($line-height, $name);
 }
 
-/// ── text-truncate() ───────────────────────────────────────────────────────────
-/// Corta o texto com reticências em uma única linha.
-/// Requer que o elemento tenha largura definida.
-///
-/// @example scss
-///   .card__title { @include text-truncate(); }
-///
-
-@mixin text-truncate() {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-/// ── text-truncate-multiline() ─────────────────────────────────────────────────
-/// Corta o texto com reticências após N linhas (WebKit line clamp).
-///
-/// @param  {Number} $lines - Número de linhas antes do corte (padrão: 2)
-///
-/// @example scss
-///   .card__excerpt { @include text-truncate-multiline(3); }
-///
-
-@mixin text-truncate-multiline($lines: 2) {
-  @if meta.type-of($lines) != "number" or $lines < 1 {
-    @error "text-truncate-multiline(): $lines deve ser um número >= 1. Recebido: #{$lines}";
-  }
-
-  display: -webkit-box;
-  -webkit-line-clamp: $lines;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 /// ── fluid-type() ──────────────────────────────────────────────────────────────
 /// Tipografia fluida via clamp(): interpola o tamanho da fonte
 /// entre um mínimo e máximo conforme a largura da viewport.
@@ -717,155 +698,146 @@
   font-size: clamp(#{$min-rem}, #{$slope-vw} + #{$intercept-rem}, #{$max-rem});
 }
 
-/// ── RESET TEXT ──────────────────────────────────────────────────────────────
-@mixin reset-text {
-  font-family: $font-family-body;
-  font-style: normal;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-body;
-  text-align: left;
-  text-align: start;
-  text-decoration: none;
-  text-shadow: none;
-  text-transform: none;
-  letter-spacing: normal;
-  word-break: normal;
-  white-space: normal;
-  word-spacing: normal;
-  line-break: auto;
+/// Sistema de grade
+@mixin make-row($gutter: $grid-gutter-width) {
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--#{$prefix}gutter-y));
+  margin-right: calc(-0.5 * var(--#{$prefix}gutter-x));
+  margin-left: calc(-0.5 * var(--#{$prefix}gutter-x));
 }
 
-@mixin visually-hidden() {
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-
-  &:not(caption) {
-    position: absolute !important;
-  }
-
-  * {
-    overflow: hidden !important;
-  }
+@mixin make-col-ready() {
+  box-sizing: if(
+    sass(
+        meta.global-variable-exists("include-column-box-sizing") and
+          $include-column-box-sizing
+      ): border-box;
+      else: null
+  );
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
+  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
+  margin-top: var(--#{$prefix}gutter-y);
 }
 
-/// Use to only display content when it's focused, or one of its child elements is focused
-/// (i.e. when focus is within the element/container that the class was applied to)
-///
-/// Useful for "Skip to main content" links; see https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
-
-@mixin visually-hidden-focusable() {
-  &:not(:focus):not(:focus-within) {
-    @include visually-hidden();
+/// Cria as colunas da Grid.
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: math.percentage(divide($size, $columns));
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
   }
 }
 
-@mixin gradient-bg($color: null) {
-  background-color: $color;
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
 
-  @if $enable-gradients {
-    background-image: var(--#{$prefix}gradient);
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: divide($size, $columns);
+
+  @if $num == 0 {
+    margin-left: 0;
+  } @else {
+    margin-left: math.percentage($num);
   }
 }
 
-// Horizontal gradient, da esquerda para direita
-@mixin gradient-x(
-  $start-color: $gray-7,
-  $end-color: $gray-8,
-  $start-percent: 0%,
-  $end-percent: 100%
-) {
-  background-image: linear-gradient(
-    to right,
-    $start-color $start-percent,
-    $end-color $end-percent
-  );
-}
-
-/// Vertical gradient, de cima para baixo
-@mixin gradient-y(
-  $start-color: $gray-7,
-  $end-color: $gray-8,
-  $start-percent: null,
-  $end-percent: null
-) {
-  background-image: linear-gradient(
-    to bottom,
-    $start-color $start-percent,
-    $end-color $end-percent
-  );
-}
-
-@mixin gradient-directional(
-  $start-color: $gray-7,
-  $end-color: $gray-8,
-  $deg: 45deg
-) {
-  background-image: linear-gradient($deg, $start-color, $end-color);
-}
-
-@mixin gradient-x-three-colors(
-  $start-color: $blue,
-  $mid-color: $purple,
-  $color-stop: 50%,
-  $end-color: $red
-) {
-  background-image: linear-gradient(
-    to right,
-    $start-color,
-    $mid-color $color-stop,
-    $end-color
-  );
-}
-
-@mixin gradient-y-three-colors(
-  $start-color: $blue,
-  $mid-color: $purple,
-  $color-stop: 50%,
-  $end-color: $red
-) {
-  background-image: linear-gradient(
-    $start-color,
-    $mid-color $color-stop,
-    $end-color
-  );
-}
-
-@mixin gradient-radial($inner-color: $gray-7, $outer-color: $gray-8) {
-  background-image: radial-gradient(circle, $inner-color, $outer-color);
-}
-
-@mixin gradient-striped($color: rgba($white, 0.15), $angle: 45deg) {
-  background-image: linear-gradient(
-    $angle,
-    $color 25%,
-    transparent 25%,
-    transparent 50%,
-    $color 50%,
-    $color 75%,
-    transparent 75%,
-    transparent
-  );
-}
-
-@mixin overlay-backdrop($z-index-levels, $backdrop-bg, $backdrop-opacity) {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $z-index-levels;
-  width: 100vw;
-  height: 100vh;
-  background-color: $backdrop-bg;
-
-  &.fade {
-    opacity: 0;
+// Row columns
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: math.percentage(divide(1, $count));
   }
-  &.show {
-    opacity: $backdrop-opacity;
+}
+
+/// Framework grid generation
+@mixin make-grid-columns(
+  $columns: $grid-columns,
+  $gutter: $grid-gutter-width,
+  $breakpoints: $grid-breakpoints
+) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      .col#{$infix} {
+        flex: 1 0 0;
+      }
+
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == "" and $i == 0) {
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --#{$prefix}gutter-x: #{$value};
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --#{$prefix}gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .g-col#{$infix}-#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+
+        @for $i from 1 through ($columns - 1) {
+          .g-start#{$infix}-#{$i} {
+            grid-column-start: $i;
+          }
+        }
+      }
+    }
   }
 }

@@ -131,10 +131,6 @@ $grid-columns: 12;
 $grid-gutter-width: 1.5rem;
 $grid-row-columns: 6;
 
-// ── Nav ───────────────────────────────────────────────────────────────────────
-$nav-link-padding-y: 0.5rem;
-$nav-link-padding-x: 1rem;
-
 // ── Grid — Container ──────────────────────────────────────────────────────────
 $container-max-width-sm: 540px;
 $container-max-width-md: 720px;
@@ -151,7 +147,7 @@ $border-width-lg: 3px;
 $border-width-xl: 4px;
 
 $border-style: solid;
-$border-color: tint-color($black, 40%);;
+$border-color: tint-color($black, 40%);
 
 $border-radius-sm: 0.25rem;
 $border-radius-md: 0.375rem;
@@ -349,6 +345,12 @@ $transition-fade: opacity 0.15s linear;
 $transition-collapse: height 0.35s ease;
 $transition-collapse-width: width 0.35s ease;
 
+$btn-transition:
+  color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out;
+
 // Alinhamento Vertical
 $alignment-vertical-top: top;
 $alignment-vertical-center: center;
@@ -413,4 +415,3 @@ $icon-link-underline-offset: 0.25em;
 $icon-link-icon-size: 1em;
 $icon-link-icon-transition: 0.2s ease-in-out transform;
 $icon-link-icon-transform: translate3d(0.25em, 0, 0);
-

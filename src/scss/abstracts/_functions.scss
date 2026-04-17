@@ -4,352 +4,108 @@
 @use "sass:meta";
 @use "sass:math";
 @use "sass:string";
+@use "configs" as *;
 @use "variables" as *;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// COLOR UTILITIES
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ── get-rgb() ─────────────────────────────────────────────────────────────────
-/// Retorna os canais R, G e B de uma cor como lista Sass (não string).
-/// Útil para construir valores rgb() ou CSS custom properties.
-///
-/// @param  {Color}  $color - Qualquer cor Sass (hex, rgb, hsl…)
-/// @return {List}   Lista de três números: (R, G, B) — cada um de 0 a 255
-///
-/// @example scss
-///   background: rgb(#{get-rgb(#ff8000)});    // → rgb(255, 128, 0)
-///   --my-color-rgb: #{get-rgb(#ff8000)};     // → 255, 128, 0
-///
-
-@function get-rgb($color) {
-  @if meta.type-of($color) != "color" {
-    @error "get-rgb() espera uma cor Sass, recebeu #{meta.type-of($color)}.";
-  }
-
-  @return (
-    color.channel($color, "red", $space: rgb),
-    color.channel($color, "green", $space: rgb),
-    color.channel($color, "blue", $space: rgb)
-  );
-}
-
-/// ── rgba-css-var() ────────────────────────────────────────────────────────────
-/// Gera um valor rgba() usando variáveis CSS, respeitando convenções de nome
-/// para casos especiais do body (bg e text) e o padrão geral.
-///
-/// @param  {String} $identifier - Nome base (ex: "body", "primary")
-/// @param  {String} $target     - Contexto: "bg", "text" ou nome de propriedade
-/// @return {String} Chamada rgba() com vars CSS interpoladas
-///
-
-@function rgba-css-var($identifier, $target) {
-  // Caso especial: body background
-  @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$prefix}body-bg-rgb), var(--#{$prefix}bg-opacity));
-  }
-
-  // Caso especial: body text
-  @if $identifier == "body" and $target == "text" {
-    @return rgba(
-      var(--#{$prefix}body-color-rgb),
-      var(--#{$prefix}text-opacity)
-    );
-  }
-
-  // Caso geral
-  @return rgba(
-    var(--#{$prefix}#{$identifier}-rgb),
-    var(--#{$prefix}#{$target}-opacity)
-  );
-}
-
-/// ── opaque() ──────────────────────────────────────────────────────────────────
-/// Simula como uma cor semitransparente aparece sobre um fundo sólido,
-/// devolvendo uma cor RGB totalmente opaca equivalente.
-/// Necessário antes de calcular luminância ou contraste.
-///
-/// @param  {Color} $background - Cor de fundo (deve ser opaca)
-/// @param  {Color} $foreground - Cor possivelmente transparente
-/// @return {Color} Cor resultante totalmente opaca
-///
-
-@function opaque($background, $foreground) {
-  @return color.mix(
-    color.change($foreground, $alpha: 1),
-    $background,
-    color.alpha($foreground) * 100%
-  );
-}
-
-/// ── tint-color() ─────────────────────────────────────────────────────────────
-/// Mistura uma cor com branco (torna mais clara).
-///
-/// @param  {Color}  $color  - Cor base
-/// @param  {Number} $weight - Percentual de branco a adicionar (0%–100%)
-/// @return {Color}
-///
-
-@function tint-color($color, $weight) {
-  @if meta.type-of($color) != "color" {
-    @error "tint-color(): $color deve ser uma cor. Recebido: #{meta.type-of($color)}";
-  }
-  @if $weight < 0% or $weight > 100% {
-    @error "tint-color(): $weight deve estar entre 0% e 100%. Recebido: #{$weight}";
-  }
-
-  @return color.mix(white, $color, $weight);
-}
-
-/// ── shade-color() ─────────────────────────────────────────────────────────────
-/// Mistura uma cor com preto (torna mais escura).
-///
-/// @param  {Color}  $color  - Cor base
-/// @param  {Number} $weight - Percentual de preto a adicionar (0%–100%)
-/// @return {Color}
-///
-
-@function shade-color($color, $weight) {
-  @if meta.type-of($color) != "color" {
-    @error "shade-color(): $color deve ser uma cor. Recebido: #{meta.type-of($color)}";
-  }
-  @if $weight < 0% or $weight > 100% {
-    @error "shade-color(): $weight deve estar entre 0% e 100%. Recebido: #{$weight}";
-  }
-
-  @return color.mix(black, $color, $weight);
-}
-
-// ── shift-color() ─────────────────────────────────────────────────────────────
-/// Clareia ou escurece uma cor conforme o sinal do peso:
-///   positivo → escurece (shade)   negativo → clareia (tint)
-///
-/// @param  {Color}  $color  - Cor base
-/// @param  {Number} $weight - Peso com sinal (ex: 20% escurece, -20% clareia)
-/// @return {Color}
-///
-
-@function shift-color($color, $weight) {
-  @if $weight > 0% {
-    @return shade-color($color, $weight);
-  } @else {
-    @return tint-color($color, -$weight);
-  }
-}
-
-// ── get-color() ───────────────────────────────────────────────────────────────
-/// Resolve um token de cor do design system como variável CSS.
-/// Suporta tons numéricos (100–900) e variações opcionais.
-///
-/// @param  {String}      $color   - Nome da cor (ex: "blue", "neutral")
-/// @param  {Number}      $shade   - Tom (100, 200 … 900)
-/// @param  {String|null} $variant - Variação opcional: "vivid", "warm",
-///                                  "cool", "pastel", "alt"
-/// @return {String}  var(--{$color}-{$shade}) ou var(--{$color}-{$variant}-{$shade})
-
-$_valid-shades: 100 200 300 400 500 600 700 800 900 !default;
-$_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
-
-@function get-color($color, $shade, $variant: null) {
-  @if meta.type-of($color) != "string" {
-    @error "get-color(): $color deve ser string. Recebido: #{meta.type-of($color)}";
-  }
-  @if meta.type-of($shade) != "number" {
-    @error "get-color(): $shade deve ser número. Recebido: #{meta.type-of($shade)}";
-  }
-  @if not list.index($_valid-shades, $shade) {
-    @warn "get-color(): Tom #{$shade} não é padrão. Recomendados: #{$_valid-shades}";
-  }
-  @if $variant != null {
-    @if meta.type-of($variant) != "string" {
-      @error "get-color(): $variant deve ser string ou null. Recebido: #{meta.type-of($variant)}";
-    }
-    @if not list.index($_valid-variants, $variant) {
-      @warn "get-color(): Variação '#{$variant}' não é padrão. Conhecidas: #{$_valid-variants}";
-    }
-  }
-
-  $var-name: "#{$color}-#{$shade}";
-  @if $variant != null {
-    $var-name: "#{$color}-#{$variant}-#{$shade}";
-  }
-
-  @return var(--#{$var-name});
-}
-
-/// ── map-loop() ────────────────────────────────────────────────────────────────
-/// Percorre um mapa e aplica uma função a cada valor, devolvendo um novo mapa.
-/// Diferente do original, recebe a função já como referência (meta.get-function)
-/// para evitar chamadas de string frágeis.
-///
-/// @param  {Map}      $map  - Mapa de entrada
-/// @param  {Function} $func - Referência obtida via meta.get-function()
-/// @param  {ArgList}  $args - Argumentos extras passados após o valor atual
-/// @return {Map}      Novo mapa com os valores transformados
-///
-/// @example scss
-///   $lighten: meta.get-function("tint-color");
-///   $lighter-map: map-loop($colors, $lighten, 20%);
-///   equivale a chamar tint-color($value, 20%) para cada entrada
-///
-
-@function map-loop($map, $func, $args...) {
-  @if meta.type-of($map) != "map" {
-    @error "map-loop(): $map deve ser um mapa. Recebido: #{meta.type-of($map)}";
-  }
-  @if meta.type-of($func) != "function" {
-    @error "map-loop(): $func deve ser uma referência de função (meta.get-function). "
-         + "Recebido: #{meta.type-of($func)}";
-  }
-
-  $result: ();
-
-  @each $key, $value in $map {
-    $new-value: meta.call($func, $value, $args...);
-    $result: map.merge(
-      $result,
-      (
-        $key: $new-value,
-      )
-    );
-  }
-
-  @return $result;
-}
-
-/// ── negativify-map() ──────────────────────────────────────────────────────────
-/// Cria versões negativas dos valores de um mapa, prefixando as chaves com "n".
-/// Valores zero são ignorados (negativo de zero não faz sentido em spacing).
-///
-/// @param  {Map} $map - Mapa de entrada (ex: $spacers)
-/// @return {Map} Novo mapa com chaves "n{key}" e valores negativos
-///
-/// @example scss
-///   $negative-spacers: negativify-map((1: 4px, 2: 8px, 3: 16px));
-///  → ("n1": -4px, "n2": -8px, "n3": -16px)
-/// 
-///
-
-@function negativify-map($map) {
-  $result: ();
-
-  @each $key, $value in $map {
-    @if $value != 0 and $value != "0" {
-      $result: map.merge(
-        $result,
-        (
-          "n#{$key}": -$value,
-        )
-      );
-    }
-  }
-
-  @return $result;
-}
-
 @function add($value1, $value2, $return-calc: true) {
-  @if $value1 == null {
+  @if $value1 ==null {
     @return $value2;
   }
 
-  @if $value2 == null {
+  @if $value2 ==null {
     @return $value1;
   }
 
-  @if meta.type-of($value1) ==
-    number and
-    meta.type-of($value2) ==
-    number and
-    (
-      math.is-unitless($value1) or
-        math.is-unitless($value2) or
-        math.unit($value1) ==
-        math.unit($value2)
-    )
+  @if meta.type-of($value1)
+    ==number and
+    meta.type-of($value2)
+    ==number and
+    comparable($value1, $value2)
   {
     @return $value1 + $value2;
   }
 
-  @if $return-calc == true {
+  @if $return-calc {
     @return calc(#{$value1} + #{$value2});
-  } @else {
-    @return $value1 + string.unquote(" + ") + $value2;
   }
+
+  @return $value1 + string.unquote(" - ") + $value2;
 }
 
 @function subtract($value1, $value2, $return-calc: true) {
-  @if $value1 == null and $value2 == null {
+  @if $value1 ==null and $value2 ==null {
     @return null;
   }
 
-  @if $value1 == null {
+  @if $value1 ==null {
     @return -$value2;
   }
 
-  @if $value2 == null {
+  @if $value2 ==null {
     @return $value1;
   }
 
-  @if meta.type-of($value1) ==
-    number and
-    meta.type-of($value2) ==
-    number and
-    (
-      math.is-unitless($value1) or
-        math.is-unitless($value2) or
-        math.unit($value1) ==
-        math.unit($value2)
-    )
+  @if meta.type-of($value1)
+    ==number and
+    meta.type-of($value2)
+    ==number and
+    comparable($value1, $value2)
   {
     @return $value1 - $value2;
   }
 
-  @if meta.type-of($value2) != number {
+  @if meta.type-of($value2) !=number {
     $value2: string.unquote("(") + $value2 + string.unquote(")");
   }
 
-  @if $return-calc == true {
+  @if $return-calc {
     @return calc(#{$value1} - #{$value2});
-  } @else {
-    @return $value1 + string.unquote(" - ") + $value2;
   }
+
+  @return $value1 + string.unquote(" - ") + $value2;
 }
 
 @function divide($dividend, $divisor, $precision: 10) {
-  @if $dividend == null or $divisor == null {
-    @return null;
-  }
+  $sign: if(
+    sass(
+        (($dividend > 0 and $divisor > 0) or ($dividend < 0 and $divisor < 0))
+      ): 1;
+      else: -1,
+  );
 
-  $sign: 1;
-  @if not(($dividend > 0 and $divisor > 0) or ($dividend < 0 and $divisor < 0))
-  {
-    $sign: -1;
-  }
   $dividend: abs($dividend);
   $divisor: abs($divisor);
-  @if $dividend == 0 {
+
+  @if $dividend ==0 {
     @return 0;
   }
-  @if $divisor == 0 {
+
+  @if $divisor ==0 {
     @error "Não pode ser dividido por 0";
   }
+
   $remainder: $dividend;
   $result: 0;
   $factor: 10;
-  @while ($remainder > 0 and $precision >= 0) {
+
+  @while ($remainder > 0 and $precision >=0) {
     $quotient: 0;
-    @while ($remainder >= $divisor) {
+
+    @while ($remainder >=$divisor) {
       $remainder: $remainder - $divisor;
       $quotient: $quotient + 1;
     }
+
     $result: $result * 10 + $quotient;
     $factor: $factor * 0.1;
     $remainder: $remainder * 10;
     $precision: $precision - 1;
-    @if ($precision < 0 and $remainder >= $divisor * 5) {
+
+    @if ($precision < 0 and $remainder >=$divisor * 5) {
       $result: $result + 1;
     }
   }
+
   $result: $result * $factor * $sign;
   $dividend-unit: math.unit($dividend);
   $divisor-unit: math.unit($divisor);
@@ -359,12 +115,99 @@ $_valid-variants: "vivid" "warm" "cool" "pastel" "alt" !default;
     "em": 1em,
     "%": 1%,
   );
+
   @if (
-    $dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)
+    $dividend-unit !=$divisor-unit and map-has-key($unit-map, $dividend-unit)
   ) {
     $result: $result * map.get($unit-map, $dividend-unit);
   }
+
   @return $result;
+}
+
+// ──────────────────────────────────────────────────────────────────
+// COLOR UTILITIES
+// ──────────────────────────────────────────────────────────────────
+
+/// Retorna os canais R, G e B de uma cor como lista Sass (não string).
+@function to-rgb($color) {
+  @if meta.type-of($color) != "color" {
+    @error "to-rgb() espera uma cor Sass, recebeu #{meta.type-of($color)}.";
+  }
+
+  @return (
+    color.channel($color, "red", $space: rgb),
+    color.channel($color, "green", $space: rgb),
+    color.channel($color, "blue", $space: rgb)
+  );
+}
+
+@function rgba-css-var($identifier, $target) {
+  @return rgba(
+    var(--#{$prefix}#{$identifier}-rgb),
+    var(--#{$prefix}#{$target}-opacity)
+  );
+}
+
+
+/// Percorre um mapa e aplica uma função a cada valor, devolvendo um novo mapa.
+@function map-loop($map, $func, $args...) {
+  $_map: ();
+
+  @if meta.type-of($func) != "function" {
+    @error "map-loop(): $func deve ser uma referência de função (meta.get-function). Recebido: #{meta.type-of($func)}";
+  }
+
+  @each $key, $value in $map {
+    $_args: ();
+
+    @each $arg in $args {
+      @if $arg == "$key" {
+        $_args: list.append($_args, $key);
+      } @else if $arg == "$value" {
+        $_args: list.append($_args, $value);
+      } @else {
+        $_args: list.append($_args, $arg);
+      }
+    }
+
+    $_map: map.merge($_map, ($key: meta.call($func, $_args...)));
+  }
+
+  @return $_map;
+}
+
+@function varify($list) {
+  $result: null;
+
+  @each $entry in $list {
+    $result: append($result, var(--#{$prefix}#{$entry}), space);
+  }
+
+  @return $result;
+}
+
+/// Retorna um novo mapa contendo apenas as chaves especificadas.
+@function map-get-multiple($map, $values) {
+  $result: ();
+
+  @each $key, $value in $map {
+    @if list.index($values, $key) != null {
+      $result: map.merge($result, ($key: $value));
+    }
+  }
+
+  @return $result;
+}
+
+@function map-merge-multiple($maps...) {
+  $merged-maps: ();
+
+  @each $map in $maps {
+    $merged-maps: map.merge($merged-maps, $map);
+  }
+
+  @return $merged-maps;
 }
 
 // ────────────────────────────────────────────────────────────────────────
@@ -410,165 +253,113 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025
   0.8714 0.8796 0.8879 0.8963 0.9047 0.9131 0.9216 0.9301 0.9387 0.9473 0.956
   0.9647 0.9734 0.9823 0.9911 1;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FUNÇÕES PRIVADAS (prefixo _)
-// ─────────────────────────────────────────────────────────────────────────────
+@function color-contrast(
+  $background,
+  $color-contrast-dark: $color-contrast-dark,
+  $color-contrast-light: $color-contrast-light,
+  $min-contrast-ratio: $min-contrast-ratio
+) {
+  $foregrounds: $color-contrast-light, $color-contrast-dark, $white, $black;
+  $max-ratio: 0;
+  $max-ratio-color: null;
 
-// Resolve uma cor semitransparente sobre um fundo, tornando-a totalmente opaca.
-// Necessário antes de calcular luminância — transparência distorce o resultado.
-@function _opaque($background, $foreground) {
-  @return color.mix(
-    rgba($foreground, 1),
-    rgba($background, 1),
-    color.alpha($foreground) * 100%
-  );
+  @each $color in $foregrounds {
+    $contrast-ratio: contrast-ratio($background, $color);
+
+    @if $contrast-ratio >=$min-contrast-ratio {
+      @return $color;
+    } @else if $contrast-ratio >$max-ratio {
+      $max-ratio: $contrast-ratio;
+      $max-ratio-color: $color;
+    }
+  }
+
+  @warn "Nenhuma cor com contraste ≥ #{$min-contrast-ratio}:1 encontrada para #{$background}...";
+
+  @return $max-ratio-color;
 }
 
-// Luminância relativa WCAG 2.2 de uma única cor (valor entre 0 e 1).
-@function _luminance($color) {
-  $channels: (
+// https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
+@function contrast-ratio($background, $foreground: $color-contrast-light) {
+  $l1: luminance($background);
+  $l2: luminance(opaque($background, $foreground));
+
+  @if $l1 >$l2 {
+    @return divide($l1 + 0.05, $l2 + 0.05);
+  }
+
+  @return divide($l2 + 0.05, $l1 + 0.05);
+}
+
+// https://www.w3.org/TR/WCAG/#dfn-relative-luminance
+@function luminance($color) {
+  $rgb: (
     "r": color.channel($color, "red", $space: rgb),
     "g": color.channel($color, "green", $space: rgb),
     "b": color.channel($color, "blue", $space: rgb),
   );
 
-  @each $channel, $raw in $channels {
-    $normalized: divide($raw, 255);
+  @each $name, $value in $rgb {
+    $normalized: divide($value, 255);
 
-    // Segmento linear (valores escuros, abaixo do threshold sRGB)
     @if $normalized < 0.04045 {
-      $channels: map.merge(
-        $channels,
-        (
-          $channel: divide($normalized, 12.92),
-        )
-      );
+      $value: divide($normalized, 12.92);
     } @else {
-      // Lookup na tabela pré-calculada — índice baseado no valor bruto (0–255)
-      $channels: map.merge(
-        $channels,
-        (
-          $channel: list.nth($_luminance-list, math.round($raw) + 1),
-        )
-      );
-    }
-  }
-
-  // Coeficientes de luminosidade relativa perceptual (ITU-R BT.709)
-  @return (map.get($channels, "r") * 0.2126) +
-    (map.get($channels, "g") * 0.7152) + (map.get($channels, "b") * 0.0722);
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// FUNÇÕES PÚBLICAS
-// ─────────────────────────────────────────────────────────────────────────────
-
-// Retorna a razão de contraste entre duas cores (valor entre 1 e 21).
-// Fonte: https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
-@function contrast-ratio($background, $foreground: $color-contrast-light) {
-  $l1: _luminance($background);
-  $l2: _luminance(_opaque($background, $foreground));
-  $lighter: math.max($l1, $l2);
-  $darker: math.min($l1, $l2);
-
-  @return divide($lighter + 0.05, $darker + 0.05);
-}
-
-// Retorna a cor de foreground acessível para um dado background.
-// Testa $color-contrast-light e $color-contrast-dark primeiro;
-// se nenhum atingir $min-contrast-ratio, retorna o de maior contraste disponível.
-@function color-contrast(
-  $background,
-  $dark: $color-contrast-dark,
-  $light: $color-contrast-light,
-  $min-ratio: $min-contrast-ratio
-) {
-  $candidates: $light, $dark, #fff, #000;
-  $best-ratio: 0;
-  $best-color: null;
-
-  @each $candidate in $candidates {
-    $ratio: contrast-ratio($background, $candidate);
-
-    @if $ratio >= $min-ratio {
-      @return $candidate; // ← primeira cor que passa, retorna imediatamente
+      $value: list.nth($_luminance-list, math.round($value) + 1);
     }
 
-    @if $ratio > $best-ratio {
-      $best-ratio: $ratio;
-      $best-color: $candidate;
-    }
+    $rgb: map.merge(
+      $rgb,
+      (
+        $name: $value,
+      )
+    );
   }
 
-  @warn "Nenhuma cor com contraste ≥ #{$min-ratio}:1 encontrada para #{$background}. "
-      + "Melhor disponível: #{$best-ratio}:1 (#{$best-color}).";
-
-  @return $best-color;
+  @return (map.get($rgb, "r") * 0.2126)+ (map.get($rgb, "g") * 0.7152)+
+    (map.get($rgb, "b") * 0.0722);
 }
 
-// Retorna true se o background for considerado "claro" (foreground ideal = escuro).
-@function is-light($color, $min-ratio: $min-contrast-ratio) {
-  @return color-contrast(
-      $color,
-      $color-contrast-dark,
-      $color-contrast-light,
-      $min-ratio
-    )
-    == $color-contrast-dark;
+// Resolve uma cor semitransparente sobre um fundo, tornando-a totalmente opaca.
+@function opaque($background, $foreground) {
+  @return color.mix(
+    rgba($foreground, 1),
+    rgba($background, 1),
+    color.opacity($foreground) * 100%
+  );
 }
 
-// Retorna true se o background for considerado "escuro" (foreground ideal = claro).
-@function is-dark($color, $min-ratio: $min-contrast-ratio) {
-  @return not is-light($color, $min-ratio);
+/// Mistura uma cor com branco (torna mais clara).
+@function tint-color($color, $weight) {
+  @return color.mix(white, $color, $weight);
 }
 
-// Retorna o nível WCAG 2.2 atingido entre dois pares de cores:
-//   "AAA" → razão ≥ 7
-//   "AA"  → razão ≥ 4.5
-//   "AA Large" → razão ≥ 3
-//   "Fail"     → abaixo de 3
-
-@function wcag-level($background, $foreground: $color-contrast-light) {
-  $ratio: contrast-ratio($background, $foreground);
-
-  @if $ratio >= 7 {
-    @return "AAA";
-  }
-  @if $ratio >= 4.5 {
-    @return "AA";
-  }
-  @if $ratio >= 3 {
-    @return "AA Large";
-  }
-  @return "Fail";
+/// Mistura uma cor com preto (torna mais escura).
+@function shade-color($color, $weight) {
+  @return color.mix(black, $color, $weight);
 }
 
-/// Retorna um novo mapa contendo apenas as chaves especificadas.
-@function map-get-multiple($map, $keys) {
+/// Clareia ou escurece uma cor conforme o sinal do peso:
+/// positivo → escurece (shade)   negativo → clareia (tint)
+@function shift-color($color, $weight) {
+  @return if(
+    sass($weight > 0): shade-color($color, $weight) ;
+      else: tint-color($color, -$weight)
+  );
+}
+
+/// Garante que nenhum valor numérico de border-radius seja negativo.
+/// Valores não numéricos (ex: "inherit", "50%") são passados sem alteração.
+@function valid-radius($radius) {
   $result: ();
-  @each $key in $keys {
-    @if map.has-key($map, $key) {
-      $result: map.set($result, $key, map.get($map, $key));
+
+  @each $value in $radius {
+    @if meta.type-of($value) == "number" {
+      $result: list.append($result, math.max($value, 0));
+    } @else {
+      $result: list.append($result, $value);
     }
   }
+
   @return $result;
-}
-
-// Converte nome de variável Sass para CSS custom property
-// @param {String} $name - Nome da variável (sem --)
-// @param {*} $fallback [null] - Valor fallback opcional caso a variável não exista
-// @return {String} - var(--nome) ou var(--nome, fallback)
-// @example scss - Sem fallback
-//  color: v("text-color"); // retorna var(--text-color)
-// @example scss - Com fallback
-//  color: v("text-color", #333); // retorna var(--text-color, #333)
-// @example scss - Uso em mapas
-//   background: v("blue-vivid-70", map.get($blue-vivid, 70));
-
-@function v($name, $fallback: null) {
-  @if $fallback != null {
-    @return var(--#{$name}, #{$fallback});
-  }
-
-  @return var(--#{$name});
 }
