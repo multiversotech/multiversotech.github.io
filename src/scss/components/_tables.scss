@@ -95,11 +95,6 @@ $table-variants: (
   vertical-align: $table-cell-vertical-align;
   border-color: var(--#{$prefix}table-border-color);
 
-  // Target th & td
-  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
-  // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
-  // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
-
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
@@ -124,32 +119,19 @@ $table-variants: (
 //
 // Change placement of captions with a class
 //
-
 .caption-top {
   caption-side: top;
 }
 
-
 //
 // Condensed table w/ half padding
 //
-
 .table-sm {
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
   }
 }
-
-
-// Border versions
-//
-// Add or remove borders all around the table and between all the columns.
-//
-// When borders are added on all sides of the cells, the corners can render odd when
-// these borders do not have the same color or if they are semi-transparent.
-// Therefore we add top and border bottoms to the `tr`s and left and right borders
-// to the `td`s or `th`s
 
 .table-bordered {
   > :not(caption) > * {
@@ -163,7 +145,6 @@ $table-variants: (
 }
 
 .table-borderless {
-  // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     border-bottom-width: 0;
   }
@@ -173,11 +154,6 @@ $table-variants: (
   }
 }
 
-// Zebra-striping
-//
-// Default zebra-stripe styles (alternating gray and transparent backgrounds)
-
-// For rows
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
     --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
@@ -185,7 +161,6 @@ $table-variants: (
   }
 }
 
-// For columns
 .table-striped-columns {
   > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
     --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
@@ -193,19 +168,12 @@ $table-variants: (
   }
 }
 
-// Active table
-//
-// The `.table-active` class can be added to highlight rows or cells
-
 .table-active {
   --#{$prefix}table-color-state: var(--#{$prefix}table-active-color);
   --#{$prefix}table-bg-state: var(--#{$prefix}table-active-bg);
 }
 
 // Hover effect
-//
-// Placed here since it has to come after the potential zebra striping
-
 .table-hover {
   > tbody > tr:hover > * {
     --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
@@ -213,11 +181,6 @@ $table-variants: (
   }
 }
 
-
-// Table variants
-//
-// Table variants set the table cell backgrounds, border colors
-// and the colors of the striped, hovered & active tables
 @mixin table-variant($state, $background) {
   .table-#{$state} {
     $color: color-contrast(opaque($table-bg-body, $background));
@@ -257,15 +220,7 @@ $table-variants: (
   }
 }
 
-@each $color, $value in $table-variants {
-  @include table-variant($color, $value);
-}
-
 // Responsive tables
-//
-// Generate series of `.table-responsive-*` classes for configuring the screen
-// size of where your table will overflow.
-
 @each $breakpoint in map.keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

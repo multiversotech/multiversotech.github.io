@@ -2,62 +2,17 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // NAV
 // ─────────────────────────────────────────────────────────────────────────────
-// Classe base para qualquer componente de navegação.
-// Funciona com <nav>, <ul> ou <ol>.
-// Navs
-
-
-$nav-link-transition:
-  color 0.15s ease-in-out,
-  background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out;
-
-$nav-link-focus-box-shadow: $focus-ring-box-shadow;
-
-$nav-tabs-border-color: var(--#{$prefix}border-color);
-$nav-tabs-border-width: var(--#{$prefix}border-width);
-$nav-tabs-border-radius: var(--#{$prefix}border-radius);
-
-$nav-tabs-link-hover-border-color: var(--#{$prefix}secondary-bg)
-  var(--#{$prefix}secondary-bg) $nav-tabs-border-color;
-
-$nav-tabs-link-active-color: var(--#{$prefix}emphasis-color);
-$nav-tabs-link-active-bg: var(--#{$prefix}body-bg);
-$nav-tabs-link-active-border-color: var(--#{$prefix}border-color)
-  var(--#{$prefix}border-color) $nav-tabs-link-active-bg;
-
-$nav-pills-border-radius: var(--#{$prefix}border-radius);
-$nav-pills-link-active-color: $component-active-color;
-$nav-pills-link-active-bg: $component-active-bg;
-
-$nav-underline-gap: 1rem;
-$nav-underline-border-width: 0.125rem;
-$nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
-
-// ── Base ──────────────────────────────────────────────────────────────────────
-$nav-link-padding-y: 0.5rem;
-$nav-link-padding-x: 1rem;
-
-$nav-link-color: var(--mvt-link-color);
-$nav-link-hover-color: var(--mvt-link-hover-color);
-$nav-link-disabled-color: var(--mvt-link-disabled-color);
 .nav {
-  --#{$prefix}nav-link-padding-x: 0.5rem;
-  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
-  --#{$prefix}nav-link-color: #{$nav-link-color};
-  --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
-  --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
-
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem 1rem;
+  padding: var(--mvt-spacing-half) var(--mvt-spacing-base);
   margin-bottom: 0;
   list-style: none;
 }
 
 .nav-link {
   display: block;
-  padding: 1rem 0.5rem;
+  padding: var(--mvt-spacing-base) var(--mvt-spacing-half);
   font-size: var(--mvt-font-size-base);
   font-weight: var(--mvt-font-weight-semibold);
   color: var(--mvt-link-color);
@@ -66,12 +21,14 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
   }
   background: none;
   border: 0;
-
-  @include transition($nav-link-transition);
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 
   &:hover,
   &:focus {
-    color: var(--#{$prefix}link-hover-color);
+    color: var(--mvt-text-accent-principal);
     @if $link-hover-decoration == underline {
       text-decoration: none;
     }
@@ -79,92 +36,71 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
 
   &:focus-visible {
     outline: 0;
-    box-shadow: $nav-link-focus-box-shadow;
+    box-shadow: #{$focus-ring-box-shadow};
   }
 
   &.disabled,
   &:disabled {
-    color: var(--#{$prefix}nav-link-disabled-color);
+    color: var(--mvt-link-disabled-color);
     pointer-events: none;
     cursor: default;
   }
 }
 
 // ── Tabs ──────────────────────────────────────────────────────────────────────
-
 .nav-tabs {
-  --#{$prefix}nav-tabs-border-width: #{$nav-tabs-border-width};
-  --#{$prefix}nav-tabs-border-color: #{$nav-tabs-border-color};
-  --#{$prefix}nav-tabs-border-radius: #{$nav-tabs-border-radius};
-  --#{$prefix}nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
-  --#{$prefix}nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
-  --#{$prefix}nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
-  --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
-
-  border-bottom: var(--#{$prefix}nav-tabs-border-width) solid
-    var(--#{$prefix}nav-tabs-border-color);
+  border-bottom: var(--mvt-border-width-base) solid
+    var(--mvt-border-color);
 
   .nav-link {
-    // Margem negativa faz a borda do link ativo cobrir a borda inferior do .nav-tabs
-    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
-    border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
+    margin-bottom: calc(-1 * var(--mvt-border-width-base));
+    border: var(--mvt-border-width-base) solid transparent;
 
-    @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
+    @include border-top-radius(var(--mvt-radius-xl));
 
     &:hover,
     &:focus {
-      // isolation: isolate evita que o outline de foco fique atrás do link adjacente
       isolation: isolate;
-      border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
+      border-color: var(--mvt-primary-bg-subtle) var(--mvt-secondary-bg-subtle) var(--mvt-border-color);
     }
   }
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: var(--#{$prefix}nav-tabs-link-active-color);
+    color: var(--mvt-text-accent-principal);
     background-color: null;
-    border-color: var(--#{$prefix}nav-tabs-link-active-border-color);
+    border-color: var(--mvt-border-color);
   }
 
   .dropdown-menu {
-    // Sobrepõe a borda inferior do .nav-tabs e remove o radius superior
-    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
+    margin-top: calc(-1 * var(--mvt-border-width-base));
 
     @include border-top-radius(0);
   }
 }
 
 // ── Pills ─────────────────────────────────────────────────────────────────────
-
 .nav-pills {
-  --#{$prefix}nav-pills-border-radius: #{$nav-pills-border-radius};
-  --#{$prefix}nav-pills-link-active-color: #{$nav-pills-link-active-color};
-  --#{$prefix}nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
-
   .nav-link {
-    @include border-radius(var(--#{$prefix}nav-pills-border-radius));
+    @include border-radius(var(--mvt-border-radius-xl));
   }
 
   .nav-link.active,
   .show > .nav-link {
-    color: var(--#{$prefix}nav-pills-link-active-color);
-    @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+    color: var(--mvt-text-accent-principal);
+    @include gradient-bg(var(--mvt-background-body));
   }
 }
 
 // ── Underline ─────────────────────────────────────────────────────────────────
 
 .nav-underline {
-  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
-  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
-  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
-
-  gap: var(--#{$prefix}nav-underline-gap);
+  gap: var(--mvt-spacing-base);
 
   .nav-link {
     padding-right: 0;
     padding-left: 0;
-    border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
+    border-bottom: 0.125rem solid transparent;
 
     &:hover,
     &:focus {
@@ -174,16 +110,13 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
 
   .nav-link.active,
   .show > .nav-link {
-    font-weight: $font-weight-bold;
-    color: var(--#{$prefix}nav-underline-link-active-color);
+    font-weight: #{$font-weight-bold};
+    color: var(--mvt-text-accent-principal);
     border-bottom-color: currentcolor;
   }
 }
 
 // ── Fill e Justified ──────────────────────────────────────────────────────────
-// .nav-fill     → cada item ocupa espaço proporcional ao seu conteúdo
-// .nav-justified → todos os itens têm a mesma largura
-
 .nav-fill {
   > .nav-link,
   .nav-item {
@@ -209,8 +142,6 @@ $nav-link-disabled-color: var(--mvt-link-disabled-color);
 }
 
 // ── Tab content ───────────────────────────────────────────────────────────────
-// Painéis ocultados por padrão, exibidos quando .active é aplicado.
-
 .tab-content {
   > .tab-pane {
     display: none;

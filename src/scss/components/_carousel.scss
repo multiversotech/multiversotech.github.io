@@ -248,9 +248,3 @@ $carousel-control-icon-filter-dark: $carousel-dark-control-icon-filter;
   --#{$prefix}carousel-caption-color: #{$carousel-caption-color};
   --#{$prefix}carousel-control-icon-filter: #{$carousel-control-icon-filter};
 }
-
-@if $enable-dark-mode {
-  @include color-mode(dark, true) {
-    @include carousel-dark();
-  }
-}
