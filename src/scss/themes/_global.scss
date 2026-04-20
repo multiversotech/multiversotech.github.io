@@ -1,1 +1,352 @@
+@use "../abstracts/configs" as *;
+@use "../abstracts/functions" as *;
 
+/* ============================================================
+   COSMOS — estrelas + grid decorativo, full page
+   ============================================================ */
+:root {
+  /* Tokens base */
+  --#{$prefix}primary-hue: 285;
+  --#{$prefix}aurora-intensity: 0.7;
+
+  /* Cores geradas dinamicamente pelo hue */
+  --#{$prefix}primary: oklch(0.62 0.22 var(--mvt-primary-hue));
+  --#{$prefix}primary-strong: oklch(0.55 0.24 var(--mvt-primary-hue));
+  --#{$prefix}primary-soft: oklch(0.78 0.12 var(--mvt-primary-hue));
+
+  --#{$prefix}cyan: oklch(78.697% 0.13703 211.79);
+  --#{$prefix}magenta: oklch(0.68 0.24 340);
+  --#{$prefix}lime: oklch(0.84 0.18 140);
+  --#{$prefix}amber: oklch(0.82 0.16 75);
+
+  /* Gradiente-assinatura do projeto */
+  --#{$prefix}grad-base: linear-gradient(
+    140deg,
+    oklch(58.541% 0.20415 277.126) 16%,
+    oklch(68.012% 0.1584 276.941) 32%,
+    oklch(65.59% 0.21181 354.287) 48%,
+    oklch(60.621% 0.23687 6.05) 64%,
+    oklch(65.911% 0.23142 354.174) 80%,
+    oklch(62.684% 0.23265 303.896) 100%
+  );
+  --#{$prefix}grad-multiverso: linear-gradient(
+    100deg,
+    oklch(0.7 0.18 calc(var(--mvt-primary-hue) - 30)) 0%,
+    oklch(0.65 0.22 var(--mvt-primary-hue)) 35%,
+    oklch(0.7 0.2 340) 70%,
+    oklch(0.78 0.15 210) 100%
+  );
+  --#{$prefix}grad-nebula:
+    radial-gradient(
+      ellipse at 20% 10%,
+      oklch(0.55 0.25 var(--mvt-primary-hue) / 0.55),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 85% 30%,
+      oklch(0.65 0.22 340 / 0.45),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 60% 90%,
+      oklch(0.7 0.18 210 / 0.38),
+      transparent 55%
+    );
+
+  /* Shadow */
+  --#{$prefix}shadow-1:
+    0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
+  --#{$prefix}shadow-glow: 0 10px 60px -10px
+    oklch(0.55 0.25 var(--mvt-primary-hue) / 0.45);
+
+    --#{$prefix}card-hue: 285
+}
+
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cosmos-stars {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    radial-gradient(1px 1px at 13% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 47% 80%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 73% 45%, #fff, transparent),
+    radial-gradient(1px 1px at 92% 18%, #fff, transparent),
+    radial-gradient(1px 1px at 36% 62%, #fff, transparent),
+    radial-gradient(1px 1px at 8% 78%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 62% 12%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 20% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 55% 30%, #fff, transparent);
+  background-size: 400px 400px;
+  opacity: 0.7;
+  animation: stars-drift 180s linear infinite;
+}
+
+.cosmos-stars--near {
+  background-size: 600px 600px;
+  opacity: 0.9;
+  animation-duration: 120s;
+  animation-direction: reverse;
+}
+
+.cosmos-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+}
+
+html[data-theme="light"] .cosmos-stars {
+  opacity: 0.45;
+  filter: invert(1);
+}
+
+html[data-theme="light"] .cosmos-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.2 0.02 280 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.2 0.02 280 / 0.05) 1px, transparent 1px);
+}
+
+html[data-stars="off"] .cosmos-stars {
+  display: none;
+}
+
+@keyframes stars-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-400px, -400px, 0);
+  }
+}
+
+/* ============================================================
+   BG ANIMATION (orbes aurora do hero)
+   ============================================================ */
+.bg-animation {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-clip {
+  position: absolute;
+  inset: 0;
+  filter: blur(80px);
+  opacity: var(--mvt-aurora-intensity);
+}
+
+.bg-clip .shape {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  animation: orb-float 22s ease-in-out infinite;
+}
+
+html[data-theme="light"] .bg-clip .shape {
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="light"] .bg-clip {
+  opacity: calc(var(--mvt-aurora-intensity) * 0.55);
+}
+.bg-clip .shape:nth-child(1) {
+    width: 520px;
+    height: 520px;
+    top: -100px;
+    left: -80px;
+    background: radial-gradient(circle, oklch(0.65 0.25 var(--mvt-primary-hue)), transparent 70%);
+    animation-delay: 0s;
+}
+
+.bg-clip .shape:nth-child(2) {
+  width: 420px;
+  height: 420px;
+  top: 10%;
+  right: -120px;
+  background: radial-gradient(circle, oklch(0.68 0.22 340), transparent 70%);
+  animation-delay: -4s;
+}
+
+.bg-clip .shape:nth-child(3) {
+  width: 380px;
+  height: 380px;
+  bottom: -50px;
+  left: 20%;
+  background: radial-gradient(circle, oklch(0.72 0.17 210), transparent 70%);
+  animation-delay: -8s;
+}
+
+.bg-clip .shape:nth-child(4) {
+    width: 300px;
+    height: 300px;
+    top: 45%;
+    left: 45%;
+    background: radial-gradient(circle, oklch(0.78 0.15 calc(var(--mvt-primary-hue) + 30)), transparent 70%);
+    animation-delay: -12s;
+}
+
+.bg-clip .shape:nth-child(5) {
+  width: 260px;
+  height: 260px;
+  bottom: 15%;
+  right: 10%;
+  background: radial-gradient(circle, oklch(0.7 0.2 160), transparent 70%);
+  animation-delay: -16s;
+}
+
+.bg-clip .shape:nth-child(6) {
+  width: 220px;
+  height: 220px;
+  top: 5%;
+  left: 40%;
+  background: radial-gradient(circle, oklch(0.82 0.16 75), transparent 70%);
+  animation-delay: -20s;
+}
+
+@keyframes orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-40px, 50px) scale(0.95);
+  }
+}
+
+/* ========== Text gradient (wordmark + highlights) ========== */
+.mvt-text-gradient {
+  background: var(--mvt-grad-multiverso);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.wordmark {
+  font-family: var(--mvt-font-logo-mvt);
+  font-weight: var(--mvt-font-weight-normal);
+  letter-spacing: 0.5px;
+  font-size: clamp(var(--mvt-font-size-base), 5vh, var(--mvt-font-size-4xl));
+  margin: 0;
+  line-height: 1;
+}
+
+/* ============================================================
+   TWEAKS PANEL
+   ============================================================ */
+.tweaks-panel {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  width: 300px;
+  background: oklch(from var(--mvt-background-elev) l c h / 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--mvt-border-strong);
+  border-radius: var(--mvt-radius-lg);
+  box-shadow:
+    0 20px 60px -15px oklch(0 0 0 / 0.6),
+    var(--mvt-shadow-glow);
+  font-family: var(--mvt-font-ui);
+  overflow: hidden;
+}
+
+.tweaks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: oklch(from var(--mvt-background-elev-dois) l c h / 0.7);
+  border-bottom: 1px solid var(--mvt-border);
+  font-weight: 700;
+  font-size: var(--mvt-font-size-base);
+}
+
+.tweaks-header button {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 0;
+  color: var(--mvt-foreground-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.tweaks-header button:hover {
+  background: var(--mvt-background-elev);
+  color: var(--mvt-foreground);
+}
+
+.tweaks-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tweak-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--mvt-foreground-muted);
+}
+
+.tweak-row em {
+  font-style: normal;
+  color: var(--mvt-foreground);
+  font-family: var(--mvt-font-code);
+}
+
+.tweak-row input[type="range"] {
+  width: 100%;
+  accent-color: oklch(0.65 0.22 var(--mvt-primary-hue));
+}
+
+.seg {
+  display: flex;
+  background: var(--mvt-background-muted);
+  border: 1px solid var(--mvt-border);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.seg button {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font-family: var(--mvt-font-ui);
+  font-size: 0.8rem;
+  color: var(--mvt-foreground-muted);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.seg button.is-active {
+  background: var(--mvt-grad-multiverso);
+  color: white;
+}
