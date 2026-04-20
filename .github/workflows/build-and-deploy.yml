@@ -12,6 +12,10 @@ permissions:
   pages: write
   id-token: write
 
+# Opt-in para Node.js 24 nas actions (obrigatório a partir de junho/2026)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Tarefas: O que o robô vai fazer
 jobs:
   build-and-deploy:
@@ -33,7 +37,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       # 3. Instala as dependências do projeto (o fs-extra)
       - name: Install dependencies
