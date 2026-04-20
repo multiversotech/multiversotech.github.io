@@ -1,6 +1,94 @@
 @use "sass:color";
 @use "../abstracts" as *;
 
+.button-default {
+  display: inline-block;
+  padding: null;
+  font-family: var(--mvt-font-ui);
+  font-size: var(--mvt-font-size-base);
+  font-weight: var(--mvt-font-weight-semibold);
+  color: null;
+  line-height: null;
+  text-align: center;
+  @if $link-decoration != none {
+    text-decoration: none;
+  }
+  white-space: null;
+  vertical-align: middle;
+  @if $enable-button-pointers {
+    cursor: pointer;
+  }
+  user-select: none;
+  border: transparent;
+  border: var(--#{$prefix}border-width-base) solid var(--#{$prefix}border-color);
+  @include border-radius($border-radius);
+  @include gradient-bg(var(--#{$prefix}btn-bg));
+  @include box-shadow(var(--#{$prefix}btn-box-shadow));
+  @include transition($btn-transition);
+  border-radius: null;
+  box-shadow:
+    inset 0 1px 0 rgba($white, 0.15),
+    0 1px 1px rgba($black, 0.075);
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  background-color: null;
+
+  &:hover {
+    color: var(--mvt-text-link-hover-color);
+    @if $link-hover-decoration == underline {
+      text-decoration: none;
+    }
+    background-color: null;
+    border-color: transparent;
+  }
+}
+
+
+.btn--primary {
+  background: var(--mvt-grad-multiverso);
+  color: white;
+  border: 0;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--mvt-radius-md);
+  font-family: var(--mvt-font-ui);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 30px -8px oklch(0.55 0.25 var(--mvt-primary-hue) / 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -10px oklch(0.55 0.25 var(--mvt-primary-hue) / 0.75);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--mvt-foreground);
+  border: 1px solid var(--mvt-border-strong);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--mvt-radius-md-md);
+  font-family: var(--mvt-font-ui);
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  backdrop-filter: blur(8px);
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
 .btn {
   display: inline-block;
   padding: null;

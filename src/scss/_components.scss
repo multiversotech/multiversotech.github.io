@@ -1,12 +1,11 @@
-
-
-
+@forward "./components/tweaks-panel";
 @forward "./components/alerts";
 @forward "./components/badges";
 @forward "./components/breadcrumb";
-@forward "./components/btn-base";
+@forward "./components/button";
 @forward "./components/btn-close";
 @forward "./components/btn-group";
+@forward "./components/hero";
 @forward "./components/cards";
 @forward "./components/carousel";
 @forward "./components/dropdown";
