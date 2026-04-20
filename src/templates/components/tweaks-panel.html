@@ -1,0 +1,42 @@
+    <!-- Tweaks -->
+    <button id="tweaksFab" class="tweaks-fab" aria-label="Abrir painel de personalização" aria-controls="tweaksPanel" aria-expanded="false">
+        <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+    </button>
+
+    <div id="tweaksPanel" class="tweaks-panel" hidden>
+        <div class="tweaks-header">
+            <span>Tweaks</span>
+            <button id="tweaksClose" aria-label="Fechar">×</button>
+        </div>
+        <div class="tweaks-body">
+            <label class="tweak-row">
+                <span>Tema</span>
+                <div class="seg">
+                    <button data-theme-opt="dark" class="is-active">Dark</button>
+                    <button data-theme-opt="light">Light</button>
+                </div>
+            </label>
+            <label class="tweak-row">
+                <span>Hue primário <em id="hueVal">285</em></span>
+                <input type="range" id="hueSlider" min="200" max="340" value="285">
+            </label>
+            <label class="tweak-row">
+                <span>Intensidade aurora <em id="auroraVal">70</em>%</span>
+                <input type="range" id="auroraSlider" min="0" max="100" value="70">
+            </label>
+            <label class="tweak-row">
+                <span>Estrelas</span>
+                <div class="seg">
+                    <button data-stars-opt="on" class="is-active">On</button>
+                    <button data-stars-opt="off">Off</button>
+                </div>
+            </label>
+            <label class="tweak-row">
+                <span>Estilo cards</span>
+                <div class="seg">
+                    <button data-cards-opt="glass" class="is-active">Glass</button>
+                    <button data-cards-opt="solid">Sólido</button>
+                </div>
+            </label>
+        </div>
+    </div>
