@@ -1,5 +1,12 @@
-<!-- Animação background -->
-<div class="bg-animation">
+<!-- Camadas cósmicas de fundo (estrelas globais) -->
+<div class="cosmos" aria-hidden="true">
+    <div class="cosmos-stars cosmos-stars--far"></div>
+    <div class="cosmos-stars cosmos-stars--near"></div>
+    <div class="cosmos-grid"></div>
+</div>
+
+<!-- Animação background (aurora orbs) -->
+<div class="bg-animation" aria-hidden="true">
     <div class="bg-clip">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -10,193 +17,160 @@
     </div>
 </div>
 
-<!-- Hero -->
-<section id="home" class="hero position-relative d-flex max-height-100" aria-labelledby="hero-title">
+<!-- Seção de Recursos -->
+<section class="section-main section-recursos pad-v-xl" aria-labelledby="recursos-titulo">
 
-    <div class="container-fluid">
+    <div class="container">
 
-        <div class="hero-conteudo w-75">
-
-            <div class="hero-badge d-inline-block pad-v-half pad-h-base mg-top-6x mg-bottom-3x" aria-hidden="true">
-                🌟 Open Source • Gratuito • Colaborativo
-            </div>
-
-            <div id="hero-title" class="hero-titulo mg-bottom-2x">
-                Explore o <span class="text-gradient">Multiverso</span><br>
-                da Tecnologia
-            </div>
-
-            <div class="hero-subtitulo mg-bottom-base">
-                Glossário colaborativo e open-source com recursos gratuitos e acessíveis que
-                traduz e explica
-                termos de tecnologia do inglês para o português.
-            </div>
-            <div class="hero-destaque mg-bottom-4x">
-                <span class="destaque">Aprenda</span>,
-                <span class="destaque">contribua</span> e
-                <span class="destaque">evolua</span>.
-            </div>
+        <div class="secao-cabecalho">
+            <span class="secao-kicker">/ 01 — Recursos</span>
+            <h2 id="recursos-titulo" class="titulo-da-secao">
+                O que você <span class="text-gradient">encontra</span> aqui
+            </h2>
+            <p class="secao-lead">Seis portais de conhecimento construídos pela comunidade, para a comunidade.
+            </p>
         </div>
 
-        <div class="d-flex justify-content-center gap-2x mg-bottom-10x">
-            <button class="btn">
-                <a href="/glossario/">
-                    <i class="fas fa-book-open" aria-hidden="true"></i>
-                    <span>Explorar Glossário</span>
-                </a>
-            </button>
+        <div class="recursos-grid">
 
-            <button class="btn">
-                <a href="/vocabulario/" target="_blank">
-                    <i class="fas fa-language" aria-hidden="true"></i>
-                    <span>Vocabulário</span>
-                </a>
-            </button>
-        </div>
+            <article class="recursos-card" style="--card-hue: 290;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="recursos-conteudo">
+                    <h3 class="recursos-titulo">Glossário Técnico</h3>
+                    <p class="recursos-subtitulo">Termos técnicos com definições claras e exemplos práticos em
+                        PT↔EN.</p>
+                </div>
+                <button href="/glossario/" class="button-default" aria-label="Explorar Glossário">Explorar
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </article>
 
-        <div class="scroll-indicator pad-top-10x" aria-hidden="true">
-            <i class="fas fa-chevron-down"></i>
+
+            <article class="recursos-card" style="--card-hue: 210;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+                <div class="recursos-conteudo">
+                    <h3 class="recursos-titulo">Vocabulário Geral</h3>
+                    <p class="recursos-subtitulo">Verbos, expressões e frases do dia-a-dia em inglês usados no
+                        ambiente tech.</p>
+                </div>
+                <button href="/vocabulario/" class="button-default" aria-label="Explorar Vocabulário">Aprender
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </article>
+
+            <article class="recursos-card" style="--card-hue: 340;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="recursos-conteudo">
+                    <h3 class="recursos-titulo">Linguagens</h3>
+                    <p class="recursos-subtitulo">Guias rápidos com comandos e sintaxe essencial das principais
+                        linguagens.</p>
+                </div>
+                <button href="/linguagens/" class="button-default" aria-label="Explorar Linguagens">Descobrir
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </article>
+
+            <article class="recursos-card" style="--card-hue: 160;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fa-solid fa-toolbox"></i>
+                </div>
+                <div class="recursos-conteudo">
+                    <h3 class="recursos-titulo">Ferramentas</h3>
+                    <p class="recursos-subtitulo">Do Git ao Docker — as ferramentas essenciais do desenvolvedor,
+                        traduzidas.</p>
+                </div>
+                <div class="recursos-cta">
+                    <button href="/ferramentas/" class="button-default" aria-label="Explorar Ferramentas">
+                        Saber mais
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </article>
+
+            <article class="recursos-card" style="--card-hue: 45;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="recursos-conteudo">
+                    <h3 class="recursos-titulo">Recursos Extras</h3>
+                    <p class="recursos-subtitulo">Flashcards, quizzes, áudio de pronúncia e links para
+                        documentações oficiais.</p>
+                </div>
+                <div class="recursos-cta">
+                    <button href="/recursos/" class="button-default" aria-label="Explorar Recursos Extras">
+                        Acessar
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </article>
+
+            <article class="recursos-card" style="--card-hue: 260;">
+                <div class="recursos-icone" aria-hidden="true">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="recurso-content">
+                    <h3 class="recursos-titulo">Blog &amp; Artigos</h3>
+                    <p class="recursos-subtitulo">Conteúdos exclusivos e atualizados sobre o universo tech em
+                        português.</p>
+                </div>
+                <div class="recursos-cta">
+                    <button href="/blog/" class="button-default" aria-label="Explorar Blog">
+                        Acessar
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- Seção de Recursos -->
-<section class="recursos background-primary-2" aria-labelledby="recursos-titulo">
+<section class="hero-estats" aria-labelledby="estat-titulo">
     <div class="container">
 
-        <h2 id="recursos-titulo" class="titulo-da-secao">
-            O que você encontra aqui
+        <h2 id="estat-titulo" class="sr-only">
+            Estatísticas do Multiverso Tech
         </h2>
 
-        <div class="recursos-grid">
+        <ul class="estat-lista">
+            <li class="estat-item">
+                <span class="estat-numero mvt-text-gradient" data-target="1000">0</span><span
+                    class="estat-sufixo">+</span>
+                <span class="estat-label">Termos Técnicos</span>
+            </li>
 
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fas fa-book"></i>
-                </div>
+            <li class="estat-item">
+                <span class="estat-numero mvt-text-gradient" data-target="500">0</span><span
+                    class="estat-sufixo">+</span>
+                <span class="estat-label">Vocabulário Inglês</span>
+            </li>
 
-                <div class="recursos-conteudo">
-                    <h3 class="recursos-titulo">Glossário Técnico</h3>
-                    <p class="recursos-subtitulo">Termos técnicos, com definições claras e
-                        explicados
-                        exemplos
-                        práticos em PT↔EN</p>
-                </div>
+            <li class="estat-item">
+                <span class="estat-numero mvt-text-gradient" data-target="50">0</span><span
+                    class="estat-sufixo">+</span>
+                <span class="estat-label">Linguagens e Ferramentas</span>
+            </li>
+        </ul>
 
-                <div class="recursos-cta">
-                    <a href="/glossario/" class="recursos-link">
-                        Explorar <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fa-solid fa-language"></i>
-                </div>
-
-                <div class="recursos-conteudo">
-                    <h3 class="recursos-titulo">Vocabulário Geral</h3>
-                    <p class="recursos-subtitulo">Verbos, expressões e frases do dia-a-dia
-                        em inglês usados
-                        no
-                        ambiente tech.</p>
-                </div>
-
-                <div class="recursos-cta">
-                    <a href="/vocabulario/" class="recursos-link">
-                        Aprender <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-
-                <div class="recursos-conteudo">
-                    <h3 class="recursos-titulo">Linguagens</h3>
-                    <p class="recursos-subtitulo">Guias rápidos com comandos e sintaxe
-                        essencial</p>
-                </div>
-
-
-                <div class="recursos-cta">
-                    <a href="/linguagens/" class="recursos-link">
-                        Descobrir <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fa-solid fa-toolbox"></i>
-                </div>
-
-                <div class="recursos-conteudo">
-                    <h3 class="recursos-titulo">Ferramentas</h3>
-                    <p class="recursos-subtitulo">Guias rápidos com comandos e sintaxe
-                        essencial</p>
-                </div>
-
-                <div class="recursos-cta">
-                    <a href="/ferramentas/" class="recursos-link">
-                        Saber mais <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-
-                <div class="recursos-conteudo">
-                    <h3 class="recursos-titulo">Recursos Extras</h3>
-                    <p class="recursos-subtitulo">Flashcards, quizzes, áudio de pronúncia e
-                        links para
-                        documentações oficiais.</p>
-                </div>
-
-
-                <div class="recursos-cta">
-                    <a href="/recursos/" class="recursos-link">
-                        Acessar <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="recursos-card">
-                <div class="recursos-icone" aria-hidden="true">
-                    <i class="fa-solid fa-newspaper"></i>
-                </div>
-
-                <div class="recurso-content">
-                    <h3 class="recursos-titulo">Blog & Artigos</h3>
-                    <p class="recursos-subtitulo">Conteúdos exclusivos e atualizados sobre
-                        tecnologia</p>
-                </div>
-
-                <div class="recursos-cta">
-                    <a href="/blog/" class="recursos-link">
-                        Acessar <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </article>
-
-        </div>
     </div>
 </section>
 
 <!-- Termos Recentemente Adicionados -->
-<section class="termos-recentes" aria-labelledby="termos-recentes-titulo">
+<section class="termos-recentes section-main" aria-labelledby="termos-recentes-titulo">
     <div class="container">
 
         <header class="termos-header">
-            <h2 id="termos-recentes-titulo" class="titulo-da-secao">
-                Termos Recentes
-            </h2>
+            <div>
+                <span class="secao-kicker">/ 02 — Vocabulário</span>
+                <h2 id="termos-recentes-titulo" class="titulo-da-secao">
+                    Termos <span class="text-gradient">recentes</span>
+                </h2>
+            </div>
 
             <a href="/glossario/" class="btn btn-ver-todos">
                 Ver todos <span aria-hidden="true">→</span>
@@ -210,89 +184,47 @@
     </div>
 </section>
 
-<section class="hero-estats" aria-labelledby="estat-titulo">
-    <div class="container">
-
-        <h2 id="estat-titulo" class="sr-only">
-            Estatísticas do Multiverso Tech
-        </h2>
-
-        <ul class="estat-lista">
-            <li class="estat-item">
-                <span class="estat-numero texto-gradiente" data-target="1000">0</span>
-                <span class="estat-label">Termos Técnicos</span>
-            </li>
-
-
-            <li class="estat-item">
-                <span class="estat-numero texto-gradiente" data-target="500">0</span>
-                <span class="estat-label">Vocabulário Inglês</span>
-            </li>
-
-            <li class="estat-item">
-                <span class="estat-numero texto-gradiente" data-target="50">0</span>
-                <span class="estat-label">Linguagens e Ferramentas</span>
-            </li>
-        </ul>
-
-    </div>
-</section>
 
 <!-- Futuramente - Blog Section -->
 <section id="blog" class="blog" aria-labelledby="blog-titulo">
     <div class="container">
-
         <header class="blog-cabecalho">
-            <h2 id="blog-titulo" class="titulo-da-secao">Blog & Artigos</h2>
+            <span class="secao-kicker">/ 03 — Leitura</span>
+            <h2 id="blog-titulo" class="titulo-da-secao">Blog &amp; <span class="text-gradient">Artigos</span>
+            </h2>
             <p class="blog-subtitulo">
-                Conteúdos exclusivos e atualizados sobre tecnologia
+                Conteúdos exclusivos e atualizados sobre tecnologia.
             </p>
         </header>
 
-        <!-- Estado: Em breve -->
-        <p class="blog-em-breve" role="status">
-            Em breve 🚧
-        </p>
-
-        <!-- Grid de posts (ativado futuramente via JS) -->
-        <div class="blog-grid" id="recente-posts" hidden style="display: none;">
-            <!-- Card -->
-            <article class="blog-card">
-                <div class="blog-imagem">
-                    <img src="" alt="">
-                    <span class="blog-categoria">[Categoria]</span>
-                </div>
-
-                <div class="blog-conteudo">
-                    <div class="blog-metadados">
-                        <span><i class="fas fa-calendar" aria-hidden="true"></i>[data]</span>
-                        <span><i class="fas fa-clock" aria-hidden="true"></i>[tempo de
-                            leitura]</span>
-                    </div>
-
-                    <h3 class="blog-titulo">[Título]</h3>
-
-                    <p class="blog-descricao">
-                        [Breve descrição]
-                    </p>
-
-                    <a href="#" class="blog-link link-mais">
-                        Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </article>
+        <div class="blog-em-breve" role="status">
+            <div class="em-breve-card">
+                <span class="em-breve-icon" aria-hidden="true">🚧</span>
+                <h3>Em construção</h3>
+                <p>Os primeiros artigos chegam em breve. Quer colaborar como autor? Abra uma issue no
+                    repositório.</p>
+                <a href="https://github.com/multiversotech/multiversotech.github.io/issues" class="em-breve-link">
+                    Sugerir pauta <span aria-hidden="true">→</span>
+                </a>
+            </div>
         </div>
 
+        <!-- Grid de posts (ativado futuramente via JS) -->
+        <div class="blog-grid" id="recente-posts" hidden style="display:none;"></div>
     </div>
 </section>
 
-<!-- Contribuir - CTA-->
-<section id="contribuir" class="contribuir" aria-labelledby="contribuir-titulo">
+<!-- Contribuir - CTA -->
+<section id="contribuir" class="contribuir section-main" aria-labelledby="contribuir-titulo">
     <div class="container">
         <div class="secao-cta">
+            <div class="cta-orbs" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </div>
 
+            <span class="secao-kicker">/ 04 — Comunidade</span>
             <h2 id="contribuir-titulo" class="titulo-da-secao">
-                🤝 Quer contribuir?
+                Quer <span class="text-gradient">contribuir?</span>
             </h2>
 
             <p class="cta-subtitulo">
@@ -300,11 +232,17 @@
                 Você pode adicionar termos, corrigir traduções ou ajudar no código.
             </p>
 
-            <a href="https://github.com/multiversotech/multiversotech.github.io" class="btn-cta" target="_blank"
-                rel="noopener">
-                <i class="fab fa-github" aria-hidden="true"></i>
-                Contribuir no GitHub
-            </a>
+            <div class="cta-acoes">
+                <a href="https://github.com/multiversotech/multiversotech.github.io" class="btn-cta btn--primary"
+                    target="_blank" rel="noopener">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    Contribuir no GitHub
+                </a>
+                <a href="#" class="btn-cta btn--ghost">
+                    <i class="fa-regular fa-lightbulb" aria-hidden="true"></i>
+                    Sugerir Termo
+                </a>
+            </div>
         </div>
     </div>
 </section>
