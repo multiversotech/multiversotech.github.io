@@ -28,7 +28,7 @@ class MenuToggle {
       }
     }
 
-    return document.querySelector(".nav-menu, #navbarNav, .navbar-collapse");
+    return document.querySelector(".mtv-nav, #navbarNav, .mvt-nav-item");
   }
 
   initMenu() {

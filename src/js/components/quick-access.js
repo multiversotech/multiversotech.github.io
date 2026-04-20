@@ -1,53 +1,27 @@
 class AcessoRapido {
   constructor() {
-    document.addEventListener("DOMContentLoaded", () => this.init());
-  }
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdownBtn = document.querySelector(
+        ".acesso-rapido .mvt-dropdown-toggle",
+      );
+      const dropdownMenu = document.getElementById("acessoRapido");
 
-  init() {
-    this.html = document.documentElement;
-    this.container = document.querySelector(".acesso-rapido");
-
-    if (!this.container) {
-      console.warn("Componente .acesso-rapido não encontrado");
-      return;
-    }
-
-    this.toggleBtn = this.container.querySelector(".dropdown-toggle");
-    this.dropdownMenu = this.container.querySelector(".dropdown-menu");
-
-    this.initDropdown();
-    this.initFontSize();
-    this.initLetterSpacing();
-    this.initLineHeight();
-    this.initContrast();
-    this.restoreSettings();
-  }
-
-  // --- Dropdown ---
-
-  initDropdown() {
-    if (!this.toggleBtn || !this.dropdownMenu) return;
-
-    this.toggleBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isOpen = this.toggleBtn.getAttribute("aria-expanded") === "true";
-      this.setDropdown(!isOpen);
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!this.container.contains(e.target)) {
-        this.setDropdown(false);
+      // Verifica se o botão existe
+      if (!dropdownBtn) {
+        console.warn("Botão .acesso-rapido .mvt-dropdown-toggle não encontrado");
+        return;
       }
-    });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") this.setDropdown(false);
+      dropdownBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = dropdownMenu.classList.toggle("is-open");
+        dropdownBtn.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".acesso-rapido"))
+          dropdownMenu?.classList.remove("is-open");
+      });
     });
-  }
-
-  setDropdown(open) {
-    this.toggleBtn.setAttribute("aria-expanded", String(open));
-    this.dropdownMenu.classList.toggle("show", open);
   }
 }
 
