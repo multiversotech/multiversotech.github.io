@@ -4,10 +4,23 @@
 /* ========================================
         DESIGN SYSTEM (LIGHT MODE)
    ======================================== */
-[data-theme="light"] {
-  /* Backgrounds */
+html[data-theme="light"] {
+    --#{$prefix}background: oklch(0.87 0.036 280);
+    --#{$prefix}background-elev: oklch(0.91 0.038 300);
+    --#{$prefix}background-elev-dois: oklch(0.97 0.02 280);
+    --#{$prefix}background-muted: oklch(0.96 0.01 280);
+    --#{$prefix}foreground: oklch(0.18 0.02 280);
+    --#{$prefix}foreground-muted: oklch(0.42 0.02 280);
+    --#{$prefix}foreground-dim: oklch(0.62 0.02 280);
+    --#{$prefix}border: oklch(0.18 0.02 280 / 0.1);
+    --#{$prefix}border-strong: oklch(0.18 0.02 280 / 0.18);
+    --#{$prefix}card-background: oklch(1 0 0 / 0.75);
+    --#{$prefix}card-background-solid: oklch(1 0 0);
+    --#{$prefix}hero-fade: oklch(0.985 0.006 280);
 
-  --#{$prefix}background-body: var(--mvt-color-magenta-10);
+
+
+  /* Backgrounds */
   --#{$prefix}background-header: var(--mvt-color-secondary-1);
   --#{$prefix}background-footer: var(--mvt-color-primary-1);
   --#{$prefix}background-btn: var(--mvt-color-primary-3);

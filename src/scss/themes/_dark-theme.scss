@@ -4,11 +4,23 @@
         DESIGN SYSTEM (DARK MODE)
     Paleta: Cyberpunk / Gaming / Tech
 ========================================= */
-[data-theme="dark"] {
-  --#{$prefix}background-body: var(--mvt-color-indigo-80);
-  --#{$prefix}background-header: var(--mvt-color-primary-8);
-  --#{$prefix}background-footer: var(--mvt-color-primary-8);
-  --#{$prefix}background-btn: var(--mvt-primary-bg-subtle-dark);
+html[data-theme="dark"] {
+    --#{$prefix}background: oklch(0.12 0.02 280);
+    --#{$prefix}background-elev: oklch(0.16 0.025 280);
+    --#{$prefix}background-elev-dois: oklch(0.20 0.03 280);
+    --#{$prefix}background-muted: oklch(0.09 0.02 280);
+    --#{$prefix}foreground: oklch(0.97 0.005 280);
+    --#{$prefix}foreground-muted: oklch(0.75 0.02 280);
+    --#{$prefix}foreground-dim: oklch(0.55 0.02 280); 
+    --#{$prefix}border: oklch(1 0 0 / 0.08);
+    --#{$prefix}border-strong: oklch(1 0 0 / 0.14);
+    --#{$prefix}card-background: oklch(0.18 0.03 280 / 0.65);
+    --#{$prefix}card-background-solid: oklch(0.17 0.03 280);
+    --#{$prefix}hero-fade: oklch(0.12 0.02 280);
+
+
+
+
   --#{$prefix}background-input: rgba(200, 210, 230, 0.65);
 
   --#{$prefix}background-text-highlight: var(--mvt-color-pink-50);
@@ -40,15 +52,7 @@
       transparent 50%
     );
 
-  --#{$prefix}gradient-base: linear-gradient(
-    140deg,
-    #6366f1 16%,
-    #818cf8 32%,
-    #ec4899 48%,
-    #ea136c 64%,
-    #f43c9b 80%,
-    #a855f7 100%
-  );
+
 
   --#{$prefix}text-inverse: var(--mvt-text-light);
   --#{$prefix}text-highlight: var(--mvt-color-yellow-50);
@@ -57,7 +61,7 @@
 
   --#{$prefix}text-link-hover-color: var(--mvt-color-purple-30);
   --#{$prefix}text-link-disabled-color: var(--mvt-neutral-40);
-    --#{$prefix}text-gradient-base: linear-gradient(
+  --#{$prefix}text-gradient-base: linear-gradient(
     140deg,
     #6366f1 16%,
     #818cf8 32%,
@@ -86,8 +90,6 @@
   --background-tooltip: rgb(30, 90, 100, 0.5);
   --background-btn-primary: rgba(109, 49, 155, 0.8);
   --background-btn-secondary: rgba(36, 0, 82, 0.8);
-
-
 
   --accent-heart: #ef4444;
 }
