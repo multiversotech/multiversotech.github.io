@@ -1,95 +1,26 @@
 @use "../abstracts/configs" as *;
+@use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 /* ======================================
         DESIGN SYSTEM (DARK MODE)
     Paleta: Cyberpunk / Gaming / Tech
 ========================================= */
 html[data-theme="dark"] {
-    --#{$prefix}background: oklch(0.12 0.02 280);
-    --#{$prefix}background-elev: oklch(0.16 0.025 280);
-    --#{$prefix}background-elev-dois: oklch(0.20 0.03 280);
-    --#{$prefix}background-muted: oklch(0.09 0.02 280);
-    --#{$prefix}foreground: oklch(0.97 0.005 280);
-    --#{$prefix}foreground-muted: oklch(0.75 0.02 280);
-    --#{$prefix}foreground-dim: oklch(0.55 0.02 280); 
-    --#{$prefix}border: oklch(1 0 0 / 0.08);
-    --#{$prefix}border-strong: oklch(1 0 0 / 0.14);
-    --#{$prefix}card-background: oklch(0.18 0.03 280 / 0.65);
-    --#{$prefix}card-background-solid: oklch(0.17 0.03 280);
-    --#{$prefix}hero-fade: oklch(0.12 0.02 280);
-
-
-
-
-  --#{$prefix}background-input: rgba(200, 210, 230, 0.65);
-
-  --#{$prefix}background-text-highlight: var(--mvt-color-pink-50);
-  --#{$prefix}background-alternative: var(--mvt-dark-bg-subtle);
-  --#{$prefix}background-success: var(--mvt-success-bg-subtle);
-  --#{$prefix}background-warning: var(--mvt-warning-bg-subtle);
-  --#{$prefix}background-danger: var(--mvt-danger-bg-subtle);
-  --#{$prefix}background-info: var(--mvt-info-bg-subtle);
-
-  --#{$prefix}background-hero-badge: var(--mvt-color-purple-30);
-  --#{$prefix}background-shape: radial-gradient(
-    circle at center,
-    rgba(115, 70, 192, 0.15)
-  );
-  --#{$prefix}background-hero-page:
-    radial-gradient(
-      circle at 20% 50%,
-      rgba(64, 24, 128, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(161, 157, 206.6, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 20%,
-      rgba(114, 108, 182.4, 0.2) 0%,
-      transparent 50%
-    );
-
-
-
-  --#{$prefix}text-inverse: var(--mvt-text-light);
-  --#{$prefix}text-highlight: var(--mvt-color-yellow-50);
-
-  --#{$prefix}text-accent-principal: #cdbdff;
-
-  --#{$prefix}text-link-hover-color: var(--mvt-color-purple-30);
-  --#{$prefix}text-link-disabled-color: var(--mvt-neutral-40);
-  --#{$prefix}text-gradient-base: linear-gradient(
-    140deg,
-    #6366f1 16%,
-    #818cf8 32%,
-    #ec4899 48%,
-    #ea136c 64%,
-    #f43c9b 80%,
-    #a855f7 100%
-  );
-
-  --#{$prefix}border-color: var(--mvt-secondary-border-subtle-dark);
-
-  --#{$prefix}btn-active-color: var(--mvt-text-primary);
-  --#{$prefix}btn-active-bg: var(--mvt-primary-border-subtle-dark);
-
-  --background-sidebar: rgba(47, 11, 80, 0.6);
-
-  --background-gradient-light: linear-gradient(
-    145deg,
-    rgb(122, 122, 253, 0.8) 0%,
-    rgb(111, 69, 251, 0.8) 100%
-  );
-
-  --background-card-primary: rgba(50, 25, 70, 0.5);
-  --background-card-secondary: rgba(60, 35, 110, 0.35);
-  --background-input: rgba(200, 210, 230, 0.65);
-  --background-tooltip: rgb(30, 90, 100, 0.5);
-  --background-btn-primary: rgba(109, 49, 155, 0.8);
-  --background-btn-secondary: rgba(36, 0, 82, 0.8);
-
-  --accent-heart: #ef4444;
+  --#{$prefix}primary-hue: #{$primary-hue};
+  --#{$prefix}aurora-intensity: #{$aurora-intensity};
+  --#{$prefix}background: rgb(5, 5, 13);
+  --#{$prefix}background-elev: rgb(11, 12, 24);
+  --#{$prefix}background-elev-dois: rgb(19, 20, 35);
+  --#{$prefix}background-muted: rgb(2, 2, 7);
+  --#{$prefix}foreground: rgb(244, 245, 248);
+  --#{$prefix}foreground-muted: rgb(171, 173, 187);
+  --#{$prefix}foreground-dim: rgb(111, 113, 125);
+  --#{$prefix}border: rgba(255, 255, 255, 0.08);
+  --#{$prefix}border-strong: rgba(255, 255, 255, 0.14);
+  --#{$prefix}card-background: rgba(15, 16, 31, 0.65);
+  --#{$prefix}card-background-solid: rgb(13, 14, 28);
+  --#{$prefix}hero-fade: rgb(5, 5, 13);
+  --#{$prefix}grad-multiverso: #{$grad-multiverso};
+  --#{$prefix}grad-base: #{$grad-base};
+  --#{$prefix}grad-nebula: #{$grad-nebula};
 }
