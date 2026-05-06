@@ -111,7 +111,7 @@ $card-group-margin: $grid-gutter-width * 0.5;
 
 .card-link {
   &:hover {
-    @if $link-hover-decoration == underline {
+    @if null == underline {
       text-decoration: none;
     }
   }

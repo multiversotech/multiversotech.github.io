@@ -10,7 +10,7 @@
   color: null;
   line-height: null;
   text-align: center;
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   white-space: null;
@@ -38,7 +38,7 @@
 
   &:hover {
     color: var(--mvt-text-link-hover-color);
-    @if $link-hover-decoration == underline {
+    @if underline == underline {
       text-decoration: none;
     }
     background-color: null;
@@ -98,7 +98,7 @@
   color: null;
   line-height: null;
   text-align: center;
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   white-space: null;
@@ -126,7 +126,7 @@
 
   &:hover {
     color: var(--mvt-text-link-hover-color);
-    @if $link-hover-decoration == underline {
+    @if underline == underline {
       text-decoration: none;
     }
     background-color: null;
@@ -220,7 +220,7 @@
 // Link buttons
 //
 .btn-link {
-  text-decoration: $link-decoration;
+  text-decoration: underline;
   @if $enable-gradients {
     background-image: none;
   }

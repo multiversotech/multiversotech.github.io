@@ -59,7 +59,7 @@ $table-bg-scale: -80%;
 
 $table-variants: (
   "primary": shift-color($primary, $table-bg-scale),
-  "secondary": shift-color($secondary, $table-bg-scale),
+  "secondary": shift-color($primary-dark, $table-bg-scale),
   "success": shift-color($success, $table-bg-scale),
   "info": shift-color($info, $table-bg-scale),
   "warning": shift-color($warning, $table-bg-scale),

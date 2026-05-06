@@ -14,9 +14,6 @@ $list-group-item-padding-y: $spacing * 0.5;
 $list-group-item-padding-x: $spacing;
 
 $list-group-hover-bg: var(--#{$prefix}tertiary-bg);
-$list-group-active-color: $component-active-color;
-$list-group-active-bg: $component-active-bg;
-$list-group-active-border-color: $list-group-active-bg;
 
 $list-group-disabled-color: var(--#{$prefix}secondary-color);
 $list-group-disabled-bg: $list-group-bg;
@@ -44,9 +41,6 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   --#{$prefix}list-group-action-active-bg:      #{$list-group-action-active-bg};
   --#{$prefix}list-group-disabled-color:        #{$list-group-disabled-color};
   --#{$prefix}list-group-disabled-bg:           #{$list-group-disabled-bg};
-  --#{$prefix}list-group-active-color:          #{$list-group-active-color};
-  --#{$prefix}list-group-active-bg:             #{$list-group-active-bg};
-  --#{$prefix}list-group-active-border-color:   #{$list-group-active-border-color};
 
   display: flex;
   flex-direction: column;
@@ -79,7 +73,7 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   display: block;
   padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
   color: var(--#{$prefix}list-group-color);
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   background-color: var(--#{$prefix}list-group-bg);

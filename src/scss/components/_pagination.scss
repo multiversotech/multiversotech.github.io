@@ -18,16 +18,11 @@ $pagination-border-color: var(--#{$prefix}border-color);
 
 $pagination-focus-color: var(--#{$prefix}link-hover-color);
 $pagination-focus-bg: var(--#{$prefix}secondary-bg);
-$pagination-focus-box-shadow: $focus-ring-box-shadow;
 $pagination-focus-outline: 0;
 
 $pagination-hover-color: var(--#{$prefix}link-hover-color);
 $pagination-hover-bg: var(--#{$prefix}tertiary-bg);
 $pagination-hover-border-color: var(--#{$prefix}border-color);
-
-$pagination-active-color: $component-active-color;
-$pagination-active-bg: $component-active-bg;
-$pagination-active-border-color: $component-active-bg;
 
 $pagination-disabled-color: var(--#{$prefix}secondary-color);
 $pagination-disabled-bg: var(--#{$prefix}secondary-bg);
@@ -55,10 +50,6 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
   --#{$prefix}pagination-hover-border-color: #{$pagination-hover-border-color};
   --#{$prefix}pagination-focus-color: #{$pagination-focus-color};
   --#{$prefix}pagination-focus-bg: #{$pagination-focus-bg};
-  --#{$prefix}pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
-  --#{$prefix}pagination-active-color: #{$pagination-active-color};
-  --#{$prefix}pagination-active-bg: #{$pagination-active-bg};
-  --#{$prefix}pagination-active-border-color: #{$pagination-active-border-color};
   --#{$prefix}pagination-disabled-color: #{$pagination-disabled-color};
   --#{$prefix}pagination-disabled-bg: #{$pagination-disabled-bg};
   --#{$prefix}pagination-disabled-border-color: #{$pagination-disabled-border-color};
@@ -74,7 +65,7 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
   padding: var(--#{$prefix}pagination-padding-y) var(--#{$prefix}pagination-padding-x);
   @include font-size(var(--#{$prefix}pagination-font-size));
   color: var(--#{$prefix}pagination-color);
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   background-color: var(--#{$prefix}pagination-bg);
@@ -84,7 +75,7 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
   &:hover {
     z-index: 2;
     color: var(--#{$prefix}pagination-hover-color);
-    @if $link-hover-decoration == underline {
+    @if null == underline {
       text-decoration: none;
     }
     background-color: var(--#{$prefix}pagination-hover-bg);

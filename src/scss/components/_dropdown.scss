@@ -23,9 +23,6 @@ $dropdown-link-color: var(--#{$prefix}body-color);
 $dropdown-link-hover-color: $dropdown-link-color;
 $dropdown-link-hover-bg: var(--#{$prefix}tertiary-bg);
 
-$dropdown-link-active-color: $component-active-color;
-$dropdown-link-active-bg: $component-active-bg;
-
 $dropdown-link-disabled-color: var(--#{$prefix}tertiary-color);
 
 $dropdown-item-padding-y: $spacing * 0.25;
@@ -43,8 +40,6 @@ $dropdown-dark-box-shadow: null;
 $dropdown-dark-link-color: $dropdown-dark-color;
 $dropdown-dark-link-hover-color: $white;
 $dropdown-dark-link-hover-bg: rgba($white, 0.15);
-$dropdown-dark-link-active-color: $dropdown-link-active-color;
-$dropdown-dark-link-active-bg: $dropdown-link-active-bg;
 $dropdown-dark-link-disabled-color: $neutral-50;
 $dropdown-dark-header-color: $neutral-50;
 
@@ -76,8 +71,6 @@ $dropdown-dark-header-color: $neutral-50;
   --#{$prefix}dropdown-link-color: #{$dropdown-link-color};
   --#{$prefix}dropdown-link-hover-color: #{$dropdown-link-hover-color};
   --#{$prefix}dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
-  --#{$prefix}dropdown-link-active-color: #{$dropdown-link-active-color};
-  --#{$prefix}dropdown-link-active-bg: #{$dropdown-link-active-bg};
   --#{$prefix}dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
   --#{$prefix}dropdown-item-padding-x: #{$dropdown-item-padding-x};
   --#{$prefix}dropdown-item-padding-y: #{$dropdown-item-padding-y};
@@ -218,7 +211,7 @@ $dropdown-dark-header-color: $neutral-50;
   font-weight: $font-weight-normal;
   color: var(--#{$prefix}dropdown-link-color);
   text-align: inherit;
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   white-space: nowrap;
@@ -229,7 +222,7 @@ $dropdown-dark-header-color: $neutral-50;
   &:hover,
   &:focus {
     color: var(--#{$prefix}dropdown-link-hover-color);
-    @if $link-hover-decoration == underline {
+    @if null == underline {
       text-decoration: none;
     }
     background-color: var(--#{$prefix}dropdown-link-hover-bg);
@@ -288,9 +281,6 @@ $dropdown-dark-header-color: $neutral-50;
   --#{$prefix}dropdown-link-hover-color: #{$dropdown-dark-link-hover-color};
   --#{$prefix}dropdown-divider-bg: #{$dropdown-dark-divider-bg};
   --#{$prefix}dropdown-link-hover-bg: #{$dropdown-dark-link-hover-bg};
-  --#{$prefix}dropdown-link-active-color: #{$dropdown-dark-link-active-color};
-  --#{$prefix}dropdown-link-active-bg: #{$dropdown-dark-link-active-bg};
   --#{$prefix}dropdown-link-disabled-color: #{$dropdown-dark-link-disabled-color};
   --#{$prefix}dropdown-header-color: #{$dropdown-dark-header-color};
-  // scss-docs-end dropdown-dark-css-vars
 }

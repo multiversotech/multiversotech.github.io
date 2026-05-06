@@ -16,7 +16,7 @@
   font-size: var(--mvt-font-size-base);
   font-weight: var(--mvt-font-weight-semibold);
   color: var(--mvt-link-color);
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
   background: none;
@@ -29,14 +29,14 @@
   &:hover,
   &:focus {
     color: var(--mvt-text-accent-principal);
-    @if $link-hover-decoration == underline {
+    @if null == underline {
       text-decoration: none;
     }
   }
 
   &:focus-visible {
     outline: 0;
-    box-shadow: #{$focus-ring-box-shadow};
+    box-shadow: 0 0 0 0.25rem  rgba($primary, 0.25);
   }
 
   &.disabled,
