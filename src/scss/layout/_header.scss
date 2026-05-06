@@ -22,8 +22,8 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: var(--mvt-spacing-sm);
-  @if $link-decoration != none {
+  gap: $spacing-sm;
+  @if underline != none {
     text-decoration: none;
   }
 }
@@ -185,7 +185,7 @@
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
 
-  @if $link-decoration != none {
+  @if underline != none {
     text-decoration: none;
   }
 }

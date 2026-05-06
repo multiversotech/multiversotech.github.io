@@ -397,8 +397,8 @@ html[data-theme="light"] .termo-link {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
+  background: var(--mvt-background-elev);
+  border: 1px solid var(--mvt-border);
   color: var(--mvt-foreground-muted);
   display: inline-flex;
   align-items: center;
@@ -512,7 +512,7 @@ html[data-theme="light"] .termo-link {
       transparent 55%
     ),
     var(--mvt-card-background-solid);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--mvt-border-strong);
   overflow: hidden;
 }
 .secao-cta .titulo-da-secao {
