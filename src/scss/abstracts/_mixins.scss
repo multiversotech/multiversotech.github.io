@@ -284,21 +284,22 @@
 
 @mixin caret(
   $direction: down,
-  $width: $caret-width,
-  $spacing: $caret-spacing,
-  $vertical-align: $caret-vertical-align
+  $caret-width: 0.3em,
+$caret-vertical-align: $caret-width * 0.85,
+$caret-spacing: $caret-width * 0.85,
+
 ) {
   &::after {
     display: inline-block;
-    margin-left: $spacing;
-    vertical-align: $vertical-align;
+    margin-left: $caret-spacing;
+    vertical-align: $caret-vertical-align;
     content: "";
     @if $direction == down {
-      @include caret-down($width);
+      @include caret-down($caret-width);
     } @else if $direction == up {
-      @include caret-up($width);
+      @include caret-up($caret-width);
     } @else if $direction == end {
-      @include caret-end($width);
+      @include caret-end($caret-width);
     }
   }
 
@@ -309,10 +310,10 @@
 
     &::before {
       display: inline-block;
-      margin-right: $spacing;
-      vertical-align: $vertical-align;
+      margin-right: $caret-spacing;
+      vertical-align: $caret-vertical-align;
       content: "";
-      @include caret-start($width);
+      @include caret-start($caret-width);
     }
   }
 

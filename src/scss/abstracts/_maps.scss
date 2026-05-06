@@ -2,46 +2,48 @@
 @use "colors" as *;
 
 $base-colors: (
-  "white": $white,
-  "black": $black,
   "primary": $primary,
-  "secondary": $secondary,
+  "primary-strong": $primary-strong,
+  "primary-soft": $primary-soft,
+  "primary-dark": $primary-dark,
   "neutral": $neutral,
   "warning": $warning,
   "success": $success,
   "danger": $danger,
   "info": $info,
-);
-$theme-colors: (
-  "primary-1": $primary-10,
-  "primary-2": $primary-20,
-  "primary-3": $primary-30,
-  "primary-4": $primary-40,
-  "primary-5": $primary-50,
-  "primary-6": $primary-60,
-  "primary-7": $primary-70,
-  "primary-8": $primary-80,
-  "primary-9": $primary-90,
-  "secondary-1": $secondary-10,
-  "secondary-2": $secondary-20,
-  "secondary-3": $secondary-30,
-  "secondary-4": $secondary-40,
-  "secondary-5": $secondary-50,
-  "secondary-6": $secondary-60,
-  "secondary-7": $secondary-70,
-  "secondary-8": $secondary-80,
-  "secondary-9": $secondary-90,
-  "neutral-1": $neutral-10,
-  "neutral-2": $neutral-20,
-  "neutral-3": $neutral-30,
-  "neutral-4": $neutral-40,
-  "neutral-5": $neutral-50,
-  "neutral-6": $neutral-60,
-  "neutral-7": $neutral-70,
-  "neutral-8": $neutral-80,
-  "neutral-9": $neutral-90,
+  "white": $white,
+  "black": $black,
 );
 
+$theme-colors: (
+  "primary-10": $primary-10,
+  "primary-20": $primary-20,
+  "primary-30": $primary-30,
+  "primary-40": $primary-40,
+  "primary-50": $primary-50,
+  "primary-60": $primary-60,
+  "primary-70": $primary-70,
+  "primary-80": $primary-80,
+  "primary-90": $primary-90,
+  "primary-dark-10": $primary-dark-10,
+  "primary-dark-20": $primary-dark-20,
+  "primary-dark-30": $primary-dark-30,
+  "primary-dark-40": $primary-dark-40,
+  "primary-dark-50": $primary-dark-50,
+  "primary-dark-60": $primary-dark-60,
+  "primary-dark-70": $primary-dark-70,
+  "primary-dark-80": $primary-dark-80,
+  "primary-dark-90": $primary-dark-90,
+  "neutral-10": $neutral-10,
+  "neutral-20": $neutral-20,
+  "neutral-30": $neutral-30,
+  "neutral-40": $neutral-40,
+  "neutral-50": $neutral-50,
+  "neutral-60": $neutral-60,
+  "neutral-70": $neutral-70,
+  "neutral-80": $neutral-80,
+  "neutral-90": $neutral-90,
+);
 
 $states-color: (
   "warning-10": $warning-10,
@@ -53,7 +55,6 @@ $states-color: (
   "warning-70": $warning-70,
   "warning-80": $warning-80,
   "warning-90": $warning-90,
-
   "success-10": $success-10,
   "success-20": $success-20,
   "success-30": $success-30,
@@ -63,7 +64,6 @@ $states-color: (
   "success-70": $success-70,
   "success-80": $success-80,
   "success-90": $success-90,
-
   "danger-10": $danger-10,
   "danger-20": $danger-20,
   "danger-30": $danger-30,
@@ -73,7 +73,6 @@ $states-color: (
   "danger-70": $danger-70,
   "danger-80": $danger-80,
   "danger-90": $danger-90,
-
   "info-10": $info-10,
   "info-20": $info-20,
   "info-30": $info-30,
@@ -200,15 +199,12 @@ $colors-map: (
 //    VARIÁVEIS DE TEXTO DO TEMA        //
 //--------------------------------------//
 $theme-colors-text: (
-  "text-light": $text-light,
-  "text-dark": $text-dark,
   "primary-text": $primary-text,
   "secondary-text": $secondary-text,
   "success-text": $success-text,
   "info-text": $info-text,
   "warning-text": $warning-text,
   "danger-text": $danger-text,
-
   "primary-text-dark": $primary-text-dark,
   "secondary-text-dark": $secondary-text-dark,
   "success-text-dark": $success-text-dark,
@@ -218,44 +214,31 @@ $theme-colors-text: (
 );
 
 //--------------------------------------//
-//    VARIÁVEIS DE BG DO TEMA        //
+//    VARIÁVEIS DE BG DO ESTADOS        //
 //--------------------------------------//
-$theme-colors-bg-subtle: (
-  "primary-bg-subtle": $primary-bg-subtle,
-  "secondary-bg-subtle": $secondary-bg-subtle,
+$states-colors-bg-subtle: (
   "success-bg-subtle": $success-bg-subtle,
   "info-bg-subtle": $info-bg-subtle,
   "warning-bg-subtle": $warning-bg-subtle,
   "danger-bg-subtle": $danger-bg-subtle,
-  "light-bg-subtle": $light-bg-subtle,
-
-  "primary-bg-subtle-dark": $primary-bg-subtle-dark,
-  "secondary-bg-subtle-dark": $secondary-bg-subtle-dark,
   "success-bg-subtle-dark": $success-bg-subtle-dark,
   "info-bg-subtle-dark": $info-bg-subtle-dark,
   "warning-bg-subtle-dark": $warning-bg-subtle-dark,
   "danger-bg-subtle-dark": $danger-bg-subtle-dark,
-  "dark-bg-subtle-dark": $dark-bg-subtle,
 );
 
 //--------------------------------------//
-//    VARIÁVEIS DE BORDA DO TEMA        //
+//    VARIÁVEIS DE BORDA DO ESTADOS        //
 //--------------------------------------//
-$theme-colors-border-subtle: (
-  "primary-border-subtle": $primary-border-subtle,
-  "secondary-border-subtle": $secondary-border-subtle,
+$states-colors-border-subtle: (
   "success-border-subtle": $success-border-subtle,
   "info-border-subtle": $info-border-subtle,
   "warning-border-subtle": $warning-border-subtle,
   "danger-border-subtle": $danger-border-subtle,
-
-  "primary-border-subtle-dark": $primary-border-subtle-dark,
-  "secondary-border-subtle-dark": $secondary-border-subtle-dark,
   "success-border-subtle-dark": $success-border-subtle-dark,
   "info-border-subtle-dark": $info-border-subtle-dark,
   "warning-border-subtle-dark": $warning-border-subtle-dark,
   "danger-border-subtle-dark": $danger-border-subtle-dark,
-
 );
 
 $border-widths: (
@@ -270,7 +253,7 @@ $border-radius: (
   "sm": $border-radius-sm,
   "md": $border-radius-md,
   "lg": $border-radius-lg,
-  "xl": $border-radius-xl,
+  "xl": $border-radius,
   "xxl": $border-radius-xxl,
   "pill": $border-radius-pill,
 );
@@ -283,7 +266,7 @@ $aspect-ratios: (
   "21x9": calc(9 / 21 * 100%),
 );
 
-// --- Opacidade --- //
+// Opacidade
 $opacities: (
   "none": $opacity-none,
   "disabled": $opacity-disabled,
@@ -292,7 +275,7 @@ $opacities: (
   "default": $opacity-default,
 );
 
-// --- Deslocamento --- //
+// Deslocamento
 $offsets: (
   "none": $offset-none,
   "sm": $offset-sm,
@@ -305,7 +288,7 @@ $offsets: (
   "xl-n": $offset-xl-n,
 );
 
-// --- Suavidade --- //
+// Suavidade
 $blurs: (
   "none": $blur-none,
   "sm": $blur-sm,
@@ -349,22 +332,6 @@ $shadows: (
   "md-inset-left": $shadow-md-inset-left,
   "lg-inset-left": $shadow-lg-inset-left,
   "xl-inset-left": $shadow-xl-inset-left,
-);
-
-$icons-size: (
-  "base": $icon-size-base,
-  "xs": $icon-size-xs,
-  "sm": $icon-size-sm,
-  "lg": $icon-size-lg,
-  "2x": $icon-size-2x,
-  "3x": $icon-size-3x,
-  "4x": $icon-size-4x,
-  "5x": $icon-size-5x,
-  "6x": $icon-size-6x,
-  "7x": $icon-size-7x,
-  "8x": $icon-size-8x,
-  "9x": $icon-size-9x,
-  "10x": $icon-size-10x,
 );
 
 // TIPOGRAFIA
@@ -436,16 +403,6 @@ $spacings: (
   "8x": $spacing-8xl,
   "9x": $spacing-9xl,
   "10x": $spacing-10xl,
-);
-
-// Tokens de alinhamento
-$tokens-alinhamento: (
-  "v-top": $alignment-vertical-top,
-  "v-center": $alignment-vertical-center,
-  "v-bottom": $alignment-vertical-bottom,
-  "h-left": $alignment-horizontal-left,
-  "h-center": $alignment-horizontal-center,
-  "h-right": $alignment-horizontal-right,
 );
 
 // Escala de tempo
