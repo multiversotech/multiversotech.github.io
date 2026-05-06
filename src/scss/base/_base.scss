@@ -11,19 +11,6 @@
 }
 
 // ── Root
-
-:root {
-  @if $font-size-root != null {
-    @include font-size(var(--#{$prefix}root-font-size));
-  }
-
-  @if $enable-smooth-scroll {
-    @media (prefers-reduced-motion: no-preference) {
-      scroll-behavior: smooth;
-    }
-  }
-}
-
 html,
 body {
   margin: 0;
@@ -45,30 +32,30 @@ body {
 
 // ── Divisor
 hr {
-  margin: $hr-margin-y 0;
-  color: $hr-color;
+  margin: $spacing 0;
+  color: inherit;
   border: 0;
-  border-top: $hr-border-width solid $hr-border-color;
-  opacity: $hr-opacity;
+  border-top: $border-width-base solid null;
+  opacity: 0.25;
 }
 
 h1 {
-  font-size: $font-size-4xl;
+  font-size: $h1-font-size;
 }
 h2 {
-  font-size: $font-size-3xl;
+  font-size: $h2-font-size;
 }
 h3 {
-  font-size: $font-size-2xl;
+  font-size: $h3-font-size;
 }
 h4 {
-  font-size: $font-size-xl;
+  font-size: $h4-font-size;
 }
 h5 {
-  font-size: $font-size-lg;
+  font-size: $h5-font-size;
 }
 h6 {
-  font-size: $font-size-base;
+  font-size: $h6-font-size;
 }
 
 img {
@@ -117,7 +104,7 @@ small {
 
 // ── Mark
 mark {
-  padding: $mark-padding;
+  padding: 0.1875em;
   color: var(--#{$prefix}highlight-color);
   background-color: var(--#{$prefix}highlight-bg);
 }
@@ -294,9 +281,9 @@ legend {
   float: left;
   width: 100%;
   padding: 0;
-  margin-bottom: $legend-margin-bottom;
+  margin-bottom: 0.5rem;
   font-size: $font-size-2xl;
-  font-weight: $legend-font-weight;
+  font-weight:null;
   line-height: inherit;
 
   + * {

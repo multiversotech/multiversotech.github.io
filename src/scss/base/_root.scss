@@ -34,11 +34,11 @@ ROOT — Variáveis CSS globais do design system
     --#{$prefix}#{$color}: #{$value};
   }
   /* ── Cores bg sutil ─────────────────────────────────────────────────────────────*/
-  @each $color, $value in $theme-colors-bg-subtle {
+  @each $color, $value in $states-colors-bg-subtle {
     --#{$prefix}#{$color}: #{$value};
   }
   /* ── Cores borda sutil ─────────────────────────────────────────────────────────────*/
-  @each $color, $value in $theme-colors-border-subtle {
+  @each $color, $value in $states-colors-border-subtle {
     --#{$prefix}#{$color}: #{$value};
   }
 
@@ -76,20 +76,17 @@ ROOT — Variáveis CSS globais do design system
   @each $size, $value in $blurs {
     --#{$prefix}blur-#{$size}: #{$value};
   }
-  /* ── Sombras ─────────────────────────────────────────────────────────────*/
+  /* Sombras */
   @each $size, $value in $shadows {
     --#{$prefix}box-shadow-#{$size}: #{$value};
   }
-  /* ── Tamanho Ícones ─────────────────────────────────────────────────────────────*/
-  @each $size, $value in $icons-size {
-    --#{$prefix}icon-size-#{$size}: #{$value};
-  }
-  /* ── Z-index ─────────────────────────────────────────────────────────────*/
+
+  /* Z-index */
   @each $size, $value in $z-index-levels {
     --#{$prefix}#{$size}: #{$value};
   }
 
-  /* ── Espaçamento ─────────────────────────────────────────────────────────────*/
+  /* Espaçamento */
   @each $size, $value in $spacings {
     --#{$prefix}spacing-#{$size}: #{$value};
   }

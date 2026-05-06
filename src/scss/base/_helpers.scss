@@ -22,7 +22,7 @@
 }
 
 .stretched-link {
-  &::#{$stretched-link-pseudo-element} {
+  &::#{after} {
     position: absolute;
     top: 0;
     right: 0;
@@ -94,18 +94,18 @@
 
 .icon-link {
   display: inline-flex;
-  gap: $icon-link-gap;
+  gap: 0.375rem;
   align-items: center;
-  text-decoration-color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, .5));
-  text-underline-offset: $icon-link-underline-offset;
+  text-decoration-color: rgba($primary, 0.5);
+  text-underline-offset: 0.25em;
   backface-visibility: hidden;
 
   >.bi {
     flex-shrink: 0;
-    width: $icon-link-icon-size;
-    height: $icon-link-icon-size;
+    width: 1em;
+    height: 1em;
     fill: currentcolor;
-    @include transition($icon-link-icon-transition);
+    transition: 0.2s ease-in-out transform;
   }
 }
 
@@ -114,22 +114,20 @@
   &:hover,
   &:focus-visible {
     >.bi {
-      transform: var(--#{$prefix}icon-link-transform, $icon-link-icon-transform);
+      transform: translate3d(0.25em, 0, 0);
     }
   }
 }
 
 .focus-ring:focus {
   outline: 0;
-  box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0)
-    var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width)
-    var(--#{$prefix}focus-ring-color);
+  box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
 }
 
 .vr {
   display: inline-block;
   align-self: stretch;
-  width: var(--#{$prefix}border-width);
+  width: $border-width-base;
   min-height: 1em;
   background-color: currentcolor;
   opacity: 0.25;
@@ -138,52 +136,28 @@
 @each $color, $value in $theme-colors {
   .link-#{$color} {
     @if $enable-important-utilities {
-      color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1)) !important;
-      text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1)) !important;
+      color: RGBA($primary, 1);
+      text-decoration-color: RGBA($primary, 1);
     } @else {
-      color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1));
-      text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1));
+      color: RGBA($primary, 1);
+      text-decoration-color: RGBA($primary, 1);
     }
 
-    @if $link-shade-percentage != 0 {
+    @if 20% != 0 {
       &:hover,
       &:focus {
-        $hover-color: shade-color($value, $link-shade-percentage);
+        $hover-color: shade-color($value, 20%);
         @if color-contrast($value) != $color-contrast-light {
-          $hover-color: tint-color($value, $link-shade-percentage);
+          $hover-color: tint-color($value, 20%);
         }
 
         @if $enable-important-utilities {
-          color: RGBA(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1)) !important;
-          text-decoration-color: RGBA(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1)) !important;
+          color: RGBA(#{to-rgb($hover-color)}, 1) !important;
+          text-decoration-color: RGBA(to-rgb($hover-color), 1) !important;
         } @else {
-          color: RGBA(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1));
-          text-decoration-color: RGBA(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1));
+          color: RGBA(#{to-rgb($hover-color)}, 1);
+          text-decoration-color: RGBA(to-rgb($hover-color), 1);
         }
-      }
-    }
-  }
-}
-
-// One-off special link helper as a bridge until v6
-.link-body-emphasis {
-  @if $enable-important-utilities {
-    color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1)) !important;
-    text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1)) !important;
-  } @else {
-    color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1));
-    text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1));
-  }
-
-  @if $link-shade-percentage != 0 {
-    &:hover,
-    &:focus {
-      @if $enable-important-utilities {
-        color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 0.75)) !important;
-        text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 0.75)) !important;
-      } @else {
-        color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 0.75));
-        text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 0.75));
       }
     }
   }
