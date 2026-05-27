@@ -8,19 +8,30 @@
 html[data-theme="light"] {
   --#{$prefix}primary-hue: $primary-hue;
   --#{$prefix}aurora-intensity: $aurora-intensity;
-  --#{$prefix}background: oklch(0.87 0.036 280);
-  --#{$prefix}background-elev: oklch(0.91 0.038 300);
-  --#{$prefix}background-elev-dois: oklch(0.97 0.02 280);
-  --#{$prefix}background-muted: oklch(0.96 0.01 280);
+
+  --#{$prefix}background: rgb(207, 210, 236);
+  --#{$prefix}background-elev: rgb(229, 220, 247);
+  --#{$prefix}background-elev-dois: rgb(242, 244, 255);
+  --#{$prefix}background-muted: rgb(240, 241, 249);
+
   --#{$prefix}foreground: oklch(0.18 0.02 280);
-  --#{$prefix}foreground-muted: oklch(0.42 0.02 280);
-  --#{$prefix}foreground-dim: oklch(0.62 0.02 280);
-  --#{$prefix}border: oklch(0.18 0.02 280 / 0.1);
-  --#{$prefix}border-strong: oklch(0.18 0.02 280 / 0.18);
-  --#{$prefix}card-background: oklch(1 0 0 / 0.75);
-  --#{$prefix}card-background-solid: oklch(1 0 0);
-  --#{$prefix}hero-fade: oklch(0.985 0.006 280);
-  --#{$prefix}grad-multiverso: $grad-multiverso;
-  --#{$prefix}grad-base: $grad-base;
-  --#{$prefix}grad-nebula: $grad-nebula;
+  --#{$prefix}foreground-muted: rgb(75, 76, 88);
+  --#{$prefix}foreground-dim: rgb(131, 133, 146);
+
+  --#{$prefix}border: rgba(16, 17, 26, 0.1);
+  --#{$prefix}border-strong: rgba(16, 17, 26, 0.18);
+
+  --#{$prefix}card-background: rgba(255, 255, 255, 0.75);
+  --#{$prefix}card-background-solid: rgb(255, 255, 255);
+
+  --#{$prefix}hero-fade: rgb(249, 250, 254);
+
+  --#{$prefix}grad-multiverso: #{$grad-multiverso};
+  --#{$prefix}grad-base: #{$grad-base};
+  --#{$prefix}grad-nebula: #{$grad-nebula};
+
+    --#{$prefix}shadow-um:
+    0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
+  --#{$prefix}shadow-glow: 0 10px 60px -10px
+    oklch(0.55 0.25 var(--mvt-primary-hue) / 0.45);
 }

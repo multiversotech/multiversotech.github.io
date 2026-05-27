@@ -2,10 +2,9 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 
-/* ============================================================
-   COSMOS — estrelas + grid decorativo, full page
-   ============================================================ */
-
+/* ===================================================
+      COSMOS — estrelas + grid decorativo, full page
+   =================================================== */
 .cosmos {
   position: fixed;
   inset: 0;
@@ -61,10 +60,6 @@ html[data-theme="light"] .cosmos-grid {
     linear-gradient(to bottom, rgba(20, 21, 31, 0.05) 1px, transparent 1px);
 }
 
-html[data-stars="off"] .cosmos-stars {
-  display: none;
-}
-
 @keyframes stars-drift {
   from {
     transform: translate3d(0, 0, 0);
@@ -75,9 +70,9 @@ html[data-stars="off"] .cosmos-stars {
   }
 }
 
-/* ============================================================
-   BG ANIMATION (orbes aurora do hero)
-   ============================================================ */
+/* ======================================================
+          BG ANIMATION (orbes aurora do hero)
+   ====================================================== */
 .bg-animation {
   position: absolute;
   inset: 0;
@@ -90,7 +85,7 @@ html[data-stars="off"] .cosmos-stars {
   position: absolute;
   inset: 0;
   filter: blur(80px);
-  opacity: $aurora-intensity;
+  opacity: #{$aurora-intensity};
 }
 
 .bg-clip .shape {
@@ -105,7 +100,7 @@ html[data-theme="light"] .bg-clip .shape {
 }
 
 html[data-theme="light"] .bg-clip {
-  opacity: calc($aurora-intensity * 0.55);
+  opacity: calc(#{$aurora-intensity} * 0.55);
 }
 .bg-clip .shape:nth-child(1) {
     width: 520px;
@@ -176,121 +171,27 @@ html[data-theme="light"] .bg-clip {
   }
 }
 
-/* ========== Text gradient (wordmark + highlights) ========== */
-.mvt-text-gradient {
-  background: $grad-multiverso;
+/* ========= Text gradient (wordmark + highlights) ========= */
+.text-gradient-dois {
+  background: #{$grad-multiverso};
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
-.wordmark {
-  font-family: $font-family-logo;
+.text-gradient {
+  background: var(--mvt-grad-base);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+}
 
+.wordmark {
+  font-family: #{$font-family-logo};
   letter-spacing: 0.5px;
-  font-size: clamp($font-size-base, 5vh, $font-size-4xl);
+  font-size: clamp(#{$font-size-base}, 5vh, #{$font-size-4xl});
   margin: 0;
   line-height: 1;
-}
-
-/* ===================================
-   TWEAKS PANEL
-   =================================== */
-.tweaks-panel {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 200;
-  width: 300px;
-  background: oklch(from var(--mvt-background-elev) l c h / 0.92);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--mvt-border-strong);
-  border-radius: var(--mvt-radius-lg);
-  box-shadow:
-    0 20px 60px -15px oklch(0 0 0 / 0.6),
-    var(--mvt-shadow-glow);
-  font-family: var(--mvt-font-ui);
-  overflow: hidden;
-}
-
-.tweaks-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background: oklch(from var(--mvt-background-elev-dois) l c h / 0.7);
-  border-bottom: 1px solid var(--mvt-border);
-  font-weight: 700;
-  font-size: var(--mvt-font-size-base);
-}
-
-.tweaks-header button {
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: 0;
-  color: var(--mvt-foreground-muted);
-  font-size: 1.3rem;
-  line-height: 1;
-  border-radius: 6px;
-}
-
-.tweaks-header button:hover {
-  background: var(--mvt-background-elev);
-  color: var(--mvt-foreground);
-}
-
-.tweaks-body {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.tweak-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  font-size: 0.82rem;
-  color: var(--mvt-foreground-muted);
-}
-
-.tweak-row em {
-  font-style: normal;
-  color: var(--mvt-foreground);
-  font-family: var(--mvt-font-code);
-}
-
-.tweak-row input[type="range"] {
-  width: 100%;
-  accent-color: oklch(0.65 0.22 var(--mvt-primary-hue));
-}
-
-.seg {
-  display: flex;
-  background: var(--mvt-background-muted);
-  border: 1px solid var(--mvt-border);
-  border-radius: 8px;
-  padding: 2px;
-  gap: 2px;
-}
-
-.seg button {
-  flex: 1;
-  padding: 0.4rem 0.6rem;
-  background: transparent;
-  border: 0;
-  border-radius: 6px;
-  font-family: var(--mvt-font-ui);
-  font-size: 0.8rem;
-  color: var(--mvt-foreground-muted);
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-.seg button.is-active {
-  background: var(--mvt-grad-multiverso);
-  color: white;
 }
