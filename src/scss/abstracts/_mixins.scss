@@ -5,6 +5,7 @@
 @use "./configs" as *;
 @use "./breakpoints" as *;
 @use "./variables" as *;
+@use "./maps" as *;
 @use "./functions" as *;
 
 /// Aplica os estilos **a partir** do breakpoint informado
