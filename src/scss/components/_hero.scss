@@ -2,12 +2,13 @@
              Hero Aurora
 ======================================== */
 .hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+    margin: 0 auto;
+    z-index: 2;
 }
 
 .hero-conteudo {
@@ -18,16 +19,16 @@
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
   background: oklch(from var(--mvt-background-elev) l c h / 0.6);
   border: 1px solid var(--mvt-border-strong);
-  border-radius: 999px;
+  border-radius: var(--mvt-radius-pill);
   font-family: var(--mvt-font-ui);
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: var(--mvt-font-size-sm);
+  font-weight: var(--mvt-font-weight-medium);
   color: var(--mvt-foreground-muted);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 14px -4px oklch(0.6 0.22 var(--mvt-primary-hue) / 0.3);
+  padding: var(--mvt-spacing-half);
 }
 
 .hero-badge-dot {
@@ -63,7 +64,7 @@
 
 .hero-subtitulo {
   font-family: var(--mvt-font-body);
-  font-size: clamp(0.5rem, 1.6vw, var(--mvt-font-size-base));
+  font-size: clamp(var(--mvt-font-size-sm), 1.6vw, var(--mvt-font-size-base));
   color: var(--mvt-foreground-muted);
   align-items: center;
   line-height: 1.6;
@@ -95,7 +96,7 @@
 
 .scroll-indicator {
   position: absolute;
-  bottom: -10px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   color: var(--mvt-foreground-dim);
@@ -120,15 +121,15 @@
             HERO  ESTATÍSTICAS
 ======================================== */
 .hero-estats {
-    border-block: 1px solid var(--border);
-    background: linear-gradient(180deg, var(--bg-muted), var(--bg));
-    padding-block: clamp(3rem, 6vw, 5rem);
+    border-block: 1px solid var(--mvt-border);
+    background: linear-gradient(180deg, var(--mvt-background-muted), var(--mvt-background));
+    padding-block: clamp(var(--mvt-spacing-4x), 6vw, var(--mvt-spacing-8x));
 }
 
 .estat-lista {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: var(--mvt-spacing-2x);
     text-align: center;
 }
 
@@ -136,7 +137,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--mvt-spacing-half);
 }
 
 .estat-item>span:first-child,
