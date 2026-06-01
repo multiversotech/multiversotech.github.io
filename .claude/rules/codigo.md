@@ -8,7 +8,7 @@
 - **Tokens de tema escuro** (dark mode) ficam em `src/scss/themes/_dark-theme.scss`
 - **Flags de configuração global** (`$enable-dark-mode`, `$color-mode-type`, `$prefix`, transitions, etc.) ficam em `src/scss/abstracts/_configs.scss`
 - **Nunca editar `dist/css/`** — é output gerado pelo Sass. Toda mudança vai em `src/scss/`
-- Nomenclatura de variáveis em português com kebab-case: `$cor-primaria-1`, `$superficie-container`, `$espacamento-base`
+- Nomenclatura de variáveis em inglês com kebab-case: `$primary`, `$primary-dark`, `$font-size-base`, `$spacing-sm`
 - Mixins de breakpoint disponíveis: `media-breakpoint-up`, `media-breakpoint-down`, `media-breakpoint-between`, `media-breakpoint-only` (em `src/scss/abstracts/_mixins.scss`, breakpoints em `_breakpoints.scss`)
 
 ## JavaScript

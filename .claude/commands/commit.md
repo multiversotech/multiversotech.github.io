@@ -1,4 +1,10 @@
-Analise as mudanças staged (git diff --staged) e sugira opções de mensagem de commit compatíveis com o update-changelog.js do projeto.
+Analise o estado atual do repositório:
+1. Rode `git status` para ver todos os arquivos modificados
+2. Rode `git diff` para entender o que mudou em cada arquivo
+
+Com base nisso:
+- Sugira quais arquivos fazem sentido ser staged juntos (agrupe por contexto)
+- Para cada grupo, sugira a mensagem de commit compatível com o update-changelog.js
 
 Tipos aceitos:
 - feat: nova funcionalidade
@@ -17,4 +23,4 @@ Tipos aceitos:
 
 Formato: tipo(escopo opcional): descrição curta em português
 
-Apresente as opções e aguarde minha confirmação. Não commite nada.
+Apresente os grupos e as sugestões. Aguarde minha confirmação para cada grupo antes de fazer qualquer git add ou commit.

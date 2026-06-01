@@ -103,7 +103,7 @@ O deploy é feito automaticamente pelo GitHub Actions a cada push na branch `mai
 
 ### SCSS
 
-- Variáveis em kebab-case com `$` prefixo. Nomes em português para o design system próprio: `$cor-primaria-1`, `$background-dark`, `$surface-container`
+- Variáveis em kebab-case com `$` prefixo. Nomes em inglês: `$primary`, `$primary-dark`, `$font-size-base`, `$spacing-sm`
 - Sempre usar `@use` e `@forward` — nunca `@import` (Dart Sass módulos)
 - Adicionar novas variáveis em `src/scss/abstracts/_variables.scss`; cores vão em `src/scss/abstracts/_colors.scss`
 - Cores definidas exclusivamente em `src/scss/abstracts/_colors.scss`
@@ -150,7 +150,7 @@ Padrão Conventional Commits:
 - **Nunca editar arquivos em `dist/css/`** — são gerados pelo Sass; toda mudança vai em `src/scss/`
 - **Nunca usar `@import` no SCSS** — o projeto usa Dart Sass com `@use` / `@forward`
 - **Nunca usar `sharp` ou `fs-extra` em código que roda no browser** — são dependências de build only
-- **Nunca hardcodar cores fora de `src/scss/abstracts/_colors.scss`** e `src/scss/themes/_dark-theme.scss`
+- **Nunca hardcodar cores fora de `src/scss/abstracts/_variables.scss`** (primitivos), `src/scss/abstracts/_colors.scss` (escalas e tokens semânticos) e `src/scss/themes/` (overrides de tema)
 - **Nunca criar arquivos JS fora da estrutura `src/js/`** (components/, pages/)
 - **Nunca commitar `node_modules/`**, `package-lock.json` ou arquivos `.env` (listados no `.gitignore`)
 
@@ -162,7 +162,7 @@ Leia estes arquivos antes de começar qualquer tarefa:
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — decisões arquiteturais e plano de evolução
 - [src/scss/core-main.scss](src/scss/core-main.scss) — entry point SCSS principal
-- [src/scss/abstracts/_variables.scss](src/scss/abstracts/_variables.scss) — tokens primitivos (tipografia, espaçamento, sombras, flags de comportamento)
+- [src/scss/abstracts/_variables.scss](src/scss/abstracts/_variables.scss) — tokens primitivos (cores base, tipografia, espaçamento, sombras, gradientes)
 - [src/scss/abstracts/_colors.scss](src/scss/abstracts/_colors.scss) — sistema de cores completo
 - [src/scss/themes/_dark-theme.scss](src/scss/themes/_dark-theme.scss) — overrides de tema escuro
 - [src/js/main.js](src/js/main.js) — entry point do JavaScript
