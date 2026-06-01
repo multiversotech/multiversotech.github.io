@@ -40,13 +40,7 @@ async function build() {
     await fs.copy(distCssPath, path.join(sitePath, "css"));
     console.log("🎨 CSS copiado.");
 
-    // 2. Copia favicon.ico para a raiz do site
-    const faviconSource = path.join(assetsPath, "icons", "favicon-32x32.png");
-    const faviconDest = path.join(sitePath, "favicon.ico");
-    await fs.copy(faviconSource, faviconDest);
-    console.log("📌 Favicon copiado.");
-
-    // 3. Montagem das páginas
+    // 2. Montagem das páginas
     await montarPaginaSimples("index.html");
 
     console.log(
@@ -95,21 +89,28 @@ async function montarPaginaSimples(nomeDoArquivo) {
   console.log(`   ✅ Página ${nomeDoArquivo} gerada com sucesso!`);
 }
 
-// Substitui <!-- include:arquivo.html --> de forma RECURSIVA
+// Q-01: Reescrito com loop while para suportar includes aninhados (recursivos)
+// Máximo de 10 passagens como proteção anti-loop infinito
 async function processIncludes(content) {
   const includeRegex = /<!--\s*include:(.*?)\s*-->/g;
-  const matches = [...content.matchAll(includeRegex)];
+  let maxDepth = 10;
 
-  for (const match of matches) {
-    let includePath = match[1].trim();
-    // Remove o prefixo 'templates/' se existir
-    if (includePath.startsWith("templates/")) {
-      includePath = includePath.substring("templates/".length);
+  while (maxDepth-- > 0) {
+    const matches = [...content.matchAll(includeRegex)];
+    if (matches.length === 0) break;
+
+    for (const match of matches) {
+      let includePath = match[1].trim();
+      // Remove o prefixo 'templates/' se existir
+      if (includePath.startsWith("templates/")) {
+        includePath = includePath.substring("templates/".length);
+      }
+      const partialPath = path.join(templatesPath, includePath);
+      const partialContent = await fs.readFile(partialPath, "utf-8");
+      content = content.replaceAll(match[0], partialContent);
     }
-    const partialPath = path.join(templatesPath, includePath);
-    const partialContent = await fs.readFile(partialPath, "utf-8");
-    content = content.replace(match[0], partialContent);
   }
+
   return content;
 }
 
