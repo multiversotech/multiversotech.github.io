@@ -2,25 +2,31 @@ class AcessoRapido {
   constructor() {
     document.addEventListener("DOMContentLoaded", () => {
       const dropdownBtn = document.querySelector(
-        ".acesso-rapido .mvt-dropdown-toggle",
+        ".acesso-rapido .dropdown-toggle",
       );
-      const dropdownMenu = document.getElementById("acessoRapido");
+      const dropdownMenu = document.getElementById("acessoRapidoMenu");
 
-      // Verifica se o botão existe
-      if (!dropdownBtn) {
-        console.warn("Botão .acesso-rapido .mvt-dropdown-toggle não encontrado");
+      if (!dropdownBtn || !dropdownMenu) {
+        console.warn(
+          "Elementos do acesso-rápido (.dropdown-toggle ou #acessoRapidoMenu) não encontrados",
+        );
         return;
       }
 
-      dropdownBtn?.addEventListener("click", (e) => {
+      dropdownBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const open = dropdownMenu.classList.toggle("is-open");
-        dropdownBtn.setAttribute("aria-expanded", open);
+        dropdownBtn.setAttribute("aria-expanded", String(open));
       });
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest(".acesso-rapido"))
-          dropdownMenu?.classList.remove("is-open");
-      });
+
+      this._closeHandler = (e) => {
+        if (!e.target.closest(".acesso-rapido")) {
+          dropdownMenu.classList.remove("is-open");
+          dropdownBtn.setAttribute("aria-expanded", "false");
+        }
+      };
+
+      document.addEventListener("click", this._closeHandler);
     });
   }
 }

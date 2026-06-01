@@ -5,10 +5,5 @@ import MenuToggle from "./components/menu-toggle.js";
 new ThemeToggle();
 new AcessoRapido();
 new MenuToggle();
-new ThemeTweaker();
 
-export { 
-    ThemeToggle,
-    AcessoRapido,
-    MenuToggle,
-};
+export { ThemeToggle, AcessoRapido, MenuToggle };
