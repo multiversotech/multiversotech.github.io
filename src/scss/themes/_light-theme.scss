@@ -6,8 +6,8 @@
         DESIGN SYSTEM (LIGHT MODE)
    ======================================== */
 html[data-theme="light"] {
-  --#{$prefix}primary-hue: $primary-hue;
-  --#{$prefix}aurora-intensity: $aurora-intensity;
+  --#{$prefix}primary-hue: #{$primary-hue};
+  --#{$prefix}aurora-intensity: #{$aurora-intensity};
 
   --#{$prefix}background: rgb(207, 210, 236);
   --#{$prefix}background-elev: rgb(229, 220, 247);
@@ -30,7 +30,7 @@ html[data-theme="light"] {
   --#{$prefix}grad-base: #{$grad-base};
   --#{$prefix}grad-nebula: #{$grad-nebula};
 
-    --#{$prefix}shadow-um:
+  --#{$prefix}shadow-um:
     0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
   --#{$prefix}shadow-glow: 0 10px 60px -10px
     oklch(0.55 0.25 var(--mvt-primary-hue) / 0.45);

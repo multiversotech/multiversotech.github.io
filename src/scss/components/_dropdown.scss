@@ -14,6 +14,7 @@
   background: var(--mvt-background-elev);
   border: 1px solid var(--mvt-border-strong);
   border-radius: var(--mvt-radius-md);
+  padding: var(--mvt-spacing-half);
   box-shadow:
     0 14px 50px -10px oklch(0 0 0 / 0.5),
     var(--mvt-shadow-glow);

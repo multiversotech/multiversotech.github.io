@@ -161,13 +161,13 @@ html[data-theme="light"] .recursos-icon {
   color: oklch(0.5 0.22 var(--card-hue, 285));
 }
 
-.recurso-content {
+.recursos-conteudo {
   flex: 1;
 }
 
 .recursos-titulo {
   font-family: var(--mvt-font-heading);
-  font-size: var(--mvt-spacing-md);
+  font-size: var(--mvt-font-size-lg);
   font-weight: var(--mvt-font-weight-bold);
   margin: 0 0 var(--mvt-spacing-half);
   color: var(--mvt-foreground);
@@ -206,7 +206,6 @@ html[data-theme="light"] .btn-recursos {
 .btn-recursos:hover {
   gap: 0.65rem;
 }
-
 
 /* =============================================
    TERMOS RECENTES
@@ -548,5 +547,3 @@ html[data-theme="light"] .termo-link {
   flex-wrap: wrap;
   position: relative;
 }
-
-
