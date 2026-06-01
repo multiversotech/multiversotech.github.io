@@ -10747,13 +10747,13 @@ html[data-theme=light] .recursos-icon {
   color: oklch(0.5 0.22 var(--card-hue, 285));
 }
 
-.recurso-content {
+.recursos-conteudo {
   flex: 1;
 }
 
 .recursos-titulo {
   font-family: var(--mvt-font-heading);
-  font-size: var(--mvt-spacing-md);
+  font-size: var(--mvt-font-size-lg);
   font-weight: var(--mvt-font-weight-bold);
   margin: 0 0 var(--mvt-spacing-half);
   color: var(--mvt-foreground);
@@ -11371,7 +11371,8 @@ html[data-theme=light] .termo-link {
   --mvt-alert-margin-bottom: 1rem;
   --mvt-alert-color: inherit;
   --mvt-alert-border-color: transparent;
-  --mvt-alert-border: var(--mvt-border-width) solid var(--mvt-alert-border-color);
+  --mvt-alert-border: var(--mvt-border-width) solid
+    var(--mvt-alert-border-color);
   --mvt-alert-border-radius: var(--mvt-border-radius);
   --mvt-alert-link-color: inherit;
   position: relative;
@@ -12501,6 +12502,7 @@ html[data-theme=light] .termo-link {
   background: var(--mvt-background-elev);
   border: 1px solid var(--mvt-border-strong);
   border-radius: var(--mvt-radius-md);
+  padding: var(--mvt-spacing-half);
   box-shadow: 0 14px 50px -10px oklch(0% 0 0deg / 0.5), var(--mvt-shadow-glow);
   opacity: 0;
   transform: translateY(-6px) scale(0.98);
@@ -12777,352 +12779,568 @@ html[data-theme=light] .termo-link {
 .list-group-item-primary-10 {
   --mvt-list-group-color: var(--mvt-primary-10-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-10-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-10-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-10-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-10-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-10-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-10-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-10-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-10-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-10-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-10-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-10-text-emphasis
+  );
 }
 
 .list-group-item-primary-20 {
   --mvt-list-group-color: var(--mvt-primary-20-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-20-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-20-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-20-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-20-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-20-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-20-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-20-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-20-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-20-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-20-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-20-text-emphasis
+  );
 }
 
 .list-group-item-primary-30 {
   --mvt-list-group-color: var(--mvt-primary-30-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-30-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-30-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-30-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-30-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-30-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-30-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-30-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-30-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-30-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-30-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-30-text-emphasis
+  );
 }
 
 .list-group-item-primary-40 {
   --mvt-list-group-color: var(--mvt-primary-40-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-40-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-40-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-40-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-40-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-40-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-40-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-40-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-40-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-40-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-40-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-40-text-emphasis
+  );
 }
 
 .list-group-item-primary-50 {
   --mvt-list-group-color: var(--mvt-primary-50-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-50-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-50-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-50-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-50-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-50-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-50-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-50-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-50-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-50-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-50-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-50-text-emphasis
+  );
 }
 
 .list-group-item-primary-60 {
   --mvt-list-group-color: var(--mvt-primary-60-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-60-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-60-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-60-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-60-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-60-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-60-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-60-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-60-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-60-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-60-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-60-text-emphasis
+  );
 }
 
 .list-group-item-primary-70 {
   --mvt-list-group-color: var(--mvt-primary-70-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-70-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-70-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-70-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-70-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-70-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-70-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-70-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-70-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-70-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-70-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-70-text-emphasis
+  );
 }
 
 .list-group-item-primary-80 {
   --mvt-list-group-color: var(--mvt-primary-80-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-80-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-80-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-80-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-80-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-80-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-80-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-80-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-80-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-80-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-80-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-80-text-emphasis
+  );
 }
 
 .list-group-item-primary-90 {
   --mvt-list-group-color: var(--mvt-primary-90-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-90-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-90-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-90-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-90-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-90-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-90-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-90-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-90-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-90-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-90-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-90-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-10 {
   --mvt-list-group-color: var(--mvt-primary-dark-10-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-10-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-10-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-10-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-10-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-10-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-10-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-10-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-10-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-10-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-10-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-10-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-20 {
   --mvt-list-group-color: var(--mvt-primary-dark-20-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-20-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-20-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-20-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-20-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-20-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-20-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-20-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-20-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-20-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-20-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-20-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-30 {
   --mvt-list-group-color: var(--mvt-primary-dark-30-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-30-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-30-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-30-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-30-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-30-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-30-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-30-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-30-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-30-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-30-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-30-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-40 {
   --mvt-list-group-color: var(--mvt-primary-dark-40-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-40-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-40-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-40-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-40-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-40-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-40-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-40-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-40-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-40-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-40-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-40-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-50 {
   --mvt-list-group-color: var(--mvt-primary-dark-50-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-50-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-50-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-50-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-50-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-50-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-50-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-50-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-50-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-50-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-50-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-50-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-60 {
   --mvt-list-group-color: var(--mvt-primary-dark-60-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-60-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-60-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-60-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-60-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-60-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-60-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-60-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-60-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-60-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-60-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-60-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-70 {
   --mvt-list-group-color: var(--mvt-primary-dark-70-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-70-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-70-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-70-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-70-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-70-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-70-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-70-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-70-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-70-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-70-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-70-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-80 {
   --mvt-list-group-color: var(--mvt-primary-dark-80-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-80-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-80-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-80-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-80-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-80-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-80-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-80-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-80-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-80-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-80-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-80-text-emphasis
+  );
 }
 
 .list-group-item-primary-dark-90 {
   --mvt-list-group-color: var(--mvt-primary-dark-90-text-emphasis);
   --mvt-list-group-bg: var(--mvt-primary-dark-90-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-primary-dark-90-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-primary-dark-90-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-primary-dark-90-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-primary-dark-90-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-primary-dark-90-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-primary-dark-90-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-primary-dark-90-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-primary-dark-90-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-primary-dark-90-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-primary-dark-90-text-emphasis
+  );
 }
 
 .list-group-item-neutral-10 {
   --mvt-list-group-color: var(--mvt-neutral-10-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-10-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-10-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-10-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-10-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-10-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-10-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-10-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-10-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-10-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-10-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-10-text-emphasis
+  );
 }
 
 .list-group-item-neutral-20 {
   --mvt-list-group-color: var(--mvt-neutral-20-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-20-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-20-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-20-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-20-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-20-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-20-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-20-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-20-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-20-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-20-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-20-text-emphasis
+  );
 }
 
 .list-group-item-neutral-30 {
   --mvt-list-group-color: var(--mvt-neutral-30-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-30-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-30-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-30-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-30-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-30-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-30-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-30-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-30-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-30-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-30-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-30-text-emphasis
+  );
 }
 
 .list-group-item-neutral-40 {
   --mvt-list-group-color: var(--mvt-neutral-40-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-40-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-40-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-40-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-40-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-40-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-40-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-40-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-40-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-40-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-40-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-40-text-emphasis
+  );
 }
 
 .list-group-item-neutral-50 {
   --mvt-list-group-color: var(--mvt-neutral-50-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-50-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-50-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-50-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-50-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-50-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-50-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-50-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-50-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-50-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-50-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-50-text-emphasis
+  );
 }
 
 .list-group-item-neutral-60 {
   --mvt-list-group-color: var(--mvt-neutral-60-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-60-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-60-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-60-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-60-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-60-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-60-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-60-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-60-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-60-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-60-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-60-text-emphasis
+  );
 }
 
 .list-group-item-neutral-70 {
   --mvt-list-group-color: var(--mvt-neutral-70-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-70-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-70-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-70-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-70-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-70-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-70-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-70-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-70-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-70-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-70-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-70-text-emphasis
+  );
 }
 
 .list-group-item-neutral-80 {
   --mvt-list-group-color: var(--mvt-neutral-80-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-80-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-80-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-80-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-80-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-80-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-80-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-80-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-80-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-80-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-80-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-80-text-emphasis
+  );
 }
 
 .list-group-item-neutral-90 {
   --mvt-list-group-color: var(--mvt-neutral-90-text-emphasis);
   --mvt-list-group-bg: var(--mvt-neutral-90-bg-subtle);
-  --mvt-list-group-border-color: var(--mvt-neutral-90-border-subtle);
+  --mvt-list-group-border-color: var(
+    --mvt-neutral-90-border-subtle
+  );
   --mvt-list-group-action-hover-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-hover-bg: var(--mvt-neutral-90-border-subtle);
+  --mvt-list-group-action-hover-bg: var(
+    --mvt-neutral-90-border-subtle
+  );
   --mvt-list-group-action-active-color: var(--mvt-emphasis-color);
-  --mvt-list-group-action-active-bg: var(--mvt-neutral-90-border-subtle);
+  --mvt-list-group-action-active-bg: var(
+    --mvt-neutral-90-border-subtle
+  );
   --mvt-list-group-active-color: var(--mvt-neutral-90-bg-subtle);
   --mvt-list-group-active-bg: var(--mvt-neutral-90-text-emphasis);
-  --mvt-list-group-active-border-color: var(--mvt-neutral-90-text-emphasis);
+  --mvt-list-group-active-border-color: var(
+    --mvt-neutral-90-text-emphasis
+  );
 }
 
 .modal {
@@ -14371,7 +14589,7 @@ html[data-theme=dark] {
   --mvt-grad-base: linear-gradient(140deg, rgb(100, 103, 242) 16%, rgb(129, 140, 248) 32%, rgb(236, 72, 153) 48%, rgb(234, 19, 108) 64%, rgb(244, 60, 155) 80%, rgb(168, 85, 247) 100%);
   --mvt-grad-nebula: radial-gradient(ellipse at 20% 10%, rgba(109, 69, 249, 0.55), transparent 55%), radial-gradient(ellipse at 85% 30%, rgba(224, 72, 184, 0.45), transparent 60%), radial-gradient(ellipse at 60% 90%, rgba(0, 185, 219, 0.38), transparent 55%);
   --mvt-shadow-um:
-  0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
+    0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
   --mvt-shadow-glow: 0 10px 60px -10px
     oklch(0.55 0.25 var(--mvt-primary-hue) / 0.45);
 }
@@ -14380,8 +14598,8 @@ html[data-theme=dark] {
         DESIGN SYSTEM (LIGHT MODE)
    ======================================== */
 html[data-theme=light] {
-  --mvt-primary-hue: $primary-hue;
-  --mvt-aurora-intensity: $aurora-intensity;
+  --mvt-primary-hue: 285;
+  --mvt-aurora-intensity: 0.7;
   --mvt-background: rgb(207, 210, 236);
   --mvt-background-elev: rgb(229, 220, 247);
   --mvt-background-elev-dois: rgb(242, 244, 255);
@@ -14398,7 +14616,7 @@ html[data-theme=light] {
   --mvt-grad-base: linear-gradient(140deg, rgb(100, 103, 242) 16%, rgb(129, 140, 248) 32%, rgb(236, 72, 153) 48%, rgb(234, 19, 108) 64%, rgb(244, 60, 155) 80%, rgb(168, 85, 247) 100%);
   --mvt-grad-nebula: radial-gradient(ellipse at 20% 10%, rgba(109, 69, 249, 0.55), transparent 55%), radial-gradient(ellipse at 85% 30%, rgba(224, 72, 184, 0.45), transparent 60%), radial-gradient(ellipse at 60% 90%, rgba(0, 185, 219, 0.38), transparent 55%);
   --mvt-shadow-um:
-  0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
+    0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
   --mvt-shadow-glow: 0 10px 60px -10px
     oklch(0.55 0.25 var(--mvt-primary-hue) / 0.45);
 }
