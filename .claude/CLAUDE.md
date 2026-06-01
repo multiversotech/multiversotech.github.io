@@ -14,7 +14,8 @@
 src/
 ├── assets/              # Imagens, ícones e fontes
 ├── templates/           # Templates HTML com diretivas de include
-│   └── partials/        # Fragmentos reutilizáveis (header, footer)
+│   ├── partials/        # Fragmentos reutilizáveis (header, footer)
+│   └── components/      # Componentes HTML independentes (tweaks-panel, etc.)
 ├── js/                  # JavaScript modular (ES6+, sem bundler)
 │   ├── components/      # Componentes interativos (ThemeToggle, AcessoRapido)
 │   ├── pages/           # Controladores por página (home, glossario, termo)
@@ -93,6 +94,12 @@ npm run changelog
 
 # Build completo (gera pasta site/)
 npm run build
+
+# Build completo para produção (SCSS minificado + site) — usado pelo CI
+npm run build:full
+
+# Validar arquivos JSON em /data
+npm run validate
 ```
 
 O deploy é feito automaticamente pelo GitHub Actions a cada push na branch `main` (`.github/workflows/build-and-deploy.yml`).
@@ -153,6 +160,7 @@ Padrão Conventional Commits:
 - **Nunca hardcodar cores fora de `src/scss/abstracts/_variables.scss`** (primitivos), `src/scss/abstracts/_colors.scss` (escalas e tokens semânticos) e `src/scss/themes/` (overrides de tema)
 - **Nunca criar arquivos JS fora da estrutura `src/js/`** (components/, pages/)
 - **Nunca commitar `node_modules/`**, `package-lock.json` ou arquivos `.env` (listados no `.gitignore`)
+- **Ao renomear classes no SCSS, sempre atualizar os templates HTML** — o build não valida correspondência entre seletores CSS e classes usadas no HTML; desincronias quebram o layout silenciosamente
 
 ---
 
