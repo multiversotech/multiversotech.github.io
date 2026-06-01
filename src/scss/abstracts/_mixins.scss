@@ -286,9 +286,8 @@
 @mixin caret(
   $direction: down,
   $caret-width: 0.3em,
-$caret-vertical-align: $caret-width * 0.85,
-$caret-spacing: $caret-width * 0.85,
-
+  $caret-vertical-align: $caret-width * 0.85,
+  $caret-spacing: $caret-width * 0.85
 ) {
   &::after {
     display: inline-block;
@@ -322,7 +321,6 @@ $caret-spacing: $caret-width * 0.85,
     margin-left: 0;
   }
 }
-
 
 // Lists
 @mixin list-unstyled {
@@ -404,7 +402,15 @@ $caret-spacing: $caret-width * 0.85,
 
     @each $value in $shadow {
       @if $value != null {
-        @if $value == none or $value == initial or $value == inherit or $value == unset {
+        @if $value ==
+          none or
+          $value ==
+          initial or
+          $value ==
+          inherit or
+          $value ==
+          unset
+        {
           $has-single-value: true;
           $single-value: $value;
         } @else {
@@ -519,7 +525,7 @@ $caret-spacing: $caret-width * 0.85,
     @each $value in $transition {
       @if $value == null or $value == none {
         @warn "A palavra-chave 'none' ou 'null' deve ser usada como um único argumento.";
-     }
+      }
     }
   }
 
@@ -528,7 +534,12 @@ $caret-spacing: $caret-width * 0.85,
       transition: $transition;
     }
 
-    @if $enable-reduced-motion and list.nth($transition, 1) != null and list.nth($transition, 1) != none {
+    @if $enable-reduced-motion and
+      list.nth($transition, 1) !=
+      null and
+      list.nth($transition, 1) !=
+      none
+    {
       @media (prefers-reduced-motion: reduce) {
         transition: none;
       }
@@ -577,10 +588,6 @@ $caret-spacing: $caret-width * 0.85,
     }
   }
 }
-
-
-
-
 
 /// ─────────────────────────────────────────────────────────────────────────────
 /// MIXINS — TIPOGRAFIA
@@ -712,13 +719,13 @@ $caret-spacing: $caret-width * 0.85,
 }
 
 @mixin make-col-ready() {
-  box-sizing: if(
-    sass(
-        meta.global-variable-exists("include-column-box-sizing") and
-          $include-column-box-sizing
-      ): border-box;
-      else: null
-  );
+  // box-sizing condicional: só aplica border-box se $include-column-box-sizing existir e for true
+  // Usa @if para compatibilidade com o language server do VS Code (evita sintaxe sass() preview)
+  @if meta.global-variable-exists("include-column-box-sizing") and
+    $include-column-box-sizing
+  {
+    box-sizing: border-box;
+  }
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;

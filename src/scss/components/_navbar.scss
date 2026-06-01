@@ -50,7 +50,7 @@
 
   &:hover,
   &:focus {
-    color:  rgba(var(--mvt-text-accent-principal), 0.65);
+    color: rgba(var(--mvt-text-accent-principal), 0.65);
     @if null == underline {
       text-decoration: none;
     }
@@ -107,8 +107,7 @@
   line-height: 1;
   color: var(--mvt-text-accent-principal);
   background-color: transparent;
-  border: var(--mvt-border-width-base) solid
-    var(--mvt-border-color);
+  border: var(--mvt-border-width-base) solid var(--mvt-border-color);
 
   @include border-radius($border-radius-lg);
   transition: box-shadow 0.15s ease-in-out;
@@ -123,7 +122,6 @@
     box-shadow: 0 0 0 0.25rem;
   }
 }
-
 
 // ── Expand (responsivo) ───────────────────────────────────────────────────────
 

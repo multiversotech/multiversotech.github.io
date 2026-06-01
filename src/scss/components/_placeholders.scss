@@ -19,11 +19,11 @@ $placeholder-opacity-min: 0.2;
 
 // Sizing
 .placeholder-xs {
-  min-height: .6em;
+  min-height: 0.6em;
 }
 
 .placeholder-sm {
-  min-height: .8em;
+  min-height: 0.8em;
 }
 
 .placeholder-lg {
@@ -44,7 +44,12 @@ $placeholder-opacity-min: 0.2;
 }
 
 .placeholder-wave {
-  mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, (1 - 0.2)) 75%, $black 95%);
+  mask-image: linear-gradient(
+    130deg,
+    $black 55%,
+    rgba(0, 0, 0, (1 - 0.2)) 75%,
+    $black 95%
+  );
   mask-size: 200% 100%;
   animation: placeholder-wave 2s linear infinite;
 }

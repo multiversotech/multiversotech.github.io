@@ -65,13 +65,14 @@
   @return $value1 + string.unquote(" - ") + $value2;
 }
 
+/// Sinal calculado via @if para compatibilidade com o language server do VS Code
+/// (a sintaxe `if(sass(...))` é uma preview do Sass 2.0 ainda não suportada pelos linters)
 @function divide($dividend, $divisor, $precision: 10) {
-  $sign: if(
-    sass(
-        (($dividend > 0 and $divisor > 0) or ($dividend < 0 and $divisor < 0))
-      ): 1;
-      else: -1,
-  );
+  $sign: 1;
+  @if not(($dividend > 0 and $divisor > 0) or ($dividend < 0 and $divisor < 0))
+  {
+    $sign: -1;
+  }
 
   $dividend: abs($dividend);
   $divisor: abs($divisor);
@@ -149,7 +150,6 @@
   );
 }
 
-
 /// Percorre um mapa e aplica uma função a cada valor, devolvendo um novo mapa.
 @function map-loop($map, $func, $args...) {
   $_map: ();
@@ -171,7 +171,12 @@
       }
     }
 
-    $_map: map.merge($_map, ($key: meta.call($func, $_args...)));
+    $_map: map.merge(
+      $_map,
+      (
+        $key: meta.call($func, $_args...),
+      )
+    );
   }
 
   @return $_map;
@@ -193,7 +198,12 @@
 
   @each $key, $value in $map {
     @if list.index($values, $key) != null {
-      $result: map.merge($result, ($key: $value));
+      $result: map.merge(
+        $result,
+        (
+          $key: $value,
+        )
+      );
     }
   }
 
@@ -342,10 +352,11 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025
 /// Clareia ou escurece uma cor conforme o sinal do peso:
 /// positivo → escurece (shade)   negativo → clareia (tint)
 @function shift-color($color, $weight) {
-  @return if(
-    sass($weight > 0): shade-color($color, $weight) ;
-      else: tint-color($color, -$weight)
-  );
+  @if $weight > 0 {
+    @return shade-color($color, $weight);
+  } @else {
+    @return tint-color($color, -$weight);
+  }
 }
 
 /// Garante que nenhum valor numérico de border-radius seja negativo.

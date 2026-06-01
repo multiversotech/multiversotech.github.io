@@ -27,20 +27,20 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
 // ── Base ──────────────────────────────────────────────────────────────────────
 
 .list-group {
-  --#{$prefix}list-group-color:                 #{$list-group-color};
-  --#{$prefix}list-group-bg:                    #{$list-group-bg};
-  --#{$prefix}list-group-border-color:          #{$list-group-border-color};
-  --#{$prefix}list-group-border-width:          #{$list-group-border-width};
-  --#{$prefix}list-group-border-radius:         #{$list-group-border-radius};
-  --#{$prefix}list-group-item-padding-x:        #{$list-group-item-padding-x};
-  --#{$prefix}list-group-item-padding-y:        #{$list-group-item-padding-y};
-  --#{$prefix}list-group-action-color:          #{$list-group-action-color};
-  --#{$prefix}list-group-action-hover-color:    #{$list-group-action-hover-color};
-  --#{$prefix}list-group-action-hover-bg:       #{$list-group-hover-bg};
-  --#{$prefix}list-group-action-active-color:   #{$list-group-action-active-color};
-  --#{$prefix}list-group-action-active-bg:      #{$list-group-action-active-bg};
-  --#{$prefix}list-group-disabled-color:        #{$list-group-disabled-color};
-  --#{$prefix}list-group-disabled-bg:           #{$list-group-disabled-bg};
+  --#{$prefix}list-group-color: #{$list-group-color};
+  --#{$prefix}list-group-bg: #{$list-group-bg};
+  --#{$prefix}list-group-border-color: #{$list-group-border-color};
+  --#{$prefix}list-group-border-width: #{$list-group-border-width};
+  --#{$prefix}list-group-border-radius: #{$list-group-border-radius};
+  --#{$prefix}list-group-item-padding-x: #{$list-group-item-padding-x};
+  --#{$prefix}list-group-item-padding-y: #{$list-group-item-padding-y};
+  --#{$prefix}list-group-action-color: #{$list-group-action-color};
+  --#{$prefix}list-group-action-hover-color: #{$list-group-action-hover-color};
+  --#{$prefix}list-group-action-hover-bg: #{$list-group-hover-bg};
+  --#{$prefix}list-group-action-active-color: #{$list-group-action-active-color};
+  --#{$prefix}list-group-action-active-bg: #{$list-group-action-active-bg};
+  --#{$prefix}list-group-disabled-color: #{$list-group-disabled-color};
+  --#{$prefix}list-group-disabled-bg: #{$list-group-disabled-bg};
 
   display: flex;
   flex-direction: column;
@@ -49,7 +49,6 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
 
   @include border-radius(var(--#{$prefix}list-group-border-radius));
 }
-
 
 // ── Lista numerada ────────────────────────────────────────────────────────────
 // Usa CSS counters para numerar itens automaticamente.
@@ -64,20 +63,21 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   }
 }
 
-
 // ── Item ──────────────────────────────────────────────────────────────────────
 // Funciona em <li>, <div>, <a> ou <button> dentro de .list-group.
 
 .list-group-item {
   position: relative;
   display: block;
-  padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
+  padding: var(--#{$prefix}list-group-item-padding-y)
+    var(--#{$prefix}list-group-item-padding-x);
   color: var(--#{$prefix}list-group-color);
   @if underline != none {
     text-decoration: none;
   }
   background-color: var(--#{$prefix}list-group-bg);
-  border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}list-group-border-color);
+  border: var(--#{$prefix}list-group-border-width) solid
+    var(--#{$prefix}list-group-border-color);
 
   &:first-child {
     @include border-top-radius(inherit);
@@ -113,7 +113,6 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   }
 }
 
-
 // ── Item interativo ───────────────────────────────────────────────────────────
 // Use <a> ou <button> em vez de <li> ou <div> para ativar estados de hover/foco.
 
@@ -138,7 +137,6 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   }
 }
 
-
 // ── Horizontal ────────────────────────────────────────────────────────────────
 // Variantes responsivas: .list-group-horizontal, .list-group-horizontal-sm, etc.
 
@@ -152,12 +150,16 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
       > .list-group-item {
         // Arredonda apenas os cantos externos no layout horizontal
         &:first-child:not(:last-child) {
-          @include border-bottom-start-radius(var(--#{$prefix}list-group-border-radius));
+          @include border-bottom-start-radius(
+            var(--#{$prefix}list-group-border-radius)
+          );
           @include border-top-end-radius(0);
         }
 
         &:last-child:not(:first-child) {
-          @include border-top-end-radius(var(--#{$prefix}list-group-border-radius));
+          @include border-top-end-radius(
+            var(--#{$prefix}list-group-border-radius)
+          );
           @include border-bottom-start-radius(0);
         }
 
@@ -180,7 +182,6 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   }
 }
 
-
 // ── Flush ─────────────────────────────────────────────────────────────────────
 // Remove bordas laterais e border-radius — ideal dentro de cards ou painéis.
 
@@ -196,22 +197,29 @@ $list-group-action-active-bg: var(--#{$prefix}secondary-bg);
   }
 }
 
-
 // ── Variantes de cor ──────────────────────────────────────────────────────────
 // Geradas automaticamente a partir de $theme-colors.
 // Ex: .list-group-item-primary, .list-group-item-danger, etc.
 
 @each $state in map.keys($theme-colors) {
   .list-group-item-#{$state} {
-    --#{$prefix}list-group-color:              var(--#{$prefix}#{$state}-text-emphasis);
-    --#{$prefix}list-group-bg:                 var(--#{$prefix}#{$state}-bg-subtle);
-    --#{$prefix}list-group-border-color:       var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}list-group-border-color: var(
+      --#{$prefix}#{$state}-border-subtle
+    );
     --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
-    --#{$prefix}list-group-action-hover-bg:    var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-action-hover-bg: var(
+      --#{$prefix}#{$state}-border-subtle
+    );
     --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
-    --#{$prefix}list-group-action-active-bg:   var(--#{$prefix}#{$state}-border-subtle);
-    --#{$prefix}list-group-active-color:       var(--#{$prefix}#{$state}-bg-subtle);
-    --#{$prefix}list-group-active-bg:          var(--#{$prefix}#{$state}-text-emphasis);
-    --#{$prefix}list-group-active-border-color: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-action-active-bg: var(
+      --#{$prefix}#{$state}-border-subtle
+    );
+    --#{$prefix}list-group-active-color: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}list-group-active-bg: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-active-border-color: var(
+      --#{$prefix}#{$state}-text-emphasis
+    );
   }
 }

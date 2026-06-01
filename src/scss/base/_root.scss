@@ -68,7 +68,7 @@ ROOT — Variáveis CSS globais do design system
   @each $size, $value in $border-radius {
     --#{$prefix}radius-#{$size}: #{$value};
   }
-    /* ── Opacidade ─────────────────────────────────────────────────────────────*/
+  /* ── Opacidade ─────────────────────────────────────────────────────────────*/
   @each $size, $value in $opacities {
     --#{$prefix}opacity-#{$size}: #{$value};
   }

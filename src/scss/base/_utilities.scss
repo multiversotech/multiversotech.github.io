@@ -544,7 +544,7 @@ $utilities: map.merge(
       values: (
         null: var(--#{$prefix}border-radius),
         0: 0,
-         sm: var(--#{$prefix}border-radius-sm),
+        sm: var(--#{$prefix}border-radius-sm),
         md: var(--#{$prefix}border-radius),
         lg: var(--#{$prefix}border-radius-lg),
         xl: var(--#{$prefix}border-radius-xl),

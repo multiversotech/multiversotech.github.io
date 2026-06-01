@@ -11,10 +11,13 @@
 
 @each $color, $value in $theme-colors {
   .text-bg-#{$color} {
-      color: color-contrast($value);
-      background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1));
-    }
+    color: color-contrast($value);
+    background-color: RGBA(
+      var(--#{$prefix}#{$color}-rgb),
+      var(--#{$prefix}bg-opacity, 1)
+    );
   }
+}
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
@@ -100,7 +103,7 @@
   text-underline-offset: 0.25em;
   backface-visibility: hidden;
 
-  >.bi {
+  > .bi {
     flex-shrink: 0;
     width: 1em;
     height: 1em;
@@ -110,10 +113,9 @@
 }
 
 .icon-link-hover {
-
   &:hover,
   &:focus-visible {
-    >.bi {
+    > .bi {
       transform: translate3d(0.25em, 0, 0);
     }
   }

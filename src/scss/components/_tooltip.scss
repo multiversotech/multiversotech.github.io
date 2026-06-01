@@ -34,7 +34,9 @@ $tooltip-arrow-color: null;
   word-wrap: break-word;
   opacity: 0;
 
-  &.show { opacity: var(--#{$prefix}tooltip-opacity); }
+  &.show {
+    opacity: var(--#{$prefix}tooltip-opacity);
+  }
 
   .tooltip-arrow {
     display: block;
@@ -55,7 +57,8 @@ $tooltip-arrow-color: null;
 
   &::before {
     top: -1px;
-    border-width: var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
+    border-width: var(--#{$prefix}tooltip-arrow-height)
+      calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) 0;
     border-top-color: var(--#{$prefix}tooltip-bg);
   }
 }
@@ -67,7 +70,9 @@ $tooltip-arrow-color: null;
 
   &::before {
     right: -1px;
-    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
+    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * 0.5)
+      var(--#{$prefix}tooltip-arrow-height)
+      calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) 0;
     border-right-color: var(--#{$prefix}tooltip-bg);
   }
 }
@@ -77,7 +82,8 @@ $tooltip-arrow-color: null;
 
   &::before {
     bottom: -1px;
-    border-width: 0 calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) var(--#{$prefix}tooltip-arrow-height);
+    border-width: 0 calc(var(--#{$prefix}tooltip-arrow-width) * 0.5)
+      var(--#{$prefix}tooltip-arrow-height);
     border-bottom-color: var(--#{$prefix}tooltip-bg);
   }
 }
@@ -89,7 +95,9 @@ $tooltip-arrow-color: null;
 
   &::before {
     left: -1px;
-    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) 0 calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) var(--#{$prefix}tooltip-arrow-height);
+    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * 0.5) 0
+      calc(var(--#{$prefix}tooltip-arrow-width) * 0.5)
+      var(--#{$prefix}tooltip-arrow-height);
     border-left-color: var(--#{$prefix}tooltip-bg);
   }
 }
@@ -117,5 +125,3 @@ $tooltip-arrow-color: null;
   background-color: var(--#{$prefix}tooltip-bg);
   @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }
-
-

@@ -103,12 +103,12 @@ html[data-theme="light"] .bg-clip {
   opacity: calc(#{$aurora-intensity} * 0.55);
 }
 .bg-clip .shape:nth-child(1) {
-    width: 520px;
-    height: 520px;
-    top: -100px;
-    left: -80px;
-    background: radial-gradient(circle, rgb(136, 104, 255), transparent 70%);
-    animation-delay: 0s;
+  width: 520px;
+  height: 520px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgb(136, 104, 255), transparent 70%);
+  animation-delay: 0s;
 }
 
 .bg-clip .shape:nth-child(2) {
@@ -130,12 +130,12 @@ html[data-theme="light"] .bg-clip {
 }
 
 .bg-clip .shape:nth-child(4) {
-    width: 300px;
-    height: 300px;
-    top: 45%;
-    left: 45%;
-    background: radial-gradient(circle, rgb(114, 186, 255), transparent 70%);
-    animation-delay: -12s;
+  width: 300px;
+  height: 300px;
+  top: 45%;
+  left: 45%;
+  background: radial-gradient(circle, rgb(114, 186, 255), transparent 70%);
+  animation-delay: -12s;
 }
 
 .bg-clip .shape:nth-child(5) {

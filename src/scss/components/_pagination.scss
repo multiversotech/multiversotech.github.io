@@ -62,14 +62,16 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
 .page-link {
   position: relative;
   display: block;
-  padding: var(--#{$prefix}pagination-padding-y) var(--#{$prefix}pagination-padding-x);
+  padding: var(--#{$prefix}pagination-padding-y)
+    var(--#{$prefix}pagination-padding-x);
   @include font-size(var(--#{$prefix}pagination-font-size));
   color: var(--#{$prefix}pagination-color);
   @if underline != none {
     text-decoration: none;
   }
   background-color: var(--#{$prefix}pagination-bg);
-  border: var(--#{$prefix}pagination-border-width) solid var(--#{$prefix}pagination-border-color);
+  border: var(--#{$prefix}pagination-border-width) solid
+    var(--#{$prefix}pagination-border-color);
   @include transition($pagination-transition);
 
   &:hover {
@@ -132,7 +134,6 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
   }
 }
 
-
 //
 // Sizing
 //
@@ -144,9 +145,19 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg);
 }
 
 .pagination-lg {
-  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $pagination-border-radius-lg);
+  @include pagination-size(
+    $pagination-padding-y-lg,
+    $pagination-padding-x-lg,
+    $font-size-lg,
+    $pagination-border-radius-lg
+  );
 }
 
 .pagination-sm {
-  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $pagination-border-radius-sm);
+  @include pagination-size(
+    $pagination-padding-y-sm,
+    $pagination-padding-x-sm,
+    $font-size-sm,
+    $pagination-border-radius-sm
+  );
 }

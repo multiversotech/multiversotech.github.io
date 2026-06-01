@@ -2,13 +2,13 @@
              Hero Aurora
 ======================================== */
 .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    isolation: isolate;
-    margin: 0 auto;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin: 0 auto;
+  z-index: 2;
 }
 
 .hero-conteudo {
@@ -121,48 +121,52 @@
             HERO  ESTATÍSTICAS
 ======================================== */
 .hero-estats {
-    border-block: 1px solid var(--mvt-border);
-    background: linear-gradient(180deg, var(--mvt-background-muted), var(--mvt-background));
-    padding-block: clamp(var(--mvt-spacing-4x), 6vw, var(--mvt-spacing-8x));
+  border-block: 1px solid var(--mvt-border);
+  background: linear-gradient(
+    180deg,
+    var(--mvt-background-muted),
+    var(--mvt-background)
+  );
+  padding-block: clamp(var(--mvt-spacing-4x), 6vw, var(--mvt-spacing-8x));
 }
 
 .estat-lista {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--mvt-spacing-2x);
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--mvt-spacing-2x);
+  text-align: center;
 }
 
 .estat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--mvt-spacing-half);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mvt-spacing-half);
 }
 
-.estat-item>span:first-child,
+.estat-item > span:first-child,
 .estat-numero {
-    font-family: var(--mvt-font-display);
-    font-size: clamp(var(--mvt-font-size-5xl), 6vw, var(--mvt-font-size-8xl));
-    line-height: 1;
-    letter-spacing: -0.02em;
+  font-family: var(--mvt-font-display);
+  font-size: clamp(var(--mvt-font-size-5xl), 6vw, var(--mvt-font-size-8xl));
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .estat-sufixo {
-    font-family: var(--mvt-font-display);
-    font-size: clamp(var(--mvt-font-size-3xl), 5vw, var(--mvt-font-size-7xl));
-    background: var(--mvt-grad-multiverso);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    margin-left: -0.1em;
+  font-family: var(--mvt-font-display);
+  font-size: clamp(var(--mvt-font-size-3xl), 5vw, var(--mvt-font-size-7xl));
+  background: var(--mvt-grad-multiverso);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-left: -0.1em;
 }
 
 .estat-label {
-    font-family: var(--mvt-font-ui);
-    font-size: var(--mvt-font-size-base);
-    color: var(--mvt-foreground-muted);
-    margin-top: var(--mvt-font-size-base);
-    letter-spacing: 0.02em;
+  font-family: var(--mvt-font-ui);
+  font-size: var(--mvt-font-size-base);
+  color: var(--mvt-foreground-muted);
+  margin-top: var(--mvt-font-size-base);
+  letter-spacing: 0.02em;
 }

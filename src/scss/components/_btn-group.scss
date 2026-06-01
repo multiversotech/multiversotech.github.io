@@ -36,9 +36,7 @@
 
   > :not(.btn-check:first-child) + .btn,
   > .btn-group:not(:first-child) {
-    margin-left: calc(
-      -1 * var(--mvt-spacing-sm)
-    );
+    margin-left: calc(-1 * var(--mvt-spacing-sm));
   }
 
   > .btn:not(:last-child):not(.dropdown-toggle),
@@ -113,9 +111,7 @@
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
-    margin-top: calc(
-      -1 * #{--mvt-border-width-base}
-    );
+    margin-top: calc(-1 * #{--mvt-border-width-base});
   }
 
   > .btn:not(:last-child):not(.dropdown-toggle),

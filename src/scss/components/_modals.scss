@@ -45,15 +45,15 @@ $modal-show-transform: none;
 $modal-transition: transform 0.3s ease-out;
 $modal-scale-transform: scale(1.02);
 
-  //─────────────────────────────────────────────────────────────────────────────
-  // MODAL
-  // ─────────────────────────────────────────────────────────────────────────────
-  // Estrutura de classes:
-  //   .modal            → container com scroll
-  //   .modal-dialog     → shell de posicionamento
-  //   .modal-content    → superfície visual do modal
-  //   .modal-backdrop   → overlay de fundo
-  // ── Container principal ───────────────────────────────────────────────────────
+//─────────────────────────────────────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────────────────────────────────────
+// Estrutura de classes:
+//   .modal            → container com scroll
+//   .modal-dialog     → shell de posicionamento
+//   .modal-content    → superfície visual do modal
+//   .modal-backdrop   → overlay de fundo
+// ── Container principal ───────────────────────────────────────────────────────
 
 .modal {
   --#{$prefix}modal-zindex: #{$z-index-modal};

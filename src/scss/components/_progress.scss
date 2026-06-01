@@ -12,7 +12,9 @@ $progress-bar-transition: width 0.6s ease;
 
 @if $enable-transitions {
   @keyframes progress-bar-stripes {
-    0% { background-position-x: var(--#{$prefix}progress-height); }
+    0% {
+      background-position-x: var(--#{$prefix}progress-height);
+    }
   }
 }
 
@@ -49,7 +51,8 @@ $progress-bar-transition: width 0.6s ease;
 
 .progress-bar-striped {
   @include gradient-striped();
-  background-size: var(--#{$prefix}progress-height) var(--#{$prefix}progress-height);
+  background-size: var(--#{$prefix}progress-height)
+    var(--#{$prefix}progress-height);
 }
 
 .progress-stacked > .progress {
