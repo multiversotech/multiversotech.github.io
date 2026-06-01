@@ -22,7 +22,106 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ---
 
-## [Unreleased] - 2026-04-15
+## [Unreleased] - 2026-05-26
+
+### 📦 Alterado
+
+- Recompilar CSS após refatorações (`ddcfdf6`)
+
+### 🐛 Corrigido
+
+- Corrigir nomenclatura e dependências dos tokens (`bb84c31`)
+
+### ♻️ Refatoração
+
+- Renomear classes e reestruturar HTML (`d7bf1cb`)
+- Atualizar layout e estilos de página (`3c00bf8`)
+- Simplificar componentes de UI (`f370014`)
+- Atualizar tokens dos temas claro, escuro e global (`060b4b5`)
+
+### 🗑️ Exclusão
+
+- Remover workflow de build e deploy (`a46a574`)
+- Remover painel de personalização (`f53b465`)
+
+---
+
+## 2026-05-06
+
+### 📦 Alterado
+
+- Recompilar CSS após refatorações do design system (`54500e5`)
+
+### 🧹 Alterado
+
+- Remover tokens legados e migrar dark/light theme para estrutura simplificada (`d872fd5`)
+
+### 🐛 Corrigido
+
+- Corrigir nomes de custom properties para usar prefixo mvt (`36585b0`)
+
+### ♻️ Refatoração
+
+- Substituir variáveis descontinuadas por valores diretos nos componentes (`8e5c650`)
+- Remover referências a variáveis descontinuadas (`7c2cd83`)
+- Renomear paleta secondary para primary-dark e centralizar tokens primitivos (`1ea3f21`)
+
+---
+
+## 2026-04-19
+
+### ✨ Adicionado
+
+- Adicionar componente hero com animação aurora e cosmos (`72b3338`)
+- Adicionar painel de personalização visual ThemeTweaker (`430e774`)
+
+### 📦 Alterado
+
+- Recompilar CSS após refatorações do design system (`eb9f82e`)
+
+### 🧱 Alterado
+
+- Atualizar Node.js para versão 24 (`8df235a`)
+
+### 🐛 Corrigido
+
+- Atualizar seletores de menu e acesso rápido para novas classes (`0f1f6ae`)
+
+### ♻️ Refatoração
+
+- Reescrever header, footer e index-main com novo design system (`48ed716`)
+- Adicionar tokens de cor semânticos oklch para dark e light (`4ef21a5`)
+- Simplificar base, renomear btn-base para button e atualizar forwards (`e43564a`)
+
+### 🗑️ Exclusão
+
+- Remover home.html obsoleto (`356dadd`)
+
+---
+
+## 2026-04-17
+
+### ✨ Adicionado
+
+- Adicionar componente MenuToggle para menu mobile (`438b3f8`)
+
+### 📦 Alterado
+
+- Recompilar CSS após refatoração do design system (`c685237`)
+
+### 🐛 Corrigido
+
+- Corrigir token de cor do background do header no tema escuro (`95dc9c4`)
+
+### ♻️ Refatoração
+
+- Migrar para tokens CSS --mvt-* e remover variáveis locais (`a1905c9`)
+- Reorganizar @forward, remover comentários de exemplo e simplificar funções (`8bf176f`)
+- Reescrever estrutura HTML do header com classes utilitárias (`f6d04d6`)
+
+---
+
+## 2026-04-15
 
 ### ✨ Adicionado
 
@@ -30,7 +129,16 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ### 📦 Alterado
 
+- Copiar src/js/ para site/js/ no processo de build (`fa45321`)
 - Recompilar CSS após refatoração de SCSS (`adf82c9`)
+
+### 🐛 Corrigido
+
+- Corrigir caminhos de assets, CSS e JS para o output do build (`8a4ef9b`)
+- Corrigir caminhos para absolutos nos templates e partials (`d78bb12`)
+- Corrigir caminhos do CSS e favicons no head para o build (`475e980`)
+- Corrigir caminho do CSS no head e recompilar (`ea8bc58`)
+- Corrigir mapeamento de categorias no update-changelog (`1e2851d`)
 
 ### 📚 Documentação
 
@@ -38,6 +146,9 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ### ♻️ Refatoração
 
+- Formatar com Prettier, remover função não usada e ajustar caminho de saída do CSS (`9a2d5ce`)
+- Atualizar estrutura do footer e hero com classes utilitárias (`bb433d1`)
+- Simplificar estrutura do header para navbar com classes utilitárias (`61f9f6b`)
 - Adicionar tokens de fundo, texto e gradiente com prefixo correto (`cc9929a`)
 - Migrar tokens para --mvt-* e adicionar estilos de nav e busca (`7e383a5`)
 - Simplificar botões removendo mixins e migrando para tokens --mvt-* (`5c4b5f4`)
@@ -230,12 +341,13 @@ remove: - exclusão de arquivos, diretórios ou funcionalidades obsoletas ou nã
 
 ## Estatísticas do Projeto
 
-- **Total de commits:** 72
-- **Período:** 2026-02-07 - 2026-04-15
-- **Contribuidores:** 1
+- **Total de commits:** 110
+- **Período:** 2026-02-07 - 2026-05-26
+- **Contribuidores:** 2
 
 ### Contribuidores
 
+- mariisena
 - Mariana Sena
 
 ---
