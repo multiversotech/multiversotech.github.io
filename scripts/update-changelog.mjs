@@ -1,12 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CHANGELOG_PATH = path.join(__dirname, '..', 'CHANGELOG.md');
+const CHANGELOG_PATH = path.join(__dirname, "..", "CHANGELOG.md");
 
 // Função para obter todos os commits
 function getAllCommits() {
@@ -70,7 +70,7 @@ function categorizeCommit(message) {
   } else if (
     msg.startsWith("style:") ||
     msg.startsWith("style(") ||
-    msg.startsWith("💄 perf:")
+    msg.startsWith("💄 style:")
   ) {
     return "💄 Estilização de interface";
   } else if (
@@ -82,7 +82,7 @@ function categorizeCommit(message) {
   } else if (
     msg.startsWith("chore:") ||
     msg.startsWith("chore(") ||
-    msg.startsWith("🔧 refactor:")
+    msg.startsWith("🔧 chore:")
   ) {
     return "🔧 Manutenção";
   } else if (
@@ -94,7 +94,7 @@ function categorizeCommit(message) {
   } else if (
     msg.startsWith("raw:") ||
     msg.startsWith("raw(") ||
-    msg.startsWith("♻️ raw:")
+    msg.startsWith("🗃️ raw:")
   ) {
     return "🗃️ Alterado";
   } else if (
@@ -106,7 +106,7 @@ function categorizeCommit(message) {
   } else if (
     msg.startsWith("remove:") ||
     msg.startsWith("remove(") ||
-    msg.startsWith("🗑️ cleanup:")
+    msg.startsWith("🗑️ remove:")
   ) {
     return "🗑️ Exclusão";
   } else {
