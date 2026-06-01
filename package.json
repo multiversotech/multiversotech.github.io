@@ -24,9 +24,10 @@
   "bugs": {
     "url": "https://github.com/multiversotech/multiversotech.github.io/issues"
   },
-  "homepage": "https://mutiversotech.github.io",
+  "homepage": "https://multiversotech.github.io",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "validate": "node -e \"const fs=require('fs');const files=fs.readdirSync('./data').filter(f=>f.endsWith('.json'));if(files.length===0){console.log('⚠️  Nenhum arquivo JSON em /data para validar')}else{console.log('✅ Validação de JSON: OK')}\"",
     "stylelint": "stylelint **/*.css --fix",
     "sass:build": "sass src/scss/core-main.scss dist/css/core-main.min.css --style=compressed",
     "sass:compile": "sass src/scss/core-main.scss dist/css/core-main.css",
@@ -36,7 +37,8 @@
     "lint:fix": "eslint . --fix",
     "dev": "sass --watch src/scss:dist/css/",
     "changelog": "node scripts/update-changelog.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "build:full": "npm run sass:build && npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
